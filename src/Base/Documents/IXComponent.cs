@@ -21,37 +21,44 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Represents components in the <see cref="IXAssembly"/>
+    /// <para>中文：表示装配体中的组件</para>
     /// </summary>
     public interface IXComponent : IXSelObject, IXObjectContainer, IXTransaction, IHasColor, IDimensionable, IHasName
     {
         /// <summary>
         /// Full name of the component including the hierarchical path
+        /// <para>中文：包含层次路径的组件完整名称</para>
         /// </summary>
         string FullName { get; }
 
         /// <summary>
         /// Reference label of the component
+        /// <para>中文：组件的参考标签</para>
         /// </summary>
         string Reference { get; set; }
 
         /// <summary>
         /// Parent component of this component or null if root
+        /// <para>中文：此组件的父组件，若为根组件则返回 null</para>
         /// </summary>
         IXComponent Parent { get; }
 
         /// <summary>
         /// Returns the referenced configuration of this component
+        /// <para>中文：返回此组件所引用的配置</para>
         /// </summary>
         /// <remarks>For unloaded or rapid components this configuration may be uncommitted</remarks>
         IXConfiguration ReferencedConfiguration { get; set; }
 
         /// <summary>
         /// State of this component
+        /// <para>中文：组件的状态（如压缩、轻化、隐藏等）</para>
         /// </summary>
         ComponentState_e State { get; set; }
 
         /// <summary>
         /// Document of the component
+        /// <para>中文：组件所引用的三维文档</para>
         /// </summary>
         /// <remarks>If component is rapid, view only or suppressed document migth not be loaded into the memory. Use <see cref="IXTransaction.IsCommitted"/> to check the state and call <see cref="IXTransaction.Commit(System.Threading.CancellationToken)"/> to load document if needed
         /// When changing the referenced document of the committed element, document can be either replaced (if existing file is provided) or made independent if non-exisitng file is provided. Use an empty <see cref="IXDocument.Path"/> for the <see cref="ComponentState_e.Embedded"/> components
@@ -60,26 +67,31 @@ namespace Xarial.XCad.Documents
         
         /// <summary>
         /// Children components
+        /// <para>中文：子组件集合</para>
         /// </summary>
         IXComponentRepository Children { get; }
 
         /// <summary>
         /// Features of this components
+        /// <para>中文：此组件的特征集合</para>
         /// </summary>
         IXFeatureRepository Features { get; }
 
         /// <summary>
         /// Bodies in this component
+        /// <para>中文：此组件中的实体集合</para>
         /// </summary>
         IXBodyRepository Bodies { get; }
 
         /// <summary>
         /// Transformation of this component in the assembly relative to the global coordinate system
+        /// <para>中文：此组件相对于全局坐标系的变换矩阵</para>
         /// </summary>
         TransformMatrix Transformation { get; set; }
 
         /// <summary>
         /// Enables an editing mode for the component
+        /// <para>中文：为组件启用编辑模式（关联编辑）</para>
         /// </summary>
         /// <returns>Component editor</returns>
         IEditor<IXComponent> Edit();
@@ -87,6 +99,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Specific component of the <see cref="IXPart"/>
+    /// <para>中文：零件文档对应的专用组件接口</para>
     /// </summary>
     public interface IXPartComponent : IXComponent
     {
@@ -99,6 +112,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Specific component of the <see cref="IXAssembly"/>
+    /// <para>中文：装配体文档对应的专用组件接口</para>
     /// </summary>
     public interface IXAssemblyComponent : IXComponent
     {
@@ -111,11 +125,13 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Additional methods for <see cref="IXComponent"/>
+    /// <para>中文：为 IXComponent 提供扩展方法的静态类</para>
     /// </summary>
     public static class XComponentExtension 
     {
         /// <summary>
         /// Iterates all bodies from the components
+        /// <para>中文：遍历组件中的所有实体</para>
         /// </summary>
         /// <param name="comp">Component</param>
         /// <param name="includeHidden">True to include all bodies, false to only include visible</param>
@@ -127,6 +143,7 @@ namespace Xarial.XCad.Documents
         
         /// <summary>
         /// Iterates all bodies from the component with the specified filter
+        /// <para>中文：使用指定过滤条件遍历组件中的所有实体</para>
         /// </summary>
         /// <param name="comp">Component to get bodies from</param>
         /// <param name="compFilter">Filter for components</param>
@@ -172,6 +189,7 @@ namespace Xarial.XCad.Documents
 
         /// <summary>
         /// Makes this component independent
+        /// <para>中文：使此组件成为独立副本</para>
         /// </summary>
         /// <param name="comp">Component</param>
         /// <param name="newPath">New file path or an empty string for the embedded component</param>
@@ -213,6 +231,7 @@ namespace Xarial.XCad.Documents
 
         /// <summary>
         /// Replaces the reference document of this component
+        /// <para>中文：替换此组件所引用的文档</para>
         /// </summary>
         /// <param name="comp">Component</param>
         /// <param name="newPath">Path to replace</param>

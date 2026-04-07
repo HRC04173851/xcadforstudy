@@ -12,6 +12,7 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Represents the part document
+    /// <para>中文：表示零件文档</para>
     /// </summary>
     public interface IXPart : IXDocument3D
     {
@@ -20,6 +21,7 @@ namespace Xarial.XCad.Documents
 
         /// <summary>
         /// Bodies in this part document
+        /// <para>中文：此零件文档中的实体集合</para>
         /// </summary>
         IXBodyRepository Bodies { get; }
     }

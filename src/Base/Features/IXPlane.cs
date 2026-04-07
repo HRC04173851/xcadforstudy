@@ -15,6 +15,7 @@ namespace Xarial.XCad.Features
 {
     /// <summary>
     /// Represents the plane reference geometry
+    /// <para>中文：表示参考几何体中的平面</para>
     /// </summary>
     public interface IXPlane : IXFeature, IXPlanarRegion
     {

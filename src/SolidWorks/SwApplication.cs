@@ -43,25 +43,54 @@ using Xarial.XCad.Toolkit.Data;
 
 namespace Xarial.XCad.SolidWorks
 {
+    /// <summary>
+    /// SolidWorks-specific application interface, extending the generic <see cref="IXApplication"/>.
+    /// <para>中文：SolidWorks 专用应用程序接口，扩展了通用的 IXApplication 接口，提供对底层 ISldWorks COM 对象和文档集合的访问。</para>
+    /// </summary>
     public interface ISwApplication : IXApplication, IDisposable
     {
+        /// <summary>The underlying SolidWorks ISldWorks COM object
+        /// <para>中文：底层 SolidWorks ISldWorks COM 对象</para></summary>
         ISldWorks Sw { get; }
+
+        /// <summary>Gets or sets the SolidWorks version
+        /// <para>中文：获取或设置 SolidWorks 版本</para></summary>
         new ISwVersion Version { get; set; }
 
+        /// <summary>Custom services to inject into the service container
+        /// <para>中文：注入服务容器的自定义服务集合</para></summary>
         IXServiceCollection CustomServices { get; set; }
 
+        /// <summary>The SolidWorks document collection
+        /// <para>中文：SolidWorks 文档集合（零件、装配体、工程图）</para></summary>
         new ISwDocumentCollection Documents { get; }
+
+        /// <summary>In-memory geometry builder for creating geometry objects without a document
+        /// <para>中文：用于在无文档情况下创建几何体对象的内存几何体构建器</para></summary>
         new ISwMemoryGeometryBuilder MemoryGeometryBuilder { get; }
+
+        /// <summary>Opens a SolidWorks macro from the given path
+        /// <para>中文：从指定路径打开 SolidWorks 宏文件</para></summary>
         new ISwMacro OpenMacro(string path);
 
+        /// <summary>Creates a SolidWorks wrapper object from a raw COM dispatch pointer
+        /// <para>中文：从原始 COM 调度指针创建 SolidWorks 包装对象</para></summary>
         TObj CreateObjectFromDispatch<TObj>(object disp, ISwDocument doc)
             where TObj : ISwObject;
     }
 
+    /// <summary>
+    /// SolidWorks-specific application options interface
+    /// <para>中文：SolidWorks 专用应用程序选项接口</para>
+    /// </summary>
     public interface ISwApplicationOptions : ISwOptions, IXApplicationOptions 
     {
     }
 
+    /// <summary>
+    /// Internal implementation of SolidWorks application options.
+    /// <para>中文：SolidWorks 应用程序选项的内部实现，包含工程图选项子集。</para>
+    /// </summary>
     internal class SwApplicationOptions : SwOptions, ISwApplicationOptions 
     {
         private readonly SwApplication m_App;
@@ -72,9 +101,15 @@ namespace Xarial.XCad.SolidWorks
             Drawings = new SwDrawingsApplicationOptions(app);
         }
 
+        /// <summary>Drawing-specific application options
+        /// <para>中文：工程图专用应用程序选项</para></summary>
         public IXDrawingsApplicationOptions Drawings { get; }
     }
 
+    /// <summary>
+    /// Internal implementation of drawing-specific application options.
+    /// <para>中文：工程图专用应用程序选项的内部实现，封装 SolidWorks 用户偏好设置。</para>
+    /// </summary>
     internal class SwDrawingsApplicationOptions : IXDrawingsApplicationOptions
     {
         private readonly SwApplication m_App;
@@ -84,6 +119,10 @@ namespace Xarial.XCad.SolidWorks
             m_App = app;
         }
 
+        /// <summary>
+        /// Gets or sets whether new drawing views are automatically scaled.
+        /// <para>中文：获取或设置新建工程图视图是否自动缩放。</para>
+        /// </summary>
         public bool AutomaticallyScaleNewDrawingViews
         {
             get => m_App.Sw.GetUserPreferenceToggle((int)swUserPreferenceToggle_e.swAutomaticScaling3ViewDrawings);
@@ -92,13 +131,20 @@ namespace Xarial.XCad.SolidWorks
     }
 
     /// <inheritdoc/>
+    /// <summary>
+    /// Internal implementation of <see cref="ISwApplication"/>. Manages the SolidWorks process lifecycle,
+    /// document collection, services, and UI integration.
+    /// <para>中文：ISwApplication 的内部实现，管理 SolidWorks 进程生命周期、文档集合、服务容器及 UI 集成。</para>
+    /// </summary>
     internal class SwApplication : ISwApplication, IXServiceConsumer
     {
         #region WinApi
+        // 用于在启动时隐藏 SolidWorks 主窗口
         [DllImport("user32.dll")]
         static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         #endregion
 
+        // 显式接口实现：将 SolidWorks 专用类型适配到通用 IXApplication 接口
         IXDocumentRepository IXApplication.Documents => Documents;
         IXMacro IXApplication.OpenMacro(string path) => OpenMacro(path);
         IXMemoryGeometryBuilder IXApplication.MemoryGeometryBuilder => MemoryGeometryBuilder;
@@ -109,9 +155,18 @@ namespace Xarial.XCad.SolidWorks
         }
         IXMaterialsDatabaseRepository IXApplication.MaterialDatabases => MaterialDatabases;
 
+        /// <summary>Fired before SolidWorks starts; allows inspection/modification of the startup process
+        /// <para>中文：SolidWorks 启动前触发，允许检查或修改启动过程</para></summary>
         public event ApplicationStartingDelegate Starting;
+
+        /// <summary>Fired to allow callers to configure the service container
+        /// <para>中文：允许调用方配置服务容器的事件</para></summary>
         public event ConfigureServicesDelegate ConfigureServices;
 
+        /// <summary>
+        /// Fires when SolidWorks becomes idle. Subscribing attaches to the OnIdleNotify COM event.
+        /// <para>中文：SolidWorks 进入空闲状态时触发。订阅时会附加到 COM OnIdleNotify 事件。</para>
+        /// </summary>
         public event ApplicationIdleDelegate Idle
         {
             add
@@ -306,6 +361,7 @@ namespace Xarial.XCad.SolidWorks
 
         /// <summary>
         /// Only to be used within SwAddInEx
+        /// <para>中文：仅供 SwAddInEx 内部使用，通过已有 COM 指针和启动完成回调构造实例</para>
         /// </summary>
         internal SwApplication(ISldWorks app, Action<SwApplication> startupCompletedCallback)
         {
@@ -635,42 +691,46 @@ namespace Xarial.XCad.SolidWorks
         }
     }
 
-    /// <summary>
-    /// Additional methods of <see cref="ISwApplication"/>
-    /// </summary>
-    public static class SwApplicationExtension 
-    {
         /// <summary>
-        /// Checks if the current version of the SOLIDWORKS applicating equals or newver than the specified version
+        /// Additional methods of <see cref="ISwApplication"/>
+        /// <para>中文：ISwApplication 的扩展方法，提供版本比较和进程内检测等辅助功能</para>
         /// </summary>
-        /// <param name="app">Application</param>
-        /// <param name="version">Major version</param>
-        /// <param name="servicePack">Service pack</param>
-        /// <param name="servicePackRev">Revision</param>
-        /// <returns>True if current version is newer or equal</returns>
-        /// <remarks>Use this method for forward compatibility</remarks>
-        public static bool IsVersionNewerOrEqual(this ISwApplication app, SwVersion_e version, 
-            int? servicePack = null, int? servicePackRev = null) 
+        public static class SwApplicationExtension 
         {
-            return app.Sw.IsVersionNewerOrEqual(version, servicePack, servicePackRev);
-        }
+            /// <summary>
+            /// Checks if the current version of the SOLIDWORKS applicating equals or newver than the specified version
+            /// <para>中文：检查当前 SolidWorks 版本是否等于或高于指定版本（用于前向兼容性判断）</para>
+            /// </summary>
+            /// <param name="app">Application</param>
+            /// <param name="version">Major version</param>
+            /// <param name="servicePack">Service pack</param>
+            /// <param name="servicePackRev">Revision</param>
+            /// <returns>True if current version is newer or equal</returns>
+            /// <remarks>Use this method for forward compatibility</remarks>
+            public static bool IsVersionNewerOrEqual(this ISwApplication app, SwVersion_e version, 
+                int? servicePack = null, int? servicePackRev = null) 
+            {
+                return app.Sw.IsVersionNewerOrEqual(version, servicePack, servicePackRev);
+            }
 
-        /// <summary>
-        /// Checks if currently running application is in-process application
-        /// </summary>
-        /// <param name="app">Application</param>
-        /// <returns>True if in process</returns>
-        /// <remarks>This method also checks the UI thread</remarks>
-        public static bool IsInProcess(this ISwApplication app) 
-        {
-            if (Process.GetCurrentProcess().Id == app.Process.Id)
+            /// <summary>
+            /// Checks if currently running application is in-process application
+            /// <para>中文：检查当前运行的应用程序是否为进程内（插件模式）应用程序，同时验证 UI 线程</para>
+            /// </summary>
+            /// <param name="app">Application</param>
+            /// <returns>True if in process</returns>
+            /// <remarks>This method also checks the UI thread</remarks>
+            public static bool IsInProcess(this ISwApplication app) 
             {
-                return Thread.CurrentThread.ManagedThreadId == 1;
-            }
-            else 
-            {
-                return false;
+                if (Process.GetCurrentProcess().Id == app.Process.Id)
+                {
+                    // 进程内运行时还需确认当前线程为 UI 主线程（线程 ID = 1）
+                    return Thread.CurrentThread.ManagedThreadId == 1;
+                }
+                else 
+                {
+                    return false;
+                }
             }
         }
-    }
 }

@@ -1,0 +1,17 @@
+/home/runner/work/xcadforstudy/xcadforstudy/_build/net7.0/Xarial.XCad.deps.json
+/home/runner/work/xcadforstudy/xcadforstudy/_build/net7.0/Xarial.XCad.dll
+/home/runner/work/xcadforstudy/xcadforstudy/_build/net7.0/Xarial.XCad.pdb
+/home/runner/work/xcadforstudy/xcadforstudy/_build/net7.0/Xarial.XCad.xml
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Base.csproj.AssemblyReference.cache
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Xarial.XCad.Properties.Resources.resources
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Base.csproj.GenerateResource.cache
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Base.GeneratedMSBuildEditorConfig.editorconfig
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Base.AssemblyInfoInputs.cache
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Base.AssemblyInfo.cs
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Base.csproj.CoreCompileInputs.cache
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Base.sourcelink.json
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Xarial.XCad.dll
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/refint/Xarial.XCad.dll
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Xarial.XCad.xml
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/Xarial.XCad.pdb
+/home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net7.0/ref/Xarial.XCad.dll

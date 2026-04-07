@@ -32,21 +32,53 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks-specific configuration interface extending the base XCad configuration.
+    /// <para>中文：SolidWorks 专用配置接口，扩展 xCAD 基础配置接口，提供对 SolidWorks 配置对象和自定义属性集合的访问。</para>
+    /// </summary>
     public interface ISwConfiguration : ISwSelObject, IXConfiguration, IDisposable
     {
+        /// <summary>
+        /// Gets the underlying SolidWorks native <see cref="IConfiguration"/> object.
+        /// <para>中文：获取底层 SolidWorks 原生配置对象（IConfiguration）。</para>
+        /// </summary>
         IConfiguration Configuration { get; }
+
+        /// <summary>
+        /// Gets the custom properties collection associated with this configuration.
+        /// <para>中文：获取与此配置关联的自定义属性集合。</para>
+        /// </summary>
         new ISwCustomPropertiesCollection Properties { get; }
     }
 
+    /// <summary>
+    /// SolidWorks configuration implementation representing a named variant of a document.
+    /// <para>中文：SolidWorks 配置实现类，表示文档的一个命名变体（配置），提供名称、自定义属性、尺寸、预览图、零件号、数量、物料清单子项解析等功能。</para>
+    /// </summary>
     [DebuggerDisplay("{" + nameof(Name) + "}")]
     internal class SwConfiguration : SwSelObject, ISwConfiguration
     {
+        /// <summary>
+        /// The custom property name used to determine the quantity (数量) of the component in the BOM.
+        /// <para>中文：用于从自定义属性中解析组件数量的属性名称常量（物料清单数量属性键）。</para>
+        /// </summary>
         internal const string QTY_PROPERTY = "UNIT_OF_MEASURE";
 
+        /// <summary>
+        /// Gets the underlying native SolidWorks IConfiguration object.
+        /// <para>中文：获取底层 SolidWorks 原生 IConfiguration 配置对象。</para>
+        /// </summary>
         public IConfiguration Configuration => m_Creator.Element;
 
+        /// <summary>
+        /// 中文：所属的三维文档（零件或装配体文档）。
+        /// </summary>
         private readonly SwDocument3D m_Doc;
 
+        /// <summary>
+        /// Gets or sets the name of this configuration.
+        /// <para>中文：获取或设置此配置的名称。若配置尚未创建，则读写缓存属性。</para>
+        /// </summary>
         public virtual string Name
         {
             get
@@ -76,7 +108,16 @@ namespace Xarial.XCad.SolidWorks.Documents
         IXPropertyRepository IPropertiesOwner.Properties => Properties;
         IXDimensionRepository IDimensionable.Dimensions => Dimensions;
 
+        /// <summary>
+        /// Gets the custom properties collection for this configuration.
+        /// <para>中文：获取此配置的自定义属性集合（配置级自定义属性）。</para>
+        /// </summary>
         public virtual ISwCustomPropertiesCollection Properties => m_PropertiesLazy.Value;
+
+        /// <summary>
+        /// Gets the dimensions collection for this configuration.
+        /// <para>中文：获取此配置的尺寸集合（配置关联的所有尺寸）。</para>
+        /// </summary>
         public ISwDimensionsCollection Dimensions => m_DimensionsLazy.Value;
 
         private readonly Lazy<ISwCustomPropertiesCollection> m_PropertiesLazy;
@@ -100,6 +141,10 @@ namespace Xarial.XCad.SolidWorks.Documents
 
         public override object Dispatch => Configuration;
 
+        /// <summary>
+        /// Gets the preview image of this configuration.
+        /// <para>中文：获取此配置的预览图（在进程内时使用 SolidWorks API 获取高质量预览，否则使用文档缩略图）。</para>
+        /// </summary>
         public IXImage Preview
         {
             get
@@ -115,8 +160,16 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Gets the part number of this configuration based on its BOM part number source setting.
+        /// <para>中文：根据物料清单零件号来源设置获取此配置的零件号。</para>
+        /// </summary>
         public string PartNumber => GetPartNumber(Configuration);
 
+        /// <summary>
+        /// Gets the quantity of this component as defined by the UNIT_OF_MEASURE custom property.
+        /// <para>中文：从自定义属性（UNIT_OF_MEASURE）中解析并获取组件的数量（物料清单数量），默认为 1。</para>
+        /// </summary>
         public double Quantity
         {
             get
@@ -166,6 +219,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Gets how child components are shown in the BOM for assembly configurations.
+        /// <para>中文：获取装配体配置中子组件在物料清单（BOM）中的显示方式（显示、隐藏或提升）。</para>
+        /// </summary>
         public BomChildrenSolving_e BomChildrenSolving
         {
             get
@@ -196,6 +253,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Gets the parent configuration of this configuration, or null if it is a root configuration.
+        /// <para>中文：获取此配置的父配置；若为根配置则返回 null。</para>
+        /// </summary>
         public virtual IXConfiguration Parent 
         {
             get 
@@ -213,6 +274,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Gets the value of a custom property from the given property manager.
+        /// <para>中文：从指定的自定义属性管理器中读取属性值，兼容 SW2014/SW2018 及更新版本的 API。</para>
+        /// </summary>
         private string GetPropertyValue(ICustomPropertyManager prpMgr, string prpName) 
         {
             string resVal;
@@ -233,6 +298,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             return resVal;
         }
 
+        /// <summary>
+        /// Resolves the part number for a configuration based on its BOM part number source.
+        /// <para>中文：根据配置的物料清单零件号来源（配置名、文档名、父配置名或用户指定名），递归解析并返回零件号。</para>
+        /// </summary>
         private string GetPartNumber(IConfiguration conf) 
         {
             switch ((swBOMPartNumberSource_e)conf.BOMPartNoSource)
@@ -252,9 +321,17 @@ namespace Xarial.XCad.SolidWorks.Documents
 
         public override void Commit(CancellationToken cancellationToken) => m_Creator.Create(cancellationToken);
 
+        /// <summary>
+        /// Creates the dimensions collection for this configuration.
+        /// <para>中文：创建此配置关联的尺寸集合，通过文档特征管理器构建。</para>
+        /// </summary>
         protected virtual ISwDimensionsCollection CreateDimensions()
             => new SwFeatureManagerDimensionsCollection(new SwDocumentFeatureManager(m_Doc, m_Doc.OwnerApplication, new Context(this)), new Context(this));
 
+        /// <summary>
+        /// Creates the underlying SolidWorks IConfiguration object.
+        /// <para>中文：调用 SolidWorks API 创建底层配置对象，兼容 SW2018 及更早版本，若创建失败则抛出异常。</para>
+        /// </summary>
         private IConfiguration Create(CancellationToken cancellationToken) 
         {
             IConfiguration conf;
@@ -276,6 +353,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             return conf;
         }
 
+        /// <summary>
+        /// Disposes this configuration and releases any lazy-initialized property resources.
+        /// <para>中文：释放此配置占用的资源，若自定义属性集合已初始化则一并释放。</para>
+        /// </summary>
         public void Dispose()
         {
             if (m_PropertiesLazy.IsValueCreated) 
@@ -285,8 +366,16 @@ namespace Xarial.XCad.SolidWorks.Documents
         }
     }
 
+    /// <summary>
+    /// Abstract base class for component-specific configurations in SolidWorks.
+    /// <para>中文：组件配置的抽象基类，关联 SolidWorks 组件与其引用文档中的配置，并支持组件级尺寸集合。</para>
+    /// </summary>
     internal abstract class SwComponentConfiguration : SwConfiguration
     {
+        /// <summary>
+        /// Gets the configuration object for the referenced component document.
+        /// <para>中文：获取组件引用文档中的配置对象；若文档尚未提交则返回 null。</para>
+        /// </summary>
         private static IConfiguration GetConfiguration(SwComponent comp, string compName)
         {
             var doc = comp.ReferencedDocument;
@@ -340,15 +429,30 @@ namespace Xarial.XCad.SolidWorks.Documents
                 new SwComponentFeatureManager(m_Comp, m_Comp.RootAssembly, OwnerApplication, new Context(this)), new Context(this));
     }
 
+    /// <summary>
+    /// Configuration for a SolidWorks part component, providing material and cut list access.
+    /// <para>中文：SolidWorks 零件组件配置类，提供该配置下的材料属性和剪切清单访问。</para>
+    /// </summary>
     internal class SwPartComponentConfiguration : SwComponentConfiguration, ISwPartConfiguration
     {
+        /// <summary>
+        /// Initializes a new part component configuration.
+        /// <para>中文：初始化零件组件配置，并创建对应的剪切清单集合。</para>
+        /// </summary>
         public SwPartComponentConfiguration(SwPartComponent comp, SwApplication app, string confName) : base(comp, app, confName)
         {
             CutLists = new SwPartComponentCutListItemCollection(comp);
         }
 
+        /// <summary>
+        /// 中文：剪切清单集合（焊接件或钣金件的切割清单）。
+        /// </summary>
         public IXCutListItemRepository CutLists { get; }
 
+        /// <summary>
+        /// Gets or sets the material applied to this part configuration.
+        /// <para>中文：获取或设置此零件配置的材料属性；设置为 null 时清除材料。</para>
+        /// </summary>
         public IXMaterial Material
         {
             get
@@ -378,15 +482,30 @@ namespace Xarial.XCad.SolidWorks.Documents
         }
     }
 
+    /// <summary>
+    /// Configuration for a SolidWorks assembly component, exposing child components.
+    /// <para>中文：SolidWorks 装配体组件配置类，提供对子组件集合的访问（装配体文档组件配置）。</para>
+    /// </summary>
     internal class SwAssemblyComponentConfiguration : SwComponentConfiguration, IXAssemblyConfiguration
     {
+        /// <summary>
+        /// 中文：初始化装配体组件配置。
+        /// </summary>
         public SwAssemblyComponentConfiguration(SwComponent comp, SwApplication app, string confName) : base(comp, app, confName)
         {
         }
 
+        /// <summary>
+        /// Gets the child components repository for this assembly configuration.
+        /// <para>中文：获取此装配体配置下的子组件集合。</para>
+        /// </summary>
         public IXComponentRepository Components => m_Comp.Children;
     }
 
+    /// <summary>
+    /// Represents a view-only configuration that is not fully loaded (unloaded state).
+    /// <para>中文：表示仅查看模式下未完全加载的配置（轻量化/SpeedPak简化配置的只读占位对象），不支持修改或提交操作。</para>
+    /// </summary>
     internal class SwViewOnlyUnloadedConfiguration : SwConfiguration
     {
         public override string Name
@@ -408,6 +527,10 @@ namespace Xarial.XCad.SolidWorks.Documents
         public override ISwCustomPropertiesCollection Properties => throw new InactiveLdrConfigurationNotSupportedException();
     }
 
+    /// <summary>
+    /// Represents an inactive large design review (LDR) assembly configuration that is not loaded.
+    /// <para>中文：表示未激活的大型设计评审（LDR）装配体配置（轻量化装配体中的非活动配置），不支持属性访问、提交或派发。</para>
+    /// </summary>
     internal class SwLdrAssemblyUnloadedConfiguration : SwAssemblyConfiguration
     {
         public override string Name 
@@ -429,6 +552,10 @@ namespace Xarial.XCad.SolidWorks.Documents
         public override ISwCustomPropertiesCollection Properties => throw new InactiveLdrConfigurationNotSupportedException();
     }
 
+    /// <summary>
+    /// Represents an inactive large design review (LDR) part configuration that is not loaded.
+    /// <para>中文：表示未激活的大型设计评审（LDR）零件配置（轻量化零件中的非活动配置），不支持属性访问、提交或派发。</para>
+    /// </summary>
     internal class SwLdrPartUnloadedConfiguration : SwPartConfiguration
     {
         public override string Name

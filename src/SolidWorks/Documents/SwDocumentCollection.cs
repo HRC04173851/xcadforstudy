@@ -30,16 +30,42 @@ using Xarial.XCad.Utils.Diagnostics;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks document collection interface that manages all open documents.
+    /// <para>中文：SolidWorks 文档集合接口，管理所有已打开的文档，提供激活文档访问、按名称/模型索引等功能。</para>
+    /// </summary>
     public interface ISwDocumentCollection : IXDocumentRepository, IDisposable
     {
+        /// <summary>
+        /// Gets or sets the currently active document.
+        /// <para>中文：获取或设置当前激活文档。</para>
+        /// </summary>
         new ISwDocument Active { get; set; }
+
+        /// <summary>
+        /// Gets a document by its name.
+        /// <para>中文：按文档名称获取文档对象。</para>
+        /// </summary>
         new IXDocument this[string name] { get; }
+
+        /// <summary>
+        /// Gets a document by its native SolidWorks model object.
+        /// <para>中文：通过 SolidWorks 原生模型对象（IModelDoc2）获取对应的文档对象。</para>
+        /// </summary>
         ISwDocument this[IModelDoc2 model] { get; }
     }
 
+    /// <summary>
+    /// Manages all open SolidWorks documents and provides document lifecycle events.
+    /// <para>中文：管理所有已打开的 SolidWorks 文档，并提供文档生命周期事件（文档加载、文档激活、新建文档、文档打开）。</para>
+    /// </summary>
     [DebuggerDisplay("Documents: {" + nameof(Count) + "}")]
     internal class SwDocumentCollection : ISwDocumentCollection
     {
+        /// <summary>
+        /// Raised when a document is loaded into SolidWorks.
+        /// <para>中文：当文档加载到 SolidWorks 时触发（文档加载事件）。</para>
+        /// </summary>
         public event DocumentEventDelegate DocumentLoaded
         {
             add
@@ -62,6 +88,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Raised when the active document changes in SolidWorks.
+        /// <para>中文：当 SolidWorks 中激活文档切换时触发（文档激活事件）。</para>
+        /// </summary>
         public event DocumentEventDelegate DocumentActivated 
         {
             add 
@@ -84,6 +114,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Raised when a new document is created in SolidWorks.
+        /// <para>中文：当在 SolidWorks 中新建文档时触发（新建文档事件）。</para>
+        /// </summary>
         public event DocumentEventDelegate NewDocumentCreated
         {
             add
@@ -106,6 +140,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Raised when a document is opened (post-open notification) in SolidWorks.
+        /// <para>中文：当文档在 SolidWorks 中打开完成后触发（文档打开事件）。</para>
+        /// </summary>
         public event DocumentEventDelegate DocumentOpened
         {
             add
@@ -147,9 +185,15 @@ namespace Xarial.XCad.SolidWorks.Documents
         //NOTE: Creation of SwDocument has some additional API calls (e.g. subscribing the save event, caching the path)
         //this may have a performance effect when called very often (e.g. within the IXCommandGroup.CommandStateResolve)
         //cahcing of the document allows to reuse the instance and improves the performance
+        // 中文：注意：创建 SwDocument 包含额外的 API 调用（如订阅保存事件、缓存文件路径），
+        // 中文：在频繁调用时（如命令状态解析）会影响性能；通过缓存文档实例复用对象以提升性能。
         private IModelDoc2 m_CachedNativeDoc;
         private SwDocument m_CachedDoc;
 
+        /// <summary>
+        /// Gets or sets the currently active (激活) SolidWorks document.
+        /// <para>中文：获取或设置当前激活文档。设置时调用 SolidWorks API 激活指定文档。</para>
+        /// </summary>
         public ISwDocument Active
         {
             get
@@ -178,6 +222,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Gets the total number of open documents in the current SolidWorks session.
+        /// <para>中文：获取当前 SolidWorks 会话中已打开的文档总数。</para>
+        /// </summary>
         public int Count => m_SwApp.GetDocumentCount();
 
         public IXDocument this[string name] => RepositoryHelper.Get(this, name);
@@ -209,6 +257,10 @@ namespace Xarial.XCad.SolidWorks.Documents
 
         public ISwDocument this[IModelDoc2 model] => CreateDocument(model);
 
+        /// <summary>
+        /// Returns an enumerator over all currently open documents.
+        /// <para>中文：返回当前所有已打开文档的枚举器，遍历 SolidWorks 中的所有文档集合。</para>
+        /// </summary>
         public IEnumerator<IXDocument> GetEnumerator()
         {
             var openDocs = m_SwApp.GetDocuments() as object[];
@@ -224,6 +276,10 @@ namespace Xarial.XCad.SolidWorks.Documents
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
+        /// <summary>
+        /// Filters documents in the collection using the provided query filters.
+        /// <para>中文：使用提供的查询条件过滤文档集合，支持正序或倒序返回。</para>
+        /// </summary>
         public IEnumerable Filter(bool reverseOrder, params RepositoryFilterQuery[] filters) 
             => RepositoryHelper.FilterDefault(this, filters, reverseOrder);
 
@@ -308,6 +364,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             throw new Exception($"Failed to find the document by title and path: {docTitle} [{docPath}]");
         }
 
+        /// <summary>
+        /// Registers a document handler factory for lifecycle event handling.
+        /// <para>中文：注册文档事件处理器工厂，用于文档生命周期事件处理（事件处理注册）。</para>
+        /// </summary>
         public void RegisterHandler<THandler>(Func<THandler> handlerFact) 
             where THandler : IDocumentHandler
             => m_DocsHandler.RegisterHandler(handlerFact);
@@ -337,6 +397,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             return doc;
         }
 
+        /// <summary>
+        /// Tries to get an open document by name or path.
+        /// <para>中文：尝试按文档名称或路径获取已打开的文档；若未找到则返回 false。</para>
+        /// </summary>
         public bool TryGet(string name, out IXDocument ent)
         {
             IModelDoc2 model = m_SwApp.GetOpenDocument(name);
@@ -358,8 +422,16 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Adds documents to the collection by committing each one.
+        /// <para>中文：将文档列表批量添加到集合（逐个提交新建文档）。</para>
+        /// </summary>
         public void AddRange(IEnumerable<IXDocument> ents, CancellationToken cancellationToken) => RepositoryHelper.AddRange(ents, cancellationToken);
 
+        /// <summary>
+        /// Closes and removes the specified documents from SolidWorks.
+        /// <para>中文：关闭并从 SolidWorks 中移除指定的文档列表。</para>
+        /// </summary>
         public void RemoveRange(IEnumerable<IXDocument> ents, CancellationToken cancellationToken)
         {
             foreach (var doc in ents.ToArray()) 
@@ -368,6 +440,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Tries to find an existing open document by its file path.
+        /// <para>中文：尝试通过文件路径在已打开的文档集合中查找已存在的文档对象（不区分大小写匹配文件路径）。</para>
+        /// </summary>
         internal bool TryFindExistingDocumentByPath(string path, out SwDocument doc)
         {
             if (!string.IsNullOrEmpty(path))
@@ -383,6 +459,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             return doc != null;
         }
 
+        /// <summary>
+        /// Creates or retrieves the typed SwDocument wrapper for the given native model.
+        /// <para>中文：根据原生模型类型（零件/装配体/工程图）创建对应的 SwDocument 包装对象，并缓存以提升性能。</para>
+        /// </summary>
         private SwDocument CreateDocument(IModelDoc2 nativeDoc)
         {
             //NOTE: see the description of the m_CachedNativeDoc field
@@ -419,9 +499,11 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// Disposes the document collection and unsubscribes all SolidWorks event handlers.
+        /// <para>中文：释放文档集合资源，取消所有 SolidWorks 事件订阅（文档加载、激活、新建、打开），并释放文档处理器。</para>
+        /// </summary>
         public void Dispose()
-        {
-            m_SwApp.DocumentLoadNotify2 -= OnDocumentLoadNotify2;
             m_SwApp.ActiveModelDocChangeNotify -= OnActiveModelDocChangeNotify;
             m_SwApp.FileNewNotify2 -= OnFileNewNotify;
             m_SwApp.FileOpenPostNotify -= OnFileOpenPostNotify;
@@ -431,12 +513,14 @@ namespace Xarial.XCad.SolidWorks.Documents
     }
 
     /// <summary>
-    /// Additional methods for documents collections
+    /// Additional extension methods for document collections.
+    /// <para>中文：文档集合的扩展方法类，提供按文件路径预创建文档的便捷方法。</para>
     /// </summary>
     public static class SwDocumentCollectionExtension 
     {
         /// <summary>
         /// Pre creates new document from path
+        /// <para>中文：根据文件路径（文件扩展名）预创建对应类型的 SolidWorks 文档对象（零件文档、装配体文档或工程图文档），并设置文件路径属性。</para>
         /// </summary>
         /// <param name="docsColl">Documents collection</param>
         /// <param name="path"></param>

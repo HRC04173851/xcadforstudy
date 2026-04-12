@@ -1,0 +1,6 @@
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\src\SolidWorks\obj\Debug\net461\SolidWorks.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\src\SolidWorks\obj\Debug\net461\SolidWorks.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\src\SolidWorks\obj\Debug\net461\SolidWorks.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\src\SolidWorks\obj\Debug\net461\SolidWorks.AssemblyInfo.cs
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\src\SolidWorks\obj\Debug\net461\SolidWorks.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\src\SolidWorks\obj\Debug\net461\SolidWorks.sourcelink.json

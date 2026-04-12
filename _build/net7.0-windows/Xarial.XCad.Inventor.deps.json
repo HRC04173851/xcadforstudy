@@ -1,0 +1,96 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Xarial.XCad.Inventor/0.8.2": {
+        "dependencies": {
+          "Xarial.XCad": "0.8.2",
+          "Xarial.XCad.Toolkit": "0.8.2",
+          "Autodesk.Inventor.Interop": "28.2.0.0",
+          "Xarial.XCad.Reference": "0.8.2.0",
+          "Xarial.XCad.Toolkit.Reference": "0.8.2.0"
+        },
+        "runtime": {
+          "Xarial.XCad.Inventor.dll": {}
+        }
+      },
+      "Xarial.XCad/0.8.2": {
+        "runtime": {
+          "Xarial.XCad.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Xarial.XCad.Toolkit/0.8.2": {
+        "dependencies": {
+          "Xarial.XCad": "0.8.2"
+        },
+        "runtime": {
+          "Xarial.XCad.Toolkit.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Autodesk.Inventor.Interop/28.2.0.0": {
+        "runtime": {
+          "Autodesk.Inventor.Interop.dll": {
+            "assemblyVersion": "28.2.0.0",
+            "fileVersion": "28.2.0.0"
+          }
+        }
+      },
+      "Xarial.XCad.Reference/0.8.2.0": {
+        "runtime": {
+          "Xarial.XCad.dll": {
+            "assemblyVersion": "0.8.2.0",
+            "fileVersion": "0.8.2.0"
+          }
+        }
+      },
+      "Xarial.XCad.Toolkit.Reference/0.8.2.0": {
+        "runtime": {
+          "Xarial.XCad.Toolkit.dll": {
+            "assemblyVersion": "0.8.2.0",
+            "fileVersion": "0.8.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Xarial.XCad.Inventor/0.8.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xarial.XCad/0.8.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xarial.XCad.Toolkit/0.8.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Autodesk.Inventor.Interop/28.2.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xarial.XCad.Reference/0.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xarial.XCad.Toolkit.Reference/0.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

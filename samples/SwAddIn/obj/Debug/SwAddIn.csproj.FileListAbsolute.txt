@@ -1,0 +1,5 @@
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\samples\SwAddIn\obj\Debug\SwAddIn.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\samples\SwAddIn\obj\Debug\WpfUserControl.g.cs
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\samples\SwAddIn\obj\Debug\WpfWindow.g.cs
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\samples\SwAddIn\obj\Debug\SwAddInExample_MarkupCompile.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SwDocumentManager\xcadforstudy\samples\SwAddIn\obj\Debug\SwAddInExample_MarkupCompile.lref

@@ -1,0 +1,623 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xarial.XToolkit</name>
+    </assembly>
+    <members>
+        <member name="T:Xarial.XToolkit.CommandLineUtils">
+            <summary>
+            Provides utility functions for working with command line
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.CommandLineUtils.ParseCommandLine(System.String)">
+            <summary>
+            Extracts arguments from the command line string
+            </summary>
+            <param name="cmdLineArgs">Command line arguments</param>
+            <returns>Separated arguments</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="T:Xarial.XToolkit.FileFilter">
+            <summary>
+            Represents the file fltering helper class
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.FileFilter.BuildFilterString(Xarial.XToolkit.FileFilter[])">
+            <summary>
+            Combines filters into a string which can be used in file prowsing
+            </summary>
+            <param name="filters">Filters</param>
+            <returns>Combines string</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.FileFilter.Create(System.String,System.String[])">
+            <summary>
+            Creates new filter
+            </summary>
+            <param name="name">User friendly name of the filter</param>
+            <param name="exts">List of extensions</param>
+            <returns>Filter</returns>
+        </member>
+        <member name="P:Xarial.XToolkit.FileFilter.AllFiles">
+            <summary>
+            All files filter
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.FileFilter.ImageFiles">
+            <summary>
+            Image files filter
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.FileFilter.Name">
+            <summary>
+            Name of the filter
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.FileFilter.Extensions">
+            <summary>
+            Filter extensions with wildcards (e.g. *.txt)
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.FileFilter.#ctor(System.String,System.String[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="name">User friendly name of the filter</param>
+            <param name="exts">List of extensions</param>
+        </member>
+        <member name="M:Xarial.XToolkit.FileSystemUtils.CombinePaths(System.String,System.String[])">
+            <summary>
+            Combines the directory paths
+            </summary>
+            <param name="srcPath">Start path</param>
+            <param name="additionalPaths">Additional path parts</param>
+            <returns>Combined path</returns>
+            <remarks>This method works with relative path, including moving the upper folders via ..</remarks>
+        </member>
+        <member name="M:Xarial.XToolkit.FileSystemUtils.GetTopFolders(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Excludes all sub level folders and only returns top level folders
+            </summary>
+            <param name="paths">Input directory paths</param>
+            <returns>Top level folders paths</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.FileSystemUtils.IsInDirectory(System.String,System.String)">
+            <summary>
+            Checks if the specified path is in the other directory
+            </summary>
+            <param name="thisPath">Path to check</param>
+            <param name="parentDir">Directory to check agains</param>
+            <returns>True of directory is within another directory</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.FileSystemUtils.GetRelativePath(System.String,System.String)">
+            <summary>
+            Finds the relative path
+            </summary>
+            <param name="thisPath">Path to get relative path for</param>
+            <param name="relativeToDir">Relative directory</param>
+            <returns>Relative path</returns>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:Xarial.XToolkit.FileSystemUtils.BrowseFolderInExplorer(System.String)">
+            <summary>
+            Opens file explorer at the specified folder
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Xarial.XToolkit.FileSystemUtils.BrowseFileInExplorer(System.String)">
+            <summary>
+            Opens file explorer and selects specified file
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:Xarial.XToolkit.FileSystemUtils.ReplaceIllegalRelativePathCharacters(System.String,System.Func{System.Char,System.Char})">
+            <summary>
+            Replaces illegal characters in the relative file path (rooted path is not supported)
+            </summary>
+            <param name="path">Input path</param>
+            <param name="replacer">Illegal characters replacer</param>
+            <returns>Legal file path</returns>
+        </member>
+        <member name="T:Xarial.XToolkit.Helpers.IReferenceResolver">
+            <summary>
+            Service to resolve the missing assembly references use in the <see cref="T:Xarial.XToolkit.Helpers.AssemblyResolver"/>
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Helpers.IReferenceResolver.Name">
+            <summary>
+            Name of the resolver
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Helpers.IReferenceResolver.Resolve(System.AppDomain,System.Reflection.AssemblyName,System.Reflection.Assembly)">
+            <summary>
+            Resolves the missing assembly reference
+            </summary>
+            <param name="appDomain">Application domain</param>
+            <param name="assmName">Assembly name to resolve</param>
+            <param name="requestingAssembly">Assembly which requests the missing reference</param>
+            <returns>Replacement assembly</returns>
+        </member>
+        <member name="T:Xarial.XToolkit.Helpers.AssemblyResolver">
+            <summary>
+            This is a helper class allowing to specify strategies for resolving the missing dlls
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Helpers.AssemblyResolver.#ctor(System.AppDomain)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="appDomain">Application domain</param>
+        </member>
+        <member name="M:Xarial.XToolkit.Helpers.AssemblyResolver.#ctor(System.AppDomain,System.String)">
+            <summary>
+            Constructor with app domain and log name
+            </summary>
+            <param name="appDomain">Application domain</param>
+            <param name="logName">Log name</param>
+        </member>
+        <member name="M:Xarial.XToolkit.Helpers.AssemblyResolver.RegisterAssemblyReferenceResolver(Xarial.XToolkit.Helpers.IReferenceResolver)">
+            <summary>
+            Addes the resolver service
+            </summary>
+            <param name="resolver">Resolver service</param>
+        </member>
+        <member name="T:Xarial.XToolkit.Licensing.Exceptions.LicenseValidationException">
+            <summary>
+            Base exception when the license validation fails in <see cref="M:Xarial.XToolkit.Licensing.ILicenseValidator`1.ValidateLicense(System.Byte[])"/>
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Licensing.ILicenseGenerator`1">
+            <summary>
+            Service to geenrate a software license
+            </summary>
+            <typeparam name="TLicData">License data</typeparam>
+        </member>
+        <member name="M:Xarial.XToolkit.Licensing.ILicenseGenerator`1.GenerateLicense(`0)">
+            <summary>
+            Generates license from the license data
+            </summary>
+            <param name="licData">License data</param>
+            <returns>License buffer</returns>
+        </member>
+        <member name="T:Xarial.XToolkit.Licensing.LicenseGeneratorExtension">
+            <summary>
+            Additional methods for <see cref="T:Xarial.XToolkit.Licensing.ILicenseGenerator`1"/>
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Licensing.LicenseGeneratorExtension.GenerateLicenseFile``1(Xarial.XToolkit.Licensing.ILicenseGenerator{``0},``0,System.String)">
+            <summary>
+            Generates the license file
+            </summary>
+            <typeparam name="TLicData">License data type</typeparam>
+            <param name="licGen">License generator</param>
+            <param name="licData">License data</param>
+            <param name="filePath">Path to save license file</param>
+        </member>
+        <member name="T:Xarial.XToolkit.Licensing.ILicenseValidator`1">
+            <summary>
+            Validates the custom software license
+            </summary>
+            <typeparam name="TLicData">License data type</typeparam>
+        </member>
+        <member name="M:Xarial.XToolkit.Licensing.ILicenseValidator`1.ValidateLicense(System.Byte[])">
+            <summary>
+            Validates the license and returns the license data instance
+            </summary>
+            <param name="license">License buffer</param>
+            <returns>License data</returns>
+            <remarks>Throw <see cref="T:Xarial.XToolkit.Licensing.Exceptions.LicenseValidationException"/> for the invalid license</remarks>
+        </member>
+        <member name="T:Xarial.XToolkit.Licensing.LicenseValidatorExtension">
+            <summary>
+            Additional methods of <see cref="T:Xarial.XToolkit.Licensing.ILicenseValidator`1"/>
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Licensing.LicenseValidatorExtension.ValidateLicenseFile``1(Xarial.XToolkit.Licensing.ILicenseValidator{``0},System.String)">
+            <summary>
+            Validates the license from the file
+            </summary>
+            <typeparam name="TLicData">License data type</typeparam>
+            <param name="licVal">Validator</param>
+            <param name="filePath">File path</param>
+            <returns>License data</returns>
+            <exception cref="T:Xarial.XToolkit.Licensing.Exceptions.LicenseNotFoundException"/>
+        </member>
+        <member name="T:Xarial.XToolkit.Licensing.SignedXmlLicenseGenerator`1">
+            <summary>
+            Private key based license generator
+            </summary>
+            <typeparam name="TLicData">License data</typeparam>
+            <remarks>This service generates the license as signed XML file</remarks>
+        </member>
+        <member name="M:Xarial.XToolkit.Licensing.SignedXmlLicenseGenerator`1.#ctor(System.Security.Cryptography.RSA)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="privateKey">Private key (e.g. X509Certificate2::GetRSAPrivateKey)</param>
+        </member>
+        <member name="M:Xarial.XToolkit.Licensing.SignedXmlLicenseGenerator`1.GenerateLicense(`0)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Xarial.XToolkit.Licensing.SignedXmlLicenseValidator`1">
+            <summary>
+            Validates the Signed XML based license generated via <see cref="T:Xarial.XToolkit.Licensing.SignedXmlLicenseGenerator`1"/>
+            </summary>
+            <typeparam name="TLicData">License data type</typeparam>
+        </member>
+        <member name="M:Xarial.XToolkit.Licensing.SignedXmlLicenseValidator`1.ValidateLicense(System.Byte[])">
+            <inheritdoc/>
+            <exception cref="T:Xarial.XToolkit.Licensing.Exceptions.LicenseFileCorruptedException"></exception>
+            <exception cref="T:Xarial.XToolkit.Licensing.Exceptions.LicenseFileMalformedException"></exception>
+            <exception cref="T:Xarial.XToolkit.Licensing.Exceptions.InvalidSignatureException"></exception>
+        </member>
+        <member name="M:Xarial.XToolkit.Licensing.SignedXmlLicenseValidator`1.AuthorizeLicense(`0)">
+            <summary>
+            License authorization function
+            </summary>
+            <param name="license">License data</param>
+            <remarks>Check the license data (e.g. device id, expiry date, etc.). Throw <see cref="T:Xarial.XToolkit.Licensing.Exceptions.LicenseAuthorizationException"/> if authorization fails</remarks>
+        </member>
+        <member name="M:Xarial.XToolkit.Licensing.SignedXmlLicenseValidator`1.GetPublicKey">
+            <summary>
+            Gets the public key to read license data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xarial.XToolkit.Reflection.AppConfigBindingRedirectReferenceResolver">
+            <summary>
+            Resolver for <see cref="T:Xarial.XToolkit.Helpers.AssemblyResolver"/> allowing to redirect assembly binding based on the .config files
+            </summary>
+            <remarks>This resolver can be useful for the plugin applications (.dlls) when the app.config files will not be considered for binding redirects
+            It can also be useful when the binding redirects specified in the separate file which is not named after the application name (e.g. custom binding redirect without an automatic option)</remarks>
+        </member>
+        <member name="T:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver">
+            <summary>
+            Default assembly name resolver
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.AssemblyInfo">
+            <summary>
+            Assembly information
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.AssemblyInfo.FilePath">
+            <summary>
+            File path to the assembly
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.AssemblyInfo.Name">
+            <summary>
+            Assembly name
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.Name">
+            <summary>
+            Name of the resolver
+            </summary>
+            <remarks>Used in the logs</remarks>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.#ctor(System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="name">Name of the resolver</param>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.Resolve(System.AppDomain,System.Reflection.AssemblyName,System.Reflection.Assembly)">
+            <inheritdoc/>>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.GetCulture(System.Reflection.AssemblyName)">
+            <summary>
+            Gets the culture of the assembly name
+            </summary>
+            <param name="assmName">Assembly name</param>
+            <returns>Text of the culture</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.GetPublicKeyToken(System.Reflection.AssemblyName)">
+            <summary>
+            Gets the public key token from the assembly name
+            </summary>
+            <param name="assmName">Assembly name</param>
+            <returns>Text version of public key token</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.GetReplacementAssemblyName(System.Reflection.AssemblyName,System.Reflection.Assembly,System.String@,System.Boolean@)">
+            <summary>
+            Provides the name of the assembly to replace for this missing reference
+            </summary>
+            <param name="assmName">Missing assembly name</param>
+            <param name="requestingAssembly">Assembly that requests this missing reference</param>
+            <param name="searchDir">Search directory</param>
+            <param name="recursiveSearch">True to search in sub-directories recursievely</param>
+            <returns>Assemly to replace</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.Match(System.Reflection.AssemblyName,System.Reflection.AssemblyName)">
+            <summary>
+            Compares two assemblies to see if those match
+            </summary>
+            <param name="probeAssmName">Assembly candidate</param>
+            <param name="searchAssmName">Target assembly</param>
+            <returns>True if assembly names are matching</returns>
+            <remarks>Use this method to override logic for matching (e.g. full match or only match by file name, version, public key token etc.)</remarks>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.ResolveAmbiguity(System.Collections.Generic.IReadOnlyList{Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.AssemblyInfo},System.Reflection.AssemblyName)">
+            <summary>
+            Provides the assembly to use if multiple options available
+            </summary>
+            <param name="assmNames">Assembly candidates</param>
+            <param name="searchAssmName">Target assembly name</param>
+            <returns>Assembly to use</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.AssemblyNameReferenceResolver.ProvideProbeAssemblyFilePaths(System.String,System.Reflection.AssemblyName)">
+            <summary>
+            Returnes probe assemly file paths
+            </summary>
+            <param name="dir">Directory to search in</param>
+            <param name="searchAssmName">Target assembly name</param>
+            <returns>Possible file paths of the assembly file</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.Lambda.InvokeGenericMethod(System.Linq.Expressions.Expression{System.Action},System.Type[])">
+            <summary>
+            Invokes generic method by supplying the type arguments
+            </summary>
+            <param name="method">Method body to invoke</param>
+            <param name="typeArguments">Type arguments</param>
+            <exception cref="T:System.NotSupportedException"></exception>
+            <remarks>Method body within expression must only contain constant values or variables (no expression). Use cast to match the parameter type (actual cast wil lnot be called)</remarks>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.TypeExtension.IsAssignableToGenericType(System.Type,System.Type)">
+            <summary>
+            Checks if this type can be assigned to the generic type
+            </summary>
+            <param name="thisType">This type</param>
+            <param name="genericType">Generic type</param>
+            <returns>True if this type can be assigned to generic type</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Reflection.TypeExtension.GetMethodWithGenericParameters(System.Type,System.String,System.Type[],System.Reflection.BindingFlags)">
+            <summary>
+            Finds the method from the type if 
+            </summary>
+            <param name="type">Type to get method from</param>
+            <param name="name">Name of the method</param>
+            <param name="paramTypes">Parameter types of the method</param>
+            <param name="bindingFlags">Binding flags</param>
+            <returns>Method or null if not found</returns>
+            <remarks>This method is similar to <see cref="M:System.Type.GetMethod(System.String)"/>, but allowing to specify the generic types definitions</remarks>
+        </member>
+        <member name="M:Xarial.XToolkit.Reporting.ExceptionExtension.ParseUserError(System.Exception,System.String@,System.String,System.Type[])">
+            <summary>
+            Parses the exception error and extract user visible error of <see cref="T:Xarial.XToolkit.Reporting.IUserMessageException"/>
+            </summary>
+            <param name="ex">Exception</param>
+            <param name="fullLog">Full log (including non user errors)</param>
+            <param name="genericError">Text of generic error if no user error found</param>
+            <param name="additionalUserExceptions">Additional types to treat as user exception</param>
+            <returns>user friendly error</returns>
+        </member>
+        <member name="T:Xarial.XToolkit.Reporting.IUserMessageException">
+            <summary>
+            Error with user friendly description
+            </summary>
+            <remarks>Use this interface in custom <see cref="T:System.Exception"/> to indicate that it should be displayed to the user</remarks>
+        </member>
+        <member name="P:Xarial.XToolkit.Reporting.IUserMessageException.Message">
+            <summary>
+            User friendly message for the error
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.Exceptions.ExpressionFailedException">
+            <summary>
+            Exceptions of <see cref="T:Xarial.XToolkit.Services.Expressions.IExpressionEvaluator"/>
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.Exceptions.InvalidExpressionException">
+            <summary>
+            Expressions thrown by <see cref="T:Xarial.XToolkit.Services.Expressions.IExpressionParser"/>
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.IExpressionEvaluator">
+            <summary>
+            Evaluates the expression and casts to the specified type
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.Expressions.IExpressionEvaluator.Evaluate``1(System.String)">
+            <summary>
+            Evaluates the given expression
+            </summary>
+            <typeparam name="T">Type of the return value</typeparam>
+            <param name="expression">Expression to evaluate</param>
+            <returns>Evaluated value</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.Expressions.DataTableExpressionEvaluator.Evaluate``1(System.String)">
+            <exception cref="T:Xarial.XToolkit.Services.Expressions.Exceptions.ExpressionFailedException"></exception>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.IExpressionParser">
+            <summary>
+            Service allows to parse expression into the <see cref="T:Xarial.XToolkit.Services.Expressions.IExpressionToken"/>
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.Expressions.IExpressionParser.Parse(System.String)">
+            <summary>
+            Parses tokens from the expression
+            </summary>
+            <param name="expression">Text expression</param>
+            <returns>Token</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.Expressions.IExpressionParser.CreateExpression(Xarial.XToolkit.Services.Expressions.IExpressionToken)">
+            <summary>
+            Creates expression from the token
+            </summary>
+            <param name="token">Token to create expression from</param>
+            <returns>Expression</returns>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.ExpressionParser">
+            <summary>
+            Default expression parses allows to specifying chars for the start and end tags of the variable, arguments and escape symbol
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.ExpressionParser.ParsingState">
+            <summary>
+            Represents the information about the currently parsing token
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Services.Expressions.ExpressionParser.ParsingState.VariableNestedTokens">
+            <summary>
+            List of tokens collected for the current variables=
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Services.Expressions.ExpressionParser.ParsingState.TokenType">
+            <summary>
+            Type of current token or null if not yet set
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Services.Expressions.ExpressionParser.ParsingState.TokenContent">
+            <summary>
+            Content of the current token
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Services.Expressions.ExpressionParser.ParsingState.TokenNameSpaceBuffer">
+            <summary>
+            Buffer of spaces from the current variable name
+            </summary>
+            <remarks>This is used to allow space in variable name but atuomatically trim the variable name and avoid excessive Trim operation.
+            This buffer wil lonly be added if another non empty char is identified in the variable name, e.g. this space buffer is between words of the variable name</remarks>
+        </member>
+        <member name="P:Xarial.XToolkit.Services.Expressions.ExpressionParser.ParsingState.CharProtected">
+            <summary>
+            Sets if the next char is protected and has to be considered as literal (even if it is a special symbol)
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Services.Expressions.ExpressionParser.ParsingState.IsVariableNameParsed">
+            <summary>
+            Indicates that the variable name was parsed (e.g. first argument encountered). This is used to handle the case where the text within variable appears after the arguments
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.Expressions.ExpressionParser.Parse(System.String)">
+            <exception cref="T:Xarial.XToolkit.Services.Expressions.Exceptions.InvalidExpressionException"/>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.IExpressionSolver`1">
+            <summary>
+            Solves the expression token with context
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.Expressions.IExpressionSolver`1.Solve(Xarial.XToolkit.Services.Expressions.IExpressionToken,`0)">
+            <summary>
+            Replaces the expression token with values
+            </summary>
+            <param name="token">Expression token to solve</param>
+            <param name="context">Context</param>
+            <returns>Expression with replaced variables</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.Expressions.IExpressionSolver.Solve(Xarial.XToolkit.Services.Expressions.IExpressionToken)">
+            <inheritdoc/>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.IExpressionToken">
+            <summary>
+            Represents the base token for <see cref="T:Xarial.XToolkit.Services.Expressions.IExpressionParser"/>
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.ExpressionTokenExtension">
+            <summary>
+            Additional methods of <see cref="T:Xarial.XToolkit.Services.Expressions.IExpressionToken"/>
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.Expressions.ExpressionTokenExtension.IsSame(Xarial.XToolkit.Services.Expressions.IExpressionToken,Xarial.XToolkit.Services.Expressions.IExpressionToken,System.StringComparison)">
+            <summary>
+            Compares the content of 2 expression tokens
+            </summary>
+            <param name="token">Source token</param>
+            <param name="other">Token to compare to</param>
+            <param name="comparison">Comparison type</param>
+            <returns>True if content is the same</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.IExpressionTokenGroup">
+            <summary>
+            Represents a group of <see cref="T:Xarial.XToolkit.Services.Expressions.IExpressionToken"/>
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.IExpressionTokenText">
+            <summary>
+            Represents the free text expression token
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.Expressions.IExpressionTokenVariable">
+            <summary>
+            Represents the variable expression token
+            </summary>
+        </member>
+        <member name="P:Xarial.XToolkit.Services.IMessageService.UserErrors">
+            <summary>
+            Type of exceptions which should be considered as user friendly errors
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.IMessageService.ShowMessage(System.String,Xarial.XToolkit.Services.MessageServiceIcon_e,Xarial.XToolkit.Services.MessageServiceButtons_e)">
+            <summary>
+            Shows message
+            </summary>
+            <param name="msg">Message to show</param>
+            <param name="icon">Message box icon</param>
+            <param name="btns">Message box buttons</param>
+            <returns>True for Ok or Yes, False for No, null for Cancel</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.UserSettings.Attributes.UserSettingVersionAttribute.#ctor(System.String,System.Type)">
+            <summary>
+            Initiates the version support for this user setting
+            </summary>
+            <param name="version">Current (latest) version of settings</param>
+            <param name="versionTransformerType">Collection of version transformers of <see cref="T:Xarial.XToolkit.Services.UserSettings.IVersionsTransformer"/></param>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.UserSettings.IUserSettingsService">
+            <summary>
+            Services allows to manage user settings with the backwards compatibility
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.UserSettings.IUserSettingsService.ReadSettings(System.IO.TextReader,System.Type,System.Func{Xarial.XToolkit.Services.UserSettings.IVersionsTransformer,Xarial.XToolkit.Services.UserSettings.IVersionsTransformer},Xarial.XToolkit.Services.UserSettings.IValueSerializer[])">
+            <summary>
+            Reads user settings
+            </summary>
+            <param name="settsReader">Reader</param>
+            <param name="settsType">Settings type</param>
+            <param name="versTransformerHandler">Version transformer</param>
+            <param name="serializers">Custom serializers</param>
+            <returns>Settings</returns>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.UserSettings.IUserSettingsService.StoreSettings(System.Object,System.Type,System.IO.TextWriter,Xarial.XToolkit.Services.UserSettings.IValueSerializer[])">
+            <summary>
+            Stores user settings
+            </summary>
+            <param name="setts">Settings to store</param>
+            <param name="settsType">Settings type</param>
+            <param name="settsWriter">Writer</param>
+            <param name="serializers">Custom serializers</param>
+        </member>
+        <member name="T:Xarial.XToolkit.Services.UserSettings.UserSettingsService">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.UserSettings.UserSettingsService.ReadSettings(System.IO.TextReader,System.Type,System.Func{Xarial.XToolkit.Services.UserSettings.IVersionsTransformer,Xarial.XToolkit.Services.UserSettings.IVersionsTransformer},Xarial.XToolkit.Services.UserSettings.IValueSerializer[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.UserSettings.UserSettingsService.StoreSettings(System.Object,System.Type,System.IO.TextWriter,Xarial.XToolkit.Services.UserSettings.IValueSerializer[])">
+            <inheritdoc/>
+        </member>
+        <member name="M:Xarial.XToolkit.Services.UserSettings.UserSettingsService.CreateJsonSerializer">
+            <summary>
+            Override to provide custom JSON serializer
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.TextUtils">
+            <summary>
+            Provides utilities working with text
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.TextUtils.MatchesAnyFilter(System.String,System.Boolean,System.String[])">
+            <summary>
+            Checks if the specified text matches any of the provided filters
+            </summary>
+            <param name="text">FilePath</param>
+            <param name="ignoreCase">Ignore the case</param>
+            <param name="filters">Filters</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xarial.XToolkit.TextUtils.MatchesAnyFilter(System.String,System.String[])">
+            <inheritdoc/>
+        </member>
+    </members>
+</doc>

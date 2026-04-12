@@ -1,0 +1,96 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "Xarial.XCad.SwDocumentManager/0.8.2": {
+        "dependencies": {
+          "Xarial.XCad": "0.8.2",
+          "Xarial.XCad.Toolkit": "0.8.2",
+          "SolidWorks.Interop.swdocumentmgr": "33.0.0.5050",
+          "Xarial.XCad.Reference": "0.8.2.0",
+          "Xarial.XCad.Toolkit.Reference": "0.8.2.0"
+        },
+        "runtime": {
+          "Xarial.XCad.SwDocumentManager.dll": {}
+        }
+      },
+      "Xarial.XCad/0.8.2": {
+        "runtime": {
+          "Xarial.XCad.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "Xarial.XCad.Toolkit/0.8.2": {
+        "dependencies": {
+          "Xarial.XCad": "0.8.2"
+        },
+        "runtime": {
+          "Xarial.XCad.Toolkit.dll": {
+            "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "SolidWorks.Interop.swdocumentmgr/33.0.0.5050": {
+        "runtime": {
+          "SolidWorks.Interop.swdocumentmgr.dll": {
+            "assemblyVersion": "33.0.0.5050",
+            "fileVersion": "33.0.0.5050"
+          }
+        }
+      },
+      "Xarial.XCad.Reference/0.8.2.0": {
+        "runtime": {
+          "Xarial.XCad.dll": {
+            "assemblyVersion": "0.8.2.0",
+            "fileVersion": "0.8.2.0"
+          }
+        }
+      },
+      "Xarial.XCad.Toolkit.Reference/0.8.2.0": {
+        "runtime": {
+          "Xarial.XCad.Toolkit.dll": {
+            "assemblyVersion": "0.8.2.0",
+            "fileVersion": "0.8.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Xarial.XCad.SwDocumentManager/0.8.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xarial.XCad/0.8.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xarial.XCad.Toolkit/0.8.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SolidWorks.Interop.swdocumentmgr/33.0.0.5050": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xarial.XCad.Reference/0.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Xarial.XCad.Toolkit.Reference/0.8.2.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

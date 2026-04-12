@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xarial.XCad.Inventor</name>
+    </assembly>
+    <members>
+        <member name="M:Xarial.XCad.Inventor.AiApplication.#ctor(Inventor.Application,System.Action{Xarial.XCad.Inventor.AiApplication})">
+            <summary>
+            Only to be used within SwAddInEx
+            </summary>
+        </member>
+        <member name="T:Xarial.XCad.Inventor.AiApplicationFactory">
+            <summary>
+            Factory for creating <see cref="T:Xarial.XCad.Inventor.IAiApplication"/>
+            </summary>
+        </member>
+        <member name="M:Xarial.XCad.Inventor.AiApplicationFactory.PreCreate">
+            <summary>
+            Pre-creates a template for Inventor application
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xarial.XCad.Inventor.AiApplicationFactory.GetInstalledVersions">
+            <summary>
+            Returns all installed Inventor versions
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xarial.XCad.Inventor.AiApplicationFactory.FromPointer(Inventor.Application)">
+            <summary>
+            Creates <see cref="T:Xarial.XCad.Inventor.IAiApplication"/> from Inventor pointer
+            </summary>
+            <param name="app">Pointer to Inventor application</param>
+            <returns>Instance of <see cref="T:Xarial.XCad.Inventor.IAiApplication"/></returns>
+        </member>
+        <member name="M:Xarial.XCad.Inventor.AiApplicationFactory.FromPointer(Inventor.Application,Xarial.XCad.IXServiceCollection)">
+            <inheritdoc cref="M:Xarial.XCad.Inventor.AiApplicationFactory.FromPointer(Inventor.Application)"/>
+            <param name="services">Custom serives</param>
+        </member>
+        <member name="M:Xarial.XCad.Inventor.AiApplicationFactory.FromProcess(System.Diagnostics.Process)">
+            <summary>
+            Creates instance of Inventor from Inventor.exe process
+            </summary>
+            <param name="process">Inventor.exe process</param>
+            <returns>Pointer to <see cref="T:Xarial.XCad.Inventor.IAiApplication"/></returns>
+        </member>
+        <member name="M:Xarial.XCad.Inventor.AiApplicationFactory.FromProcess(System.Diagnostics.Process,Xarial.XCad.IXServiceCollection)">
+            <inheritdoc cref="M:Xarial.XCad.Inventor.AiApplicationFactory.FromProcess(System.Diagnostics.Process)"/>
+            <param name="services">Custom serives</param>
+        </member>
+        <member name="M:Xarial.XCad.Inventor.AiApplicationFactory.Create(System.Nullable{Xarial.XCad.Inventor.Enums.AiVersion_e},Xarial.XCad.Enums.ApplicationState_e,Xarial.XCad.Inventor.Enums.StartApplicationConnectStrategy_e,System.Threading.CancellationToken)">
+            <summary>
+            Starts new application
+            </summary>
+            <param name="vers">Version or null for the latest</param>
+            <param name="state">State of the application</param>
+            <param name="strategy">Strategy for running new application</param>
+            <param name="cancellationToken">Cancellation token</param>
+            <returns>Created application</returns>
+        </member>
+        <member name="M:Xarial.XCad.Inventor.AiApplicationFactory.CreateVersion(Xarial.XCad.Inventor.Enums.AiVersion_e)">
+            <summary>
+            Creates instance of Inventor version from the major version
+            </summary>
+            <param name="vers">Major version</param>
+            <returns>Version</returns>
+        </member>
+        <member name="T:Xarial.XCad.Inventor.Documents.IAiDocumentTable">
+            <summary>
+            Represents iParts and iAssemblies
+            </summary>
+        </member>
+        <member name="T:Xarial.XCad.Inventor.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xarial.XCad.Inventor.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xarial.XCad.Inventor.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xarial.XCad.Inventor.Properties.Resources.XCadAppToken">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+    </members>
+</doc>

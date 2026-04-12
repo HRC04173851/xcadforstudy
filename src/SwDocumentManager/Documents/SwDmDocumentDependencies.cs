@@ -16,6 +16,10 @@ using Xarial.XCad.Documents.Enums;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Enumerates external references of a document through Document Manager.
+    /// 通过 Document Manager 枚举文档的外部引用关系。
+    /// </summary>
     internal class SwDmDocumentDependencies : IXDocumentDependencies
     {
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -26,6 +30,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         public IXDocument OwnerDocument => m_Doc;
 
+        /// <summary>
+        /// Document Manager always returns resolved references rather than raw cached paths.
+        /// Document Manager 总是返回解析后的引用关系，而不是原始缓存引用。
+        /// </summary>
         public bool Cached 
         {
             get => false;
@@ -38,6 +46,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Creates the dependency enumerator and cache for virtual documents.
+        /// 创建依赖枚举器，并建立虚拟文档缓存。
+        /// </summary>
         internal SwDmDocumentDependencies(SwDmDocument doc) 
         {
             m_Doc = doc;
@@ -46,11 +58,19 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         public IEnumerator<IXDocument3D> GetEnumerator() => IterateDependencies().GetEnumerator();
 
+        /// <summary>
+        /// Replaces one external reference path with another.
+        /// 用新的外部引用路径替换旧路径。
+        /// </summary>
         public void Replace(IXDocument3D source, IXDocument3D target)
         {
             m_Doc.Document.ReplaceReference(source.Path, target.Path);
         }
 
+        /// <summary>
+        /// Resolves dependency wrappers, including virtual documents referenced from assemblies.
+        /// 解析依赖文档包装器，同时兼容装配体中的虚拟文档引用。
+        /// </summary>
         private IEnumerable<SwDmDocument3D> IterateDependencies() 
         {
             var deps = GetRawDependencies();
@@ -159,6 +179,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Reads raw dependency paths and their virtual flags from Document Manager.
+        /// 从 Document Manager 读取原始依赖路径以及是否为虚拟文档的标记。
+        /// </summary>
         private Tuple<string, bool>[] GetRawDependencies()
         {
             string[] deps;

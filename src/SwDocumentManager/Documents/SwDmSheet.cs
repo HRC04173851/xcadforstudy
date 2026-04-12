@@ -18,11 +18,19 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Drawing sheet contract.
+    /// 图纸页约定。
+    /// </summary>
     public interface ISwDmSheet : IXSheet, ISwDmObject
     {
         ISwDMSheet Sheet { get; }
     }
 
+    /// <summary>
+    /// Wrapper for a single drawing sheet, including scale, paper size, and views.
+    /// 单张图纸页的包装器，包含比例、图幅和视图集合等信息。
+    /// </summary>
     internal class SwDmSheet : SwDmSelObject, ISwDmSheet
     {
         #region Not Supported
@@ -38,6 +46,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         public IXDrawingViewRepository DrawingViews => m_DrawingViewsLazy.Value;
 
+        /// <summary>
+        /// Reads the sheet scale from the low-level sheet property array.
+        /// 从底层图纸页属性数组中读取图纸比例。
+        /// </summary>
         public Scale Scale 
         {
             get 
@@ -56,6 +68,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             set => throw new NotSupportedException(); 
         }
         
+        /// <summary>
+        /// Reads the paper size, including custom width and height for user-defined formats.
+        /// 读取图纸幅面；若为自定义图幅，则同时返回宽度与高度。
+        /// </summary>
         public PaperSize PaperSize 
         {
             get
@@ -80,6 +96,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             set => throw new NotSupportedException(); 
         }
 
+        /// <summary>
+        /// Extracts the preview image stored for the sheet.
+        /// 提取该图纸页保存的预览图像。
+        /// </summary>
         public IXImage Preview 
         {
             get 
@@ -104,6 +124,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         private readonly SwDmDrawing m_Drawing;
 
+        /// <summary>
+        /// Creates the sheet wrapper and lazily binds the drawing view repository.
+        /// 创建图纸页包装器，并延迟绑定工程图视图仓库。
+        /// </summary>
         internal SwDmSheet(ISwDMSheet sheet, SwDmDrawing drw) : base(sheet, drw.OwnerApplication, drw)
         {
             Sheet = sheet;

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xarial.XToolkit.Wpf</name>
+    </assembly>
+    <members>
+        <member name="M:Xarial.XToolkit.Wpf.Controls.ExpressionBox.AddExpressionToken(System.Windows.Documents.InlineCollection,Xarial.XToolkit.Services.Expressions.IExpressionToken,System.Windows.Documents.TextPointer@)">
+            <remarks><paramref name="inlines"/> parameter is not used directly, but keeping it to enforce updating the inline and creating new ones if needed</remarks>
+        </member>
+        <member name="T:Xarial.XToolkit.Wpf.Dialogs.AboutDialog">
+            <summary>
+            AboutDialog
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Wpf.Dialogs.AboutDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Wpf.Dialogs.InputBoxDialog">
+            <summary>
+            InputBoxDialog
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Wpf.Dialogs.InputBoxDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Wpf.Dialogs.LicensesListDialog">
+            <summary>
+            LicensesListDialog
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Wpf.Dialogs.LicensesListDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Xarial.XToolkit.Wpf.Extensions.DependencyObjectExtension">
+            <summary>
+            Extension methods for dependency object
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Wpf.Extensions.DependencyObjectExtension.TryFindParentOfType``1(System.Windows.DependencyObject)">
+            <summary>
+            Finds first visual parent of this object of a specified type
+            </summary>
+            <typeparam name="T">Type of the parent</typeparam>
+            <param name="child">Object to find the parent for</param>
+            <returns>Parent or null</returns>
+        </member>
+        <member name="T:Xarial.XToolkit.Wpf.Extensions.ImageExtension">
+            <summary>
+            Additional methods for the <see cref="T:System.Drawing.Image"/>
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Wpf.Extensions.ImageExtension.ToBitmapImage(System.Drawing.Image,System.Boolean)">
+            <summary>
+            Converts <see cref="T:System.Drawing.Image"/> to <see cref="T:System.Windows.Media.Imaging.BitmapImage"/>
+            </summary>
+            <param name="img">Image to convert</param>
+            <param name="freeze">True to freeze the image</param>
+            <returns>Converted image</returns>
+        </member>
+        <member name="T:Xarial.XToolkit.Wpf.Utils.FileSystemBrowser">
+            <summary>
+            Utilities for browsing fils in the system
+            </summary>
+        </member>
+        <member name="M:Xarial.XToolkit.Wpf.Utils.FileSystemBrowser.BrowseFolder(System.String@,System.String,System.String)">
+            <summary>
+            Browse folder
+            </summary>
+            <param name="path">Path to the folder</param>
+            <param name="desc">Title of the browse dialog</param>
+            <param name="initalDir">Initial directory</param>
+            <returns>True if folder is browsed</returns>
+        </member>
+    </members>
+</doc>

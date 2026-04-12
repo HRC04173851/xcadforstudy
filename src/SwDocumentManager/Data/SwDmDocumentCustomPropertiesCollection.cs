@@ -15,6 +15,10 @@ using SolidWorks.Interop.swdocumentmgr;
 
 namespace Xarial.XCad.SwDocumentManager.Data
 {
+    /// <summary>
+    /// Repository of file-level custom properties stored directly on the document.
+    /// 直接存储在文档级别上的自定义属性仓库。
+    /// </summary>
     internal class SwDmDocumentCustomPropertiesCollection : SwDmCustomPropertiesCollection
     {
         public override int Count => m_Doc.Document.GetCustomPropertyCount();
@@ -26,6 +30,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Doc = doc;
         }
 
+        /// <summary>
+        /// Enumerates document properties except the internal quantity helper property.
+        /// 枚举文档自定义属性，并排除内部使用的数量辅助属性。
+        /// </summary>
         public override IEnumerator<IXProperty> GetEnumerator()
         {
             var prpNames = m_Doc.Document.GetCustomPropertyNames() as string[] ?? new string[0];
@@ -41,6 +49,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             .Contains(name, StringComparer.CurrentCultureIgnoreCase) == true;
     }
 
+    /// <summary>
+    /// Concrete custom property bound to the document-level property table.
+    /// 绑定到文档级属性表的具体自定义属性实现。
+    /// </summary>
     internal class SwDmDocumentCustomProperty : SwDmCustomProperty
     {
         private readonly ISwDmDocument m_Doc;
@@ -50,6 +62,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Doc = doc;
         }
 
+        /// <summary>
+        /// Adds a new document custom property and marks the file as modified.
+        /// 向文档添加新的自定义属性，并把文件标记为已修改。
+        /// </summary>
         protected override void AddValue(object value)
         {
             SwDmCustomInfoType type = GetPropertyType(value);
@@ -62,15 +78,27 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Doc.IsDirty = true;
         }
 
+        /// <summary>
+        /// Reads the raw property value and linked expression from the document property manager.
+        /// 从文档属性管理器读取原始属性值及其链接表达式。
+        /// </summary>
         protected override string ReadRawValue(out SwDmCustomInfoType type, out string linkedTo)
             => ((ISwDMDocument5)m_Doc.Document).GetCustomPropertyValues(Name, out type, out linkedTo);
 
+        /// <summary>
+        /// Updates the stored string representation of the document custom property.
+        /// 更新文档自定义属性保存的字符串值。
+        /// </summary>
         protected override void SetValue(object value)
         {
             m_Doc.Document.SetCustomProperty(Name, value?.ToString());
             m_Doc.IsDirty = true;
         }
 
+        /// <summary>
+        /// Deletes the document custom property and marks the document dirty.
+        /// 删除文档级自定义属性，并把文档标记为脏状态。
+        /// </summary>
         internal override void Delete() 
         {
             if (!m_Doc.Document.DeleteCustomProperty(Name)) 

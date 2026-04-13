@@ -15,21 +15,34 @@ namespace Xarial.XCad.Toolkit.Data
 {
     /// <summary>
     /// Manages tags locally on the object
+    /// <para>在对象实例本地范围内管理标签。</para>
     /// </summary>
     public class LocalTagsManager : ITagsManager
     {
         private readonly Dictionary<string, object> m_Tags;
 
+        /// <summary>
+        /// Initializes local tags manager with case-insensitive comparer.
+        /// <para>使用不区分大小写比较器初始化本地标签管理器。</para>
+        /// </summary>
         public LocalTagsManager()
             : this(StringComparer.CurrentCultureIgnoreCase)
         {
         }
 
+        /// <summary>
+        /// Initializes local tags manager with custom comparer.
+        /// <para>使用自定义比较器初始化本地标签管理器。</para>
+        /// </summary>
         public LocalTagsManager(StringComparer comparer)
         {
             m_Tags = new Dictionary<string, object>(comparer);
         }
 
+        /// <summary>
+        /// Indicates whether no tags are stored.
+        /// <para>指示当前是否没有存储任何标签。</para>
+        /// </summary>
         public bool IsEmpty => !m_Tags.Any();
 
         public bool Contains(string name) => m_Tags.ContainsKey(name);
@@ -46,6 +59,10 @@ namespace Xarial.XCad.Toolkit.Data
             }
         }
 
+        /// <summary>
+        /// Gets and removes tag value by name.
+        /// <para>按名称读取并移除标签值。</para>
+        /// </summary>
         public T Pop<T>(string name)
         {
             var val = Get<T>(name);
@@ -53,6 +70,10 @@ namespace Xarial.XCad.Toolkit.Data
             return val;
         }
 
+        /// <summary>
+        /// Adds or updates tag value.
+        /// <para>添加或更新标签值。</para>
+        /// </summary>
         public void Put<T>(string name, T value)
         {
             m_Tags[name] = value;

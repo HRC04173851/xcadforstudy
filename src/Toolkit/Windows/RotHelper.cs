@@ -17,6 +17,7 @@ namespace Xarial.XCad.Toolkit.Windows
 {
     /// <summary>
     /// Utilities for accessing Running Object Table
+    /// <para>访问运行对象表（ROT）的辅助工具。</para>
     /// </summary>
     public static class RotHelper
     {
@@ -25,12 +26,13 @@ namespace Xarial.XCad.Toolkit.Windows
 
         /// <summary>
         /// Returns the COM object by moniker name
+        /// <para>根据 Moniker 名称从 ROT 中返回 COM 对象。</para>
         /// </summary>
-        /// <typeparam name="TComObj">Type of COM object</typeparam>
-        /// <param name="monikerName">Name of the moniker or an empty string to iterate all monikers</param>
-        /// <param name="logger">Custom logger</param>
-        /// <param name="predicate">Predicate</param>
-        /// <returns>COM objects</returns>
+        /// <typeparam name="TComObj">Type of COM object<para>COM 对象类型。</para></typeparam>
+        /// <param name="monikerName">Name of the moniker or an empty string to iterate all monikers<para>Moniker 名称；为空时遍历所有 Moniker。</para></param>
+        /// <param name="logger">Custom logger<para>自定义日志器。</para></param>
+        /// <param name="predicate">Predicate<para>可选筛选条件。</para></param>
+        /// <returns>COM objects<para>匹配的 COM 对象；未找到时返回默认值。</para></returns>
         public static TComObj TryGetComObjectByMonikerName<TComObj>(string monikerName, IXLogger logger, Predicate<TComObj> predicate = null)
         {
             IBindCtx context = null;

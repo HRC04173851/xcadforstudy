@@ -14,6 +14,10 @@ using Xarial.XCad.Base;
 
 namespace Xarial.XCad.Toolkit.Base
 {
+    /// <summary>
+    /// Represents the result for a cancelled work unit.
+    /// <para>表示取消的工作单元（Work Unit）的结果。</para>
+    /// </summary>
     public class XWorkUnitCancelledResult : IXWorkUnitCancelledResult
     {
     }

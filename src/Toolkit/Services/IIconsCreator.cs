@@ -14,21 +14,24 @@ namespace Xarial.XCad.Toolkit.Services
 {
     /// <summary>
     /// Creates images from icons
+    /// <para>根据图标定义创建图像资源。</para>
     /// </summary>
     public interface IIconsCreator : IDisposable
     {
         /// <summary>
         /// Creates image from the icon in all sizes
+        /// <para>根据单个图标创建其所有尺寸的图像文件。</para>
         /// </summary>
-        /// <param name="icon">Icon</param>
-        /// <param name="folder">Custom folder, if empty - default folder is used</param>
-        /// <returns>Paths to icons of all sizes</returns>
+        /// <param name="icon">Icon<para>图标定义对象。</para></param>
+        /// <param name="folder">Custom folder, if empty - default folder is used<para>自定义输出目录；为空时使用默认目录。</para></param>
+        /// <returns>Paths to icons of all sizes<para>返回各尺寸图标文件路径集合。</para></returns>
         IImageCollection ConvertIcon(IIcon icon, string folder = "");
 
         /// <summary>
         /// Creates group of images from the input icons
+        /// <para>将输入图标集合合成为一组图像资源。</para>
         /// </summary>
-        /// <param name="icons">Icons to group</param>
+        /// <param name="icons">Icons to group<para>要组合处理的图标集合。</para></param>
         ///<inheritdoc/>
         IImageCollection ConvertIconsGroup(IIcon[] icons, string folder = "");
     }

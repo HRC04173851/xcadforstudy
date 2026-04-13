@@ -15,6 +15,10 @@ using Xarial.XCad.Utils.PageBuilder.Base;
 
 namespace Xarial.XCad.Utils.PageBuilder.Core
 {
+    /// <summary>
+    /// Runtime dependency processor for bindings and metadata.
+    /// <para>用于绑定与元数据的运行时依赖处理器。</para>
+    /// </summary>
     public class DependencyManager : IDependencyManager
     {
         private class ControlUpdateStateData
@@ -64,8 +68,16 @@ namespace Xarial.XCad.Utils.PageBuilder.Core
 
         private IXApplication m_App;
 
+        /// <summary>
+        /// Optional dependency map of controls.
+        /// <para>控件依赖映射（可选）。</para>
+        /// </summary>
         public ReadOnlyDictionary<IControl, IControl[]> Map { get; private set; }
         
+        /// <summary>
+        /// Initializes runtime dependency state from raw registrations.
+        /// <para>根据原始注册信息初始化运行时依赖状态。</para>
+        /// </summary>
         public void Init(IXApplication app, IRawDependencyGroup depGroup)
         {
             m_App = app;
@@ -126,6 +138,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Core
             }
         }
 
+        /// <summary>
+        /// Re-evaluates all registered control and metadata dependencies.
+        /// <para>重新计算所有已注册的控件依赖与元数据依赖。</para>
+        /// </summary>
         public void UpdateAll()
         {
             foreach (var state in m_ControlDependencies.SelectMany(b => b.Value))

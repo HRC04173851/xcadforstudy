@@ -11,8 +11,16 @@ using System.Text;
 
 namespace Xarial.XCad.Toolkit.PageBuilder.Exceptions
 {
+    /// <summary>
+    /// Exception indicates that metadata tag is registered more than once.
+    /// <para>异常指示同一个元数据标签被重复注册。</para>
+    /// </summary>
     public class DuplicateMetadataTagException : Exception
     {
+        /// <summary>
+        /// Initializes exception for duplicate metadata tag.
+        /// <para>为重复元数据标签初始化异常。</para>
+        /// </summary>
         public DuplicateMetadataTagException(object tag) : base($"'{tag?.ToString()}' tag already assigned to metadata") 
         {
         }

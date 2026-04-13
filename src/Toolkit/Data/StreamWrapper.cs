@@ -13,10 +13,18 @@ using System.Text;
 
 namespace Xarial.XCad.Toolkit.Data
 {
+    /// <summary>
+    /// Wraps managed <see cref="Stream"/> as COM <see cref="IStream"/>.
+    /// <para>将托管 <see cref="Stream"/> 封装为 COM <see cref="IStream"/> 接口。</para>
+    /// </summary>
     public class StreamWrapper : IStream
     {
         private readonly Stream m_Stream;
 
+        /// <summary>
+        /// Initializes stream wrapper.
+        /// <para>初始化流包装对象。</para>
+        /// </summary>
         public StreamWrapper(Stream streamWrap)
         {
             m_Stream = streamWrap;
@@ -25,6 +33,10 @@ namespace Xarial.XCad.Toolkit.Data
         public void Clone(out IStream ppstm)
             => ppstm = new StreamWrapper(m_Stream);
 
+        /// <summary>
+        /// Commits underlying stream data.
+        /// <para>提交底层流数据（执行 Flush）。</para>
+        /// </summary>
         public void Commit(int grfCommitFlags)
             => m_Stream.Flush();
         

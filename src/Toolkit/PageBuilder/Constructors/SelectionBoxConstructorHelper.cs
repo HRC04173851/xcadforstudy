@@ -22,8 +22,16 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.Toolkit.PageBuilder.Constructors
 {
+    /// <summary>
+    /// Helper methods for selection-box defaults in page builder.
+    /// <para>页面构建器中用于选择框默认行为的辅助方法。</para>
+    /// </summary>
     public static class SelectionBoxConstructorHelper
     {
+        /// <summary>
+        /// Gets element type from a type or enumerable type.
+        /// <para>从类型或可枚举类型中提取元素类型。</para>
+        /// </summary>
         public static Type GetElementType(Type type) 
         {
             if (type.IsAssignableToGenericType(typeof(IEnumerable<>)))
@@ -36,6 +44,10 @@ namespace Xarial.XCad.Toolkit.PageBuilder.Constructors
             }
         }
 
+        /// <summary>
+        /// Returns default bitmap label by selection context type.
+        /// <para>根据选择上下文类型返回默认位图标签。</para>
+        /// </summary>
         public static BitmapLabelType_e? GetDefaultBitmapLabel(IAttributeSet atts)
         {
             var type = atts.ContextType;
@@ -65,6 +77,10 @@ namespace Xarial.XCad.Toolkit.PageBuilder.Constructors
             return null;
         }
 
+        /// <summary>
+        /// Checks assignability against requested CAD interface type.
+        /// <para>检查是否可赋值为指定 CAD 接口类型。</para>
+        /// </summary>
         private static bool IsOfType<T>(Type t) => typeof(T).IsAssignableFrom(t);
     }
 }

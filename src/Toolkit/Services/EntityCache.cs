@@ -17,8 +17,9 @@ namespace Xarial.XCad.Toolkit.Services
 {
     /// <summary>
     /// This service allows to manage the entities which are created from the uncommitted object
+    /// <para>该服务用于管理从未提交对象创建出的实体缓存。</para>
     /// </summary>
-    /// <typeparam name="TEnt">Type of entity</typeparam>
+    /// <typeparam name="TEnt">Type of entity<para>实体类型。</para></typeparam>
     public class EntityCache<TEnt>
             where TEnt : IXTransaction
     {
@@ -28,6 +29,10 @@ namespace Xarial.XCad.Toolkit.Services
         protected readonly IXTransaction m_Owner;
         protected readonly IXRepository<TEnt> m_Repo;
 
+        /// <summary>
+        /// Initializes entity cache.
+        /// <para>初始化实体缓存。</para>
+        /// </summary>
         public EntityCache(IXTransaction owner, IXRepository<TEnt> repo, Func<TEnt, string> nameProvider)
         {
             m_Owner = owner;
@@ -37,6 +42,10 @@ namespace Xarial.XCad.Toolkit.Services
             m_Cache = new List<TEnt>();
         }
 
+        /// <summary>
+        /// Number of cached entities.
+        /// <para>缓存实体数量。</para>
+        /// </summary>
         public int Count => m_Cache.Count;
 
         public void AddRange(IEnumerable<TEnt> ents, CancellationToken cancellationToken)
@@ -62,6 +71,10 @@ namespace Xarial.XCad.Toolkit.Services
             return ent != null;
         }
 
+        /// <summary>
+        /// Commits cached entities to repository and clears cache.
+        /// <para>将缓存实体提交到仓储并清空缓存。</para>
+        /// </summary>
         public void Commit(CancellationToken cancellationToken)
         {
             try

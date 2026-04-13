@@ -10,8 +10,16 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.Utils.PageBuilder.Base
 {
+    /// <summary>
+    /// Creates page elements (controls) inside group containers.
+    /// <para>在分组容器中创建页面元素（控件）。</para>
+    /// </summary>
     public interface IPageElementConstructor
     {
+        /// <summary>
+        /// Creates control instance and updates consumed id range.
+        /// <para>创建控件实例并更新已使用的标识符范围。</para>
+        /// </summary>
         IControl Create(IGroup parentGroup, IAttributeSet atts, IMetadata[] metadata, ref int idRange);
     }
 }

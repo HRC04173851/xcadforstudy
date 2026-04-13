@@ -16,6 +16,7 @@ namespace Xarial.XCad.Toolkit.PageBuilder.Binders
 {
     /// <summary>
     /// Wrapper is used to transform context of the dynamic control to be equal to property value resolved in runtime
+    /// <para>该包装器用于转换动态控件上下文，使其在运行时对应到属性值对象。</para>
     /// </summary>
     public class ControlDescriptorWrapper : IControlDescriptor
     {
@@ -35,6 +36,10 @@ namespace Xarial.XCad.Toolkit.PageBuilder.Binders
         private readonly IControlDescriptor m_BaseCtrlDesc;
         private readonly PropertyInfo m_PrpInfo;
 
+        /// <summary>
+        /// Initializes wrapper around base descriptor and context property.
+        /// <para>使用基础描述符与上下文属性初始化包装器。</para>
+        /// </summary>
         public ControlDescriptorWrapper(IControlDescriptor baseCtrlDesc, PropertyInfo prpInfo) 
         {
             m_BaseCtrlDesc = baseCtrlDesc;

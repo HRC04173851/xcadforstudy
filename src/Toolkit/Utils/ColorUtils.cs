@@ -14,22 +14,25 @@ namespace Xarial.XCad.Toolkit.Utils
 {
     /// <summary>
     /// Utility to convert between the .NET Color and Win32 color
+    /// <para>用于在 .NET `Color` 与 Win32 颜色值之间转换。</para>
     /// </summary>
     public static class ColorUtils
     {
         /// <summary>
         /// Creates a Win32 color
+        /// <para>生成 Win32 颜色值（COLORREF）。</para>
         /// </summary>
-        /// <param name="color">Input color</param>
-        /// <returns>Wind32 color</returns>
+        /// <param name="color">Input color<para>输入颜色。</para></param>
+        /// <returns>Wind32 color<para>返回 Win32 颜色值。</para></returns>
         public static int ToColorRef(Color color)
             => (color.R << 0) | (color.G << 8) | (color.B << 16);
 
         /// <summary>
         /// Converts Win32 color to .NET color
+        /// <para>将 Win32 颜色值转换为 .NET 颜色。</para>
         /// </summary>
-        /// <param name="colorRef">Input color</param>
-        /// <returns>Converted color</returns>
+        /// <param name="colorRef">Input color<para>输入 Win32 颜色值。</para></param>
+        /// <returns>Converted color<para>转换后的 .NET 颜色。</para></returns>
         public static Color FromColorRef(int colorRef) 
         {
             int r = colorRef & 0x000000FF;
@@ -41,10 +44,11 @@ namespace Xarial.XCad.Toolkit.Utils
 
         /// <summary>
         /// Converts the pix to grayscale
+        /// <para>将像素转换为灰度值。</para>
         /// </summary>
-        /// <param name="r">Red component of the pixel</param>
-        /// <param name="g">Green component of the pixex</param>
-        /// <param name="b">Blue component of the pixel</param>
+        /// <param name="r">Red component of the pixel<para>像素红色分量。</para></param>
+        /// <param name="g">Green component of the pixex<para>像素绿色分量。</para></param>
+        /// <param name="b">Blue component of the pixel<para>像素蓝色分量。</para></param>
         public static void ConvertPixelToGrayscale(ref byte r, ref byte g, ref byte b)
         {
             var pixel = (byte)((r + g + b) / 3);

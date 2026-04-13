@@ -12,6 +12,10 @@ using System.Text;
 
 namespace Xarial.XCad.Toolkit
 {
+    /// <summary>
+    /// Service registration container for Toolkit dependency injection.
+    /// <para>Toolkit 依赖注入的服务注册容器。</para>
+    /// </summary>
     public class ServiceCollection : IXServiceCollection
     {
         internal class ServiceInfo 
@@ -30,6 +34,10 @@ namespace Xarial.XCad.Toolkit
 
         private bool m_IsProviderCreated;
 
+        /// <summary>
+        /// Initializes empty service collection.
+        /// <para>初始化空的服务集合。</para>
+        /// </summary>
         public ServiceCollection() : this(new Dictionary<Type, ServiceInfo>()) 
         {
         }
@@ -40,6 +48,10 @@ namespace Xarial.XCad.Toolkit
             m_IsProviderCreated = false;
         }
 
+        /// <summary>
+        /// Adds or replaces service registration.
+        /// <para>添加或替换服务注册项。</para>
+        /// </summary>
         public void Add(Type svcType, Func<object> svcFactory, ServiceLifetimeScope_e lifetime = ServiceLifetimeScope_e.Singleton, bool replace = true)
         {
             if (replace || !m_Services.ContainsKey(svcType))
@@ -48,6 +60,10 @@ namespace Xarial.XCad.Toolkit
             }
         }
 
+        /// <summary>
+        /// Creates immutable service provider from current registrations.
+        /// <para>根据当前注册项创建不可变服务提供器。</para>
+        /// </summary>
         public IServiceProvider CreateProvider()
         {
             if (!m_IsProviderCreated)
@@ -61,6 +77,10 @@ namespace Xarial.XCad.Toolkit
             }
         }
 
+        /// <summary>
+        /// Creates deep copy of service collection.
+        /// <para>创建服务集合的深拷贝。</para>
+        /// </summary>
         public IXServiceCollection Clone()
             => new ServiceCollection(m_Services.ToDictionary(x => x.Key, x => new ServiceInfo(x.Value.Factory, x.Value.Lifetime)));
     }

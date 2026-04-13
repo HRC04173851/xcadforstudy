@@ -1,0 +1,13 @@
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\bin\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.deps.json
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\bin\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\bin\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.pdb
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.AssemblyInfo.cs
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.sourcelink.json
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\refint\__TemplateNamePlaceholderConsole__.Base.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\__TemplateNamePlaceholderConsole__.Base.pdb
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\templates\Console\__TemplateNamePlaceholderConsole__.Base\obj\Debug\net6.0\ref\__TemplateNamePlaceholderConsole__.Base.dll

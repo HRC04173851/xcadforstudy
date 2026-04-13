@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = Xarial.XCad
-build_property.ProjectDir = /home/runner/work/xcadforstudy/xcadforstudy/src/Base/
+build_property.ProjectDir = C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\src\Base\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false

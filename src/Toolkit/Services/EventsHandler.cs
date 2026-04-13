@@ -11,28 +11,46 @@ namespace Xarial.XCad.Toolkit.Services
 {
     /// <summary>
     /// Utility allowing to implement lazy event handlers for a wrapped events
+    /// <para>用于为包装事件实现延迟订阅处理器的工具类。</para>
     /// </summary>
-    /// <typeparam name="TDel">Delegate type of the wrapped event</typeparam>
+    /// <typeparam name="TDel">Delegate type of the wrapped event<para>被包装事件的委托类型。</para></typeparam>
     /// <remarks>Use this approach when handling of events might result in the performance penalties or other issues
-    /// so it is only required to subscribe to events when underlying users are subscribed</remarks>
+    /// so it is only required to subscribe to events when underlying users are subscribed
+    /// <para>当事件处理存在性能开销或副作用时，可仅在外部用户订阅后再订阅底层事件。</para></remarks>
     public abstract class EventsHandler<TDel> : IDisposable
         where TDel : Delegate
     {
+        /// <summary>
+        /// Combined delegate invocation list.
+        /// <para>组合后的委托调用列表。</para>
+        /// </summary>
         public TDel Delegate { get; set; }
 
         private bool m_IsSubscribed;
 
+        /// <summary>
+        /// Initializes lazy events handler.
+        /// <para>初始化延迟事件处理器。</para>
+        /// </summary>
         protected EventsHandler()
         {
             m_IsSubscribed = false;
         }
 
+        /// <summary>
+        /// Attaches handler and subscribes wrapped events if needed.
+        /// <para>附加处理委托，并在需要时订阅底层事件。</para>
+        /// </summary>
         public void Attach(TDel del)
         {
             SubscribeIfNeeded();
             AddToInvocationList(del);
         }
 
+        /// <summary>
+        /// Detaches handler and unsubscribes wrapped events when no subscribers remain.
+        /// <para>移除处理委托，当无订阅者时取消订阅底层事件。</para>
+        /// </summary>
         public void Detach(TDel del)
         {
             RemoveFromInvocationList(del);
@@ -63,6 +81,10 @@ namespace Xarial.XCad.Toolkit.Services
             }
         }
 
+        /// <summary>
+        /// Releases underlying event subscriptions.
+        /// <para>释放底层事件订阅资源。</para>
+        /// </summary>
         public void Dispose()
         {
             UnsubscribeIfNeeded();

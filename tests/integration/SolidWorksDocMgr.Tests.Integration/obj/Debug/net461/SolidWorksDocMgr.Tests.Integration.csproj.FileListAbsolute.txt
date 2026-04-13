@@ -1,0 +1,6 @@
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\tests\integration\SolidWorksDocMgr.Tests.Integration\obj\Debug\net461\SolidWorksDocMgr.Tests.Integration.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\tests\integration\SolidWorksDocMgr.Tests.Integration\obj\Debug\net461\SolidWorksDocMgr.Tests.Integration.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\tests\integration\SolidWorksDocMgr.Tests.Integration\obj\Debug\net461\SolidWorksDocMgr.Tests.Integration.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\tests\integration\SolidWorksDocMgr.Tests.Integration\obj\Debug\net461\SolidWorksDocMgr.Tests.Integration.AssemblyInfo.cs
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\tests\integration\SolidWorksDocMgr.Tests.Integration\obj\Debug\net461\SolidWorksDocMgr.Tests.Integration.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\tests\integration\SolidWorksDocMgr.Tests.Integration\obj\Debug\net461\SolidWorksDocMgr.Tests.Integration.sourcelink.json

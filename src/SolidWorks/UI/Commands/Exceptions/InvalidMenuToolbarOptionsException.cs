@@ -12,6 +12,7 @@ namespace Xarial.XCad.SolidWorks.UI.Commands.Exceptions
 {
     /// <summary>
     /// Indicates that the command doesn't have either menu or toolbar option set
+    /// <para>中文：表示命令未设置菜单或工具栏显示选项。</para>
     /// </summary>
     public class InvalidMenuToolbarOptionsException : InvalidOperationException
     {

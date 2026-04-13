@@ -27,11 +27,17 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 装配体组件集合接口，提供按名称索引所属组件的功能。
+    /// </summary>
     public interface ISwComponentCollection : IXComponentRepository
     {
         new ISwComponent this[string name] { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 装配体组件集合拟象基类，封装组件的辭步、批量插入及缓存逻辑。
+    /// </summary>
     internal abstract class SwComponentCollection : ISwComponentCollection
     {
         private static readonly BatchComponentsInserter m_BatchCompsInserter = new BatchComponentsInserter();

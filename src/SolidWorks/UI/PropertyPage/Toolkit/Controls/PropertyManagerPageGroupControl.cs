@@ -21,6 +21,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
     /// <summary>
     /// Represents the group box control
+    /// <para>中文：表示 PMP 分组框控件。</para>
     /// </summary>
     public interface IPropertyManagerPageGroupEx
     {
@@ -32,6 +33,10 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 
     internal class PropertyManagerPageGroupControl : PropertyManagerPageGroupBase<IPropertyManagerPageGroup>, IPropertyManagerPageGroupEx
     {
+        /// <summary>
+        /// PMP 分组控件实现。
+        /// 支持可折叠、可勾选组与元数据联动。
+        /// </summary>
         protected override event ControlValueChangedDelegate<object> ValueChanged;
 
         /// <summary>

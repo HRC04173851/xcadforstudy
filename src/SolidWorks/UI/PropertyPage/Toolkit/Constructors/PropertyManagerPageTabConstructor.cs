@@ -26,6 +26,9 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
+    /// <summary>
+    /// PMP Tab 构造器。
+    /// </summary>
     internal class PropertyManagerPageTabConstructor
         : GroupConstructor<PropertyManagerPageTabControl, PropertyManagerPagePage>,
         IPropertyManagerPageElementConstructor, ITabConstructor

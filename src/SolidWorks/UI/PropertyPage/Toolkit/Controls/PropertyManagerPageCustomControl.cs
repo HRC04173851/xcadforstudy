@@ -20,6 +20,11 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
     //TODO: add support to IPropertyManagerPageActiveX
+    // 中文：TODO：增加对 ActiveX 自定义控件的支持。
+    /// <summary>
+    /// PMP 自定义控件承载实现。
+    /// 通过窗口句柄将 WinForms/WPF 自定义控件挂载到页面。
+    /// </summary>
     internal class PropertyManagerPageCustomControl : PropertyManagerPageBaseControl<object, IPropertyManagerPageWindowFromHandle>
     {
         protected override event ControlValueChangedDelegate<object> ValueChanged;

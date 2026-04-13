@@ -18,6 +18,9 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks
 {
+    /// <summary>
+    /// SolidWorks 对象跟踪器，通过 SolidWorks 跟踪定义将拓扑 ID 绑定到面、边、顶点等几何实体，实现实体持久化跟踪。
+    /// </summary>
     internal class SwObjectTracker : IXObjectTracker
     {
         private readonly string m_TrackDefName;

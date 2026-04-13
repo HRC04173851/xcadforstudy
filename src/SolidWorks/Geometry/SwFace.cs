@@ -25,6 +25,10 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 面（Face）接口。
+    /// 面由底层曲面定义，并由一个外环和零个或多个内环（孔环）边界构成。
+    /// </summary>
     public interface ISwFace : ISwEntity, IXFace 
     {
         IFace2 Face { get; }
@@ -61,6 +65,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
 
             if (edges)
             {
+                // 面的邻接边集合（该面边界上的所有边）
                 foreach (IEdge edge in (m_Face.Face.GetEdges() as object[]).ValueOrEmpty())
                 {
                     yield return m_Face.OwnerApplication.CreateObjectFromDispatch<ISwEdge>(edge, m_Face.OwnerDocument);
@@ -69,6 +74,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
 
             if (vertices)
             {
+                // 通过面边集合提取顶点并去重
                 foreach (var vertex in (m_Face.Face.GetEdges() as object[]).ValueOrEmpty().Cast<IEdge>().SelectMany(EnumerateVertices).Distinct())
                 {
                     yield return m_Face.OwnerApplication.CreateObjectFromDispatch<ISwVertex>(vertex, m_Face.OwnerDocument);
@@ -77,6 +83,10 @@ namespace Xarial.XCad.SolidWorks.Geometry
         }
     }
 
+    /// <summary>
+    /// SolidWorks 面抽象实现类。
+    /// 提供面积、颜色、曲面定义、环边界与所属特征访问。
+    /// </summary>
     internal abstract class SwFace : SwEntity, ISwFace
     {
         IXSurface IXFace.Definition => Definition;
@@ -115,6 +125,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
                 if (base.IsAlive)
                 {
                     //some of the faces may be broken and have negative area. Working with these faces may resut in the SOLIDWORKS crash
+                    // 中文：部分异常面会出现负面积，这类面参与运算可能导致 SolidWorks 崩溃
                     return Face.GetArea() > 0;
                 }
                 else 

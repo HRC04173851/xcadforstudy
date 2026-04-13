@@ -23,15 +23,24 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Primitives
 {
+    /// <summary>
+    /// SolidWorks 临时扫赠体接口，用于内存扫赠几何操作。
+    /// </summary>
     public interface ISwTempSweep : IXSweep, ISwTempPrimitive
     {
         new ISwTempRegion[] Profiles { get; set; }
     }
 
+    /// <summary>
+    /// SolidWorks 临时实体扫赠接口。
+    /// </summary>
     public interface ISwTempSolidSweep : ISwTempSweep, ISwTempPrimitive
     {
     }
 
+    /// <summary>
+    /// SolidWorks 实体扫赠临时体实现类。
+    /// </summary>
     internal class SwTempSolidSweep : SwTempPrimitive, ISwTempSolidSweep
     {
         IXPlanarRegion[] IXSweep.Profiles

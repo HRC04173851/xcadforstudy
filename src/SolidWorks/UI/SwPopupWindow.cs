@@ -16,6 +16,9 @@ using Xarial.XCad.UI.PopupWindow.Delegates;
 
 namespace Xarial.XCad.SolidWorks.UI
 {
+    /// <summary>
+    /// Win32 窗口句柄包装器，用于为 WinForms 对话框提供父窗口。
+    /// </summary>
     public class Win32Window : IWin32Window
     {
         public IntPtr Handle { get; }
@@ -26,10 +29,16 @@ namespace Xarial.XCad.SolidWorks.UI
         }
     }
 
+    /// <summary>
+    /// SolidWorks 弹出窗口接口（支持 WPF / WinForms）。
+    /// </summary>
     public interface ISwPopupWindow<TWindow> : IXPopupWindow<TWindow>, IDisposable 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 弹出窗口拽象基类，支持 WPF 和 WinForms 的弹出窗口封装。
+    /// </summary>
     internal abstract class SwPopupWindow<TWindow> : ISwPopupWindow<TWindow>
     {
         public abstract bool IsActive { get; set; }

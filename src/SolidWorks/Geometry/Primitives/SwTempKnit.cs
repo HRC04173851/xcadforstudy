@@ -18,20 +18,32 @@ using Xarial.XCad.SolidWorks.Services;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Primitives
 {
+    /// <summary>
+    /// SolidWorks 临时缝合体接口，用于将多个曲面缝合成实体或片体。
+    /// </summary>
     public interface ISwTempKnit : IXKnit, ISwTempPrimitive
     {
     }
 
+    /// <summary>
+    /// SolidWorks 临时片体缝合接口。
+    /// </summary>
     public interface ISwTempSurfaceKnit : ISwTempKnit, ISwTempPrimitive
     {
         new ISwTempSheetBody[] Bodies { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 临时实体缝合接口。
+    /// </summary>
     public interface ISwTempSolidKnit : ISwTempKnit, ISwTempPrimitive
     {
         new ISwTempSolidBody[] Bodies { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 临时缝合体抽象基类。
+    /// </summary>
     internal abstract class SwTempKnit : SwTempPrimitive, ISwTempKnit 
     {
         private readonly IMemoryGeometryBuilderToleranceProvider m_TolProvider;

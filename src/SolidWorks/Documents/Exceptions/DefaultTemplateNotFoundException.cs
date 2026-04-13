@@ -14,6 +14,7 @@ namespace Xarial.XCad.SolidWorks.Documents.Exceptions
 {
     /// <summary>
     /// Indicates that the default templaet cannot be found for the next document
+    /// <para>中文：表示无法找到用于新建文档的默认模板。</para>
     /// </summary>
     public class DefaultTemplateNotFoundException : Exception, IUserException
     {

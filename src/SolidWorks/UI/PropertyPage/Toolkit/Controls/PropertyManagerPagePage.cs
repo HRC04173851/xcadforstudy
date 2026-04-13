@@ -20,6 +20,10 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 页面根对象实现。
+    /// 负责页面创建、标题图标、帮助链接与消息区配置。
+    /// </summary>
     internal class PropertyManagerPagePage : Page
     {
         internal IPropertyManagerPage2 Page { get; }

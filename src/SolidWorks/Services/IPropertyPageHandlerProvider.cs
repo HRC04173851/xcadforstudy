@@ -15,6 +15,7 @@ namespace Xarial.XCad.SolidWorks.Services
 {
     /// <summary>
     /// Handler for the drag arrow when used with <see cref="Extensions.IXExtension.CreatePage{TData}(XCad.UI.PropertyPage.Delegates.CreateDynamicControlsDelegate)"/>
+    /// <para>中文：属性管理器页面处理器提供器，负责创建 COM 可见的页面处理器实例。</para>
     /// </summary>
     public interface IPropertyPageHandlerProvider 
     {

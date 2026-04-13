@@ -15,11 +15,18 @@ using Xarial.XCad.Documents;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 文档单位接口。
+    /// </summary>
     public interface ISwUnits : IXUnits
     {
     }
 
     [DebuggerDisplay("{" + nameof(Length) + "} - {" + nameof(Mass) + "} - {" + nameof(Angle) + "} - {" + nameof(Time) + "}")]
+    /// <summary>
+    /// SolidWorks 文档单位实现。
+    /// 将 SolidWorks 用户偏好单位映射为 xCAD 统一单位枚举。
+    /// </summary>
     internal class SwUnits : ISwUnits
     {
         public Length_e Length
@@ -45,6 +52,8 @@ namespace Xarial.XCad.SolidWorks.Documents
                         return Length_e.Millimeters;
 
                     case swUnitSystem_e.swUnitSystem_Custom:
+
+                        // 自定义长度单位需读取 swUnitsLinear 细分设置
 
                         var lengthUnits = (swLengthUnit_e)m_Document.Model.Extension.GetUserPreferenceInteger(
                             (int)swUserPreferenceIntegerValue_e.swUnitsLinear, (int)swUserPreferenceOption_e.swDetailingNoOptionSpecified);
@@ -106,6 +115,8 @@ namespace Xarial.XCad.SolidWorks.Documents
                         return Mass_e.Grams;
 
                     case swUnitSystem_e.swUnitSystem_Custom:
+
+                        // 自定义质量单位需读取 swUnitsMassPropMass
 
                         var massUnits = (swUnitsMassPropMass_e)m_Document.Model.Extension.GetUserPreferenceInteger(
                             (int)swUserPreferenceIntegerValue_e.swUnitsMassPropMass, (int)swUserPreferenceOption_e.swDetailingNoOptionSpecified);

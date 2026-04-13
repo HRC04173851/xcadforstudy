@@ -14,6 +14,7 @@ namespace Xarial.XCad.SolidWorks.Services
 {
     /// <summary>
     /// Configuration information of the tab
+    /// <para>中文：命令组页签（Ribbon Tab）的配置数据</para>
     /// </summary>
     public class CommandGroupTabConfiguration 
     {
@@ -30,6 +31,7 @@ namespace Xarial.XCad.SolidWorks.Services
 
     /// <summary>
     /// Service to configure tabs
+    /// <para>中文：命令组页签配置服务接口</para>
     /// </summary>
     public interface ICommandGroupTabConfigurer
     {
@@ -43,6 +45,7 @@ namespace Xarial.XCad.SolidWorks.Services
 
     /// <summary>
     /// Default tab configuration
+    /// <para>中文：默认页签配置实现（占位实现，不修改默认行为）</para>
     /// </summary>
     /// <remarks>This configurer uses the default options and acts as a placeholder.
     /// User can register custom <see cref="ICommandGroupTabConfigurer"/> service to configure the behavior of tabs</remarks>

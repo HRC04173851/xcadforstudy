@@ -11,6 +11,10 @@ using System.Linq;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 控件列表包装基类。
+    /// 将属性设置批量转发到一组底层控件。
+    /// </summary>
     public abstract class PropertyManagerPageControlList<T> : IPropertyManagerPageControl
     {
         /// <summary>

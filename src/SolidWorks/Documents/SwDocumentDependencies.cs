@@ -18,6 +18,10 @@ using static System.Windows.Forms.AxHost;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 文档依赖项集合实现。
+    /// 用于遍历并替换文档引用（零件/装配体依赖）。
+    /// </summary>
     internal class SwDocumentDependencies : IXDocumentDependencies
     {
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

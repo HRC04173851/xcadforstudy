@@ -11,6 +11,9 @@ using System.Text;
 
 namespace Xarial.XCad.SolidWorks.Documents.Exceptions
 {
+    /// <summary>
+    /// 未加载文档仅预览 Sheet 访问异常。
+    /// </summary>
     public class UnloadedDocumentPreviewOnlySheetException : NotSupportedException
     {
         public UnloadedDocumentPreviewOnlySheetException()

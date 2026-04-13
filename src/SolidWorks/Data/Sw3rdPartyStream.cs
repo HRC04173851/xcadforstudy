@@ -18,6 +18,10 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Data
 {
+    /// <summary>
+    /// SolidWorks 第三方流存储包装。
+    /// 用于在文档 3rd party storage stream 中读写插件自定义数据。
+    /// </summary>
     internal class Sw3rdPartyStream : ComStream
     {
         private readonly IModelDoc2 m_Model;
@@ -47,6 +51,7 @@ namespace Xarial.XCad.SolidWorks.Data
             }
             catch 
             {
+                // 异常时确保释放 3rd party stream 句柄
                 m_Model.IRelease3rdPartyStorage(m_Name);
                 throw;
             }

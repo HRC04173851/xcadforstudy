@@ -25,6 +25,9 @@ using Xarial.XCad.Toolkit.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
 {
+    /// <summary>
+    /// SolidWorks 三角网格剖分（Tessellation）评估接口。
+    /// </summary>
     public interface ISwTessellation : IXTessellation
     {
         IReadOnlyDictionary<IXBody, ITessellation> Tessellation { get; }
@@ -34,6 +37,10 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
     {
     }
 
+    /// <summary>
+    /// SolidWorks 三角网格剖分抽象实现。
+    /// 用于将体几何离散为三角片，供可视化或数值分析使用。
+    /// </summary>
     internal abstract class SwTessellation : ISwTessellation
     {
         //TODO: implement relative to matrix
@@ -98,6 +105,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
             {
                 foreach (var tess in Tessellation.Values)
                 {
+                    // 按 facet 遍历三角面片，并提取顶点法向/坐标
                     for (int i = 0; i < tess.GetFacetCount(); i++)
                     {
                         var fins = (int[])tess.GetFacetFins(i);
@@ -137,6 +145,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
                 var comp = body.Component;
 
                 //assembly bodies must be transformed to the assembly space
+                // 中文：装配体中零部件体需先变换到装配坐标系再剖分
                 if (comp != null)
                 {
                     var copy = body.Copy();

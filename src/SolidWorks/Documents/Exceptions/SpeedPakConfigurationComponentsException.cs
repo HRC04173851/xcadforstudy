@@ -14,6 +14,9 @@ using Xarial.XCad.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Documents.Exceptions
 {
+    /// <summary>
+    /// SpeedPak 配置组件不可提取异常。
+    /// </summary>
     public class SpeedPakConfigurationComponentsException : Exception, IUserException
     {
         public SpeedPakConfigurationComponentsException() : base("Components cannot be extracted from the SpeedPak configuration")

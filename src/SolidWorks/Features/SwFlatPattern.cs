@@ -19,10 +19,16 @@ using Xarial.XCad.SolidWorks.Geometry;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 展开图特征接口，表示钣金展开状态管理。
+    /// </summary>
     public interface ISwFlatPattern : IXFlatPattern, ISwFeature
     {
     }
 
+    /// <summary>
+    /// SolidWorks 展开图特征实现类，支持通过押制/取消抑制特征来切换展开/折叠状态。
+    /// </summary>
     internal class SwFlatPattern : SwFeature, ISwFlatPattern
     {
         internal const string TypeName = "FlatPattern";

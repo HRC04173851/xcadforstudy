@@ -23,6 +23,9 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 切割清单子项集合拽象基类，封装切割清单的枚举和重建事件。
+    /// </summary>
     internal abstract class SwCutListItemCollection : IXCutListItemRepository
     {
         public abstract event CutListRebuildDelegate CutListRebuild;

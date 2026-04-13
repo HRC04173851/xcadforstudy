@@ -13,6 +13,10 @@ using Xarial.XCad.Toolkit.Services;
 
 namespace Xarial.XCad.SolidWorks.Annotations.EventHandlers
 {
+    /// <summary>
+    /// 尺寸变更事件处理器。
+    /// 监听 SolidWorks 模型中的 DimensionChangeNotify 并转发到 xCAD 委托。
+    /// </summary>
     internal class SwDimensionChangeEventsHandler : EventsHandler<DimensionValueChangedDelegate>
     {
         private readonly SwDimension m_Dim;

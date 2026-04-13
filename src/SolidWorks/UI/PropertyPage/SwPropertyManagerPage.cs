@@ -32,11 +32,18 @@ using Xarial.XCad.Toolkit.Services;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage
 {
+    /// <summary>
+    /// SolidWorks 属性管理器页面（PropertyManagerPage）接口。
+    /// </summary>
     public interface ISwPropertyManagerPage<TModel> : IXPropertyPage<TModel>, IDisposable 
     {
     }
 
     /// <inheritdoc/>
+    /// <summary>
+    /// SolidWorks 属性管理器页面实现。
+    /// 负责页面构建、数据绑定、事件转发（打开/关闭/数据变化）以及控件释放。
+    /// </summary>
     internal class SwPropertyManagerPage<TModel> : ISwPropertyManagerPage<TModel>, IAutoDisposable
     {
         /// <inheritdoc/>
@@ -140,11 +147,13 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage
 
             if (!type.IsComVisible()) 
             {
+                // PMP 处理器由 SolidWorks 通过 COM 回调，因此必须 COM 可见
                 throw new Exception($"Handler type '{type.FullName}' must be COM visible");
             }
 
             if (!(type.IsPublic || type.IsNestedPublic)) 
             {
+                // 非 public 处理器无法被 SolidWorks 正确实例化
                 throw new Exception($"Handler type '{type.FullName}' must be a public class");
             }
         }

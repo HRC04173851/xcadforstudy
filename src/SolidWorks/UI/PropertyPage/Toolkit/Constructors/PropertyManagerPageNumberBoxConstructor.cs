@@ -23,6 +23,9 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
     [DefaultType(typeof(double))]
     [DefaultType(typeof(decimal))]
     [DefaultType(typeof(float))]
+    /// <summary>
+    /// PMP 数值输入框构造器。
+    /// </summary>
     internal class PropertyManagerPageNumberBoxConstructor
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageNumberBoxControl, IPropertyManagerPageNumberbox>
     {

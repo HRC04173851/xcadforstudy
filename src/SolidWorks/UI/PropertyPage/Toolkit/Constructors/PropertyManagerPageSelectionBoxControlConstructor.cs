@@ -36,6 +36,10 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
     [DefaultType(typeof(IXSelObject))]
     [DefaultType(typeof(IEnumerable<IXSelObject>))]
+    /// <summary>
+    /// PMP 选择框控件构造器。
+    /// 负责创建选择框并在后处理阶段自动分配选择标记（Mark）。
+    /// </summary>
     internal class PropertyManagerPageSelectionBoxControlConstructor
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageSelectionBoxControl, IPropertyManagerPageSelectionbox>
     {

@@ -17,10 +17,16 @@ using Xarial.XCad.SolidWorks.Geometry.Curves;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Curves
 {
+    /// <summary>
+    /// SolidWorks 椭圆曲线接口。
+    /// </summary>
     public interface ISwEllipseCurve : IXEllipseCurve, ISwCurve
     {
     }
 
+    /// <summary>
+    /// SolidWorks 椭圆曲线实现类。
+    /// </summary>
     internal class SwEllipseCurve : SwCurve, ISwEllipseCurve
     {
         internal SwEllipseCurve(ICurve curve, SwDocument doc, SwApplication app, bool isCreated) 

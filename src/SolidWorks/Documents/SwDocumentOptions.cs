@@ -11,14 +11,24 @@ using Xarial.XCad.Documents;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 文档选项接口。
+    /// </summary>
     public interface ISwDocumentOptions : ISwOptions, IXDocumentOptions
     {
     }
 
+    /// <summary>
+    /// 视图实体显示选项接口（基准面、坐标系、草图、原点等显示开关）。
+    /// </summary>
     public interface ISwViewEntityKindVisibilityOptions : IXViewEntityKindVisibilityOptions 
     {
     }
 
+    /// <summary>
+    /// 文档视图实体显示选项实现。
+    /// 通过 SolidWorks 用户偏好开关控制坐标系、基准面、草图等显示状态。
+    /// </summary>
     internal class SwViewEntityKindVisibilityOptions : ISwViewEntityKindVisibilityOptions 
     {
         private readonly SwDocument m_Doc;
@@ -131,6 +141,9 @@ namespace Xarial.XCad.SolidWorks.Documents
 
     internal class SwDocumentOptions : SwOptions, ISwDocumentOptions 
     {
+        /// <summary>
+        /// SolidWorks 文档选项实现。
+        /// </summary>
         protected readonly SwDocument m_Doc;
 
         internal SwDocumentOptions(SwDocument doc) 

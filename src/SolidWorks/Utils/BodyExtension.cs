@@ -14,10 +14,14 @@ using System.Threading.Tasks;
 
 namespace Xarial.XCad.SolidWorks.Utils
 {
+    /// <summary>
+    /// `IBody2` 扩展方法。
+    /// </summary>
     internal static class BodyExtension
     {
         internal static IBody2 CreateCopy(this IBody2 body, SwApplication app) 
         {
+            // Sw2019 起优先使用 Copy2（更稳定且支持更多选项）
             if (app.IsVersionNewerOrEqual(Enums.SwVersion_e.Sw2019))
             {
                 return (IBody2)body.Copy2(true);

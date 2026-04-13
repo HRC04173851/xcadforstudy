@@ -16,6 +16,10 @@ using Xarial.XCad.Toolkit.Services;
 
 namespace Xarial.XCad.SolidWorks.Data.EventHandlers
 {
+    /// <summary>
+    /// 3rd-party Storage 读可用事件处理器。
+    /// 在加载文档后通知外部可读取结构化存储数据。
+    /// </summary>
     internal class StorageReadAvailableEventsHandler : SwModelEventsHandler<DataStoreAvailableDelegate>
     {
         private bool m_Is3rdPartyStorageLoaded;

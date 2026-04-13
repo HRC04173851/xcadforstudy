@@ -16,6 +16,9 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 文本框控件实现。
+    /// </summary>
     internal class PropertyManagerPageTextBoxControl : PropertyManagerPageBaseControl<string, IPropertyManagerPageTextbox>
     {
         protected override event ControlValueChangedDelegate<string> ValueChanged;
@@ -51,6 +54,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
         {
             if (Id == id)
             {
+                // 将 SolidWorks 文本变更事件转发到统一绑定层
                 ValueChanged?.Invoke(this, text);
             }
         }

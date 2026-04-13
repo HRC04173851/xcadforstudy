@@ -17,10 +17,16 @@ using Xarial.XCad.SolidWorks.Geometry.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Curves
 {
+    /// <summary>
+    /// SolidWorks 直线曲线接口。
+    /// </summary>
     public interface ISwLineCurve : IXLineCurve, ISwCurve
     {
     }
 
+    /// <summary>
+    /// SolidWorks 直线曲线实现类。
+    /// </summary>
     internal class SwLineCurve : SwCurve, ISwLineCurve
     {
         internal SwLineCurve(ICurve curve, SwDocument doc, SwApplication app, bool isCreated) 
@@ -58,6 +64,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Curves
         {
             var geom = Geometry;
 
+            // 先创建无限直线，再按起点/终点修剪为线段
             var line = m_Modeler.CreateLine(geom.StartPoint.ToArray(), (geom.StartPoint - geom.EndPoint).ToArray()) as ICurve;
             line = line.CreateTrimmedCurve2(geom.StartPoint.X, geom.StartPoint.Y, geom.StartPoint.Z, geom.EndPoint.X, geom.EndPoint.Y, geom.EndPoint.Z);
 

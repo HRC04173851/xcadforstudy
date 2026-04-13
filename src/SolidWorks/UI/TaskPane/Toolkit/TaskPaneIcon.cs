@@ -13,6 +13,9 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.UI.Commands.Toolkit.Structures
 {
+    /// <summary>
+    /// TaskPane 标准分辨率图标包装（16x18）。
+    /// </summary>
     internal class TaskPaneIcon : IIcon
     {
         protected readonly IXImage m_Icon;

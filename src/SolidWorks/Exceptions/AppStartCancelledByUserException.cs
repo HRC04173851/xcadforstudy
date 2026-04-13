@@ -11,6 +11,9 @@ using System.Text;
 
 namespace Xarial.XCad.SolidWorks.Exceptions
 {
+    /// <summary>
+    /// 用户取消应用启动异常。
+    /// </summary>
     public class AppStartCancelledByUserException : Exception
     {
         public AppStartCancelledByUserException() : base("Application start is cancelled by user") 

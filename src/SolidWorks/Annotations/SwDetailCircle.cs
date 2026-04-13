@@ -21,11 +21,17 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Annotations
 {
+    /// <summary>
+    /// SolidWorks 详图圆（Detail Circle）注解接口。
+    /// </summary>
     public interface ISwDetailCircle : IXDetailCircle, ISwAnnotation
     {
         IDetailCircle Circle { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 详图圆注解实现。
+    /// </summary>
     internal class SwDetailCircle : SwAnnotation, ISwDetailCircle
     {
         private readonly IDetailCircle m_Circle;

@@ -14,6 +14,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents.EventHandlers
 {
+    /// <summary>
+    /// 清空选择事件处理器。
+    /// 通过 `NewSelectionNotify` 监测当前选择数为 0 时触发清空选择回调。
+    /// </summary>
     internal class ClearSelectionEventHandler : SwModelEventsHandler<ClearSelectionDelegate>
     {
         private IModelDoc2 Model => m_Doc.Model;

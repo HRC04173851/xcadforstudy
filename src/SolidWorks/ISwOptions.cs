@@ -7,10 +7,16 @@
 
 namespace Xarial.XCad.SolidWorks
 {
+    /// <summary>
+    /// SolidWorks 选项接口，封装应用程序级设置项。
+    /// </summary>
     public interface ISwOptions : IXOptions 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 选项实现类。
+    /// </summary>
     internal class SwOptions : ISwOptions 
     {
     }

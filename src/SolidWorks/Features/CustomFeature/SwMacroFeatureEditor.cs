@@ -26,10 +26,17 @@ using Xarial.XCad.Utils.Diagnostics;
 
 namespace Xarial.XCad.SolidWorks.Features.CustomFeature
 {
+    /// <summary>
+    /// 宏特征参数编辑器实现（PropertyManagerPage 交互层）。
+    /// 负责在参数页关闭时提交或回写缓存参数，并提供预览上下文对象。
+    /// </summary>
     internal class SwMacroFeatureEditor<TData, TPage> : BaseCustomFeatureEditor<TData, TPage>
         where TData : class
         where TPage : class
     {
+        /// <summary>
+        /// 提供预览上下文（通常为当前文档中的特征/组件/实体），用于编辑预览显示。
+        /// </summary>
         internal event Func<IXDocument, ISwObject> ProvidePreviewContext;
 
         internal SwMacroFeatureEditor(ISwApplication app, Type defType,
@@ -53,6 +60,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
 
                     if (curMacroFeat.UseCachedParameters)
                     {
+                        // 对已提交宏特征：将参数缓存回写到特征定义
                         curMacroFeat.ApplyParametersCache();
                         curMacroFeat.UseCachedParameters = false;
                     }

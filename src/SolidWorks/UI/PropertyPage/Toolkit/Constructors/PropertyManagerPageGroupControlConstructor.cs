@@ -24,6 +24,9 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
     [DefaultType(typeof(SpecialTypes.ComplexType))]
+    /// <summary>
+    /// PMP 分组控件构造器。
+    /// </summary>
     internal class PropertyManagerPageGroupControlConstructor
         : GroupConstructor<PropertyManagerPageGroupControl, PropertyManagerPagePage>,
         IPropertyManagerPageElementConstructor

@@ -18,6 +18,10 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 顶点（Vertex）接口。
+    /// 顶点是边与边/边与面的连接点，表示几何拓扑中的零维元素。
+    /// </summary>
     public interface ISwVertex : ISwEntity, IXVertex
     {
         IVertex Vertex { get; }
@@ -53,12 +57,16 @@ namespace Xarial.XCad.SolidWorks.Geometry
     }
 
     [DebuggerDisplay("{" + nameof(Coordinate) + "}")]
+    /// <summary>
+    /// SolidWorks 顶点实现类。
+    /// </summary>
     internal class SwVertex : SwEntity, ISwVertex
     {
         public IVertex Vertex { get; }
 
         public Point Coordinate
         {
+            // 顶点坐标由底层几何决定，不支持直接修改
             get => new Point((double[])Vertex.GetPoint());
             set => throw new NotSupportedException("Coordinate of the vertex cannot be changed");
         }

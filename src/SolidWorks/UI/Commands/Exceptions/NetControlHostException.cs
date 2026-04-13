@@ -11,6 +11,9 @@ using System.Text;
 
 namespace Xarial.XCad.SolidWorks.UI.Commands.Exceptions
 {
+    /// <summary>
+    /// .NET 控件承载失败异常。
+    /// </summary>
     public class NetControlHostException : Exception
     {
         public NetControlHostException(IntPtr handle) : base($"Failed to host .NET control (handle {handle}) in task pane") 

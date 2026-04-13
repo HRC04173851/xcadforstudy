@@ -25,6 +25,10 @@ using Xarial.XCad.Utils.PageBuilder.Binders;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit
 {
+    /// <summary>
+    /// PropertyManagerPage 页面构建器。
+    /// 负责根据模型/特性元数据创建 SolidWorks PMP 页面、分组与控件，并建立绑定关系。
+    /// </summary>
     internal class PropertyManagerPageBuilder
         : PageBuilderBase<PropertyManagerPagePage, PropertyManagerPageGroupBase, IPropertyManagerPageControlEx>
     {
@@ -154,6 +158,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit
 
         private void OnBeforeControlsDataLoad(IEnumerable<IBinding> bindings)
         {
+            // 按控件类型分组执行后处理（例如单选组、列表类控件的批处理）
             var ctrls = bindings.Select(b => b.Control)
                 .OfType<IPropertyManagerPageControlEx>().ToArray();
 

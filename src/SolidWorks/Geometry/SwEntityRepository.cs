@@ -16,10 +16,16 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 几何实体存儲库接口，支持按具体实体类型（面、边、顶点）索引。
+    /// </summary>
     public interface ISwEntityRepository : IXEntityRepository, IXRepository<ISwEntity>
     {
     }
 
+    /// <summary>
+    /// SolidWorks 几何实体存儲库拽象基类，封装面/边/顶点的杪举、过滤和删除操作。
+    /// </summary>
     internal abstract class SwEntityRepository : ISwEntityRepository
     {
         IXEntity IXRepository<IXEntity>.this[string name] => this[name];

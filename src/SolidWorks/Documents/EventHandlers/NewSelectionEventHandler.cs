@@ -14,6 +14,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents.EventHandlers
 {
+    /// <summary>
+    /// 新选择事件处理器。
+    /// 在选择集变化时回调最后一个被选中的对象。
+    /// </summary>
     internal class NewSelectionEventHandler : SwModelEventsHandler<NewSelectionDelegate>
     {
         private IModelDoc2 Model => m_Doc.Model;

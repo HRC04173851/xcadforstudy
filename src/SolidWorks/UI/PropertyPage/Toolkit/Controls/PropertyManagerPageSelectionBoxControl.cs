@@ -36,6 +36,11 @@ using Xarial.XCad.SolidWorks.Utils;
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
     //TODO: think of a better way to work with type instead of object (can be either SwSelObject or List). See how combo box is implemented
+    // 中文：TODO：考虑优化类型处理，当前使用 object 兼容单选对象与多选列表。
+    /// <summary>
+    /// PMP 选择框控件实现。
+    /// 支持单选/多选、选择过滤器、自定义过滤器与选择标记（Mark）管理。
+    /// </summary>
     internal class PropertyManagerPageSelectionBoxControl : PropertyManagerPageBaseControl<object, IPropertyManagerPageSelectionbox>
     {
         private const int DEFAULT_SEL_HEIGHT = -1;

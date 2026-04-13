@@ -26,8 +26,14 @@ using System.ComponentModel;
 
 namespace Xarial.XCad.SolidWorks.UI
 {
+    /// <summary>
+    /// SolidWorks 任务窗格接口。
+    /// </summary>
     public interface ISwTaskPane<TControl> : IXTaskPane<TControl>, IDisposable 
     {
+        /// <summary>
+        /// 底层 SolidWorks TaskPane 视图对象。
+        /// </summary>
         ITaskpaneView TaskPaneView { get; }
     }
 
@@ -40,10 +46,15 @@ namespace Xarial.XCad.SolidWorks.UI
 
         public static void ForcePaint(IntPtr hWnd)
         {
+            // 触发一次 WM_PAINT，避免任务窗格激活后首帧未刷新
             SendMessage(hWnd, WmPaint, IntPtr.Zero, IntPtr.Zero);
         }
     }
 
+    /// <summary>
+    /// SolidWorks 任务窗格实现。
+    /// 支持按钮点击、控件创建、激活通知，以及 WPF/WinForms 控件生命周期管理。
+    /// </summary>
     internal class SwTaskPane<TControl> : ISwTaskPane<TControl>, IAutoDisposable
     {
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]

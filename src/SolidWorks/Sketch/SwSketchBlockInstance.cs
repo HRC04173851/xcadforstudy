@@ -21,11 +21,17 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图块实例接口，表示草图块定义的一个具体实例放置。
+    /// </summary>
     public interface ISwSketchBlockInstance : IXSketchBlockInstance, ISwFeature, ISwSketchEntity
     {
         ISketchBlockInstance SketchBlockInstance { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图块实例实现类，封装实例的定义、所属草图、变换矩阵和鼓波器特征。
+    /// </summary>
     internal class SwSketchBlockInstance : SwFeature, ISwSketchBlockInstance
     {
         public ISketchBlockInstance SketchBlockInstance { get; }

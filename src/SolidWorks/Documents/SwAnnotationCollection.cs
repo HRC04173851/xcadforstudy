@@ -21,10 +21,16 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 标注集合接口，继承自 xCAD 通用标注存儲库接口。
+    /// </summary>
     public interface ISwAnnotationCollection : IXAnnotationRepository 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 标注集合拽象基类，封装所有标注（尺度、注释等）的枚举逻辑。
+    /// </summary>
     internal abstract class SwAnnotationCollection : ISwAnnotationCollection
     {
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

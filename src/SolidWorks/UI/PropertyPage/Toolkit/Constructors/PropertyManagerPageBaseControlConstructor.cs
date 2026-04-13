@@ -29,12 +29,18 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
+    /// <summary>
+    /// PMP 元素构造器通用接口。
+    /// </summary>
     internal interface IPropertyManagerPageElementConstructor : IPageElementConstructor
     {
         Type ControlType { get; }
         void PostProcessControls(IEnumerable<IPropertyManagerPageControlEx> ctrls);
     }
 
+    /// <summary>
+    /// PMP 基础控件构造器抽象基类。
+    /// </summary>
     internal abstract class PropertyManagerPageBaseControlConstructor<TControl, TControlSw>
             : ControlConstructor<TControl, PropertyManagerPageGroupBase, PropertyManagerPagePage>,
             IPropertyManagerPageElementConstructor

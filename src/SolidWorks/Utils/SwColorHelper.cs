@@ -15,6 +15,10 @@ using System.Text;
 
 namespace Xarial.XCad.SolidWorks.Utils
 {
+    /// <summary>
+    /// SolidWorks 颜色转换辅助类。
+    /// 在 .NET `Color` 与 SolidWorks 材质颜色数组（MaterialPropertyValues）之间转换。
+    /// </summary>
     internal static class SwColorHelper
     {
         internal static Color? GetColor(IComponent2 ownerComp,

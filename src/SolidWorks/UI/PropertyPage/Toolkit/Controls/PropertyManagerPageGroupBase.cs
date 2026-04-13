@@ -18,6 +18,10 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 分组基类。
+    /// 统一维护处理器与父页面上下文。
+    /// </summary>
     internal abstract class PropertyManagerPageGroupBase : Group, IPropertyManagerPageElementEx
     {
         internal SwPropertyManagerPageHandler Handler { get; }
@@ -44,6 +48,9 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
         }
     }
 
+    /// <summary>
+    /// 带底层 SolidWorks 分组对象的 PMP 分组基类。
+    /// </summary>
     internal abstract class PropertyManagerPageGroupBase<TSwControlGroup> : PropertyManagerPageGroupBase
         where TSwControlGroup : class
     {

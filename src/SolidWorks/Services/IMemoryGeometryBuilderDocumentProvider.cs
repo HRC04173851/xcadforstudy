@@ -13,6 +13,10 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Services
 {
+    /// <summary>
+    /// 内存几何构建文档提供器接口。
+    /// 为 `IXMemoryGeometryBuilder` 提供可执行几何 API 的文档上下文。
+    /// </summary>
     public interface IMemoryGeometryBuilderDocumentProvider
     {
         ISwDocument ProvideDocument(Type geomType);

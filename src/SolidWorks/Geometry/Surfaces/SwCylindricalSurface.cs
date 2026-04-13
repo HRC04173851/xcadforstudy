@@ -15,10 +15,16 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks 圆柱面接口。
+    /// </summary>
     public interface ISwCylindricalSurface : ISwSurface, IXCylindricalSurface 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 圆柱面实现类。
+    /// </summary>
     internal class SwCylindricalSurface : SwSurface, ISwCylindricalSurface
     {
         internal SwCylindricalSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

@@ -19,11 +19,21 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 草图特征基接口（2D/3D 草图共同基类）。
+    /// </summary>
     public interface ISwSketchBase : IXSketchBase, ISwFeature
     {
+        /// <summary>
+        /// 获取底层 SolidWorks 草图对象（ISketch）。
+        /// </summary>
         ISketch Sketch { get; }
     }
 
+    /// <summary>
+    /// 草图编辑器抽象基类。
+    /// 封装进入/退出草图编辑状态、选择草图、冻结界面刷新与 AddToDB 写入模式控制。
+    /// </summary>
     internal abstract class SwSketchEditorBase<TSketch> : IEditor<TSketch>
         where TSketch : SwSketchBase
     {
@@ -67,6 +77,7 @@ namespace Xarial.XCad.SolidWorks.Features
 
             if (!Target.IsEditing)
             {
+                // 先选中草图特征，再进入编辑状态
                 if (((IFeature)m_Sketch).Select2(false, 0))
                 {
                     StartEdit();
@@ -78,6 +89,7 @@ namespace Xarial.XCad.SolidWorks.Features
             }
 
             m_AddToDbOrig = m_SketchMgr.AddToDB;
+            // AddToDB=true 可减少草图创建时的重建开销，常用于批量添加草图实体
             m_SketchMgr.AddToDB = true;
         }
 
@@ -92,6 +104,7 @@ namespace Xarial.XCad.SolidWorks.Features
 
             if (Target.IsEditing)
             {
+                // 退出草图编辑前清空选择，避免残留选择状态影响后续操作
                 m_SketchMgr.Document.ClearSelection2(true);
                 
                 EndEdit(Cancel);
@@ -99,6 +112,10 @@ namespace Xarial.XCad.SolidWorks.Features
         }
     }
 
+    /// <summary>
+    /// SolidWorks 草图特征抽象基类。
+    /// 提供草图实体集合、草图创建、编辑器创建与显示状态（隐藏/显示）控制。
+    /// </summary>
     internal abstract class SwSketchBase : SwFeature, ISwSketchBase
     {
         private readonly SwSketchEntityCollection m_SwEntsColl;
@@ -131,6 +148,7 @@ namespace Xarial.XCad.SolidWorks.Features
 
         protected override IFeature InsertFeature(CancellationToken cancellationToken)
         {
+            // 创建草图并返回对应的特征对象（IFeature）
             var sketch = CreateSketch();
 
             Sketch = sketch;
@@ -158,9 +176,11 @@ namespace Xarial.XCad.SolidWorks.Features
                 switch (visibility)
                 {
                     case swVisibilityState_e.swVisibilityStateHide:
+                        // 草图被隐藏（Blank）
                         return true;
 
                     case swVisibilityState_e.swVisibilityStateShown:
+                        // 草图显示（Unblank）
                         return false;
 
                     default:
@@ -173,6 +193,7 @@ namespace Xarial.XCad.SolidWorks.Features
                 {
                     using (var selGrp = new SelectionGroup(OwnerDocument, true))
                     {
+                        // SolidWorks 通过当前选择对象执行 Blank/Unblank 操作
                         selGrp.Add(Feature);
 
                         if (value)

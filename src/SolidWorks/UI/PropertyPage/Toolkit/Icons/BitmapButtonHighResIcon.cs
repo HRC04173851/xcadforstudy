@@ -16,6 +16,10 @@ using Xarial.XCad.UI.PropertyPage.Enums;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Icons
 {
+    /// <summary>
+    /// PMP 位图按钮高分辨率图标包装。
+    /// 生成多尺寸图标与掩码，适配高 DPI 显示。
+    /// </summary>
     internal class BitmapButtonHighResIcon : BitmapButtonIcon
     {
         internal BitmapButtonHighResIcon(IXImage icon, int width, int height, BitmapEffect_e effect = BitmapEffect_e.None)

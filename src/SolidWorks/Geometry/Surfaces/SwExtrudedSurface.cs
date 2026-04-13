@@ -16,10 +16,16 @@ using Xarial.XCad.SolidWorks.Geometry.Surfaces;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks 拉伸面接口。
+    /// </summary>
     public interface ISwExtrudedSurface : ISwSurface, IXExtrudedSurface
     {
     }
 
+    /// <summary>
+    /// SolidWorks 拉伸面实现类。
+    /// </summary>
     internal class SwExtrudedSurface : SwSurface, ISwExtrudedSurface
     {
         public SwExtrudedSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

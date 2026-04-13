@@ -21,11 +21,17 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图封闭区域接口，代表草图中由轮廓围成的封闭平面区域。
+    /// </summary>
     public interface ISwSketchRegion : IXSketchRegion, ISwPlanarRegion, ISwSelObject
     {
         ISketchRegion Region { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图封闭区域实现类。封装草图区域的外环、内环，并提供到平面几何的映射。
+    /// </summary>
     internal class SwSketchRegion : SwSelObject, ISwSketchRegion
     {
         IXLoop IXRegion.OuterLoop { get => OuterLoop; set => OuterLoop = (ISwLoop)value; }

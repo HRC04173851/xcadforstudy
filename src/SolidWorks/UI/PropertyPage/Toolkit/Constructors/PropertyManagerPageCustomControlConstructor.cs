@@ -23,6 +23,9 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
+    /// <summary>
+    /// PMP 自定义控件构造器。
+    /// </summary>
     internal class PropertyManagerPageCustomControlConstructor
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageCustomControl, IPropertyManagerPageWindowFromHandle>, ICustomControlConstructor
     {

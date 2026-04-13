@@ -30,29 +30,47 @@ using Xarial.XCad.Utils;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 结构构件特征接口，提供对结构构件特征数据的访问。
+    /// </summary>
     public interface ISwStructuralMember : IXStructuralMember, ISwFeature
     {
         IStructuralMemberFeatureData StructuralMemberFeatureData { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 结构构件组存儲库接口。
+    /// </summary>
     public interface ISwSructuralMemberGroupRepository : IXSructuralMemberGroupRepository
     {
     }
 
+    /// <summary>
+    /// SolidWorks 结构构件组接口，表示结构构件中的单个路径组。
+    /// </summary>
     public interface ISwStructuralMemberGroup : IXStructuralMemberGroup
     {
         string Name { get; }
         IStructuralMemberGroup StructuralMemberGroup { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 结构构件子段存儲库接口。
+    /// </summary>
     public interface ISwSructuralMemberPieceRepository : IXSructuralMemberPieceRepository
     {
     }
 
+    /// <summary>
+    /// SolidWorks 结构构件子段接口，表示结构构件中单个轮廓段。
+    /// </summary>
     public interface ISwSructuralMemberPiece : IXStructuralMemberPiece
     {
     }
 
+    /// <summary>
+    /// SolidWorks 结构构件组存儲库实现类，封装组的枚举和按名称查找。
+    /// </summary>
     internal class SwSructuralMemberGroupRepository : ISwSructuralMemberGroupRepository
     {
         public IXStructuralMemberGroup this[string name] => RepositoryHelper.Get(this, name);

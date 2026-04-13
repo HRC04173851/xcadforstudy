@@ -19,6 +19,9 @@ using Xarial.XCad.SolidWorks.UI.Commands.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.UI.Toolkit
 {
+    /// <summary>
+    /// 模型视图页签控件创建器。
+    /// </summary>
     internal class ModelViewTabCreator<TControl> : CustomControlCreator<string, TControl>
     {
         private readonly IServiceProvider m_SvcProvider;

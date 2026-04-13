@@ -13,6 +13,9 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Icons
 {
+    /// <summary>
+    /// PMP 页面标题图标包装（22x22）。
+    /// </summary>
     internal class TitleIcon : IIcon
     {
         internal IXImage Icon { get; }

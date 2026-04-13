@@ -20,6 +20,9 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
     [DefaultType(typeof(string))]
+    /// <summary>
+    /// PMP 文本框控件构造器。
+    /// </summary>
     internal class PropertyManagerPageTextBoxControlConstructor
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageTextBoxControl, IPropertyManagerPageTextbox>
     {

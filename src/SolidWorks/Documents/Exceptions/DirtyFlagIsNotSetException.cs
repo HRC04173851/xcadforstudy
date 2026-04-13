@@ -14,6 +14,7 @@ namespace Xarial.XCad.SolidWorks.Documents.Exceptions
 {
     /// <summary>
     /// Indicates that document cannot be set to dirty
+    /// <para>中文：表示文档无法标记为已修改（Dirty）。</para>
     /// </summary>
     public class DirtyFlagIsNotSetException : Exception, IUserException
     {

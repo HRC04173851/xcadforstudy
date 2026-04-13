@@ -15,6 +15,7 @@ namespace Xarial.XCad.SolidWorks.Services
 {
     /// <summary>
     /// Handler for the callout when used with <see cref="XCad.Documents.IXDocumentGraphics.PreCreateTriad"/>
+    /// <para>中文：三轴操纵器（Triad）处理器提供器接口。</para>
     /// </summary>
     public interface ITriadHandlerProvider
     {

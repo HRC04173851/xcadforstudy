@@ -22,6 +22,10 @@ using Xarial.XCad.Toolkit.Services;
 
 namespace Xarial.XCad.SolidWorks.UI.Toolkit
 {
+    /// <summary>
+    /// TaskPane 页签控件创建器。
+    /// 负责任务窗格创建、图标配置和按钮加载。
+    /// </summary>
     internal class TaskPaneTabCreator<TControl> : CustomControlCreator<ITaskpaneView, TControl>
     {
         private readonly ISwApplication m_App;

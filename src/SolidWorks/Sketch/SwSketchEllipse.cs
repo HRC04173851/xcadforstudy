@@ -16,11 +16,20 @@ using Xarial.XCad.SolidWorks.Features;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图椭圆接口。
+    /// </summary>
     public interface ISwSketchEllipse : IXSketchEllipse, ISwSketchSegment
     {
+        /// <summary>
+        /// 底层 SolidWorks 草图椭圆对象。
+        /// </summary>
         ISketchEllipse Ellipse { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图椭圆实现类。
+    /// </summary>
     internal class SwSketchEllipse : SwSketchSegment, ISwSketchEllipse
     {
         public ISketchEllipse Ellipse => (ISketchEllipse)Segment;

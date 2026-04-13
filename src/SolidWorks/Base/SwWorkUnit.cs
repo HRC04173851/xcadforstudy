@@ -18,6 +18,9 @@ using Xarial.XCad.Toolkit.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Base
 {
+    /// <summary>
+    /// SolidWorks 工作单元实现，封装异步操作的提交、运行及结果获取。
+    /// </summary>
     internal class SwWorkUnit : IXWorkUnit
     {
         public WorkUnitOperationDelegate Operation

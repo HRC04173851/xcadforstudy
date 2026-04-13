@@ -12,6 +12,9 @@ using Xarial.XCad.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Documents.Exceptions
 {
+    /// <summary>
+    /// 配置特定切割清单不受支持异常。
+    /// </summary>
     public class ConfigurationSpecificCutListNotSupportedException : NotSupportedException, IUserException
     {
         public ConfigurationSpecificCutListNotSupportedException() 

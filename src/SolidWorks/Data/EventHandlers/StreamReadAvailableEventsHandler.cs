@@ -12,6 +12,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Data.EventHandlers
 {
+    /// <summary>
+    /// 3rd-party Stream 读可用事件处理器。
+    /// 处理加载通知重复/缺失场景并保证仅触发一次读取回调。
+    /// </summary>
     internal class StreamReadAvailableEventsHandler : SwModelEventsHandler<DataStoreAvailableDelegate>
     {
         private bool m_Is3rdPartyStreamLoaded;

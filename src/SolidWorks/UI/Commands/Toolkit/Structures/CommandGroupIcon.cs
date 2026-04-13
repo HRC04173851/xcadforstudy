@@ -13,6 +13,9 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.UI.Commands.Toolkit.Structures
 {
+    /// <summary>
+    /// 命令组标准分辨率图标包装（16/24）。
+    /// </summary>
     internal class CommandGroupIcon : IIcon
     {
         protected readonly IXImage m_Icon;

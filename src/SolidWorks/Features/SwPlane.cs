@@ -18,14 +18,22 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 基准面接口（Reference Plane）。
+    /// </summary>
     public interface ISwPlane : IXPlane, ISwFeature 
     {
         /// <summary>
         /// Pointer to the referenced plane feature
+        /// <para>中文：指向底层基准面特征对象（IRefPlane）的 COM 指针</para>
         /// </summary>
         IRefPlane RefPlane { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 基准面特征实现类。
+    /// 支持读取/设置几何平面参数（点、法向、参考方向）并创建固定基准面。
+    /// </summary>
     internal class SwPlane : SwFeature, ISwPlane
     {
         internal const string TypeName = "RefPlane";
@@ -52,6 +60,7 @@ namespace Xarial.XCad.SolidWorks.Features
             {
                 if (IsCommitted)
                 {
+                    // 使用单位坐标轴通过基准面变换矩阵映射到模型坐标，重建几何平面
                     var x = (IMathVector)m_MathUtils.CreateVector(new double[] { 1, 0, 0 });
                     var z = (IMathVector)m_MathUtils.CreateVector(new double[] { 0, 0, 1 });
                     var origin = (IMathPoint)m_MathUtils.CreatePoint(new double[] { 0, 0, 0 });
@@ -105,6 +114,7 @@ namespace Xarial.XCad.SolidWorks.Features
 
                     if (nextFeatTypeName == SwOrigin.TypeName)//this feature is standard plane
                     {
+                        // 标准基准面（前视/上视/右视）视为系统特征，不是用户特征
                         return false;
                     }
                     else if (nextFeatTypeName != TypeName) //this feature is not a standard plane
@@ -127,6 +137,7 @@ namespace Xarial.XCad.SolidWorks.Features
                 throw new NullReferenceException("Plane is not specified");
             }
 
+            // 通过平面上的三点（原点点、法向方向点、参考方向点）创建固定基准面
             var pt1 = Plane.Point;
             var pt2 = Plane.Point.Move(Plane.Direction, 0.1);
             var pt3 = Plane.Point.Move(Plane.Reference, 0.1);

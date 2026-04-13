@@ -19,10 +19,16 @@ using Xarial.XCad.SolidWorks.Geometry;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks Dumb Body 特征接口，表示不包含建模历史的导入体。
+    /// </summary>
     public interface ISwDumbBody : IXDumbBody, ISwFeature
     {
     }
 
+    /// <summary>
+    /// SolidWorks Dumb Body 特征实现类，封装以 BREP 体形导入的非参数化体的访问。
+    /// </summary>
     internal class SwDumbBody : SwFeature, ISwDumbBody
     {
         internal SwDumbBody(IFeature feat, SwDocument doc, SwApplication app, bool created) : base(feat, doc, app, created)

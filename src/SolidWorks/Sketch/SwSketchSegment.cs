@@ -26,12 +26,18 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图段接口（直线、圆弧、椭圆、样条等草图实体的共同接口）。
+    /// </summary>
     public interface ISwSketchSegment : IXSketchSegment, ISwSelObject, ISwSketchEntity
     {
         ISketchSegment Segment { get; }
         new ISwCurve Definition { get; }
     }
 
+    /// <summary>
+    /// 草图段抽象基类，封装草图实体创建、提交、颜色/图层与几何定义计算逻辑。
+    /// </summary>
     internal abstract class SwSketchSegment : SwSketchEntity, ISwSketchSegment
     {
         IXCurve IXSketchSegment.Definition => Definition;
@@ -115,6 +121,7 @@ namespace Xarial.XCad.SolidWorks.Sketch
         {
             get 
             {
+                // 从草图段提取基础曲线，并按实际起止点修剪为有效段
                 var curve = Segment.IGetCurve();
                 var startPt = StartPoint.Coordinate;
                 var endPt = EndPoint.Coordinate;
@@ -130,6 +137,7 @@ namespace Xarial.XCad.SolidWorks.Sketch
                 if (AssignedOwnerBlock != null) 
                 {
                     //NOTE: if block is assigned and this sketch entity is extracted form the definition block, it is required transform the curve to the sketch block instance space
+                    // 中文：若来自草图块定义且已分配块实例，需要变换到块实例坐标系
                     curve.ApplyTransform((MathTransform)m_MathUtils.ToMathTransform(blockTransform));
                 }
 
@@ -177,6 +185,7 @@ namespace Xarial.XCad.SolidWorks.Sketch
             using (var editor = !m_OwnerSketch.IsEditing ? m_OwnerSketch?.Edit() : null)
             {
                 //NOTE: this entity can be created even if the IsCommited set to false as these are the cached entities created
+                // 中文：未提交状态下也可先创建缓存草图实体，后续统一提交
                 var seg = CreateSketchEntity();
 
                 if (seg == null)

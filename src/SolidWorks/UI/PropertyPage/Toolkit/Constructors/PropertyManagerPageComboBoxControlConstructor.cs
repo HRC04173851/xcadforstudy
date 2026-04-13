@@ -27,6 +27,9 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
+    /// <summary>
+    /// PMP 下拉框控件构造器基类。
+    /// </summary>
     internal abstract class PropertyManagerPageComboBoxControlConstructorBase<TVal>
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageComboBoxControl<TVal>, IPropertyManagerPageCombobox>
     {
@@ -40,6 +43,9 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
     }
 
     [DefaultType(typeof(SpecialTypes.EnumType))]
+    /// <summary>
+    /// 枚举型下拉框构造器。
+    /// </summary>
     internal class PropertyManagerPageEnumComboBoxControlConstructor
         : PropertyManagerPageComboBoxControlConstructorBase<Enum>
     {
@@ -49,6 +55,9 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
         }
     }
 
+    /// <summary>
+    /// 自定义数据源下拉框构造器。
+    /// </summary>
     internal class PropertyManagerPageCustomItemsComboBoxControlConstructor
         : PropertyManagerPageComboBoxControlConstructorBase<object>, ICustomItemsComboBoxControlConstructor
     {

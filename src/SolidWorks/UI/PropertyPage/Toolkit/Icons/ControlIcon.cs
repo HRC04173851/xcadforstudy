@@ -14,6 +14,9 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Icons
 {
+    /// <summary>
+    /// PMP 通用控件图标包装（图像+掩码）。
+    /// </summary>
     internal class ControlIcon : IIcon
     {
         internal IXImage Icon { get; }

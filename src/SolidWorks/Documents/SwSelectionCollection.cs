@@ -29,12 +29,18 @@ using Xarial.XCad.Base;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 选择集合接口，支持创建标注框（Callout）并管理当前选择的对象。
+    /// </summary>
     public interface ISwSelectionCollection : IXSelectionRepository, IDisposable 
     {
         ISwSelCallout PreCreateCallout<T>()
             where T : SwCalloutBaseHandler, new();
     }
 
+    /// <summary>
+    /// SolidWorks 选择集合实现类，封装选择管理器事件订阅、选择项枚举及清除选择操作。
+    /// </summary>
     internal class SwSelectionCollection : ISwSelectionCollection
     {
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

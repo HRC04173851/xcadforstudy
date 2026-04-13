@@ -53,6 +53,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Xarial.XCad.SolidWorks.Features.CustomFeature
 {
+    /// <summary>
+    /// 宏特征实体标识（Entity Id），用于在重建前后追踪几何实体对应关系。
+    /// </summary>
     public class MacroFeatureEntityId 
     {
         public int FirstId { get; set; }
@@ -65,6 +68,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         protected class MacroFeatureRegenerateData 
         {
+            // 宏特征重建队列项：应用程序、文档、特征三元组
             internal ISwApplication Application { get; set; }
             internal ISwDocument Document { get; set; }
             internal ISwMacroFeature Feature { get; set; }
@@ -74,6 +78,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
         [EditorBrowsable(EditorBrowsableState.Never)]
         public static IXMemoryBody CreateEditBody(IBody2 body, ISwDocument doc, ISwApplication app, bool isPreview)
         {
+            // 根据体类型创建宏特征编辑体包装对象（实体/片体/线框体）
             var bodyType = (swBodyType_e)body.GetType();
 
             switch (bodyType)
@@ -106,6 +111,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
 
         /// <summary>
         /// Called when macro feature is rebuild
+        /// <para>中文：宏特征重建后触发，可用于执行后处理逻辑（如同步参数/更新外部状态）</para>
         /// </summary>
         public event PostRebuildMacroFeatureDelegate PostRebuild 
         {
@@ -129,6 +135,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
             {
                 if (m_Application == null)
                 {
+                    // 若未注入应用程序，则从当前进程获取 SolidWorks 实例
                     m_Application = (SwApplication)SwApplicationFactory.FromProcess(Process.GetCurrentProcess());
                 }
 
@@ -214,6 +221,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
             }
 
             //Creation of icons may fail if user doesn't have write permissions or icon is locked
+            // 中文：图标文件创建可能因目录权限不足或图标文件被占用而失败
             try
             {
                 iconsConverter.ConvertIcon(new MacroFeatureIcon(icon, MacroFeatureIconInfo.RegularName), folder);

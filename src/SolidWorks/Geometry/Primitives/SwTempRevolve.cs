@@ -22,16 +22,25 @@ using Xarial.XCad.SolidWorks.Geometry.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Primitives
 {
+    /// <summary>
+    /// SolidWorks 临时旋转体接口，用于内存旋转几何操作。
+    /// </summary>
     public interface ISwTempRevolve : IXRevolve, ISwTempPrimitive
     {
         new ISwTempRegion[] Profiles { get; set; }
         new ISwLineCurve Axis { get; set; }
     }
 
+    /// <summary>
+    /// SolidWorks 临时实体旋转接口。
+    /// </summary>
     public interface ISwTempSolidRevolve : ISwTempRevolve 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 实体旋转临时体实现类。
+    /// </summary>
     internal class SwTempSolidRevolve : SwTempPrimitive, ISwTempSolidRevolve
     {
         internal SwTempSolidRevolve(SwTempBody[] bodies, ISwApplication app, bool isCreated) 

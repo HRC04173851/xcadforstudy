@@ -16,6 +16,10 @@ using Xarial.XCad.UI.PropertyPage.Enums;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Icons
 {
+    /// <summary>
+    /// PMP 位图按钮图标包装。
+    /// 生成按钮图像与对应掩码图像。
+    /// </summary>
     internal class BitmapButtonIcon : IIcon
     {
         protected const int BORDER_SIZE = 3;

@@ -20,8 +20,12 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 几何实体接口（面、边、顶点等共同基接口）。
+    /// </summary>
     public interface ISwEntity : ISwSelObject, IXEntity, ISupportsResilience<ISwEntity>
     {
+        /// <summary>底层 SolidWorks IEntity COM 对象。</summary>
         IEntity Entity { get; }
 
         new ISwComponent Component { get; }
@@ -29,6 +33,10 @@ namespace Xarial.XCad.SolidWorks.Geometry
         new ISwBody Body { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 几何实体抽象基类。
+    /// 提供组件归属、安全实体恢复（Resilient）、选择与最近点查询基础能力。
+    /// </summary>
     internal abstract class SwEntity : SwSelObject, ISwEntity
     {
         IXBody IXEntity.Body => Body;
@@ -48,6 +56,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
         {
             get 
             {
+                // 装配体上下文下，实体可能归属于某个组件（Component2）
                 var comp = (IComponent2)Entity.GetComponent();
 
                 if (comp != null)
@@ -72,6 +81,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
 
         internal override void Select(bool append, ISelectData selData)
         {
+            // 实体选择使用 IEntity.Select4，而非通用 MultiSelect2
             if (!Entity.Select4(append, (SelectData)selData))
             {
                 throw new Exception("Failed to select entity");
@@ -82,6 +92,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
 
         public ISwEntity CreateResilient()
         {
+            // 获取 SafeEntity，用于在拓扑变更后尽量保持实体引用有效
             var safeEnt = Entity.GetSafeEntity();
 
             if (safeEnt == null) 

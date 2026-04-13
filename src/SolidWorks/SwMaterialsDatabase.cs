@@ -19,16 +19,22 @@ namespace Xarial.XCad.SolidWorks
 {
     /// <summary>
     /// SOLIDWORKS-specific materials database
+    /// <para>中文：SolidWorks 材料数据库接口。</para>
     /// </summary>
     public interface ISwMaterialsDatabase : IXMaterialsDatabase
     {
         /// <summary>
         /// Full path to the materials database file
+        /// <para>中文：材料数据库文件完整路径。</para>
         /// </summary>
         string FilePath { get; }
     }
 
     [DebuggerDisplay("{" + nameof(Name) + "}")]
+    /// <summary>
+    /// SolidWorks 材料数据库实现。
+    /// 从材料数据库 XML 文件中按需加载材料条目。
+    /// </summary>
     internal class SwMaterialsDatabase : ISwMaterialsDatabase
     {
         public const string SYSTEM_DB_NAME = "solidworks materials";

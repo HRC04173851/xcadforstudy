@@ -22,11 +22,21 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Annotations
 {
+    /// <summary>
+    /// SolidWorks 注解对象接口（尺寸、注释、表格等注解基接口）。
+    /// </summary>
     public interface ISwAnnotation : IXAnnotation, ISwSelObject
     {
+        /// <summary>
+        /// 底层 SolidWorks 注解对象。
+        /// </summary>
         IAnnotation Annotation { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 注解基类实现。
+    /// 提供位置、图层、颜色、字体及创建/提交通用逻辑。
+    /// </summary>
     internal class SwAnnotation : SwSelObject, ISwAnnotation
     {
         public virtual IAnnotation Annotation => m_Creator.Element;

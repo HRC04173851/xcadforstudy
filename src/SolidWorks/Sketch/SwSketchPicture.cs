@@ -26,14 +26,22 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图图片接口，表示嵌入在草图中的图片实体。
+    /// </summary>
     public interface ISwSketchPicture : IXSketchPicture, ISwSketchEntity, ISwFeature
     {
         /// <summary>
         /// Pointer to the sketch picture
+        /// <para>中文：底层草图图片对象指针。</para>
         /// </summary>
         ISketchPicture SketchPicture { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图图片实现类。
+    /// 支持通过临时图片文件插入草图图片并设置边界尺寸/位置。
+    /// </summary>
     internal class SwSketchPicture : SwFeature, ISwSketchPicture
     {
         public ISketchPicture SketchPicture { get; private set; }
@@ -168,6 +176,7 @@ namespace Xarial.XCad.SolidWorks.Sketch
 
         /// <remarks>
         /// Sketch picture in SOLIDWORKS cannot be added into the block
+        /// 中文：SolidWorks 中草图图片不能添加到草图块定义中。
         /// </remarks>
         public IXSketchBlockInstance OwnerBlock => null;
 

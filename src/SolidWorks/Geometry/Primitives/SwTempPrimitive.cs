@@ -17,11 +17,17 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Primitives
 {
+    /// <summary>
+    /// SolidWorks 临时几何体基础接口，表示尚未提交到模型的内存内几何原语。
+    /// </summary>
     public interface ISwTempPrimitive : IXPrimitive
     {
         new ISwTempBody[] Bodies { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 临时几何体基类，实现延迟创建和提交逻辑。
+    /// </summary>
     internal class SwTempPrimitive : ISwTempPrimitive
     {
         IXBody[] IXPrimitive.Bodies => Bodies;

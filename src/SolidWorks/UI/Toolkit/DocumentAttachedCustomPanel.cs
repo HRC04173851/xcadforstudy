@@ -18,6 +18,10 @@ using Xarial.XCad.UI.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.UI.Toolkit
 {
+    /// <summary>
+    /// 文档绑定的自定义面板基类。
+    /// 面板生命周期与文档可见性/激活状态联动。
+    /// </summary>
     internal abstract class DocumentAttachedCustomPanel<TControl> : IXCustomPanel<TControl>, IAutoDisposable
     {
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]

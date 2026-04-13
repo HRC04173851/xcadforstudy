@@ -19,11 +19,18 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 轮廓边接口，表示投影或功能视图中的轮廓边元素。
+    /// </summary>
     public interface ISwSilhouetteEdge : ISwEntity, IXSilhouetteEdge
     {
         ISilhouetteEdge SilhouetteEdge { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 轮廓边实现类。
+    /// <para>注意：<see cref="ISilhouetteEdge"/> 不是 <see cref="IEntity"/>，直接访问 <see cref="Entity"/> 属性将抛出异常。</para>
+    /// </summary>
     internal class SwSilhouetteEdge : SwEntity, ISwSilhouetteEdge
     {
         public ISilhouetteEdge SilhouetteEdge { get; }

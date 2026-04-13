@@ -15,6 +15,10 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.UI
 {
+    /// <summary>
+    /// 工具提示图标包装。
+    /// 固定输出 16x16 BMP 图标用于提示气泡或小型 UI 元素。
+    /// </summary>
     internal class TooltipIcon : IIcon
     {
         internal IXImage Icon { get; }

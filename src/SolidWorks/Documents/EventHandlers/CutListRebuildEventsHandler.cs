@@ -17,6 +17,9 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents.EventHandlers
 {
+    /// <summary>
+    /// 焊件切割清单重建事件处理器。
+    /// </summary>
     internal class CutListRebuildEventsHandler : SwModelEventsHandler<CutListRebuildDelegate>
     {
         private readonly ISwPart m_Part;

@@ -20,6 +20,9 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
     [DefaultType(typeof(Action))]
+    /// <summary>
+    /// PMP 按钮控件构造器。
+    /// </summary>
     internal class PropertyManagerPageButtonControlConstructor
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageButtonControl, IPropertyManagerPageButton>
     {

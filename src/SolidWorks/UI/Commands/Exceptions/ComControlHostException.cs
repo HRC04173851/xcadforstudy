@@ -11,6 +11,9 @@ using System.Text;
 
 namespace Xarial.XCad.SolidWorks.UI.Commands.Exceptions
 {
+    /// <summary>
+    /// COM 控件承载失败异常。
+    /// </summary>
     public class ComControlHostException : Exception
     {
         public ComControlHostException(string progId) 

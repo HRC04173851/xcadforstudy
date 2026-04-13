@@ -15,10 +15,16 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks 平面曲面接口。
+    /// </summary>
     public interface ISwPlanarSurface : ISwSurface, IXPlanarSurface 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 平面曲面实现类。
+    /// </summary>
     internal class SwPlanarSurface : SwSurface, ISwPlanarSurface
     {
         internal SwPlanarSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

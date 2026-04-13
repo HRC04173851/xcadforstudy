@@ -14,6 +14,7 @@ namespace Xarial.XCad.SolidWorks.Exceptions
 {
     /// <summary>
     /// Indicates that macro contains no entry points
+    /// <para>中文：表示宏文件中未找到可执行入口点。</para>
     /// </summary>
     public class MacroHasNoEntryPointsException : Exception, IUserException
     {

@@ -21,6 +21,9 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
+    /// <summary>
+    /// PMP 文本块控件构造器。
+    /// </summary>
     internal class PropertyManagerPageTextBlockControlConstructor
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageTextBlockControl, IPropertyManagerPageLabel>, ITextBlockConstructor
     {

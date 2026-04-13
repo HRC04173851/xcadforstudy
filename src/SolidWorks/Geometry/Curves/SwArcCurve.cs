@@ -18,14 +18,23 @@ using Xarial.XCad.SolidWorks.Geometry.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Curves
 {
+    /// <summary>
+    /// SolidWorks 圆曲线接口（完整圆）。
+    /// </summary>
     public interface ISwCircleCurve : IXCircleCurve, ISwCurve
     {
     }
 
+    /// <summary>
+    /// SolidWorks 圆弧曲线接口。
+    /// </summary>
     public interface ISwArcCurve : ISwCircleCurve, IXArcCurve
     {
     }
 
+    /// <summary>
+    /// SolidWorks 圆曲线实现类。
+    /// </summary>
     internal class SwCircleCurve : SwCurve, ISwCircleCurve
     {
         internal SwCircleCurve(ICurve curve, SwDocument doc, SwApplication app, bool isCreated) 
@@ -48,6 +57,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Curves
             {
                 if (IsCommitted)
                 {
+                    // CircleParams: 圆心、法向、半径
                     var circParams = Curves.First().CircleParams as double[];
                     return new Circle(
                         new Axis(new Point(circParams[0], circParams[1], circParams[2]), 
@@ -86,6 +96,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Curves
 
             var geom = Geometry;
 
+            // 创建圆/圆弧后再按起止点修剪
             var arc = m_Modeler.CreateArc(geom.CenterAxis.Point.ToArray(), geom.CenterAxis.Direction.ToArray(), geom.Diameter / 2, start.ToArray(), end.ToArray()) as ICurve;
 
             if (arc == null) 
@@ -105,6 +116,9 @@ namespace Xarial.XCad.SolidWorks.Geometry.Curves
 
     }
 
+    /// <summary>
+    /// SolidWorks 圆弧实现类。
+    /// </summary>
     internal class SwArcCurve : SwCircleCurve, ISwArcCurve
     {
         internal SwArcCurve(ICurve curve, SwDocument doc, SwApplication app, bool isCreated) : base(curve, doc, app, isCreated)

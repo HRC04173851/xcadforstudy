@@ -19,6 +19,10 @@ using Xarial.XCad.Graphics;
 namespace Xarial.XCad.SolidWorks.Documents
 {
     /// <inheritdoc/>
+    /// <summary>
+    /// SolidWorks 文档图形交互接口。
+    /// 提供 Callout、Triad、DragArrow 等交互图元的预创建能力。
+    /// </summary>
     public interface ISwDocumentGraphics : IXDocumentGraphics
     {
         ISwCallout PreCreateCallout<T>()
@@ -31,6 +35,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             where T : SwDragArrowHandler, new();
     }
 
+    /// <summary>
+    /// SolidWorks 文档图形交互实现。
+    /// 基于服务提供器或泛型处理器预创建 Callout、Triad、DragArrow 等交互图元。
+    /// </summary>
     internal class SwDocumentGraphics : ISwDocumentGraphics
     {
         private readonly SwDocument3D m_Doc;

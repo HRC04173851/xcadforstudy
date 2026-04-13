@@ -42,11 +42,21 @@ using System.Globalization;
 
 namespace Xarial.XCad.SolidWorks.Features.CustomFeature
 {
+    /// <summary>
+    /// SolidWorks 宏特征接口。
+    /// 宏特征（Macro Feature）是由用户代码驱动重建逻辑的自定义参数化特征。
+    /// </summary>
     public interface ISwMacroFeature : ISwFeature, IXCustomFeature
     {
+        /// <summary>
+        /// 获取宏特征当前所属的配置（Configuration）。
+        /// </summary>
         new ISwConfiguration Configuration { get; }
     }
 
+    /// <summary>
+    /// 宏特征基础实现，封装 IMacroFeatureData、定义类型、目标变换以及 COM 宏特征插入逻辑。
+    /// </summary>
     internal class SwMacroFeature : SwFeature, ISwMacroFeature
     {
         IXConfiguration IXCustomFeature.Configuration => Configuration;
@@ -63,6 +73,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
                 {
                     if (m_DefinitionType == null)
                     {
+                        // 从已存在特征的 ProgId 反查 .NET 定义类型
                         var progId = FeatureData.GetProgId();
 
                         if (!string.IsNullOrEmpty(progId))
@@ -98,6 +109,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
         }
 
         //TODO: check constant context disconnection exception
+        // 中文：TODO：检查常量上下文下连接断开异常
         public ISwConfiguration Configuration
             => OwnerDocument.CreateObjectFromDispatch<SwConfiguration>(FeatureData.CurrentConfiguration);
 
@@ -185,6 +197,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
 
         protected virtual void ValidateDefinitionType()
         {
+            // 仅允许继承自 SwMacroFeatureDefinition 的定义类型
             if (!typeof(SwMacroFeatureDefinition).IsAssignableFrom(DefinitionType))
             {
                 throw new MacroFeatureDefinitionTypeMismatch(DefinitionType, typeof(SwMacroFeatureDefinition));
@@ -192,6 +205,9 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
         }
     }
 
+    /// <summary>
+    /// 泛型宏特征接口，TParams 为宏特征参数模型类型。
+    /// </summary>
     public interface ISwMacroFeature<TParams> : ISwMacroFeature, IXCustomFeature<TParams>
         where TParams : class
     {

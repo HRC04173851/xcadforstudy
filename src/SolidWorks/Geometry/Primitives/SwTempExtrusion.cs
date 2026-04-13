@@ -26,15 +26,24 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Primitives
 {
+    /// <summary>
+    /// SolidWorks 临时拉伸体接口，用于内存拉伸几何操作。
+    /// </summary>
     public interface ISwTempExtrusion : IXExtrusion, ISwTempPrimitive
     {
         new ISwPlanarRegion[] Profiles { get; set; }
     }
 
+    /// <summary>
+    /// SolidWorks 临时实体拉伸接口。
+    /// </summary>
     public interface ISwTempSolidExtrusion : ISwTempExtrusion 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 临时片体拉伸接口。
+    /// </summary>
     public interface ISwTempSurfaceExtrusion : ISwTempExtrusion
     {
     }

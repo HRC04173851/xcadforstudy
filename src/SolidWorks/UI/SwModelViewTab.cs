@@ -18,11 +18,18 @@ using Xarial.XCad.UI.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.UI
 {
+    /// <summary>
+    /// SolidWorks 模型视图页签接口。
+    /// </summary>
     public interface ISwModelViewTab<TControl> : IXCustomPanel<TControl>, IDisposable 
     {
         string TabName { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 模型视图页签实现。
+    /// 在文档模型视图区域创建并管理自定义控件页签。
+    /// </summary>
     internal class SwModelViewTab<TControl> : DocumentAttachedCustomPanel<TControl>, ISwModelViewTab<TControl>
     {
         private readonly ModelViewTabCreator<TControl> m_CtrlCreator;

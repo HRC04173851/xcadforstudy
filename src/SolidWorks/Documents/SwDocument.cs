@@ -48,19 +48,51 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 文档接口，继承自 <see cref="ISwObject"/> 和 <see cref="IXDocument"/>，
+    /// 是所有 SolidWorks 文档类型（零件、装配体、工程图）的基础接口。
+    /// </summary>
     public interface ISwDocument : ISwObject, IXDocument, IDisposable
     {
+        /// <summary>
+        /// 获取底层 SolidWorks 文档 COM 对象（IModelDoc2），可访问 SolidWorks 原生 API。
+        /// </summary>
         IModelDoc2 Model { get; }
+
+        /// <summary>
+        /// 获取该文档的特征管理器（FeatureManager），用于访问和操作特征树中的所有特征。
+        /// </summary>
         new ISwFeatureManager Features { get; }
+
+        /// <summary>
+        /// 获取该文档当前的选择集合（SelectionManager），包含所有被选中的对象。
+        /// </summary>
         new ISwSelectionCollection Selections { get; }
+
+        /// <summary>
+        /// 获取该文档的尺寸标注集合，用于枚举和访问所有尺寸。
+        /// </summary>
         new ISwDimensionsCollection Dimensions { get; }
+
+        /// <summary>
+        /// 获取该文档的自定义属性集合（Custom Properties），如零件号、材料等属性。
+        /// </summary>
         new ISwCustomPropertiesCollection Properties { get; }
+
+        /// <summary>
+        /// 获取该文档对应的 SolidWorks 版本信息。
+        /// </summary>
         new ISwVersion Version { get; }
+
+        /// <summary>
+        /// 从流中反序列化 SolidWorks 对象（通过持久化引用还原实体）。
+        /// </summary>
         new TSwObj DeserializeObject<TSwObj>(Stream stream)
             where TSwObj : ISwObject;
-        
+
         /// <summary>
         /// Creates xCAD object from a SOLIDWORKS dispatch object
+        /// <para>中文：从 SolidWorks COM 调度对象创建对应的 xCAD 包装对象</para>
         /// </summary>
         /// <typeparam name="TObj">Type of xCAD object</typeparam>
         /// <param name="disp">SOLIDWORKS specific COM object instance</param>
@@ -69,9 +101,17 @@ namespace Xarial.XCad.SolidWorks.Documents
             where TObj : ISwObject;
     }
 
+    /// <summary>
+    /// SolidWorks 文档的抽象基类实现，在调试器中显示文档标题。
+    /// 封装了文档的生命周期（创建/打开/关闭/销毁）、事件管理、属性访问等核心功能。
+    /// </summary>
     [DebuggerDisplay("{" + nameof(Title) + "}")]
     internal abstract class SwDocument : SwObject, ISwDocument
     {
+        /// <summary>
+        /// 内部辅助类：在打开文档时临时禁用 3D Interconnect（多 CAD 格式直接导入功能）。
+        /// 用于避免在某些操作中 3D Interconnect 引起的干扰。
+        /// </summary>
         private class Interconnect3DDisabler : IDisposable
         {
             private readonly ISldWorks m_App;
@@ -81,6 +121,7 @@ namespace Xarial.XCad.SolidWorks.Documents
             {
                 m_App = app;
 
+                // 仅 SolidWorks 2020 及以上版本支持 3D Interconnect 选项
                 if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2020)) 
                 {
                     var enable3DInterconnect = m_App.GetUserPreferenceToggle(
@@ -88,6 +129,7 @@ namespace Xarial.XCad.SolidWorks.Documents
 
                     if (enable3DInterconnect) 
                     {
+                        // 记录原始值并暂时禁用
                         m_Is3DInterconnectEnabled = enable3DInterconnect;
 
                         m_App.SetUserPreferenceToggle(
@@ -106,6 +148,10 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// SolidWorks 支持的原生文档扩展名到文档类型的映射字典（不区分大小写）。
+        /// 包括零件（.sldprt/.sldlfp/.sldblk）、装配体（.sldasm）、工程图（.slddrw）及各自的模板格式。
+        /// </summary>
         protected static Dictionary<string, swDocumentTypes_e> m_NativeFileExts { get; }
         private bool? m_IsClosed;
 
@@ -113,14 +159,14 @@ namespace Xarial.XCad.SolidWorks.Documents
         {
             m_NativeFileExts = new Dictionary<string, swDocumentTypes_e>(StringComparer.CurrentCultureIgnoreCase)
             {
-                { ".sldprt", swDocumentTypes_e.swDocPART },
-                { ".sldasm", swDocumentTypes_e.swDocASSEMBLY },
-                { ".slddrw", swDocumentTypes_e.swDocDRAWING },
-                { ".sldlfp", swDocumentTypes_e.swDocPART },
-                { ".sldblk", swDocumentTypes_e.swDocPART },
-                { ".prtdot", swDocumentTypes_e.swDocPART },
-                { ".asmdot", swDocumentTypes_e.swDocASSEMBLY },
-                { ".drwdot", swDocumentTypes_e.swDocDRAWING }
+                { ".sldprt", swDocumentTypes_e.swDocPART },       // 零件文件
+                { ".sldasm", swDocumentTypes_e.swDocASSEMBLY },   // 装配体文件
+                { ".slddrw", swDocumentTypes_e.swDocDRAWING },    // 工程图文件
+                { ".sldlfp", swDocumentTypes_e.swDocPART },       // 库特征零件
+                { ".sldblk", swDocumentTypes_e.swDocPART },       // 草图块零件
+                { ".prtdot", swDocumentTypes_e.swDocPART },       // 零件模板
+                { ".asmdot", swDocumentTypes_e.swDocASSEMBLY },   // 装配体模板
+                { ".drwdot", swDocumentTypes_e.swDocDRAWING }     // 工程图模板
             };
         }
 
@@ -128,6 +174,10 @@ namespace Xarial.XCad.SolidWorks.Documents
         private Action<SwDocument> m_HiddenDel;
         private DocumentCloseDelegate m_ClosingDel;
 
+        /// <summary>
+        /// 文档被销毁（关闭或从 SolidWorks 卸载）时触发。
+        /// 使用事件时会自动附加底层 SolidWorks COM 事件监听器。
+        /// </summary>
         public event DocumentEventDelegate Destroyed 
         {
             add 
@@ -142,6 +192,9 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// 文档被隐藏时触发（内部事件）。
+        /// </summary>
         internal event Action<SwDocument> Hidden
         {
             add
@@ -156,6 +209,9 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// 文档即将关闭前触发，允许订阅者取消关闭操作。
+        /// </summary>
         public event DocumentCloseDelegate Closing
         {
             add
@@ -170,36 +226,55 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// 文档重建（Rebuild/Regenerate）完成后触发。
+        /// 重建会更新所有特征的几何体和参数。
+        /// </summary>
         public event DocumentEventDelegate Rebuilt 
         {
             add => m_DocumentRebuildEventHandler.Attach(value);
             remove => m_DocumentRebuildEventHandler.Detach(value);
         }
 
+        /// <summary>
+        /// 文档保存（Save）操作前触发。
+        /// </summary>
         public event DocumentSaveDelegate Saving
         {
             add => m_DocumentSavingEventHandler.Attach(value);
             remove => m_DocumentSavingEventHandler.Detach(value);
         }
 
+        /// <summary>
+        /// 文档第三方存储流可读时触发（用于从文档中读取自定义二进制数据）。
+        /// </summary>
         public event DataStoreAvailableDelegate StreamReadAvailable 
         {
             add => m_StreamReadAvailableHandler.Attach(value);
             remove => m_StreamReadAvailableHandler.Detach(value);
         }
 
+        /// <summary>
+        /// 文档第三方存储对象（Storage Object）可读时触发。
+        /// </summary>
         public event DataStoreAvailableDelegate StorageReadAvailable
         {
             add => m_StorageReadAvailableHandler.Attach(value);
             remove => m_StorageReadAvailableHandler.Detach(value);
         }
 
+        /// <summary>
+        /// 文档第三方存储流可写时触发（用于向文档中写入自定义二进制数据）。
+        /// </summary>
         public event DataStoreAvailableDelegate StreamWriteAvailable
         {
             add => m_StreamWriteAvailableHandler.Attach(value);
             remove => m_StreamWriteAvailableHandler.Detach(value);
         }
 
+        /// <summary>
+        /// 文档第三方存储对象（Storage Object）可写时触发。
+        /// </summary>
         public event DataStoreAvailableDelegate StorageWriteAvailable
         {
             add => m_StorageWriteAvailableHandler.Attach(value);
@@ -422,11 +497,21 @@ namespace Xarial.XCad.SolidWorks.Documents
         private readonly Lazy<SwAnnotationCollection> m_AnnotationsLazy;
 
         public IXDocumentDependencies Dependencies { get; }
+        /// <summary>
+        /// 获取特征管理器（懒加载，首次访问时初始化）。
+        /// </summary>
         public ISwFeatureManager Features => m_FeaturesLazy.Value;
+        /// <summary>获取当前选择集合（懒加载）。</summary>
         public ISwSelectionCollection Selections => m_SelectionsLazy.Value;
+        /// <summary>获取尺寸标注集合（懒加载，通过特征管理器遍历获取）。</summary>
         public ISwDimensionsCollection Dimensions => m_DimensionsLazy.Value;
+        /// <summary>获取文档自定义属性集合（懒加载）。</summary>
         public ISwCustomPropertiesCollection Properties => m_PropertiesLazy.Value;
-                
+
+        /// <summary>
+        /// 获取或设置文档脏标志（是否有未保存的更改）。
+        /// 只能设为 true（标记为已修改），不能手动清除（需要保存文档才能清除）。
+        /// </summary>
         public bool IsDirty 
         {
             get => Model.GetSaveFlag();
@@ -447,7 +532,8 @@ namespace Xarial.XCad.SolidWorks.Documents
                 }
             }
         }
-        
+
+        /// <summary>指示该文档是否已提交（已在 SolidWorks 中打开/创建）。</summary>
         public bool IsCommitted => m_Creator.IsCreated;
 
         protected readonly IElementCreator<IModelDoc2> m_Creator;
@@ -463,6 +549,7 @@ namespace Xarial.XCad.SolidWorks.Documents
 
         /// <summary>
         /// This is a fallback file path in case the COM pointer to this document is broken (e.g. file is closed or SW is closed)
+        /// <para>中文：当 COM 指针失效（文档已关闭或 SolidWorks 已退出）时的备用文件路径缓存。</para>
         /// </summary>
         private string m_CachedFilePath;
 
@@ -471,12 +558,21 @@ namespace Xarial.XCad.SolidWorks.Documents
         {
         }
 
+        /// <summary>
+        /// 内部构造函数：初始化文档包装实例，设置元素创建器、各集合的懒加载对象以及事件处理器。
+        /// </summary>
+        /// <param name="model">底层 SolidWorks 文档 COM 对象</param>
+        /// <param name="app">所属的 SolidWorks 应用程序实例</param>
+        /// <param name="logger">日志记录器</param>
+        /// <param name="created">true 表示文档已打开/创建（已提交），false 表示尚未提交</param>
         internal SwDocument(IModelDoc2 model, SwApplication app, IXLogger logger, bool created) : base(model, null, app)
         {
             m_Logger = logger;
 
+            // ElementCreator 负责管理文档的延迟创建和提交逻辑
             m_Creator = new ElementCreator<IModelDoc2>(CreateDocument, CommitCache, model, created);
 
+            // 懒加载：特征管理器、选择集、尺寸集、自定义属性集
             m_FeaturesLazy = new Lazy<SwFeatureManager>(() => new SwDocumentFeatureManager(this, app, new Context(this)));
             m_SelectionsLazy = new Lazy<ISwSelectionCollection>(() => new SwSelectionCollection(this, app));
             m_DimensionsLazy = new Lazy<ISwDimensionsCollection>(() => new SwFeatureManagerDimensionsCollection(this.Features, new Context(this)));
@@ -486,12 +582,12 @@ namespace Xarial.XCad.SolidWorks.Documents
 
             m_ModelViewsLazy = new Lazy<ISwModelViewsCollection>(() => new SwModelViewsCollection(this, app));
 
+            // 文档单位（毫米/英寸等）和文档选项
             Units = new SwUnits(this);
-
             Options = new SwDocumentOptions(this);
-
             Dependencies = new SwDocumentDependencies(this, m_Logger);
 
+            // 第三方数据存储事件处理器（用于在文档中保存/读取自定义数据）
             m_StreamReadAvailableHandler = new StreamReadAvailableEventsHandler(this, app);
             m_StreamWriteAvailableHandler = new StreamWriteAvailableEventsHandler(this, app);
             m_StorageReadAvailableHandler = new StorageReadAvailableEventsHandler(this, app);
@@ -503,6 +599,7 @@ namespace Xarial.XCad.SolidWorks.Documents
 
             if (IsCommitted)
             {
+                // 文档已存在时，缓存文件路径并立即附加事件监听器
                 m_CachedFilePath = model.GetPathName();
                 AttachEvents();
             }

@@ -21,10 +21,16 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 工程图视图集合接口，继承自 xCAD 通用工程图视图存儲库接口。
+    /// </summary>
     public interface ISwDrawingViewsCollection : IXDrawingViewRepository 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 工程图视图集合实现类，封装工程图视图的创建、枚举及删除操作。
+    /// </summary>
     internal class SwDrawingViewsCollection : ISwDrawingViewsCollection
     {
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

@@ -23,6 +23,9 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
+    /// <summary>
+    /// PMP 位图按钮构造器。
+    /// </summary>
     internal class PropertyManagerPageBitmapButtonConstructor
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageBitmapButtonControl, IPropertyManagerPageBitmapButton>, IBitmapButtonConstructor
     {

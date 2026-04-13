@@ -19,6 +19,9 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks
 {
+    /// <summary>
+    /// SolidWorks 材料数据库仓库，管理所有已安装的材料数据库文件，支持按名称查找和按需创建数据库实例。
+    /// </summary>
     internal class SwMaterialsDatabaseRepository : IXMaterialsDatabaseRepository
     {
         private class SwTempMaterialsDatabase : SwMaterialsDatabase

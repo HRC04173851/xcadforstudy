@@ -25,6 +25,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
     /// <summary>
     /// Base wrapper around native SOLIDWORKS Property Manager Page controls (i.e. TextBox, SelectionBox, NumberBox etc.)
+    /// <para>中文：SolidWorks 属性管理器页原生控件（文本框/选择框/数字框等）的通用包装基接口。</para>
     /// </summary>
     public interface IPropertyManagerPageControlEx : IControl, IPropertyManagerPageElementEx
     {
@@ -34,6 +35,10 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
         IPropertyManagerPageControl SwControl { get; }
     }
 
+    /// <summary>
+    /// PMP 控件抽象基类。
+    /// 统一处理控件创建、样式选项、图标、标签联动、可见性/启用状态与资源释放。
+    /// </summary>
     internal abstract class PropertyManagerPageBaseControl<TVal, TSwControl>
         : Control<TVal>, IPropertyManagerPageControlEx
         where TSwControl : class
@@ -191,6 +196,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 
             if (commonIcon != null)
             {
+                // 自定义控件图标（普通/高亮）
                 icon = new ControlIcon(commonIcon);
             }
 

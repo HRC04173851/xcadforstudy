@@ -16,6 +16,7 @@ namespace Xarial.XCad.SolidWorks.Documents.Exceptions
 {
     /// <summary>
     /// Indicates that flat pattern view does not refer the correct configuration
+    /// <para>中文：表示工程图平板展开视图引用的配置无效。</para>
     /// </summary>
     public class InvalidFlatPatternConfigurationException : Exception, IUserException
     {

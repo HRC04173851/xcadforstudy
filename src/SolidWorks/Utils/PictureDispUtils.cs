@@ -15,6 +15,10 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.Utils
 {
+    /// <summary>
+    /// IPictureDisp 转换辅助类。
+    /// 将 SolidWorks 返回的 COM 图片对象转换为 xCAD `IXImage`。
+    /// </summary>
     internal static class PictureDispUtils
     {
         internal static IXImage PictureDispToXImage(object pictDisp) 

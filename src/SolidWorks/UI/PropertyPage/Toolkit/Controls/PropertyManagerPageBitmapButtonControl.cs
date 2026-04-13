@@ -20,6 +20,10 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 位图按钮控件实现。
+    /// 支持普通按钮（Action）和可切换按钮（bool）两种模式。
+    /// </summary>
     internal class PropertyManagerPageBitmapButtonControl : PropertyManagerPageBaseControl<object, IPropertyManagerPageBitmapButton>
     {
         protected override event ControlValueChangedDelegate<object> ValueChanged;

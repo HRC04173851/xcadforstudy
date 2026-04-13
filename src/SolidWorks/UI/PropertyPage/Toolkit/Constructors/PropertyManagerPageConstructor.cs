@@ -22,6 +22,10 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
+    /// <summary>
+    /// PMP 根页面构造器。
+    /// 负责创建 PropertyManagerPagePage 并初始化处理器与 SolidWorks 会话绑定。
+    /// </summary>
     internal class PropertyManagerPageConstructor : PageConstructor<PropertyManagerPagePage>
     {
         private readonly SwApplication m_App;
@@ -34,6 +38,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
             m_IconsConv = iconsConv;
 
             m_Handler = handler;
+            // 将处理器绑定到当前 SolidWorks 会话，接收控件回调事件
             handler.Init(m_App.Sw);
         }
 

@@ -23,6 +23,9 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 图层集合实现类，封装图层管理器 API，支持图层的创建、枚举及激活。
+    /// </summary>
     internal class SwLayersCollection : IXLayerRepository
     {
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

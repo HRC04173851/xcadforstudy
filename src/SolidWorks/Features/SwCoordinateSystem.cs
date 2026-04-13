@@ -16,11 +16,17 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 坐标系特征接口，提供坐标系变换矩阵访问。
+    /// </summary>
     public interface ISwCoordinateSystem : IXCoordinateSystem, ISwFeature
     {
         ICoordinateSystemFeatureData CoordSys { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 坐标系特征实现类，封装坐标系特征数据及变换矩阵读取。
+    /// </summary>
     internal class SwCoordinateSystem : SwFeature, ISwCoordinateSystem
     {
         public ICoordinateSystemFeatureData CoordSys { get; }

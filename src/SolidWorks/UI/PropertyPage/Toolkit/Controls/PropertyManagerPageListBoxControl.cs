@@ -23,6 +23,10 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 列表框控件实现。
+    /// 支持单选、枚举多选和列表多选值绑定。
+    /// </summary>
     internal class PropertyManagerPageListBoxControl : PropertyManagerPageItemsSourceControl<object, IPropertyManagerPageListbox>
     {
         protected override event ControlValueChangedDelegate<object> ValueChanged;

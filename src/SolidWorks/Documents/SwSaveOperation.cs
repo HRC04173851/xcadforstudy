@@ -25,6 +25,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 保存操作抽象基类。
+    /// 封装 SaveAs 流程、错误解析和保存选项前后处理。
+    /// </summary>
     internal abstract class SwSaveOperation : IXSaveOperation
     {
         internal static string ParseSaveError(swFileSaveError_e err)
@@ -167,6 +171,10 @@ namespace Xarial.XCad.SolidWorks.Documents
         }
     }
 
+    /// <summary>
+    /// 三维文档保存操作实现。
+    /// 支持按实体体（Bodies）选择性导出。
+    /// </summary>
     internal class SwDocument3DSaveOperation : SwSaveOperation, IXDocument3DSaveOperation
     {
         private SelectionGroup m_SelGroup;
@@ -216,6 +224,9 @@ namespace Xarial.XCad.SolidWorks.Documents
         }
     }
 
+    /// <summary>
+    /// 工程图保存操作实现。
+    /// </summary>
     internal class SwDrawingSaveOperation : SwSaveOperation, IXDrawingSaveOperation
     {
         public IXSheet[] Sheets
@@ -241,6 +252,9 @@ namespace Xarial.XCad.SolidWorks.Documents
 
     internal class SwStepSaveOperation : SwDocument3DSaveOperation, IXStepSaveOperation
     {
+        /// <summary>
+        /// STEP 导出保存操作实现。
+        /// </summary>
         private int m_OriginalFormat;
 
         internal SwStepSaveOperation(SwDocument3D doc, string filePath) : base(doc, filePath)
@@ -323,6 +337,9 @@ namespace Xarial.XCad.SolidWorks.Documents
 
     internal class SwDocument3DPdfSaveOperation : SwDocument3DSaveOperation, IXDocument3DPdfSaveOperation
     {
+        /// <summary>
+        /// 三维文档 PDF 导出保存操作实现。
+        /// </summary>
         internal SwDocument3DPdfSaveOperation(SwDocument3D doc, string filePath) : base(doc, filePath)
         {
         }
@@ -357,6 +374,9 @@ namespace Xarial.XCad.SolidWorks.Documents
 
     internal class SwDrawingPdfSaveOperation : SwDrawingSaveOperation, IXDrawingPdfSaveOperation
     {
+        /// <summary>
+        /// 工程图 PDF 导出保存操作实现。
+        /// </summary>
         internal SwDrawingPdfSaveOperation(SwDrawing doc, string filePath) : base(doc, filePath)
         {
         }
@@ -381,6 +401,9 @@ namespace Xarial.XCad.SolidWorks.Documents
 
     internal class SwDxfDwgSaveOperation : SwDrawingSaveOperation, IXDxfDwgSaveOperation
     {
+        /// <summary>
+        /// 工程图 DXF/DWG 导出保存操作实现。
+        /// </summary>
         private bool m_OrigDxfMapping;
         private string m_OrigDxfMappingFiles;
         private int m_OrigDxfMappingFileIndex;

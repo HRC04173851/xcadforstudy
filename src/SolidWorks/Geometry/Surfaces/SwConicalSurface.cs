@@ -16,10 +16,16 @@ using Xarial.XCad.SolidWorks.Geometry.Surfaces;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks 圆锥面接口。
+    /// </summary>
     public interface ISwConicalSurface : ISwSurface, IXConicalSurface
     {
     }
 
+    /// <summary>
+    /// SolidWorks 圆锥面实现类。
+    /// </summary>
     internal class SwConicalSurface : SwSurface, ISwConicalSurface
     {
         public SwConicalSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

@@ -18,10 +18,16 @@ using Xarial.XCad.SolidWorks.Geometry.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Curves
 {
+    /// <summary>
+    /// SolidWorks 折线曲线接口（多段直线连接组成的复合曲线）。
+    /// </summary>
     public interface ISwPolylineCurve : ISwCurve, IXPolylineCurve
     {
     }
 
+    /// <summary>
+    /// SolidWorks 折线曲线实现类。
+    /// </summary>
     internal class SwPolylineCurve : SwCurve, ISwPolylineCurve
     {
         internal SwPolylineCurve(ICurve[] curves, SwDocument doc, SwApplication app, bool isCreated) 

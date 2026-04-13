@@ -23,6 +23,10 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 位图控件实现。
+    /// 将 `Image` 值转换为 SolidWorks 位图资源并显示。
+    /// </summary>
     internal class PropertyManagerPageBitmapControl : PropertyManagerPageBaseControl<Image, IPropertyManagerPageBitmap>
     {
 #pragma warning disable CS0067

@@ -42,6 +42,9 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 装配体组件接口，提供对组件的引用文档、子组件、特征等的访问。
+    /// </summary>
     public interface ISwComponent : IXComponent, ISwSelObject
     {
         new ISwComponentCollection Children { get; }

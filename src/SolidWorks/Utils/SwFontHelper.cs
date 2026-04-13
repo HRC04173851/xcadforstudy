@@ -16,6 +16,10 @@ using Xarial.XCad.Toolkit;
 
 namespace Xarial.XCad.SolidWorks.Utils
 {
+    /// <summary>
+    /// SolidWorks 字体转换辅助类。
+    /// 在 `ITextFormat` 与 xCAD `IFont` 之间做双向映射。
+    /// </summary>
     internal class SwFontHelper
     {
         internal static IFont FromTextFormat(ITextFormat txtFormat)

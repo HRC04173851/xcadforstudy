@@ -20,11 +20,20 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图点接口。
+    /// </summary>
     public interface ISwSketchPoint : IXSketchPoint, ISwSketchEntity
     {
+        /// <summary>
+        /// 底层 SolidWorks 草图点对象。
+        /// </summary>
         ISketchPoint Point { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图点实现类。
+    /// </summary>
     internal class SwSketchPoint : SwSketchEntity, ISwSketchPoint
     {
         protected readonly IElementCreator<ISketchPoint> m_Creator;
@@ -111,6 +120,7 @@ namespace Xarial.XCad.SolidWorks.Sketch
             {
                 if (m_Creator.IsCreated)
                 {
+                    // 修改草图点坐标前必须处于该草图编辑模式
                     if (m_SketchMgr.ActiveSketch != Point.GetSketch())
                     {
                         throw new Exception("You must set the sketch into editing mode in order to modify the cooridinate");

@@ -26,6 +26,9 @@ using Xarial.XCad.Toolkit.Services;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 切割清单子项接口，表示钣金展开图、结构件等中的切割清单组。
+    /// </summary>
     public interface ISwCutListItem : IXCutListItem, ISwFeature, IDisposable
     {
         IBodyFolder CutListBodyFolder { get; }

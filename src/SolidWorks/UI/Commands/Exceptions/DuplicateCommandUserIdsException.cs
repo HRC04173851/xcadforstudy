@@ -11,6 +11,9 @@ using System.Text;
 
 namespace Xarial.XCad.SolidWorks.UI.Commands.Exceptions
 {
+    /// <summary>
+    /// 命令组中存在重复 UserId 异常。
+    /// </summary>
     public class DuplicateCommandUserIdsException : Exception
     {
         public DuplicateCommandUserIdsException(string groupTitle, int groupUserId, int[] dupUserIds)

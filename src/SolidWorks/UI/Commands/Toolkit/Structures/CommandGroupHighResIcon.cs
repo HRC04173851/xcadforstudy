@@ -13,6 +13,9 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.UI.Commands.Toolkit.Structures
 {
+    /// <summary>
+    /// 命令组高分辨率图标包装。
+    /// </summary>
     internal class CommandGroupHighResIcon : CommandGroupIcon
     {
         internal CommandGroupHighResIcon(IXImage icon) : base(icon)

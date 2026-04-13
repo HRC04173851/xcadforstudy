@@ -19,6 +19,10 @@ using Xarial.XCad.Toolkit.Services;
 
 namespace Xarial.XCad.SolidWorks.UI.Toolkit
 {
+    /// <summary>
+    /// FeatureManager 页签控件创建器。
+    /// 负责在特征管理器面板托管 COM/.NET 控件。
+    /// </summary>
     internal class FeatureManagerTabCreator<TControl> : CustomControlCreator<Tuple<IFeatMgrView, string>, TControl>
     {
         private readonly IServiceProvider m_SvcProvider;

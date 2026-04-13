@@ -20,6 +20,10 @@ using Xarial.XCad.Sketch;
 
 namespace Xarial.XCad.SolidWorks.Utils
 {
+    /// <summary>
+    /// SolidWorks 选择类型映射辅助类。
+    /// 将 xCAD 对象类型映射为 SolidWorks `swSelectType_e` 选择过滤类型。
+    /// </summary>
     internal static class SwSelectionHelper
     {
         //NOTE: this should be a list so we keep the order correct (not the case for the Dictionary)
@@ -58,6 +62,7 @@ namespace Xarial.XCad.SolidWorks.Utils
             AddToMap<IXSolidBody>(swSelectType_e.swSelSOLIDBODIES);
             AddToMap<IXSheetBody>(swSelectType_e.swSelSURFACEBODIES);
             AddToMap<IXBody>(swSelectType_e.swSelSOLIDBODIES, swSelectType_e.swSelSURFACEBODIES);
+            // 中文：IXBody 为聚合类型，映射实体体+曲面体两种选择类型
         }
 
         private static void AddToMap<T>(params swSelectType_e[] selTypes) where T : IXSelObject 
@@ -69,6 +74,7 @@ namespace Xarial.XCad.SolidWorks.Utils
             {
                 if(map.Key.IsAssignableFrom(type))
                 {
+                    // 返回首个可赋值匹配项，保持映射优先级
                     return map.Value;
                 }
             }

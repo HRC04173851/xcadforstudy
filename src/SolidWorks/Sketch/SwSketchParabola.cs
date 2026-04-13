@@ -16,11 +16,17 @@ using Xarial.XCad.SolidWorks.Features;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图抛物线接口。
+    /// </summary>
     public interface ISwSketchParabola : IXSketchParabola, ISwSketchSegment
     {
         ISketchParabola Parabola { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图抛物线实现类。
+    /// </summary>
     internal class SwSketchParabola : SwSketchSegment, ISwSketchParabola
     {
         public ISketchParabola Parabola => (ISketchParabola)Segment;

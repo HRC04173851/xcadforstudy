@@ -1,0 +1,13 @@
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net461\Xarial.XCad.SwDocumentManager.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net461\Xarial.XCad.SwDocumentManager.pdb
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net461\Xarial.XCad.SwDocumentManager.xml
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\SwDocumentManager.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\SwDocumentManager.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\SwDocumentManager.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\SwDocumentManager.AssemblyInfo.cs
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\SwDocumentManager.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\SwDocumentManager.sourcelink.json
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\SwDocume.7346D1E9.Up2Date
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\Xarial.XCad.SwDocumentManager.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\Xarial.XCad.SwDocumentManager.xml
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\SwDocumentManager\obj\Debug\net461\Xarial.XCad.SwDocumentManager.pdb

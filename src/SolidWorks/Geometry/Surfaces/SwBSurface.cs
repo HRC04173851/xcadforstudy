@@ -16,10 +16,16 @@ using Xarial.XCad.SolidWorks.Geometry.Surfaces;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks B 样条曲面接口（NURBS 曲面）。
+    /// </summary>
     public interface ISwBSurface : ISwSurface, IXBSurface
     {
     }
 
+    /// <summary>
+    /// SolidWorks B 样条曲面实现类。
+    /// </summary>
     internal class SwBSurface : SwSurface, ISwBSurface
     {
         public SwBSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

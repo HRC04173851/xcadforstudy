@@ -28,6 +28,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 临时体接口，支持布尔运算（并、差、交）。
+    /// </summary>
     public interface ISwTempBody : ISwBody, IXMemoryBody
     {
         ISwTempBody Add(ISwTempBody other);

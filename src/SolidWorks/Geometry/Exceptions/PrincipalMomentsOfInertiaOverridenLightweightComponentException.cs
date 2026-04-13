@@ -11,6 +11,9 @@ using System.Text;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Exceptions
 {
+    /// <summary>
+    /// 轻量化组件主惯性矩计算异常。
+    /// </summary>
     public class PrincipalMomentsOfInertiaOverridenLightweightComponentException : NotSupportedException
     {
         internal PrincipalMomentsOfInertiaOverridenLightweightComponentException()

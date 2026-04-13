@@ -25,15 +25,22 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
     /// <summary>
     /// Edit body represents the body which is edited in the macro feature (decorated with <see cref="XCad.Features.CustomFeature.Attributes.ParameterEditBodyAttribute"/>)
     /// Use <see cref="SwMacroFeatureDefinition.CreateEditBody(IBody2, ISwDocument, ISwApplication, bool)"/> to create an instance of edit body
+    /// <para>中文：编辑体表示宏特征中被编辑的几何体（由 `ParameterEditBodyAttribute` 标记）。
+    /// 应使用 `SwMacroFeatureDefinition.CreateEditBody(...)` 创建对应实例。</para>
     /// </summary>
     /// <remarks>Body used in the regeneration is mix of the temp body and real body (e.g. it supports boolean operations with temp bodies)
-    /// For the cosistent access in the preview <see cref="ISwMacroFeatureEditBody"/> is added which represents both temp body (in preview mode) and permanent body in the regeneration</remarks>
+    /// For the cosistent access in the preview <see cref="ISwMacroFeatureEditBody"/> is added which represents both temp body (in preview mode) and permanent body in the regeneration
+    /// 中文：重建阶段使用的体可能混合临时体与永久体（例如需要与临时体进行布尔运算）。
+    /// 为了在预览与重建中统一访问，`ISwMacroFeatureEditBody` 同时抽象了预览临时体与正式体。</remarks>
     internal interface ISwMacroFeatureEditBody : ISwTempBody
     {
         IBody2 PreviewBody { get; }
         bool IsPreviewMode { get; }
     }
 
+    /// <summary>
+    /// 宏特征编辑体扩展工具：封装加/减/交布尔运算，并在预览/正式模式下自动选择运算体。
+    /// </summary>
     internal static class SwMacroFeatureEditBody
     {
         internal static ISwTempBody PerformAdd(this ISwMacroFeatureEditBody editBody, ISwTempBody other)
@@ -64,15 +71,20 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
         {
             if (editBody.IsPreviewMode)
             {
+                // 预览模式：使用可临时修改的预览体
                 return editBody.PreviewBody;
             }
             else 
             {
+                // 重建模式：使用正式体
                 return editBody.Body;
             }
         }
     }
 
+    /// <summary>
+    /// 延迟创建宏特征预览体：仅在预览模式下按需复制实体。
+    /// </summary>
     internal class LazyMacroFeaturePreviewBody : Lazy<IBody2> 
     {
         internal LazyMacroFeaturePreviewBody(IBody2 body, bool isPreview, SwApplication app) 

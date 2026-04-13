@@ -16,11 +16,17 @@ using Xarial.XCad.SolidWorks.Features;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图文字接口。
+    /// </summary>
     public interface ISwSketchText : ISwSketchSegment, IXSketchText
     {
         ISketchText TextSegment { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图文字实现类。
+    /// </summary>
     internal class SwSketchText : SwSketchSegment, ISwSketchText
     {
         public ISketchText TextSegment => (ISketchText)Segment;

@@ -25,11 +25,18 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.Graphics
 {
+    /// <summary>
+    /// SolidWorks 拖拽箭头操纵器接口。
+    /// 常用于方向、长度等交互式参数调整。
+    /// </summary>
     public interface ISwDragArrow : IXDragArrow, ISwObject
     {
         IDragArrowManipulator DragArrow { get; }
     }
     
+    /// <summary>
+    /// 拖拽箭头回调处理器。
+    /// </summary>
     [ComVisible(true)]
     public abstract class SwDragArrowHandler : ISwManipulatorHandler2
     {
@@ -75,6 +82,10 @@ namespace Xarial.XCad.SolidWorks.Graphics
         }
     }
 
+    /// <summary>
+    /// SolidWorks 拖拽箭头实现。
+    /// 封装显示、长度、方向翻转和选择事件。
+    /// </summary>
     internal class SwDragArrow : SwObject, ISwDragArrow
     {
         public event DragArrowFlippedDelegate Flipped;

@@ -23,12 +23,18 @@ using Xarial.XCad.SolidWorks.Services;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Primitives
 {
+    /// <summary>
+    /// SolidWorks 临时平面片体接口，用于内存平面区域建面操作。
+    /// </summary>
     public interface ISwTempPlanarSheet : IXPlanarSheet, ISwTempPrimitive
     {
         new ISwTempPlanarSheetBody[] Bodies { get; }
         new ISwPlanarRegion Region { get; set; }
     }
 
+    /// <summary>
+    /// SolidWorks 临时平面片体实现类。
+    /// </summary>
     internal class SwTempPlanarSheet : SwTempPrimitive, ISwTempPlanarSheet
     {
         IXPlanarSheetBody[] IXPlanarSheet.Bodies => Bodies;

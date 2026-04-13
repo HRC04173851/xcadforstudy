@@ -11,6 +11,9 @@ using Xarial.XCad.SolidWorks.Enums;
 
 namespace Xarial.XCad.SolidWorks.Utils
 {
+    /// <summary>
+    /// SolidWorks 版本兼容性辅助工具。
+    /// </summary>
     internal static class CompatibilityUtils
     {
         internal enum HighResIconsScope_e
@@ -22,6 +25,7 @@ namespace Xarial.XCad.SolidWorks.Utils
 
         internal static bool SupportsHighResIcons(this ISldWorks app, HighResIconsScope_e scope)
         {
+            // 不同功能域对高分辨率图标支持起始版本不同
             switch (scope)
             {
                 case HighResIconsScope_e.CommandManager:
@@ -41,6 +45,7 @@ namespace Xarial.XCad.SolidWorks.Utils
 
         /// <summary>
         /// Returns the major version of SOLIDWORKS application
+        /// <para>中文：返回 SolidWorks 主版本号，并输出服务包版本信息。</para>
         /// </summary>
         /// <param name="app">Pointer to application to return version from</param>
         /// <param name="servicePack">Version of Service Pack</param>
@@ -58,6 +63,7 @@ namespace Xarial.XCad.SolidWorks.Utils
 
         /// <summary>
         /// Checks if the version of the SOLIDWORKS is newer or equal to the specified parameters
+        /// <para>中文：判断当前 SolidWorks 版本是否大于等于指定目标版本（含可选 SP/SPRev 比较）。</para>
         /// </summary>
         /// <param name="app">Current SOLIDWORKS application</param>
         /// <param name="version">Target minimum supported version of SOLIDWORKS</param>

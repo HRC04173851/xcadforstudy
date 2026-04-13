@@ -15,6 +15,7 @@ namespace Xarial.XCad.SolidWorks.Exceptions
 {
     /// <summary>
     /// Indicates that macro file is not found
+    /// <para>中文：表示指定路径的 SolidWorks 宏文件未找到。</para>
     /// </summary>
     public class MacroFileNotFoundException : FileNotFoundException, IUserException
     {

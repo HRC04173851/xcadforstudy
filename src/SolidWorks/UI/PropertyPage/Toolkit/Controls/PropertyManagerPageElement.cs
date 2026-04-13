@@ -11,6 +11,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
     /// <summary>
     /// Represents the base interface for elements in property manager page (e.g. controls, groups, tabs)
+    /// <para>中文：PMP 元素（控件、分组、Tab）的基础扩展接口。</para>
     /// </summary>
     public interface IPropertyManagerPageElementEx
     {
@@ -27,6 +28,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 
     /// <summary>
     /// List of extension methods of property manager page element
+    /// <para>中文：PMP 元素扩展方法集合。</para>
     /// </summary>
     public static class PropertyManagerPageElement
     {

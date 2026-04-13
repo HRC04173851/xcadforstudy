@@ -17,10 +17,16 @@ using Xarial.XCad.SolidWorks.Geometry.Surfaces;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks 环形面接口。
+    /// </summary>
     public interface ISwToroidalSurface : ISwSurface, IXToroidalSurface
     {
     }
 
+    /// <summary>
+    /// SolidWorks 环形面实现类。
+    /// </summary>
     internal class SwToroidalSurface : SwSurface, ISwToroidalSurface
     {
         public SwToroidalSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

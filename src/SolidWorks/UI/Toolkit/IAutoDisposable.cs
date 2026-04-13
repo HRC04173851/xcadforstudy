@@ -13,6 +13,7 @@ namespace Xarial.XCad.SolidWorks.UI.Toolkit
 {
     /// <summary>
     /// Indicates that this item will be disposed when main add-in is unloaded
+    /// <para>中文：表示对象会在主插件卸载时自动释放。</para>
     /// </summary>
     internal interface IAutoDisposable : IDisposable
     {

@@ -14,8 +14,15 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// 特征枚举器抽象基类。
+    /// 用于按特征树顺序（含子特征）遍历 SolidWorks 特征集合。
+    /// </summary>
     internal abstract class FeatureEnumerator : IEnumerator<IXFeature>
     {
+        /// <summary>
+        /// 遍历特征链表，可选递归遍历子特征。
+        /// </summary>
         internal static IEnumerable<IFeature> IterateFeatures(IFeature firstFeature, bool recursive)
         {
             var processedFeats = new List<IFeature>();

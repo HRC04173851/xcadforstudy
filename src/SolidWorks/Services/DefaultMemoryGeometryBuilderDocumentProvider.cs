@@ -11,6 +11,10 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Services
 {
+    /// <summary>
+    /// 默认内存几何构建文档提供器。
+    /// 为内存几何构建器提供一个可用的零件文档上下文。
+    /// </summary>
     internal class DefaultMemoryGeometryBuilderDocumentProvider : IMemoryGeometryBuilderDocumentProvider
     {
         private readonly ISwApplication m_App;
@@ -22,6 +26,7 @@ namespace Xarial.XCad.SolidWorks.Services
 
         public ISwDocument ProvideDocument(Type geomType)
         {
+            // 优先使用活动零件文档，否则回退到已打开的任意零件文档
             var part = m_App.Documents.Active as SwPart;
 
             if (part == null)

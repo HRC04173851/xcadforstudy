@@ -18,6 +18,10 @@ using Xarial.XCad.UI.PropertyPage;
 
 namespace Xarial.XCad.SolidWorks.UI.Toolkit
 {
+    /// <summary>
+    /// PropertyManagerPage 自定义控件创建器。
+    /// 负责将 WinForms/WPF 自定义控件挂载到 PMP 控件窗口句柄。
+    /// </summary>
     internal class PropertyPageControlCreator<TControl>
         : CustomControlCreator<IXCustomControl, TControl>
     {

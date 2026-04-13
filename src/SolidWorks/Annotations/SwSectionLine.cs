@@ -21,11 +21,17 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Annotations
 {
+    /// <summary>
+    /// SolidWorks 剖切线（Section Line）注解接口。
+    /// </summary>
     public interface ISwSectionLine : IXSectionLine, ISwAnnotation
     {
         IDrSection Section { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 剖切线注解实现。
+    /// </summary>
     internal class SwSectionLine : SwAnnotation, ISwSectionLine
     {
         private readonly IDrSection m_Section;

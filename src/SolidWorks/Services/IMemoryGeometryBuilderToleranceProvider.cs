@@ -13,6 +13,7 @@ namespace Xarial.XCad.SolidWorks.Services
 {
     /// <summary>
     /// Service provides tolerance values to perform operations in the <see cref="XCad.Geometry.IXMemoryGeometryBuilder"/>
+    /// <para>中文：为内存几何构建操作提供容差参数（缝合、裁剪、数值比较等）。</para>
     /// </summary>
     public interface IMemoryGeometryBuilderToleranceProvider
     {

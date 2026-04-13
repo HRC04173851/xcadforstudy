@@ -17,12 +17,19 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Annotations
 {
+    /// <summary>
+    /// SolidWorks 尺寸注解接口。
+    /// </summary>
     public interface ISwDimension : IXDimension, IDisposable, ISwSelObject, ISwAnnotation
     {
         IDimension Dimension { get; }
         IDisplayDimension DisplayDimension { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 尺寸注解实现。
+    /// 封装显示尺寸与驱动尺寸值读写，并支持配置/组件上下文下的尺寸求值。
+    /// </summary>
     internal class SwDimension : SwAnnotation, ISwDimension
     {
         private IDimension m_Dimension;
@@ -211,6 +218,7 @@ namespace Xarial.XCad.SolidWorks.Annotations
 
     /// <summary>
     /// This is a specific dimension related to a macro feature
+    /// <para>中文：与宏特征关联的专用尺寸包装类。</para>
     /// </summary>
     internal class SwMacroFeatureDimension : SwDimension
     {

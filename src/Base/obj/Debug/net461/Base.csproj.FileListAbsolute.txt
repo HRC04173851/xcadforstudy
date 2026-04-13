@@ -11,3 +11,17 @@
 /home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net461/Xarial.XCad.dll
 /home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net461/Xarial.XCad.xml
 /home/runner/work/xcadforstudy/xcadforstudy/src/Base/obj/Debug/net461/Xarial.XCad.pdb
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net461\Xarial.XCad.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net461\Xarial.XCad.pdb
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net461\Xarial.XCad.xml
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Base.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Xarial.XCad.Properties.Resources.resources
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Base.csproj.GenerateResource.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Base.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Base.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Base.AssemblyInfo.cs
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Base.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Base.sourcelink.json
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Xarial.XCad.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Xarial.XCad.xml
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Base\obj\Debug\net461\Xarial.XCad.pdb

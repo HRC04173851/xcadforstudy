@@ -22,12 +22,20 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图实体接口（草图段、草图点、草图图片、草图块实例等）。
+    /// </summary>
     public interface ISwSketchEntity : IXSketchEntity, ISwSelObject
     {
     }
 
     //TODO: for the entities of the block definition it might be required to transform all the coodinate system for the consistency
+    // 中文：TODO：块定义中的草图实体可能需要统一坐标系变换以保持一致性
     [DebuggerDisplay("{" + nameof(Name) + "}")]
+    /// <summary>
+    /// 草图实体抽象基类。
+    /// 处理草图归属、块实例归属、名称解析和相等性比较。
+    /// </summary>
     internal abstract class SwSketchEntity : SwSelObject, ISwSketchEntity
     {
         public new abstract bool IsCommitted { get; }

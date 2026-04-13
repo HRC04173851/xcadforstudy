@@ -17,10 +17,17 @@ using Xarial.XCad.SolidWorks.Geometry.Curves;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Curves
 {
+    /// <summary>
+    /// SolidWorks 样条曲线接口（Spline）。
+    /// 常用于自由曲线造型与复杂轮廓拟合。
+    /// </summary>
     public interface ISwSplineCurve : IXSplineCurve, ISwCurve
     {
     }
 
+    /// <summary>
+    /// SolidWorks 样条曲线实现类。
+    /// </summary>
     internal class SwSplineCurve : SwCurve, ISwSplineCurve
     {
         internal SwSplineCurve(ICurve curve, SwDocument doc, SwApplication app, bool isCreated)

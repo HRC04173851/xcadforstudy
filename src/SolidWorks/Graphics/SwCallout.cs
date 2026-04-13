@@ -29,19 +29,32 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.Graphics
 {
+    /// <summary>
+    /// SolidWorks 标注气泡（Callout）基接口。
+    /// </summary>
     public interface ISwCalloutBase : IXCalloutBase, ISwObject
     {
         ICallout Callout { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 标注气泡（Callout）接口，支持自定义标注内容。
+    /// </summary>
     public interface ISwCallout : ISwCalloutBase, IXCallout 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 选择型标注气泡接口，用于展示选择中对象的辅助信息。
+    /// </summary>
     public interface ISwSelCallout : ISwCalloutBase, IXSelCallout
     {
     }
 
+    /// <summary>
+    /// SolidWorks Callout 处理器基类。
+    /// 用于接收行文本变更等交互回调。
+    /// </summary>
     [ComVisible(true)]
     public abstract class SwCalloutBaseHandler : ISwCalloutHandler
     {
@@ -52,6 +65,9 @@ namespace Xarial.XCad.SolidWorks.Graphics
             => ValueChanged?.Invoke(this, rowID, text) == true;
     }
 
+    /// <summary>
+    /// Callout 行数据模型。
+    /// </summary>
     internal class SwCalloutRow : IXCalloutRow
     {
         public event CalloutRowValueChangedDelegate ValueChanged;
@@ -181,6 +197,10 @@ namespace Xarial.XCad.SolidWorks.Graphics
         }
     }
 
+    /// <summary>
+    /// SolidWorks Callout 基类实现。
+    /// 提供行集合、背景色、可见性、提交与创建流程。
+    /// </summary>
     internal abstract class SwCalloutBase : SwObject, ISwCalloutBase
     {
         protected readonly IElementCreator<ICallout> m_Creator;

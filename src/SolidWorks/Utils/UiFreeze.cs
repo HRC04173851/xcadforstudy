@@ -17,6 +17,7 @@ namespace Xarial.XCad.SolidWorks.Utils
 {
     /// <summary>
     /// Freezes feature tree and view
+    /// <para>中文：临时冻结特征树与图形刷新，用于批量操作提升性能并减少界面闪烁。</para>
     /// </summary>
     internal class UiFreeze : IDisposable
     {

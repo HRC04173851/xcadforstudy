@@ -14,12 +14,18 @@ using System.Windows.Forms;
 
 namespace Xarial.XCad.SolidWorks.Services
 {
+    /// <summary>
+    /// 特征管理器页签控件提供器接口。
+    /// </summary>
     public interface IFeatureManagerTabControlProvider
     {
         IFeatMgrView ProvideComControl(IModelViewManager mdlViewMgr, string imgPath, string progId, string title);
         IFeatMgrView ProvideNetControl(IModelViewManager mdlViewMgr, Control ctrl, string imgPath, string title);
     }
 
+    /// <summary>
+    /// 默认特征管理器页签控件提供器实现。
+    /// </summary>
     internal class FeatureManagerTabControlProvider : IFeatureManagerTabControlProvider
     {
         public IFeatMgrView ProvideComControl(IModelViewManager mdlViewMgr, string imgPath, string progId, string title)

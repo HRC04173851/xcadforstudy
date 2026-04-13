@@ -28,10 +28,16 @@ using Xarial.XCad.Toolkit.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
 {
+    /// <summary>
+    /// SolidWorks 质量属性评估接口。
+    /// </summary>
     public interface ISwMassProperty : IXMassProperty
     {
     }
 
+    /// <summary>
+    /// 装配体质量属性评估接口。
+    /// </summary>
     public interface ISwAssemblyMassProperty : ISwMassProperty, IXAssemblyMassProperty
     {
     }
@@ -43,6 +49,10 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
         Z = 2
     }
 
+    /// <summary>
+    /// SolidWorks 质量属性实现类。
+    /// 封装重心、体积、质量、密度、惯量矩等工程分析数据。
+    /// </summary>
     internal class SwMassProperty : ISwMassProperty
     {
         public Point CenterOfGravity
@@ -115,6 +125,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
                 if (m_Doc is ISwPart)
                 {
                     //WORKAROUND: incorrect values returned for the part - using older method instead
+                    // 中文：零件文档在某些版本会返回错误主惯性轴，改用旧接口结果
                     return new PrincipalAxesOfInertia(
                         new Vector((double[])MassPropertyLegacy.PrincipleAxesOfInertia[(int)PrincipalAxesOfInertia_e.X]),
                         new Vector((double[])MassPropertyLegacy.PrincipleAxesOfInertia[(int)PrincipalAxesOfInertia_e.Y]),

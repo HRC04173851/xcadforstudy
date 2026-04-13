@@ -18,6 +18,10 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 边（Edge）接口。
+    /// 边是曲面拓扑边界元素，由底层曲线定义并连接两个顶点。
+    /// </summary>
     public interface ISwEdge : ISwEntity, IXEdge 
     {
         IEdge Edge { get; }
@@ -39,6 +43,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
         {
             if (faces)
             {
+                // 与该边相邻的两个面（流形体常见为 1 或 2 个）
                 foreach (IFace2 face in (m_Edge.Edge.GetTwoAdjacentFaces2() as object[]).ValueOrEmpty())
                 {
                     yield return m_Edge.OwnerApplication.CreateObjectFromDispatch<SwFace>(face, m_Edge.OwnerDocument);
@@ -47,6 +52,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
 
             if (edges)
             {
+                // 通过 CoEdge 获取邻接边（拓扑连通关系）
                 foreach (ICoEdge coEdge in (m_Edge.Edge.GetCoEdges() as ICoEdge[]).ValueOrEmpty())
                 {
                     var edge = coEdge.GetEdge() as IEdge;
@@ -131,6 +137,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
         {
             get 
             {
+                // Sense 表示边方向与其基础曲线参数方向的一致性
                 var curveParams = Edge.GetCurveParams3();
                 return curveParams.Sense;
             }

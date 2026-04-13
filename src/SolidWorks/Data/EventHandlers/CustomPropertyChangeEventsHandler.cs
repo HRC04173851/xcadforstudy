@@ -17,6 +17,10 @@ using Xarial.XCad.Toolkit.Services;
 
 namespace Xarial.XCad.SolidWorks.Data.EventHandlers
 {
+    /// <summary>
+    /// 自定义属性变更事件处理器。
+    /// 监听模型属性变化并按属性名/配置名过滤后转发事件。
+    /// </summary>
     internal class CustomPropertyChangeEventsHandler : EventsHandler<PropertyValueChangedDelegate>
     {
         private readonly IModelDoc2 m_Model;
@@ -83,6 +87,10 @@ namespace Xarial.XCad.SolidWorks.Data.EventHandlers
         }
     }
 
+    /// <summary>
+    /// Sw2017+ 自定义属性变更补充处理器。
+    /// 结合 `CustomPropertiesEventsHelper` 弥补部分版本通知不完整问题。
+    /// </summary>
     internal class CustomPropertyChangeEventsHandlerFromSw2017 : CustomPropertyChangeEventsHandler
     {
         private CustomPropertiesEventsHelper m_EventsHelper;

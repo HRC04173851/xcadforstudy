@@ -20,11 +20,17 @@ using Xarial.XCad.Toolkit.Graphics;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 模型视图接口，提供对 SolidWorks <see cref="IModelView"/> 原生视图对象的访问。
+    /// </summary>
     public interface ISwModelView : IXModelView, ISwObject
     {
         IModelView View { get; }
     }
 
+    /// <summary>
+    /// 临时冻结/解冻结模型视图图形刷新的辅助类，用于批量操作期间暂停刷新以提升性能。
+    /// </summary>
     internal class ModelViewFreezer : IDisposable
     {
         private readonly bool m_OrigIsGraphicsEnabled;
@@ -45,6 +51,9 @@ namespace Xarial.XCad.SolidWorks.Documents
         }
     }
 
+    /// <summary>
+    /// SolidWorks 模型视图实现类，封装视图方向、缩放、屏幕空间映射及自定义图形渲染事件。
+    /// </summary>
     internal class SwModelView : SwObject, ISwModelView
     {
         private readonly IMathUtility m_MathUtils;

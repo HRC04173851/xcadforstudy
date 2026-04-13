@@ -22,6 +22,9 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
+    /// <summary>
+    /// PMP 单选按钮组构造器。
+    /// </summary>
     internal class PropertyManagerPageOptionBoxConstructor
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageOptionBoxControl, PropertyManagerPageOptionBox>, IOptionBoxConstructor
     {

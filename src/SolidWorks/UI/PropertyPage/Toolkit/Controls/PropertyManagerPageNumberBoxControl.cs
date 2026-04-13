@@ -17,6 +17,10 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 数值输入框控件实现。
+    /// 支持 `int/double/decimal/float` 等数值类型绑定。
+    /// </summary>
     internal class PropertyManagerPageNumberBoxControl : PropertyManagerPageBaseControl<object, IPropertyManagerPageNumberbox>
     {
         protected override event ControlValueChangedDelegate<object> ValueChanged;

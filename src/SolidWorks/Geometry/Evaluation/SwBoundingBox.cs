@@ -29,14 +29,24 @@ using Xarial.XCad.Toolkit.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
 {
+    /// <summary>
+    /// SolidWorks 包围盒评估接口。
+    /// </summary>
     public interface ISwBoundingBox : IXBoundingBox
     {
     }
 
+    /// <summary>
+    /// 装配体包围盒评估接口。
+    /// </summary>
     public interface ISwAssemblyBoundingBox : ISwBoundingBox, IXAssemblyBoundingBox
     {
     }
 
+    /// <summary>
+    /// SolidWorks 包围盒评估抽象基类。
+    /// 支持近似/精确/最佳拟合包围盒计算。
+    /// </summary>
     internal abstract class SwBoundingBox : ISwBoundingBox
     {
         internal class EditableBox3D
@@ -144,6 +154,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
         {
             if (BestFit)
             {
+                // 最佳拟合包围盒（最小方向包围盒，计算更重）
                 var bodies = Scope;
 
                 if (bodies?.Any() != true)
@@ -162,6 +173,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
             {
                 if (Precise)
                 {
+                    // 精确轴对齐包围盒
                     var bodies = Scope;
 
                     if (bodies?.Any() != true)
@@ -183,6 +195,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
                         throw new NotSupportedException("RelativeTo can only be calculated when precise bounding box is used");
                     }
 
+                    // 近似包围盒（速度快，精度略低）
                     double[] bbox;
 
                     if (IsScoped)

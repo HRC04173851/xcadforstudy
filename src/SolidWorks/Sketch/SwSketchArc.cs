@@ -18,15 +18,27 @@ using Xarial.XCad.SolidWorks.Features;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图圆接口（完整圆）。
+    /// </summary>
     public interface ISwSketchCircle : IXSketchCircle, ISwSketchSegment
     {
+        /// <summary>
+        /// 底层 SolidWorks 草图圆弧对象（圆也由 ISketchArc 表示）。
+        /// </summary>
         ISketchArc Arc { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图圆弧接口。
+    /// </summary>
     public interface ISwSketchArc : ISwSketchCircle, IXSketchArc
     {
     }
 
+    /// <summary>
+    /// SolidWorks 草图圆实现类。
+    /// </summary>
     internal class SwSketchCircle : SwSketchSegment, ISwSketchCircle
     {
         public ISketchArc Arc => (ISketchArc)Segment;
@@ -38,6 +50,7 @@ namespace Xarial.XCad.SolidWorks.Sketch
         {
             get 
             {
+                // 通过圆心点、法向和半径构造圆几何
                 var centerPt = CreatePoint((ISketchPoint)Arc.GetCenterPoint2());
                 var diam = Arc.GetRadius() * 2;
 
@@ -47,6 +60,7 @@ namespace Xarial.XCad.SolidWorks.Sketch
             }
             set 
             {
+                // 修改圆半径和圆心（轴向修改待实现）
                 Arc.SetRadius(value.Diameter / 2);
                 SetPoint((ISketchPoint)Arc.GetCenterPoint2(), value.CenterAxis.Point);
                 //TODO: implement changing of the axis
@@ -79,12 +93,18 @@ namespace Xarial.XCad.SolidWorks.Sketch
 
     internal class SwSketchArc : SwSketchCircle, ISwSketchArc
     {
+        /// <summary>
+        /// 圆弧起点。
+        /// </summary>
         public Point Start
         {
             get => CreatePoint((ISketchPoint)Arc.GetStartPoint2());
             set => SetPoint((ISketchPoint)Arc.GetStartPoint2(), value);
         }
 
+        /// <summary>
+        /// 圆弧终点。
+        /// </summary>
         public Point End
         {
             get => CreatePoint((ISketchPoint)Arc.GetEndPoint2());

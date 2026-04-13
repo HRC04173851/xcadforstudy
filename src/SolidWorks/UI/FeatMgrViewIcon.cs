@@ -13,6 +13,10 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.UI
 {
+    /// <summary>
+    /// 特征管理器视图图标包装。
+    /// 默认输出 18x18 BMP 图标用于 FeatureManager 选项卡。
+    /// </summary>
     internal class FeatMgrViewIcon : IIcon
     {
         protected readonly IXImage m_Icon;

@@ -9,6 +9,7 @@ namespace Xarial.XCad.SolidWorks.UI.Commands.Toolkit.Enums
 {
     /// <summary>
     /// Enumerates the possible states of the command (toolbar button or menu item) in SOLIDWORKS
+    /// <para>中文：枚举 SolidWorks 命令项（菜单/工具栏按钮）启用与选中状态。</para>
     /// </summary>
     internal enum CommandItemEnableState_e
     {

@@ -25,11 +25,17 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.Graphics
 {
+    /// <summary>
+    /// SolidWorks 三轴操纵器（Triad）接口。
+    /// </summary>
     public interface ISwTriad : IXTriad, ISwObject
     {
         ITriadManipulator Triad { get; }
     }
     
+    /// <summary>
+    /// Triad 回调处理器。
+    /// </summary>
     [ComVisible(true)]
     public abstract class SwTriadHandler : ISwManipulatorHandler2
     {
@@ -73,6 +79,10 @@ namespace Xarial.XCad.SolidWorks.Graphics
         }
     }
 
+    /// <summary>
+    /// SolidWorks Triad 实现。
+    /// 提供轴元素显示控制、变换设置与交互选择事件。
+    /// </summary>
     internal class SwTriad : SwObject, ISwTriad
     {
         public event TriadSelectedDelegate Selected;

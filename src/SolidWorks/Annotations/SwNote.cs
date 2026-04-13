@@ -20,12 +20,19 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Annotations
 {
+    /// <summary>
+    /// SolidWorks 注释（Note）接口。
+    /// </summary>
     public interface ISwNote : IXNote, ISwAnnotation
     {
         INote Note { get; }
     }
 
     [DebuggerDisplay("{" + nameof(Text) + "}")]
+    /// <summary>
+    /// SolidWorks 注释实现类。
+    /// 支持文本内容、文字对齐、角度、边界框与字体样式控制。
+    /// </summary>
     internal class SwNote : SwAnnotation, ISwNote
     {
         public INote Note => m_Note;

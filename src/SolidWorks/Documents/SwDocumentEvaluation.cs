@@ -17,14 +17,24 @@ using Xarial.XCad.SolidWorks.Geometry.Evaluation;
 namespace Xarial.XCad.SolidWorks.Documents
 {
     /// <inheritdoc/>
+    /// <summary>
+    /// SolidWorks 文档评估接口。
+    /// </summary>
     public interface ISwDocumentEvaluation : IXDocumentEvaluation
     {
     }
 
+    /// <summary>
+    /// SolidWorks 装配体评估接口。
+    /// </summary>
     public interface ISwAssemblyEvaluation : ISwDocumentEvaluation, IXAssemblyEvaluation 
     {
     }
 
+    /// <summary>
+    /// 文档评估抽象基类。
+    /// 提供包围盒、质量属性、射线求交、网格剖分等预创建入口。
+    /// </summary>
     internal abstract class SwDocumentEvaluation : ISwDocumentEvaluation
     {
         private readonly SwDocument3D m_Doc;
@@ -61,6 +71,9 @@ namespace Xarial.XCad.SolidWorks.Documents
 
     internal class SwPartEvaluation : SwDocumentEvaluation 
     {
+        /// <summary>
+        /// 零件文档评估实现。
+        /// </summary>
         private readonly SwPart m_Part;
 
         internal SwPartEvaluation(SwPart part) : base(part) 
@@ -88,6 +101,9 @@ namespace Xarial.XCad.SolidWorks.Documents
 
     internal class SwAssemblyEvaluation : SwDocumentEvaluation, ISwAssemblyEvaluation
     {
+        /// <summary>
+        /// 装配体文档评估实现。
+        /// </summary>
         private readonly SwAssembly m_Assm;
 
         internal SwAssemblyEvaluation(SwAssembly assm) : base(assm) 

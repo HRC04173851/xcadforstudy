@@ -25,6 +25,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
     /// <summary>
     /// Wrapper class around the group of <see href="http://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ipropertymanagerpageoption.html">IPropertyManagerPageOption </see> controls
+    /// <para>中文：`IPropertyManagerPageOption`（单选按钮）控件组包装。</para>
     /// </summary>
     /// <remarks>All set properties will be applied to all controls in the group, while get will return the value of first control</remarks>
     public class PropertyManagerPageOptionBox : PropertyManagerPageControlList<IPropertyManagerPageOption>, IPropertyManagerPageOption
@@ -85,6 +86,9 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 
     internal class PropertyManagerPageOptionBoxControl : PropertyManagerPageItemsSourceControl<object, PropertyManagerPageOptionBox>
     {
+        /// <summary>
+        /// PMP 单选按钮组控件实现。
+        /// </summary>
         private delegate IPropertyManagerPageOption ControlCreatorDelegate(int id, short controlType, string caption, short leftAlign, int options, string tip);
 
         protected override event ControlValueChangedDelegate<object> ValueChanged;

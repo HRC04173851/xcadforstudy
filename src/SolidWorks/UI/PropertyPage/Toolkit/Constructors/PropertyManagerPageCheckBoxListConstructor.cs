@@ -22,6 +22,9 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Constructors
 {
+    /// <summary>
+    /// PMP 复选框列表构造器。
+    /// </summary>
     internal class PropertyManagerPageCheckBoxListConstructor
         : PropertyManagerPageBaseControlConstructor<PropertyManagerPageCheckBoxListControl, PropertyManagerPageCheckBoxList>, ICheckBoxListConstructor
     {

@@ -14,12 +14,18 @@ using System.Windows.Forms;
 
 namespace Xarial.XCad.SolidWorks.Services
 {
+    /// <summary>
+    /// 模型视图页签控件提供器接口。
+    /// </summary>
     public interface IModelViewControlProvider
     {
         object ProvideComControl(IModelViewManager mdlViewMgr, string progId, string title);
         bool ProvideNetControl(IModelViewManager mdlViewMgr, Control ctrl, string title);
     }
 
+    /// <summary>
+    /// 默认模型视图控件提供器实现。
+    /// </summary>
     internal class ModelViewControlProvider : IModelViewControlProvider
     {
         public object ProvideComControl(IModelViewManager mdlViewMgr, string progId, string title)

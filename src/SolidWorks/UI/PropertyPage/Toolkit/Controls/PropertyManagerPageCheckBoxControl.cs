@@ -15,6 +15,9 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 复选框控件实现。
+    /// </summary>
     internal class PropertyManagerPageCheckBoxControl : PropertyManagerPageBaseControl<bool, IPropertyManagerPageCheckbox>
     {
         protected override event ControlValueChangedDelegate<bool> ValueChanged;

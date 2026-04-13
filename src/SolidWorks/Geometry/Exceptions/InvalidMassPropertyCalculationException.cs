@@ -15,6 +15,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Exceptions
 {
     /// <summary>
     /// Exception indicates that calculation of mass properties has failed
+    /// <para>中文：表示质量属性计算失败。</para>
     /// </summary>
     public class InvalidMassPropertyCalculationException : EvaluationFailedException, IUserException
     {

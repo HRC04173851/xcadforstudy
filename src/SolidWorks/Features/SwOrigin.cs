@@ -18,12 +18,23 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 原点特征接口。
+    /// 原点是文档坐标系基准点，属于系统内置参考几何元素。
+    /// </summary>
     public interface ISwOrigin : IXOrigin, ISwFeature 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 原点特征实现类。
+    /// 原点为默认系统特征，不支持手动创建。
+    /// </summary>
     internal class SwOrigin : SwFeature, ISwOrigin
     {
+        /// <summary>
+        /// SolidWorks 原点特征类型名。
+        /// </summary>
         internal const string TypeName = "OriginProfileFeature";
 
         internal SwOrigin(IFeature feat, SwDocument doc, SwApplication app, bool created) : base(feat, doc, app, created)
@@ -33,6 +44,7 @@ namespace Xarial.XCad.SolidWorks.Features
         public override bool IsUserFeature => false;
 
         protected override IFeature InsertFeature(CancellationToken cancellationToken)
+            // 原点属于系统默认特征，不允许通过 API 新建
             => throw new NotSupportedException("Origin is a default feature and cannot be created");
     }
 }

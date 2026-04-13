@@ -13,6 +13,10 @@ using System.Text;
 
 namespace Xarial.XCad.SolidWorks.Utils
 {
+    /// <summary>
+    /// SolidWorks COM 指针相等比较器。
+    /// 基于 `ISldWorks.IsSame` 判断两个 COM 对象是否指向同一底层实体。
+    /// </summary>
     internal class SwPointerEqualityComparer<T> : IEqualityComparer<T>
         where T : class
     {
@@ -38,6 +42,7 @@ namespace Xarial.XCad.SolidWorks.Utils
             try
             {
                 //Note: ISldWorks::IsSame can crash if pointer is disconnected
+                // 中文：若 COM 指针已断开，调用 IsSame 可能崩溃，因此先做存活性判断
 
                 if (IsAlive(x) && IsAlive(y))
                 {

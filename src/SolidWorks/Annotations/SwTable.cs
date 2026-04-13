@@ -18,11 +18,18 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Annotations
 {
+    /// <summary>
+    /// SolidWorks 表格注解接口（BOM、孔表、修订表等）。
+    /// </summary>
     public interface ISwTable : IXTable 
     {
         ITableAnnotation TableAnnotation { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 表格注解实现。
+    /// 通过 IDataReader 方式按行读取表格内容，便于数据导出和处理。
+    /// </summary>
     internal class SwTable : SwAnnotation, ISwTable
     {
         private class TableAnnotationReader : IDataReader

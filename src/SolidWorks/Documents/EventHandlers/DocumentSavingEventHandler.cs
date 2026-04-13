@@ -17,6 +17,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents.EventHandlers
 {
+    /// <summary>
+    /// 文档保存事件处理器。
+    /// 支持保存前取消、以及 SaveAs 场景下重定向保存文件名。
+    /// </summary>
     internal class DocumentSavingEventHandler : SwModelEventsHandler<DocumentSaveDelegate>
     {
         internal DocumentSavingEventHandler(SwDocument doc, ISwApplication app) : base(doc, app)

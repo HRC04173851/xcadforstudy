@@ -22,11 +22,17 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 工程图图纸集合接口，支持激活图纸和图纸激活事件。
+    /// </summary>
     public interface ISwSheetCollection : IXSheetRepository, IDisposable 
     {
         new ISwSheet Active { get; set; }
     }
 
+    /// <summary>
+    /// 工程图图纸缓存辅助类，处理新建文档时图纸模板占位符的提交逻辑。
+    /// </summary>
     internal class SwSheetsCache : EntityCache<IXSheet>
     {
         private readonly SwDrawing m_Drw;

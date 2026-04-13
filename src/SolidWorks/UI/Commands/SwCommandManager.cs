@@ -41,11 +41,16 @@ namespace Xarial.XCad.SolidWorks.UI.Commands
     {
         /// <summary>
         /// Pointer to command group which holding the add-in commands
+        /// <para>中文：承载插件命令组的 SolidWorks 命令管理器对象</para>
         /// </summary>
         ICommandManager CmdMgr { get; }
     }
 
     /// <inheritdoc/>
+    /// <summary>
+    /// SolidWorks 命令管理器实现。
+    /// 负责创建命令组/上下文菜单、注册回调、构建 Command Tab（Ribbon 页签）和图标。
+    /// </summary>
     internal class SwCommandManager : ISwCommandManager
     {
         private class TabCommandInfo
@@ -181,6 +186,7 @@ namespace Xarial.XCad.SolidWorks.UI.Commands
 
             var title = GetMenuPath(cmdBar);
 
+            // 创建 SolidWorks 命令组（工具栏/菜单/上下文菜单）
             var cmdGroup = CreateCommandGroup(cmdBar.Id, title, cmdBar.Tooltip,
                 cmdBar.Commands.Select(c => c.UserId).ToArray(), isContextMenu,
                 contextMenuSelectType);

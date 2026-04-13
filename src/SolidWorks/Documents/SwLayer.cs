@@ -16,11 +16,21 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 图层接口。
+    /// </summary>
     public interface ISwLayer : IXLayer, ISwObject
     {
+        /// <summary>
+        /// 底层 SolidWorks 图层对象。
+        /// </summary>
         ILayer Layer { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 图层实现类。
+    /// 支持图层名称、可见性、颜色属性读写以及图层创建。
+    /// </summary>
     internal class SwLayer : SwObject, ISwLayer
     {
         private readonly ElementCreator<ILayer> m_Creator;
@@ -147,6 +157,7 @@ namespace Xarial.XCad.SolidWorks.Documents
 
             const int SUCCEEDED = 1;
 
+            // 添加图层：名称、描述、颜色、线型、线宽
             if (layerMgr.AddLayer(Name, "", Color.HasValue ? ColorUtils.ToColorRef(Color.Value) : 0, (int)swLineStyles_e.swLineDEFAULT, (int)swLineWeights_e.swLW_NORMAL) == SUCCEEDED)
             {
                 return layerMgr.IGetLayer(Name);

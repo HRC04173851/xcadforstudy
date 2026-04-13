@@ -12,6 +12,9 @@ using Xarial.XCad.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Exceptions
 {
+    /// <summary>
+    /// 已提交几何段只读参数异常。
+    /// </summary>
     public class CommitedSegmentReadOnlyParameterException : CommitedElementReadOnlyParameterException
     {
         public CommitedSegmentReadOnlyParameterException() : base("Parameter cannot be modified after entity is committed") 

@@ -19,10 +19,16 @@ using Xarial.XCad.Structures;
 
 namespace Xarial.XCad.SolidWorks
 {
+    /// <summary>
+    /// SolidWorks 宏文件接口，继承自 xCAD 通用宏接口。
+    /// </summary>
     public interface ISwMacro : IXMacro 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 宏文件抽象基类，封装宏的路径管理、执行及错误处理逻辑。
+    /// </summary>
     public abstract class SwMacro : ISwMacro
     {
         protected readonly ISldWorks m_SwApp;
@@ -168,10 +174,16 @@ namespace Xarial.XCad.SolidWorks
         }
     }
 
+    /// <summary>
+    /// SolidWorks VBA 宏文件接口。
+    /// </summary>
     public interface ISwVbaMacro : ISwMacro
     {
     }
 
+    /// <summary>
+    /// SolidWorks VBA 宏文件的内部实现，负责解析入口点并执行宏。
+    /// </summary>
     internal class SwVbaMacro : SwMacro, ISwVbaMacro
     {
         private class MacroEntryPointComparer : IComparer<MacroEntryPoint>
@@ -264,17 +276,26 @@ namespace Xarial.XCad.SolidWorks
         }
     }
 
+    /// <summary>
+    /// VSTA 宏版本枚举：Vsta1 为旧版，Vsta3 为新版（仅适用于 SolidWorks 2021 之前）。
+    /// </summary>
     public enum VstaMacroVersion_e 
     {
         Vsta1,
         Vsta3
     }
 
+    /// <summary>
+    /// SolidWorks VSTA 宏文件接口，支持指定 VSTA 版本。
+    /// </summary>
     public interface ISwVstaMacro : ISwMacro
     {
         VstaMacroVersion_e? Version { get; set; }
     }
 
+    /// <summary>
+    /// SolidWorks VSTA 宏文件的内部实现，支持 VSTA1/VSTA3 版本切换及调试标志管理。
+    /// </summary>
     internal class SwVstaMacro : SwMacro, ISwVstaMacro
     {
         public VstaMacroVersion_e? Version { get; set; }

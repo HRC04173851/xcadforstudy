@@ -7,6 +7,10 @@
 
 namespace Xarial.XCad.SolidWorks.Enums
 {
+    /// <summary>
+    /// SolidWorks 主版本枚举。
+    /// 枚举值与 SolidWorks 内部主版本号（Revision major）对应。
+    /// </summary>
     public enum SwVersion_e
     {
         SwPrior2000 = 1,

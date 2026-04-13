@@ -14,6 +14,7 @@ namespace Xarial.XCad.SolidWorks.Exceptions
 {
     /// <summary>
     /// This error indicates that macro failed to run with unknown reason
+    /// <para>中文：表示宏执行失败，且 SolidWorks 未返回明确失败原因。</para>
     /// </summary>
     /// <remarks>This error migth indicate that the process now is corrupted</remarks>
     public class UnknownMacroRunFailedException : MacroRunFailedException, ICriticalException, IUserException

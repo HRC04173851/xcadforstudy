@@ -20,10 +20,16 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 体集合接口，继承自 xCAD 通用体存儲库接口。
+    /// </summary>
     public interface ISwBodyCollection : IXBodyRepository 
     {
     }
 
+    /// <summary>
+    /// SolidWorks 体集合拽象基类，封装体的枚举和数量获取逻辑。
+    /// </summary>
     internal abstract class SwBodyCollection : ISwBodyCollection
     {
         private readonly ISwDocument m_RootDoc;

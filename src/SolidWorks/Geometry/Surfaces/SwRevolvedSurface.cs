@@ -16,10 +16,16 @@ using Xarial.XCad.SolidWorks.Geometry.Surfaces;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks 旋转面接口。
+    /// </summary>
     public interface ISwRevolvedSurface : ISwSurface, IXRevolvedSurface
     {
     }
 
+    /// <summary>
+    /// SolidWorks 旋转面实现类。
+    /// </summary>
     internal class SwRevolvedSurface : SwSurface, ISwRevolvedSurface
     {
         public SwRevolvedSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

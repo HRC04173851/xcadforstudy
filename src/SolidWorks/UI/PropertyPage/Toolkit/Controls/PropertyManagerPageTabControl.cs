@@ -25,10 +25,14 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
     {
         /// <summary>
         /// Pointer to the underlying tab box
+        /// <para>中文：底层 PMP Tab 对象指针。</para>
         /// </summary>
         IPropertyManagerPageTab Tab { get; }
     }
 
+    /// <summary>
+    /// PMP Tab 控件实现。
+    /// </summary>
     internal class PropertyManagerPageTabControl : PropertyManagerPageGroupBase<IPropertyManagerPageTab>, IPropertyManagerPageTabEx
     {
         public IPropertyManagerPageTab Tab => m_SpecificGroup;

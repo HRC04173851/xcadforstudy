@@ -16,11 +16,18 @@ using System.Xml;
 
 namespace Xarial.XCad.SolidWorks
 {
+    /// <summary>
+    /// SolidWorks 材料接口。
+    /// </summary>
     public interface ISwMaterial : IXMaterial
     {
     }
 
     [DebuggerDisplay("{" + nameof(Name) + "}")]
+    /// <summary>
+    /// SolidWorks 材料实现。
+    /// 从材料数据库 XML 节点中读取物理属性（弹性模量、密度、导热系数等）。
+    /// </summary>
     internal class SwMaterial : ISwMaterial
     {
         public string Name { get; }

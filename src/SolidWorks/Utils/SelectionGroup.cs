@@ -13,6 +13,10 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Utils
 {
+    /// <summary>
+    /// 选择组作用域工具。
+    /// 支持系统选择列表与普通选择列表两种模式，并在释放时自动恢复状态。
+    /// </summary>
     internal class SelectionGroup : IDisposable
     {
         private readonly IModelDoc2 m_Model;
@@ -49,6 +53,7 @@ namespace Xarial.XCad.SolidWorks.Utils
 
         /// <summary>
         /// Add object to current selection list
+        /// <para>中文：向当前选择集中添加单个对象。</para>
         /// </summary>
         /// <param name="disp">Pointer to dispatch</param>
         /// <param name="selData">Optional selection data</param>
@@ -67,6 +72,7 @@ namespace Xarial.XCad.SolidWorks.Utils
 
         /// <summary>
         /// Adds multiple objects into selection list
+        /// <para>中文：向当前选择集中批量添加多个对象。</para>
         /// </summary>
         /// <param name="disps">Array of dispatches to select</param>
         /// <param name="selData">Optional selection data</param>

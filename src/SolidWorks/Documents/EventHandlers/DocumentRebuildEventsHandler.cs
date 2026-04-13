@@ -15,6 +15,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents.EventHandlers
 {
+    /// <summary>
+    /// 文档重建事件处理器。
+    /// 监听零件/装配体/工程图重建完成通知。
+    /// </summary>
     internal class DocumentRebuildEventsHandler : SwModelEventsHandler<DocumentEventDelegate>
     {
         internal DocumentRebuildEventsHandler(SwDocument doc, ISwApplication app) : base(doc, app)

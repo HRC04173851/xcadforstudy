@@ -18,17 +18,26 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 模型视图集合接口，提供当前激活视图的访问。
+    /// </summary>
     public interface ISwModelViewsCollection : IXModelViewRepository
     {
         new ISwModelView Active { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 3D 模型视图集合接口，支持按标准视图类型或名称索引视图。
+    /// </summary>
     public interface ISwModelViews3DCollection : IXModelView3DRepository, ISwModelViewsCollection
     {
         new ISwStandardView this[StandardViewType_e type] { get; }
         new ISwNamedView this[string name] { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 模型视图集合实现类，封装视图枚举和当前激活视图获取。
+    /// </summary>
     internal class SwModelViewsCollection : ISwModelViewsCollection
     {
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

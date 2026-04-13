@@ -20,12 +20,14 @@ namespace Xarial.XCad.SolidWorks.Services
 {
     /// <summary>
     /// Resolves the reference path for the document
+    /// <para>中文：解析文档引用文件路径（零件/装配体外部引用）</para>
     /// </summary>
     /// <remarks>This logic implemented according to <see href="https://help.solidworks.com/2016/english/SolidWorks/sldworks/c_Search_Routine_for_Referenced_Documents.htm"/></remarks>
     public abstract class SwFilePathResolverBase : IFilePathResolver
     {
         public string ResolvePath(string parentDocPath, string path)
         {
+            // 1) 先检查是否已加载同名文档
             if (TryGetLoadedDocumentPath(path, out string loadedPath)) 
             {
                 return loadedPath;
@@ -35,17 +37,20 @@ namespace Xarial.XCad.SolidWorks.Services
 
             foreach (var searchFolder in GetSearchFolders()) 
             {
+                // 2) 按 SolidWorks 搜索文件夹规则递归查找
                 if (TrySearchRecursively(searchFolder, path, out resolvedPath)) 
                 {
                     return resolvedPath;
                 }
             }
 
+            // 3) 在父文档目录及其父层级中递归查找
             if (TrySearchRecursively(Path.GetDirectoryName(parentDocPath), path, out resolvedPath))
             {
                 return resolvedPath;
             }
 
+            // 4) 最后尝试原始路径
             if (IsReferenceExists(path)) 
             {
                 return path;

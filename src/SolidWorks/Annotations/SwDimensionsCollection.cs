@@ -22,11 +22,17 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Annotations
 {
+    /// <summary>
+    /// SolidWorks 尺寸集合接口。
+    /// </summary>
     public interface ISwDimensionsCollection : IXDimensionRepository, IDisposable
     {
         new ISwDimension this[string name] { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 尺寸集合抽象基类。
+    /// </summary>
     internal abstract class SwDimensionsCollection : ISwDimensionsCollection
     {
         IXDimension IXRepository<IXDimension>.this[string name] => this[name];
@@ -63,6 +69,10 @@ namespace Xarial.XCad.SolidWorks.Annotations
         public T PreCreate<T>() where T : IXDimension => throw new NotImplementedException();
     }
 
+    /// <summary>
+    /// 基于特征管理器的尺寸集合实现。
+    /// 用于在文档级遍历所有特征尺寸。
+    /// </summary>
     internal class SwFeatureManagerDimensionsCollection : SwDimensionsCollection
     {
         private readonly ISwFeatureManager m_FeatMgr;
@@ -109,6 +119,9 @@ namespace Xarial.XCad.SolidWorks.Annotations
         }
     }
 
+    /// <summary>
+    /// 单个特征的尺寸集合实现。
+    /// </summary>
     internal class SwFeatureDimensionsCollection : SwDimensionsCollection
     {
         private readonly ISwDocument m_Doc;

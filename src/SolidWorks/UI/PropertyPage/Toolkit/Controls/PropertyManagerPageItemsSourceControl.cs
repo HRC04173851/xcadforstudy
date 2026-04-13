@@ -25,6 +25,10 @@ using Xarial.XCad.Reflection;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// 带数据源的 PMP 控件基类。
+    /// 支持静态项、元数据驱动项和自定义项提供器。
+    /// </summary>
     internal abstract class PropertyManagerPageItemsSourceControl<TVal, TSwCtrl> : PropertyManagerPageBaseControl<TVal, TSwCtrl>, IItemsControl
         where TSwCtrl : class
     {

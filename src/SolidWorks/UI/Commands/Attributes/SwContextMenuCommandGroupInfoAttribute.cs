@@ -17,6 +17,7 @@ namespace Xarial.XCad.SolidWorks.UI.Commands.Attributes
 {
     /// <summary>
     /// SOLIDWORKS specific context command menu spec
+    /// <para>中文：SolidWorks 上下文菜单命令组特性。</para>
     /// </summary>
     public class SwContextMenuCommandGroupInfoAttribute : ContextMenuCommandGroupInfoAttribute
     {

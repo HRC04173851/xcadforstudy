@@ -14,20 +14,27 @@ using Xarial.XCad.UI.Commands.Structures;
 
 namespace Xarial.XCad.SolidWorks.UI.Commands
 {
+    /// <summary>
+    /// SolidWorks 命令组接口，封装工具栏/菜单命令组的特有属性。
+    /// </summary>
     public interface ISwCommandGroup : IXCommandGroup 
     {
         /// <summary>
         /// Indicates if this group is context menu
+        /// <para>中文：标识该命令组是否为右键上下文菜单</para>
         /// </summary>
         bool IsContextMenu { get; }
 
         /// <summary>
         /// SOLIDWORKS specific command group
+        /// <para>中文：底层 SolidWorks 命令组对象</para>
         /// </summary>
         CommandGroup CommandGroup { get; }
     }
 
-    /// <inheritdoc/>
+    /// <summary>
+    /// SolidWorks 命令组实现，封装命令点击事件和命令状态解析逻辑。
+    /// </summary>
     internal class SwCommandGroup : ISwCommandGroup
     {
         /// <inheritdoc/>
@@ -90,6 +97,7 @@ namespace Xarial.XCad.SolidWorks.UI.Commands
 
         /// <remarks>Using this method instead of the generic extension trying to improve the performance
         /// as this method is called frequently and finding the document from documents collection invokes several APIs as per the equality comparer</remarks>
+        /// <para>中文：该方法高频调用，直接读取活动文档类型以提高命令启用状态判断性能。</para>
         private void ResolveState(CommandState state, WorkspaceTypes_e ws)
         {
             bool enabled;

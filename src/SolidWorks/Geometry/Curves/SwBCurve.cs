@@ -17,10 +17,16 @@ using Xarial.XCad.SolidWorks.Geometry.Curves;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Curves
 {
+    /// <summary>
+    /// SolidWorks B 样条曲线接口（B-Curve / NURBS 曲线）。
+    /// </summary>
     public interface ISwBCurve : IXBCurve, ISwCurve
     {
     }
 
+    /// <summary>
+    /// SolidWorks B 样条曲线实现类。
+    /// </summary>
     internal class SwBCurve : SwCurve, ISwBCurve
     {
         internal SwBCurve(ICurve curve, SwDocument doc, SwApplication app, bool isCreated) 

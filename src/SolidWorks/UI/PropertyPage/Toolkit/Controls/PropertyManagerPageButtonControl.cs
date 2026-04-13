@@ -16,6 +16,10 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 按钮控件实现。
+    /// 值类型为 `Action`，点击按钮时执行绑定委托。
+    /// </summary>
     internal class PropertyManagerPageButtonControl : PropertyManagerPageBaseControl<Action, IPropertyManagerPageButton>
     {
 #pragma warning disable CS0067

@@ -16,10 +16,16 @@ using Xarial.XCad.SolidWorks.Geometry.Surfaces;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks 混合/放样面接口。
+    /// </summary>
     public interface ISwBlendXSurface : ISwSurface, IXBlendSurface
     {
     }
 
+    /// <summary>
+    /// SolidWorks 混合/放样面实现类。
+    /// </summary>
     internal class SwBlendXSurface : SwSurface, ISwBlendXSurface
     {
         public SwBlendXSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

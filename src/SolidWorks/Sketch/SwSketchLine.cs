@@ -16,11 +16,20 @@ using Xarial.XCad.SolidWorks.Features;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图直线接口。
+    /// </summary>
     public interface ISwSketchLine : IXSketchLine, ISwSketchSegment
     {
+        /// <summary>
+        /// 底层 SolidWorks 草图直线对象。
+        /// </summary>
         ISketchLine Line { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图直线实现类。
+    /// </summary>
     internal class SwSketchLine : SwSketchSegment, ISwSketchLine
     {
         public ISketchLine Line => (ISketchLine)Segment;
@@ -68,6 +77,7 @@ namespace Xarial.XCad.SolidWorks.Sketch
         {
             var geom = Geometry;
 
+            // 在当前草图中按起点/终点坐标创建线段
             var line = (ISketchLine)m_SketchMgr.CreateLine(
                 geom.StartPoint.X,
                 geom.StartPoint.Y,

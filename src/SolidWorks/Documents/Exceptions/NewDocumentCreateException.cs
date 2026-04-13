@@ -14,6 +14,7 @@ namespace Xarial.XCad.SolidWorks.Documents.Exceptions
 {
     /// <summary>
     /// Exception indicates that new document cannot be created
+    /// <para>中文：表示无法基于指定模板创建新文档。</para>
     /// </summary>
     public class NewDocumentCreateException : Exception, IUserException
     {

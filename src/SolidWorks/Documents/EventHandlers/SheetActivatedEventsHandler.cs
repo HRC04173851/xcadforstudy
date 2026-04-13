@@ -16,6 +16,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents.EventHandlers
 {
+    /// <summary>
+    /// 工程图 Sheet 激活事件处理器。
+    /// 监听切换 Sheet 以及新增 Sheet 后的激活状态变化。
+    /// </summary>
     internal class SheetActivatedEventsHandler : SwModelEventsHandler<SheetActivatedDelegate>
     {
         private SwDrawing m_Drw;

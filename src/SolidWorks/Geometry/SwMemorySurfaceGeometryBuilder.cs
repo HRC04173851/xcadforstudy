@@ -20,10 +20,16 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 内存片体几何构建器接口，继承自 xCAD 通用片体构建器。
+    /// </summary>
     public interface ISwMemorySheetGeometryBuilder : IXSheetGeometryBuilder
     {
     }
 
+    /// <summary>
+    /// SolidWorks 内存片体几何构建器实现，通过 Modeler API 构建平面和曲面片体。
+    /// </summary>
     internal class SwMemorySheetGeometryBuilder : ISwMemorySheetGeometryBuilder
     {
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

@@ -21,12 +21,20 @@ using Xarial.XCad.SolidWorks.Geometry.Curves;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 环（Loop）接口。
+    /// 环是面的边界闭合链，可表示外环（外边界）或内环（孔边界）。
+    /// </summary>
     public interface ISwLoop : IXLoop, ISwSelObject
     {
         ILoop2 Loop { get; }
         ISwCurve[] Curves { get; set; }
     }
 
+    /// <summary>
+    /// SolidWorks 环实现类。
+    /// 支持“虚拟环”模式：当环未提交时仅缓存曲线集合，用于需要环参数的构造流程。
+    /// </summary>
     internal class SwLoop : SwSelObject, ISwLoop
     {
         IXSegment[] IXLoop.Segments
@@ -66,6 +74,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
         internal SwLoop(ILoop2 loop, SwDocument doc, SwApplication app) : base(loop, doc, app)
         {
             //new loops cannot be create, so this loop is just a placeholder of curves for other methods which requires loops
+            // 中文：Loop 在 SolidWorks API 中通常不可直接新建，这里使用虚拟环占位保存曲线参数
             m_IsVirtual = loop == null;
             m_Creator = new ElementCreator<ILoop2>(CreateLoop, loop, loop != null);
         }

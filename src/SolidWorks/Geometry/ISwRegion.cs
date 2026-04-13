@@ -22,6 +22,9 @@ using Xarial.XCad.SolidWorks.Sketch;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 区域接口，封装平面几何区域的外环和内环定义。
+    /// </summary>
     public interface ISwRegion : IXRegion
     {
         /// <summary>
@@ -35,11 +38,17 @@ namespace Xarial.XCad.SolidWorks.Geometry
         new ISwLoop[] InnerLoops { get; set; }
     }
 
+    /// <summary>
+    /// SolidWorks 平面区域接口，可转化为平面片体。
+    /// </summary>
     public interface ISwPlanarRegion : ISwRegion, IXPlanarRegion
     {
         ISwTempPlanarSheetBody PlanarSheetBody { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 平面区域实现类，负责平面区域的创建和平面片体的获取。
+    /// </summary>
     internal sealed class SwPlanarRegion : ISwPlanarRegion
     {
         IXLoop IXRegion.OuterLoop { get => OuterLoop; set => OuterLoop = (ISwLoop)value; }

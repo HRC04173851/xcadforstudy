@@ -20,6 +20,9 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 标签文本样式扩展。
+    /// </summary>
     internal static class PropertyManagerPageLabelExtension 
     {
         internal static void SetLabelOptions(this IPropertyManagerPageLabel label, FontStyle_e style, string font, KnownColor? textColor) 
@@ -51,6 +54,9 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
         }
     }
 
+    /// <summary>
+    /// PMP 文本块控件实现（只读文本展示）。
+    /// </summary>
     internal class PropertyManagerPageTextBlockControl : PropertyManagerPageBaseControl<object, IPropertyManagerPageLabel>
     {
         protected override event ControlValueChangedDelegate<object> ValueChanged;

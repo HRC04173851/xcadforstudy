@@ -12,6 +12,9 @@ using Xarial.XCad.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Documents.Exceptions
 {
+    /// <summary>
+    /// 大型设计审阅（LDR）模式下非活动配置不受支持异常。
+    /// </summary>
     public class InactiveLdrConfigurationNotSupportedException : NotSupportedException, IUserException
     {
         public InactiveLdrConfigurationNotSupportedException() 

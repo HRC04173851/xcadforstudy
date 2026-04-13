@@ -17,10 +17,16 @@ using Xarial.XCad.SolidWorks.Features;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 零件配置接口，支持材料、切割清单等零件专属配置功能。
+    /// </summary>
     public interface ISwPartConfiguration : ISwConfiguration, IXPartConfiguration
     {
     }
 
+    /// <summary>
+    /// SolidWorks 零件配置实现类，封装零件配置的材料读写和切割清单子项集合。
+    /// </summary>
     internal class SwPartConfiguration : SwConfiguration, ISwPartConfiguration
     {
         private readonly SwPart m_Part;

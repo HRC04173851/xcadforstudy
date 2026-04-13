@@ -16,10 +16,16 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Curves
 {
+    /// <summary>
+    /// SolidWorks 点接口，表示三维空间中的一个几何点。
+    /// </summary>
     public interface ISwPoint : ISwObject, IXPoint
     {
     }
 
+    /// <summary>
+    /// SolidWorks 点实现类（基于任意 COM 对象包装）。
+    /// </summary>
     internal class SwPoint : SwObject, ISwPoint
     {
         internal SwPoint(object disp, SwDocument doc, SwApplication app) : base(disp, doc, app)
@@ -35,6 +41,9 @@ namespace Xarial.XCad.SolidWorks.Geometry.Curves
         }
     }
 
+    /// <summary>
+    /// 基于 SolidWorks IMathPoint 的点实现类，支持坐标读写。
+    /// </summary>
     internal class SwMathPoint : SwObject, ISwPoint
     {
         internal IMathPoint MathPoint { get; }

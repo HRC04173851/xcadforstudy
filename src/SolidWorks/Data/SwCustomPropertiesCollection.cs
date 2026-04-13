@@ -27,12 +27,19 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Data
 {
+    /// <summary>
+    /// SolidWorks 自定义属性集合接口。
+    /// </summary>
     public interface ISwCustomPropertiesCollection : IXPropertyRepository, IDisposable
     {
         new ISwCustomProperty this[string name] { get; }
         ISwCustomProperty PreCreate();
     }
 
+    /// <summary>
+    /// SolidWorks 自定义属性集合抽象基类。
+    /// 提供属性枚举、查询、创建、删除和事件处理器初始化。
+    /// </summary>
     internal abstract class SwCustomPropertiesCollection : ISwCustomPropertiesCollection
     {
         IXProperty IXRepository<IXProperty>.this[string name] => this[name];
@@ -86,14 +93,17 @@ namespace Xarial.XCad.SolidWorks.Data
         {
             if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2018))
             {
+                // 新版本通过 Get6 判断属性是否存在
                 return PrpMgr.Get6(name, true, out _, out _, out _, out _) != (int)swCustomInfoGetResult_e.swCustomInfoGetResult_NotPresent;
             }
             else if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2014))
             {
+                // 过渡版本通过 Get5 判断属性是否存在
                 return PrpMgr.Get5(name, true, out _, out _, out _) != (int)swCustomInfoGetResult_e.swCustomInfoGetResult_NotPresent;
             }
             else 
             {
+                // 旧版本通过属性名列表判断
                 var prpNames = PrpMgr.GetNames() as string[] ?? new string[0];
                 return prpNames.Contains(name, StringComparer.CurrentCultureIgnoreCase);
             }

@@ -30,11 +30,17 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 工程图图纸接口，提供对 SolidWorks <see cref="ISheet"/> 原生对象的访问。
+    /// </summary>
     public interface ISwSheet : ISwSelObject, IXSheet
     {
         ISheet Sheet { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 工程图图纸实现类，封装图纸名称、格式、尺度、视图列表等细节管理。
+    /// </summary>
     [DebuggerDisplay("{" + nameof(Name) + "}")]
     internal class SwSheet : SwSelObject, ISwSheet
     {

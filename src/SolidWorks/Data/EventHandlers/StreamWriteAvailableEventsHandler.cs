@@ -15,6 +15,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Data.EventHandlers
 {
+    /// <summary>
+    /// 3rd-party Stream 写可用事件处理器。
+    /// 在保存流程触发时通知可写入流式扩展数据。
+    /// </summary>
     internal class StreamWriteAvailableEventsHandler : SwModelEventsHandler<DataStoreAvailableDelegate>
     {
         internal StreamWriteAvailableEventsHandler(SwDocument doc, ISwApplication app) : base(doc, app)

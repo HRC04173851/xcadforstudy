@@ -25,12 +25,18 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 配置集合接口，支持配置预创建、激活切换及配置激活事件。
+    /// </summary>
     public interface ISwConfigurationCollection : IXConfigurationRepository, IDisposable
     {
         ISwConfiguration PreCreate();
         new ISwConfiguration Active { get; set; }
     }
 
+    /// <summary>
+    /// SolidWorks 配置集合实现类，封装配置的枚举、创建、激活切换及配置激活事件。
+    /// </summary>
     internal class SwConfigurationCollection : ISwConfigurationCollection
     {
         public event ConfigurationActivatedDelegate ConfigurationActivated

@@ -16,10 +16,16 @@ using Xarial.XCad.SolidWorks.Geometry.Surfaces;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks 偏移面接口。
+    /// </summary>
     public interface ISwOffsetSurface : ISwSurface, IXOffsetSurface
     {
     }
 
+    /// <summary>
+    /// SolidWorks 偏移面实现类。
+    /// </summary>
     internal class SwOffsetSurface : SwSurface, ISwOffsetSurface
     {
         public SwOffsetSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

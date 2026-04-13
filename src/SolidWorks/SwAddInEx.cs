@@ -227,6 +227,11 @@ namespace Xarial.XCad.SolidWorks
         protected IServiceProvider m_SvcProvider;
 
         /// <summary>
+        /// 标记插件是否已释放，防止重复释放资源。
+        /// </summary>
+        private bool m_IsDisposed;
+
+        /// <summary>
         /// Initializes the add-in and prepares the disposables list
         /// <para>中文：初始化插件，准备资源释放列表</para>
         /// </summary>

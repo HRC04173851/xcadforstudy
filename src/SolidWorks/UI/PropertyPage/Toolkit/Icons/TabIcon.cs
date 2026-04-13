@@ -13,6 +13,9 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Icons
 {
+    /// <summary>
+    /// PMP Tab 图标包装（16x18）。
+    /// </summary>
     internal class TabIcon : IIcon
     {
         internal IXImage Icon { get; }

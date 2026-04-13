@@ -19,11 +19,17 @@ using Xarial.XCad.SolidWorks.Features;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图块定义接口，表示可多次实例化的可复用草图元素组。
+    /// </summary>
     public interface ISwSketchBlockDefinition : IXSketchBlockDefinition, ISwFeature
     {
         ISketchBlockDefinition SketchBlockDefinition { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 草图块定义实现类，封装块定义的插入点、实例集合和实体集合。
+    /// </summary>
     internal class SwSketchBlockDefinition : SwFeature, ISwSketchBlockDefinition
     {
         public ISketchBlockDefinition SketchBlockDefinition { get; }

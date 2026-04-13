@@ -32,6 +32,7 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
     /// <summary>
     /// Wrapper class around the group of <see href="http://help.solidworks.com/2016/english/api/sldworksapi/solidworks.interop.sldworks~solidworks.interop.sldworks.ipropertymanagerpagecheckbox.html">IPropertyManagerPageCheckbox</see> controls
+    /// <para>中文：`IPropertyManagerPageCheckbox` 复选框控件组包装。</para>
     /// </summary>
     /// <remarks>All set properties will be applied to all controls in the group, while get will return the value of first control</remarks>
     public class PropertyManagerPageCheckBoxList : PropertyManagerPageControlList<IPropertyManagerPageCheckbox>, IPropertyManagerPageCheckbox
@@ -90,6 +91,10 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
         }
     }
 
+    /// <summary>
+    /// PMP 复选框列表控件实现。
+    /// 主要用于 Flags 枚举或列表值的多项勾选映射。
+    /// </summary>
     internal class PropertyManagerPageCheckBoxListControl : PropertyManagerPageItemsSourceControl<object, PropertyManagerPageCheckBoxList>
     {
         private enum EnumItemType_e

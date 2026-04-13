@@ -24,11 +24,18 @@ using Xarial.XCad.Toolkit.Services;
 
 namespace Xarial.XCad.SolidWorks.Data
 {
+    /// <summary>
+    /// SolidWorks 自定义属性接口。
+    /// </summary>
     public interface ISwCustomProperty : IXProperty
     {
     }
 
     [DebuggerDisplay("{" +nameof(Name) + "} = {" + nameof(Value) + "} ({" + nameof(Expression) + "})")]
+    /// <summary>
+    /// SolidWorks 自定义属性实现类。
+    /// 支持属性值/表达式读写、事件监听与版本兼容读取（Get4/Get5/Get6）。
+    /// </summary>
     internal class SwCustomProperty : ISwCustomProperty
     {
         private string m_Name;
@@ -157,14 +164,17 @@ namespace Xarial.XCad.SolidWorks.Data
             
             if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2018))
             {
+                // 新版本 API：Get6
                 prpExist = PrpMgr.Get6(Name, UseCached, out val, out resValStr, out _, out _) != (int)swCustomInfoGetResult_e.swCustomInfoGetResult_NotPresent;
             }
             else if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2014))
             {
+                // 过渡版本 API：Get5
                 prpExist = PrpMgr.Get5(Name, UseCached, out val, out resValStr, out _) != (int)swCustomInfoGetResult_e.swCustomInfoGetResult_NotPresent;
             }
             else
             {
+                // 旧版本 API：Get4
                 prpExist = PrpMgr.Get4(Name, UseCached, out val, out resValStr);
             }
 

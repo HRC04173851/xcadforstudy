@@ -1,0 +1,16 @@
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net7.0\Xarial.XCad.Toolkit.deps.json
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net7.0\Xarial.XCad.Toolkit.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net7.0\Xarial.XCad.Toolkit.pdb
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\_build\net7.0\Xarial.XCad.Toolkit.xml
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Toolkit.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Toolkit.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Toolkit.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Toolkit.AssemblyInfo.cs
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Toolkit.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Toolkit.sourcelink.json
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Toolkit.csproj.Up2Date
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Xarial.XCad.Toolkit.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\refint\Xarial.XCad.Toolkit.dll
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Xarial.XCad.Toolkit.xml
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\Xarial.XCad.Toolkit.pdb
+C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\src\Toolkit\obj\Debug\net7.0\ref\Xarial.XCad.Toolkit.dll

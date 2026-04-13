@@ -16,6 +16,10 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Data
 {
+    /// <summary>
+    /// SolidWorks 第三方结构化存储包装（Storage Store）。
+    /// 用于在文档中保存层级化插件数据（类似复合文档存储）。
+    /// </summary>
     internal class Sw3rdPartyStorage : ComStorage
     {
         private readonly IModelDoc2 m_Model;
@@ -46,6 +50,7 @@ namespace Xarial.XCad.SolidWorks.Data
             }
             catch 
             {
+                // 异常时确保释放 storage store 句柄
                 m_Model.Extension.IRelease3rdPartyStorageStore(m_Name);
                 throw;
             }

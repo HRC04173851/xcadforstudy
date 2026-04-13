@@ -15,6 +15,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Exceptions
 {
     /// <summary>
     /// SOLIDOWORKS API limitation of not-loaded components mass property calculation in SOLIDWORKS 2019 or older
+    /// <para>中文：SolidWorks 2019 及更早版本中，未加载组件无法计算质量属性。</para>
     /// </summary>
     public class NotLoadedMassPropertyComponentException : NotSupportedException
     {

@@ -13,6 +13,10 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace Xarial.XCad.SolidWorks.Services
 {
+    /// <summary>
+    /// 文件路径解析服务接口。
+    /// 用于解析装配体/零件引用文件的实际路径。
+    /// </summary>
     public interface IFilePathResolver
     {
         string ResolvePath(string parentDocPath, string path);

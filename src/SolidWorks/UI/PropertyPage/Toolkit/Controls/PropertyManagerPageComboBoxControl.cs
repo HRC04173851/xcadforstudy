@@ -23,6 +23,10 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// PMP 下拉框控件实现。
+    /// 支持静态/动态数据源，并在页面打开后统一加载条目。
+    /// </summary>
     internal class PropertyManagerPageComboBoxControl<TVal> : PropertyManagerPageItemsSourceControl<TVal, IPropertyManagerPageCombobox>
     {
         protected override event ControlValueChangedDelegate<TVal> ValueChanged;

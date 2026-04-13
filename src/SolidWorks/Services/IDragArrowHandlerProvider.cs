@@ -15,6 +15,7 @@ namespace Xarial.XCad.SolidWorks.Services
 {
     /// <summary>
     /// Handler for the drag arrow when used with <see cref="XCad.Documents.IXDocumentGraphics.PreCreateDragArrow"/>
+    /// <para>中文：拖拽箭头处理器提供器接口。</para>
     /// </summary>
     public interface IDragArrowHandlerProvider
     {

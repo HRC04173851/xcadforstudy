@@ -22,10 +22,16 @@ using Xarial.XCad.Toolkit;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 内存几何构建器接口，继承自 xCAD 通用内存几何构建器接口。
+    /// </summary>
     public interface ISwMemoryGeometryBuilder : IXMemoryGeometryBuilder
     {
     }
 
+    /// <summary>
+    /// SolidWorks 内存几何构建器实现，整合线框、片体和实体构建器三种模式。
+    /// </summary>
     internal class SwMemoryGeometryBuilder : ISwMemoryGeometryBuilder
     {
         public IXWireGeometryBuilder WireBuilder { get; }

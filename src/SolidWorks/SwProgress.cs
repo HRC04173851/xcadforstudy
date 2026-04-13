@@ -12,6 +12,9 @@ using System.Text;
 
 namespace Xarial.XCad.SolidWorks
 {
+    /// <summary>
+    /// SolidWorks 进度条封装，通过 <see cref="IUserProgressBar"/> 向用户显示操作进度。
+    /// </summary>
     internal class SwProgress : IXProgress
     {
         private readonly IUserProgressBar m_PrgBar;

@@ -25,10 +25,17 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Sketch
 {
+    /// <summary>
+    /// SolidWorks 草图实体集合接口。
+    /// </summary>
     public interface ISwSketchEntityCollection : IXSketchEntityRepository
     {
     }
 
+    /// <summary>
+    /// SolidWorks 草图实体集合实现。
+    /// 负责草图段、点、块实例、草图图片的枚举与增删缓存管理。
+    /// </summary>
     internal class SwSketchEntityCollection : ISwSketchEntityCollection
     {
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
@@ -80,6 +87,7 @@ namespace Xarial.XCad.SolidWorks.Sketch
         {
             if (segments)
             {
+                // 草图段（线、圆弧、样条、文字等）
                 foreach (ISketchSegment seg in (object[])m_Sketch.Sketch.GetSketchSegments() ?? new object[0])
                 {
                     yield return m_Doc.CreateObjectFromDispatch<SwSketchSegment>(seg);

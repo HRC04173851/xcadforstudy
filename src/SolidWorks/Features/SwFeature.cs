@@ -25,17 +25,30 @@ using System.Linq;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 特征接口，继承自可选对象、xCAD 特征、实体，以及支持弹性恢复的接口。
+    /// 特征（Feature）是 SolidWorks 模型树中的基本构建单元，包括拉伸、旋转、草图、基准面等。
+    /// </summary>
     public interface ISwFeature : ISwSelObject, IXFeature, ISwEntity, ISupportsResilience<ISwFeature>
     {
+        /// <summary>获取底层 SolidWorks 特征 COM 对象（IFeature）。</summary>
         IFeature Feature { get; }
+        /// <summary>获取该特征的尺寸标注集合。</summary>
         new ISwDimensionsCollection Dimensions { get; }
+        /// <summary>获取该特征所属的零部件（装配体上下文中使用）。</summary>
         new ISwComponent Component { get; }
     }
 
+    /// <summary>
+    /// 特征编辑器抽象基类，负责打开和关闭特征定义编辑会话。
+    /// 实现 IEditor&lt;SwFeature&gt; 接口，使用 using 语句可自动完成/取消编辑。
+    /// </summary>
     internal abstract class SwFeatureEditor<TFeatData> : IEditor<SwFeature>
     {
+        /// <summary>正在编辑的目标特征。</summary>
         public SwFeature Target { get; }
 
+        /// <summary>若设为 true，则在 Dispose 时取消编辑（不应用修改）。</summary>
         public bool Cancel 
         {
             get;
@@ -54,19 +67,23 @@ namespace Xarial.XCad.SolidWorks.Features
             m_Doc = Target.OwnerDocument;
             m_Comp = Target.Component;
 
+            // 调用 StartEdit 进入特征编辑模式
             if (!StartEdit(m_FeatData, m_Doc, m_Comp)) 
             {
                 throw new Exception("Failed to start editing of the feature");
             }
         }
 
+        /// <summary>开始编辑特征定义（进入编辑模式）。</summary>
         protected abstract bool StartEdit(TFeatData featData, ISwDocument doc, ISwComponent comp);
+        /// <summary>取消编辑时的回滚操作。</summary>
         protected abstract void CancelEdit(TFeatData featData);
 
         private void EndEdit(bool cancel)
         {
             if (!cancel)
             {
+                // 提交修改：调用 SolidWorks ModifyDefinition API 应用特征定义变更
                 if (!Target.Feature.ModifyDefinition(m_FeatData, m_Doc.Model, m_Comp?.Component))
                 {
                     throw new Exception("Failed to modify defintion of the feature");
@@ -84,6 +101,9 @@ namespace Xarial.XCad.SolidWorks.Features
         }
     }
 
+    /// <summary>
+    /// 特征的几何实体存储库，提供对特征所拥有的面、边、顶点等几何实体的访问。
+    /// </summary>
     internal class SwFeatureEntityRepository : SwEntityRepository
     {
         private readonly SwFeature m_Feat;
@@ -97,6 +117,7 @@ namespace Xarial.XCad.SolidWorks.Features
         {
             if (faces)
             {
+                // 获取特征的所有面（IFace2 列表）
                 var featFaces = (object[])m_Feat.Feature.GetFaces();
 
                 if (featFaces != null)
@@ -110,44 +131,52 @@ namespace Xarial.XCad.SolidWorks.Features
         }
     }
 
+    /// <summary>
+    /// SolidWorks 特征实现类，调试器中显示特征名称。
+    /// 封装了 SolidWorks IFeature COM 对象，提供特征名称、状态、尺寸、几何实体等访问能力。
+    /// </summary>
     [DebuggerDisplay("{" + nameof(Name) + "}")]
     internal class SwFeature : SwSelObject, ISwFeature
     {
+        /// <summary>
+        /// SolidWorks 中被"焊死"（不可删除/不可重命名）的系统固有特征类型名称列表。
+        /// 这些特征是 SolidWorks 文档的固定组成部分，如注释文件夹、材料节点、原点等。
+        /// </summary>
         private static string[] m_SolderedFeatureTypes = new string[]
         {
-            "CommentsFolder",
-            "FavoriteFolder",
-            "HistoryFolder",
-            "SelectionSetFolder",
-            "SensorFolder",
-            "DocsFolder",
-            "DetailCabinet",
-            "NotesAreaFtrFolder",
-            "SurfaceBodyFolder",
-            "SolidBodyFolder",
-            "EnvFolder",
-            "AmbientLight",
-            "DirectionLight",
-            "InkMarkupFolder",
-            "EqnFolder",
-            "MaterialFolder",
-            SwOrigin.TypeName,
-            "LiveSectionFolder",
-            "MateGroup",
-            "BlockFolder",
-            "MarkupCommentFolder",
-            "DrSheet",
-            "DetailFolder",
-            "DrTemplate",
-            "GeneralTableAnchor",
-            "BomTemplate",
-            "HoleTableAnchor",
-            "WeldmentTableAnchor",
-            "RevisionTableAnchor",
-            "WeldTableAnchor",
-            "BendTableAnchor",
-            "PunchTableAnchor",
-            "EditBorderFeature"
+            "CommentsFolder",       // 注释文件夹
+            "FavoriteFolder",       // 收藏文件夹
+            "HistoryFolder",        // 历史记录文件夹
+            "SelectionSetFolder",   // 选择集文件夹
+            "SensorFolder",         // 传感器文件夹
+            "DocsFolder",           // 文档文件夹
+            "DetailCabinet",        // 详图文件夹
+            "NotesAreaFtrFolder",   // 注释区域文件夹
+            "SurfaceBodyFolder",    // 曲面体文件夹
+            "SolidBodyFolder",      // 实体体文件夹
+            "EnvFolder",            // 环境文件夹
+            "AmbientLight",         // 环境光
+            "DirectionLight",       // 方向光
+            "InkMarkupFolder",      // 墨迹标记文件夹
+            "EqnFolder",            // 方程式文件夹
+            "MaterialFolder",       // 材料文件夹
+            SwOrigin.TypeName,      // 原点
+            "LiveSectionFolder",    // 实时剖切文件夹
+            "MateGroup",            // 配合组
+            "BlockFolder",          // 块文件夹
+            "MarkupCommentFolder",  // 标记注释文件夹
+            "DrSheet",              // 工程图图纸
+            "DetailFolder",         // 详图文件夹
+            "DrTemplate",           // 工程图模板
+            "GeneralTableAnchor",   // 通用表格锚点
+            "BomTemplate",          // BOM（材料清单）模板
+            "HoleTableAnchor",      // 孔表锚点
+            "WeldmentTableAnchor",  // 焊接件表格锚点
+            "RevisionTableAnchor",  // 修订表格锚点
+            "WeldTableAnchor",      // 焊接表格锚点
+            "BendTableAnchor",      // 折弯表格锚点（钣金）
+            "PunchTableAnchor",     // 冲孔表格锚点
+            "EditBorderFeature"     // 编辑边框特征
         };
 
         IXBody IXEntity.Body => Body;

@@ -24,13 +24,20 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 体（Body）接口，可表示实体体、片体和线框体。
+    /// </summary>
     public interface ISwBody : ISwSelObject, IXBody, ISupportsResilience<ISwBody>
     {
+        /// <summary>底层 SolidWorks IBody2 COM 对象。</summary>
         IBody2 Body { get; }
 
         new ISwComponent Component { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 体实现类，支持持久化引用恢复（Resilient）。
+    /// </summary>
     [DebuggerDisplay("{" + nameof(Name) + "}")]
     internal class SwBody : SwSelObject, ISwBody
     {       
@@ -45,6 +52,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
                 {
                     try
                     {
+                        // 访问名称用于探测体对象是否仍有效
                         var testNameAlive = m_Body.Name;
 
                         if (string.IsNullOrEmpty(testNameAlive) && !m_Body.IsTemporaryBody()) 
@@ -54,6 +62,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
                     }
                     catch 
                     {
+                        // 体失效时通过持久化引用恢复 COM 指针
                         var body = (IBody2)OwnerDocument.Model.Extension.GetObjectByPersistReference3(m_PersistId, out _);
 
                         if (body != null)
@@ -85,6 +94,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
         {
             get
             {
+                // 通过体的首面反查组件归属（装配体上下文）
                 var comp = (Body.IGetFirstFace() as IEntity)?.GetComponent() as IComponent2;
 
                 if (comp != null)
@@ -96,6 +106,7 @@ namespace Xarial.XCad.SolidWorks.Geometry
                     if (IsResilient)
                     {
                         //NOTE: in some cases component reference may be lost
+                        // 中文：某些场景下组件引用会丢失，回退到持久化缓存组件
                         return m_PersistComponent;
                     }
                     else

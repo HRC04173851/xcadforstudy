@@ -13,6 +13,10 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.UI.Commands.Toolkit.Structures
 {
+    /// <summary>
+    /// TaskPane 高分辨率图标包装。
+    /// 提供多尺寸图标以适配高 DPI 显示。
+    /// </summary>
     internal class TaskPaneHighResIcon : TaskPaneIcon
     {
         internal TaskPaneHighResIcon(IXImage icon) : base(icon)

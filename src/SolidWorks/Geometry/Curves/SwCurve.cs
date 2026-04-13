@@ -23,11 +23,21 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Curves
 {
+    /// <summary>
+    /// SolidWorks 曲线接口，可封装单段或多段修剪曲线。
+    /// </summary>
     public interface ISwCurve : IXCurve, ISwObject
     {
+        /// <summary>
+        /// 底层曲线数组（多段曲线用于复合曲线场景）。
+        /// </summary>
         ICurve[] Curves { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 曲线基类实现。
+    /// 提供长度计算、端点获取、最近点、参数反算等通用几何能力。
+    /// </summary>
     internal class SwCurve : SwObject, ISwCurve
     {
         public ICurve[] Curves => m_Creator.Element;
@@ -47,6 +57,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Curves
                     {
                         if (c.IsTrimmedCurve())
                         {
+                            // 对修剪曲线按参数区间求长度
                             c.GetEndParams(out double start, out double end, out bool _, out bool _);
 
                             var length = c.GetLength3(start, end);
@@ -103,6 +114,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Curves
 
                     return new SwPoint(null, OwnerDocument, OwnerApplication)
                     {
+                        // Evaluate2 返回位置+导数信息，前三项为点坐标
                         Coordinate = new Point(pt[0], pt[1], pt[2])
                     };
                 }

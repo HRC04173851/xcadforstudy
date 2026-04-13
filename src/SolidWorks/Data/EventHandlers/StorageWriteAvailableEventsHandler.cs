@@ -15,6 +15,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Data.EventHandlers
 {
+    /// <summary>
+    /// 3rd-party Storage 写可用事件处理器。
+    /// 在保存文档阶段通知可写入结构化存储数据。
+    /// </summary>
     internal class StorageWriteAvailableEventsHandler : SwModelEventsHandler<DataStoreAvailableDelegate>
     {
         internal StorageWriteAvailableEventsHandler(SwDocument doc, ISwApplication app) : base(doc, app)

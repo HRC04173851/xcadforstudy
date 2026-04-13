@@ -15,6 +15,10 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents.EventHandlers
 {
+    /// <summary>
+    /// 配置激活事件处理器。
+    /// 在配置切换后通知当前激活配置对象。
+    /// </summary>
     internal class ConfigurationActivatedEventsHandler : SwModelEventsHandler<ConfigurationActivatedDelegate>
     {
         private readonly ISwDocument3D m_Doc3D;

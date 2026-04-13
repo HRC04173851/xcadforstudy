@@ -17,6 +17,10 @@ using Xarial.XCad.UI.PropertyPage;
 
 namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
 {
+    /// <summary>
+    /// WPF 自定义控件包装器。
+    /// 将 WPF 控件作为 IXCustomControl 接入 PMP，并同步 DataContext。
+    /// </summary>
     internal class WpfCustomControl : IXCustomControl, IDisposable
     {
         public event CustomControlValueChangedDelegate ValueChanged;
@@ -51,6 +55,9 @@ namespace Xarial.XCad.SolidWorks.UI.PropertyPage.Toolkit.Controls
         }
     }
 
+    /// <summary>
+    /// 已实现 IXCustomControl 的 WPF 控件适配包装。
+    /// </summary>
     internal class WpfCustomControlWrapper : IXCustomControl, IDisposable
     {
         public event CustomControlValueChangedDelegate ValueChanged 

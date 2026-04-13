@@ -14,6 +14,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Exceptions
 {
     /// <summary>
     /// IMassProperty API in SOLIDOWRKS 2019 failed to correctly calculate the Principal Axes Of Inertia for the components
+    /// <para>中文：SolidWorks 2019 中重写质量属性场景下主惯性轴计算不正确。</para>
     /// </summary>
     public class PrincipalAxesOfInertiaOverridenException : NotSupportedException
     {

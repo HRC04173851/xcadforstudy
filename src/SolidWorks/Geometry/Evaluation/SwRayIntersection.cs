@@ -25,10 +25,16 @@ using Xarial.XCad.Toolkit.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
 {
+    /// <summary>
+    /// SolidWorks 射线求交评估接口。
+    /// </summary>
     public interface ISwRayIntersection : IXRayIntersection
     {
     }
 
+    /// <summary>
+    /// 装配体射线求交评估接口。
+    /// </summary>
     public interface ISwAssemblyRayIntersection : ISwRayIntersection, IXAssemblyRayIntersection
     {
     }
@@ -37,6 +43,10 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
     {
     }
 
+    /// <summary>
+    /// SolidWorks 射线实现。
+    /// 存储射线轴线和命中结果（进入/离开面）。
+    /// </summary>
     internal class SwRay : ISwRay
     {
         public Axis Axis { get; }
@@ -79,6 +89,10 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
         }
     }
 
+    /// <summary>
+    /// SolidWorks 射线求交抽象实现。
+    /// 对指定体集合执行批量射线求交，并记录每条射线命中结果。
+    /// </summary>
     internal abstract class SwRayIntersection : ISwRayIntersection
     {
         //TODO: implement relative to matrix
@@ -154,6 +168,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
             }
 
             //assembly bodies must be transformed to the assembly space
+            // 中文：装配体上下文下，需先将体变换到装配坐标系
             bodies = bodies.Select(b =>
             {
                 var comp = b.Component;

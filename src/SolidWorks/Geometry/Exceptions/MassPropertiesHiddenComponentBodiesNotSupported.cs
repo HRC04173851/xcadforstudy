@@ -15,6 +15,7 @@ namespace Xarial.XCad.SolidWorks.Geometry.Exceptions
     /// <summary>
     /// IMassProperty API does not support option to specify to include or exclude hidden bodies or components (this option is always default to include hidden)
     /// This excepion indicates that mass cannot be calculated for the assembly which has hidden bodies while <see cref="XCad.Base.IEvaluation.VisibleOnly"/> is set to True
+    /// <para>中文：当要求仅可见实体参与计算时，若装配含隐藏体/隐藏组件，当前 API 场景不受支持。</para>
     /// </summary>
     public class MassPropertiesHiddenComponentBodiesNotSupported : NotSupportedException
     {

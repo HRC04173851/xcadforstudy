@@ -30,15 +30,26 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 特征管理器接口，提供按名称访问特征以及遍历特征树的能力。
+    /// </summary>
     public interface ISwFeatureManager : IXFeatureRepository
     {
+        /// <summary>
+        /// 按特征名称获取特征对象（名称与特征树中显示的名称一致）。
+        /// </summary>
         new ISwFeature this[string name] { get; }
     }
 
     /// <inheritdoc/>
+    /// <summary>
+    /// SolidWorks 特征管理器抽象基类。
+    /// 统一处理特征缓存、批量提交、删除、过滤、以及自定义宏特征的创建逻辑。
+    /// </summary>
     internal abstract class SwFeatureManager : ISwFeatureManager
     {
         //NOTE: this event is not raised when feature is added via API
+        // 中文：注意：通过 API 直接添加特征时，该事件可能不会触发
         public event FeatureCreatedDelegate FeatureCreated
         {
             add => m_FeatureCreatedEventsHandler.Attach(value);
@@ -53,10 +64,12 @@ namespace Xarial.XCad.SolidWorks.Features
             {
                 if (Document.IsCommitted)
                 {
+                    // 已提交文档：直接查询 SolidWorks 特征管理器中的特征数量
                     return FeatMgr.GetFeatureCount(false);
                 }
                 else 
                 {
+                    // 未提交文档：返回缓存中的特征数量
                     return m_Cache.Count;
                 }
             }
@@ -107,6 +120,7 @@ namespace Xarial.XCad.SolidWorks.Features
             {
                 using (var viewFreeze = new UiFreeze(Document))
                 {
+                    // 将要删除的特征转换为 COM Dispatch 数组并批量选择
                     var disps = ents.Cast<SwFeature>().Select(e => new DispatchWrapper(e.Feature)).ToArray();
 
                     if (Document.Model.Extension.MultiSelect2(disps, false, null) == disps.Length)
@@ -140,6 +154,7 @@ namespace Xarial.XCad.SolidWorks.Features
 
         public void Enable(bool enable)
         {
+            // 同时控制特征树逻辑与窗口显示，避免 UI 状态不一致
             FeatMgr.EnableFeatureTree = enable;
             FeatMgr.EnableFeatureTreeWindow = enable;
         }
@@ -148,12 +163,14 @@ namespace Xarial.XCad.SolidWorks.Features
         {
             if (typeof(T).IsAssignableToGenericType(typeof(IXCustomFeature<>)))
             {
+                // 预创建宏特征：解析泛型参数类型并构造具体宏特征实例
                 var macroFeatureParamsType = typeof(T).GetArgumentsOfGenericType(typeof(IXCustomFeature<>)).First();
                 var feat = SwMacroFeature<object>.CreateSpecificInstance(null, Document, m_App, macroFeatureParamsType);
                 return (T)(object)feat;
             }
             else 
             {
+                // 预创建常见特征类型（草图、基准面、哑实体、宏特征、草图图片）
                 return RepositoryHelper.PreCreate<IXFeature, T>(this,
                     () => new SwSketch2D(default(ISketch), Document, m_App, false),
                     () => new SwSketch3D(default(ISketch), Document, m_App, false),
@@ -170,11 +187,13 @@ namespace Xarial.XCad.SolidWorks.Features
             {
                 using (var viewFreeze = new UiFreeze(Document))
                 {
+                    // 已提交状态下立即写入 SolidWorks 模型
                     RepositoryHelper.AddRange(feats, cancellationToken);
                 }
             }
             else
             {
+                // 未提交状态下先放入缓存，待后续统一提交
                 m_Cache.AddRange(feats, cancellationToken);
             }
         }
@@ -182,6 +201,10 @@ namespace Xarial.XCad.SolidWorks.Features
 
     internal class SwDocumentFeatureManager : SwFeatureManager
     {
+        /// <summary>
+        /// 文档级特征管理器实现。
+        /// 负责遍历与管理整个文档特征树。
+        /// </summary>
         public SwDocumentFeatureManager(SwDocument doc, SwApplication app, Context context) : base(doc, app, context)
         {
         }

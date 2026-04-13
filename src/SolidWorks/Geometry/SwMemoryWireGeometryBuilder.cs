@@ -21,11 +21,17 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 内存线框几何构建器接口，支持曲线合并操作。
+    /// </summary>
     public interface ISwMemoryWireGeometryBuilder : IXWireGeometryBuilder
     {
         ISwCurve Merge(ISwCurve[] curves);
     }
 
+    /// <summary>
+    /// SolidWorks 内存线框几何构建器实现，封装曲线创建和合并操作。
+    /// </summary>
     internal class SwMemoryWireGeometryBuilder : ISwMemoryWireGeometryBuilder
     {
         IXCurve IXWireGeometryBuilder.Merge(IXCurve[] curves) => Merge(curves.Cast<ISwCurve>().ToArray());

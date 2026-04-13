@@ -34,27 +34,45 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 工程图视图接口，提供对 SolidWorks <see cref="IView"/> 原生视图对象的访问。
+    /// </summary>
     public interface ISwDrawingView : IXDrawingView, ISwSelObject
     {
         IView DrawingView { get; }
     }
 
+    /// <summary>
+    /// 基于模型视图的工程图视图接口。
+    /// </summary>
     public interface ISwModelBasedDrawingView : ISwDrawingView, IXModelViewBasedDrawingView
     {
     }
 
+    /// <summary>
+    /// 投影视图工程图接口。
+    /// </summary>
     public interface ISwProjectedDrawingView : ISwDrawingView, IXProjectedDrawingView
     {
     }
 
+    /// <summary>
+    /// 辅助视图工程图接口。
+    /// </summary>
     public interface ISwAuxiliaryDrawingView : ISwDrawingView, IXAuxiliaryDrawingView
     {
     }
 
+    /// <summary>
+    /// 剖视图工程图接口。
+    /// </summary>
     public interface ISwSectionDrawingView : ISwDrawingView, IXSectionDrawingView
     {
     }
 
+    /// <summary>
+    /// 局部放大视图工程图接口。
+    /// </summary>
     public interface ISwDetailDrawingView : ISwDrawingView, IXDetailedDrawingView
     {
     }

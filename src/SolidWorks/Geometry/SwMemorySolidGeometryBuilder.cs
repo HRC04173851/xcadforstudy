@@ -22,10 +22,16 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Geometry
 {
+    /// <summary>
+    /// SolidWorks 内存实体几何构建器接口，继承自 xCAD 通用实体几何构建器。
+    /// </summary>
     public interface ISwMemorySolidGeometryBuilder : IXSolidGeometryBuilder
     {
     }
 
+    /// <summary>
+    /// SolidWorks 内存实体几何构建器实现，通过 Modeler API 创建拉伸、旋转、扫描等基本体。
+    /// </summary>
     internal class SwMemorySolidGeometryBuilder : ISwMemorySolidGeometryBuilder
     {
         private readonly ISwApplication m_App;

@@ -20,11 +20,20 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 2D 草图接口。
+    /// </summary>
     public interface ISwSketch2D : ISwSketchBase, IXSketch2D
     {
+        /// <summary>
+        /// 获取 2D 草图中的封闭区域集合（Sketch Region），常用于拉伸/切除等特征轮廓选择。
+        /// </summary>
         new IEnumerable<ISwSketchRegion> Regions { get; }
     }
 
+    /// <summary>
+    /// 2D 草图编辑器：通过 InsertSketch API 进入和退出 2D 草图编辑模式。
+    /// </summary>
     internal class SwSketch2DEditor : SwSketchEditorBase<SwSketch2D>
     {
         public SwSketch2DEditor(SwSketch2D sketch, ISketch swSketch) : base(sketch, swSketch)
@@ -35,8 +44,14 @@ namespace Xarial.XCad.SolidWorks.Features
         protected override void EndEdit(bool cancel) => Target.OwnerDocument.Model.SketchManager.InsertSketch(!cancel);
     }
 
+    /// <summary>
+    /// SolidWorks 2D 草图实现类。
+    /// </summary>
     internal class SwSketch2D : SwSketchBase, ISwSketch2D
     {
+        /// <summary>
+        /// SolidWorks 2D 草图特征类型名（ProfileFeature）。
+        /// </summary>
         internal const string TypeName = "ProfileFeature";
 
         IEnumerable<IXSketchRegion> IXSketch2D.Regions => Regions;
@@ -55,6 +70,7 @@ namespace Xarial.XCad.SolidWorks.Features
         {
             get
             {
+                // 获取草图中的所有封闭区域（由闭合轮廓形成）
                 var regs = Sketch.GetSketchRegions() as object[];
                 
                 if (regs?.Any() == true)
@@ -71,6 +87,7 @@ namespace Xarial.XCad.SolidWorks.Features
         {
             get
             {
+                // ModelToSketchTransform 的逆矩阵可将草图坐标系转换回模型坐标系
                 var transform = Sketch.ModelToSketchTransform.IInverse().ToTransformMatrix();
 
                 var x = new Vector(1, 0, 0).Transform(transform);
@@ -117,6 +134,7 @@ namespace Xarial.XCad.SolidWorks.Features
                 throw new Exception("Reference entity is not specified");
             }
 
+            // 2D 草图必须先选中参考平面/平面区域（例如基准面、平面面）
             ent.Select(false);
 
             OwnerModelDoc.InsertSketch2(true);

@@ -13,6 +13,7 @@ namespace Xarial.XCad.SolidWorks.Utils
 {
     /// <summary>
     /// Utility to transform <see cref="TransformMatrix"/> and <see cref="IMathTransform"/>
+    /// <para>中文：用于在 xCAD 变换矩阵与 SolidWorks 数学变换之间进行双向转换。</para>
     /// </summary>
     public static class TransformConverter
     {
@@ -41,6 +42,7 @@ namespace Xarial.XCad.SolidWorks.Utils
                 throw new Exception("Array size must be 16 (4x4 matrix)");
             }
 
+            // SolidWorks 变换数组第 13 位（索引 12）为统一缩放因子
             var scale = data[12];
 
             return new TransformMatrix(
@@ -76,6 +78,7 @@ namespace Xarial.XCad.SolidWorks.Utils
             var scaleX = scaleVec.X;
             var scaleY = scaleVec.X; //only uniform scale is supported in SOLIDWORKS
             var scaleZ = scaleVec.X; //only uniform scale is supported in SOLIDWORKS
+            // 中文：SolidWorks 仅支持统一缩放，因此 Y/Z 缩放与 X 保持一致
 
             return new double[]
             {

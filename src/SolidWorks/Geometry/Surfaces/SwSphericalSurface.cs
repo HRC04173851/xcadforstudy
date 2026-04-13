@@ -16,10 +16,16 @@ using Xarial.XCad.SolidWorks.Geometry.Surfaces;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Surfaces
 {
+    /// <summary>
+    /// SolidWorks 球面接口。
+    /// </summary>
     public interface ISwSphericalSurface : ISwSurface, IXSphericalSurface
     {
     }
 
+    /// <summary>
+    /// SolidWorks 球面实现类。
+    /// </summary>
     internal class SwSphericalSurface : SwSurface, ISwSphericalSurface
     {
         public SwSphericalSurface(ISurface surface, SwDocument doc, SwApplication app) : base(surface, doc, app)

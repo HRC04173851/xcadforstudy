@@ -14,6 +14,7 @@ namespace Xarial.XCad.Features.CustomFeature.Attributes
     /// Attributes specifies the current version of the macro feature parameters data model.
     /// This allows to implement backward compatibility for the macro feature parameters
     /// for future versions of macro feature
+    /// 指定宏特征参数数据模型版本，用于后续版本参数兼容升级
     /// </summary>
     public class ParametersVersionAttribute : Attribute
     {
@@ -22,6 +23,7 @@ namespace Xarial.XCad.Features.CustomFeature.Attributes
 
         /// <summary>
         /// Specifies the current version of the parameters data model
+        /// 指定当前参数数据模型版本
         /// </summary>
         /// <param name="major">Major version</param>
         /// <param name="minor">Minor version</param>

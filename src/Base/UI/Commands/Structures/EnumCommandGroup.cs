@@ -14,6 +14,7 @@ namespace Xarial.XCad.UI.Commands.Structures
 {
     /// <summary>
     /// Command group based on the enumeration
+    /// 基于枚举的命令组
     /// </summary>
     /// <typeparam name="TCmdEnum">Enumeration with commands</typeparam>
     public interface IEnumCommandGroup<TCmdEnum> : IXCommandGroup

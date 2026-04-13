@@ -14,6 +14,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Indicates that metadata should be attached to the control
+    /// 指示应向控件附加元数据
     /// </summary>
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Class, AllowMultiple = true)]
     public class AttachMetadataAttribute : Attribute, IHasMetadataAttribute

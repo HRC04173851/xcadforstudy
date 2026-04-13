@@ -16,11 +16,13 @@ namespace Xarial.XCad.Annotations
 {
     /// <summary>
     /// Represents the detail cricle annotation of <see cref="Documents.IXDetailedDrawingView"/>
+    /// <see cref="Documents.IXDetailedDrawingView"/> 的局部放大圆标注
     /// </summary>
     public interface IXDetailCircle : IXAnnotation
     {
         /// <summary>
         /// Geometry of the detail circle
+        /// 局部放大圆的几何定义
         /// </summary>
         Circle Definition { get; set; }
     }

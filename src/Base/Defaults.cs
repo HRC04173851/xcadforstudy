@@ -14,11 +14,13 @@ namespace Xarial.XCad
 {
     /// <summary>
     /// Collection of default objects
+    /// 默认对象集合
     /// </summary>
     public static class Defaults
     {
         /// <summary>
         /// Default icon
+        /// 默认图标
         /// </summary>
         public static IXImage Icon
             => new BaseImage(Resources.default_icon);

@@ -16,6 +16,7 @@ namespace Xarial.XCad.UI.Exceptions
 {
     /// <summary>
     /// Indicates that not handler for dynamic controls
+    /// 表示缺少动态控件处理器
     /// </summary>
     public class DynamicControlHandlerMissingException : Exception
     {

@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Additional options for option box control
+    /// 选项框控件附加选项
     /// </summary>
     public class OptionBoxOptionsAttribute : Attribute, IAttribute
     {

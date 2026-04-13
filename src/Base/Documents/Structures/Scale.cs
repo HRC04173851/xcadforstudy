@@ -14,17 +14,20 @@ namespace Xarial.XCad.Documents.Structures
 {
     /// <summary>
     /// Represents the scale
+    /// 表示比例尺
     /// </summary>
     [DebuggerDisplay("{" + nameof(Numerator) + "}" + ":{" + nameof(Denominator) + "}")]
     public class Scale
     {
         /// <summary>
         /// Numerator of this scale
+        /// 比例尺分子
         /// </summary>
         public double Numerator { get; }
 
         /// <summary>
         /// Denominator of this scale
+        /// 比例尺分母
         /// </summary>
         public double Denominator { get; }
 
@@ -40,6 +43,7 @@ namespace Xarial.XCad.Documents.Structures
 
     /// <summary>
     /// Extensions of <see cref="Scale"/>
+    /// <see cref="Scale"/> 的扩展方法
     /// </summary>
     public static class ScaleExtension 
     {

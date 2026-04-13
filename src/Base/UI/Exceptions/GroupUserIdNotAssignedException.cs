@@ -15,6 +15,7 @@ namespace Xarial.XCad.UI.Exceptions
 {
     /// <summary>
     /// Indicates that no user id assigned in <see cref="XCommandManagerExtension.CreateSpecFromEnum"/>
+    /// 表示在 <see cref="XCommandManagerExtension.CreateSpecFromEnum"/> 中未分配组用户 ID
     /// </summary>
     public class GroupUserIdNotAssignedException : Exception
     {

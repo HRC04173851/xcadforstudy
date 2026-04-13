@@ -18,22 +18,26 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Represents the collection of <see cref="IXComponent"/>
+    /// 表示 <see cref="IXComponent"/> 集合仓储
     /// </summary>
     public interface IXComponentRepository : IXRepository<IXComponent>
     {
         /// <summary>
         /// Returns the total count of components including all nested components
+        /// 返回组件总数（包含所有层级子组件）
         /// </summary>
         int TotalCount { get; }
     }
 
     /// <summary>
     /// Additonal methods of <see cref="IXComponentRepository"/>
+    /// <see cref="IXComponentRepository"/> 的扩展方法
     /// </summary>
     public static class XComponentRepositoryExtension 
     {
         /// <summary>
         /// Returns all components, including children
+        /// 返回全部组件（含子组件）
         /// </summary>
         /// <param name="repo">Components repository</param>
         /// <returns>All components</returns>

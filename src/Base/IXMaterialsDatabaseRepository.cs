@@ -11,8 +11,9 @@ namespace Xarial.XCad
 {
     /// <summary>
     /// Represents the materials database library
+    /// 表示材料数据库库（多个材料数据库的集合）
     /// </summary>
-    public interface IXMaterialsDatabaseRepository : IXRepository<IXMaterialsDatabase> 
+    public interface IXMaterialsDatabaseRepository : IXRepository<IXMaterialsDatabase>
     {
     }
 }

@@ -11,6 +11,7 @@ namespace Xarial.XCad.UI.Exceptions
 {
     /// <summary>
     /// Exception indicates that the specified parent group does not exist
+    /// 表示指定父命令组不存在
     /// </summary>
     public class ParentGroupNotFoundException : Exception
     {

@@ -16,6 +16,7 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Context to draw the custom graphics
+    /// 自定义图形绘制上下文
     /// </summary>
     public interface IXCustomGraphicsContext : IDisposable
     {
@@ -23,21 +24,25 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Represents the model view
+    /// 表示模型视图
     /// </summary>
     public interface IXModelView : IXTransaction
     {
         /// <summary>
         /// Display mode of the view
+        /// 视图显示模式
         /// </summary>
         ViewDisplayMode_e DisplayMode { get; set; }
 
         /// <summary>
         /// Fired when custom graphics can be drawn in the model
+        /// 当模型允许绘制自定义图形时触发
         /// </summary>
         event RenderCustomGraphicsDelegate RenderCustomGraphics;
 
         /// <summary>
         /// Freezes all view updates
+        /// 冻结所有视图刷新
         /// </summary>
         /// <param name="freeze">True to suppress all updates</param>
         /// <returns>Freeze object, when disposed - view is restored</returns>
@@ -45,16 +50,19 @@ namespace Xarial.XCad.Documents
 
         /// <summary>
         /// Transformation of this view related to the model origin
+        /// 该视图相对于模型原点的变换
         /// </summary>
         TransformMatrix Transform { get; set; }
 
         /// <summary>
         /// Transformation of this view related to the screen coordinates
+        /// 该视图相对于屏幕坐标的变换
         /// </summary>
         TransformMatrix ScreenTransform { get; }
 
         /// <summary>
         /// View boundaries
+        /// 视图屏幕边界
         /// </summary>
         Rectangle ScreenRect { get; }
 

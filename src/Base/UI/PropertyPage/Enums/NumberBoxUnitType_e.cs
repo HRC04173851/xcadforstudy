@@ -7,6 +7,10 @@
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Unit types for number box values
+    /// 数值框单位类型
+    /// </summary>
     public enum NumberBoxUnitType_e
     {
         UnitlessInteger = 1,

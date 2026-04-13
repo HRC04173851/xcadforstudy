@@ -7,6 +7,10 @@
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Reasons why property page closes
+    /// 属性页关闭原因
+    /// </summary>
     public enum PageCloseReasons_e
     {
         Okay,

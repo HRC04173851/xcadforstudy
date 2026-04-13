@@ -18,11 +18,13 @@ namespace Xarial.XCad.Documents.Extensions
 {
     /// <summary>
     /// Additional methods for <see cref="IXDocument"/>
+    /// <see cref="IXDocument"/> 的扩展方法
     /// </summary>
     public static class XDocumentExtension
     {
         /// <summary>
         /// Saves the document as new file
+        /// 将文档另存为新文件
         /// </summary>
         /// <param name="doc">Input document</param>
         /// <param name="filePath">Output file path</param>
@@ -34,6 +36,7 @@ namespace Xarial.XCad.Documents.Extensions
 
         /// <summary>
         /// Saves the document and configure options
+        /// 保存文档并配置保存选项
         /// </summary>
         /// <typeparam name="T">Type of save operation</typeparam>
         /// <param name="doc">Input document</param>

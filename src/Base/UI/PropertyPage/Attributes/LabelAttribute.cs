@@ -16,6 +16,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Indicates that the control should have a label associated with it
+    /// 指示控件应关联标签文本
     /// </summary>
     public class LabelAttribute : Attribute, IAttribute
     {

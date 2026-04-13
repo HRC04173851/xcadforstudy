@@ -14,16 +14,19 @@ namespace Xarial.XCad.Documents.Exceptions
 {
     /// <summary>
     /// Exception thrown when file cannot be opened
+    /// 表示文件打开失败异常
     /// </summary>
     public class OpenDocumentFailedException : Exception, IUserException
     {
         /// <summary>
         /// Path to the file
+        /// 文件路径
         /// </summary>
         public string Path { get; }
         
         /// <summary>
         /// Application specific error code
+        /// 应用程序特定错误码
         /// </summary>
         public int ErrorCode { get; }
 

@@ -14,27 +14,31 @@ namespace Xarial.XCad.Base.Attributes
 {
     /// <summary>
     /// General icon for any controls or objects
+    /// 适用于任意控件或对象的通用图标特性
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
     public class IconAttribute : Attribute
     {
         /// <summary>
         /// Image assigned to this icon
+        /// 分配给此图标的图像
         /// </summary>
         public virtual IXImage Icon { get; }
 
         /// <summary>
         /// Constructor without icon initialization
+        /// 不初始化图标的构造函数
         /// </summary>
-        protected IconAttribute() 
+        protected IconAttribute()
         {
         }
 
         /// <summary>
         /// Constructor to be used in dynamic controls
+        /// 用于动态控件的构造函数
         /// </summary>
         /// <param name="icon"></param>
-        public IconAttribute(IXImage icon) 
+        public IconAttribute(IXImage icon)
         {
             Icon = icon;
         }

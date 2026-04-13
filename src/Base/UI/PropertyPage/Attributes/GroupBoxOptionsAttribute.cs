@@ -14,6 +14,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Group box options
+    /// 分组框选项
     /// </summary>
     [Flags]
     public enum GroupBoxOptions_e 
@@ -26,6 +27,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 
     /// <summary>
     /// Additional options for the group box control
+    /// 分组框控件附加选项
     /// </summary>
     public interface IGroupBoxOptionsAttribute : IAttribute 
     {

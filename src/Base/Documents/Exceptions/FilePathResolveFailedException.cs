@@ -14,6 +14,7 @@ namespace Xarial.XCad.Documents.Exceptions
 {
     /// <summary>
     /// Exception indicates that path of the unloaded document canot be resolved
+    /// 表示未加载文档的路径无法解析
     /// </summary>
     public class FilePathResolveFailedException : Exception, IUserException
     {

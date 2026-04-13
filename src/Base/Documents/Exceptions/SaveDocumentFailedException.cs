@@ -14,16 +14,19 @@ namespace Xarial.XCad.Documents.Exceptions
 {
     /// <summary>
     /// Exception indicates that document failed to save
+    /// 表示文档保存失败异常
     /// </summary>
     public class SaveDocumentFailedException : Exception, IUserException
     {
         /// <summary>
         /// CAD specific error code
+        /// CAD 系统特定错误码
         /// </summary>
         public int ErrorCode { get; }
 
         /// <summary>
         /// Exception constructor
+        /// 异常构造函数
         /// </summary>
         /// <param name="errCode">Error code</param>
         /// <param name="errorDesc">Description</param>

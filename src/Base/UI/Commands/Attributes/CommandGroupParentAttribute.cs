@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.Commands.Attributes
 {
     /// <summary>
     /// Associates the parent group for this group
+    /// 为当前命令组指定父命令组
     /// </summary>
     public class CommandGroupParentAttribute : Attribute
     {

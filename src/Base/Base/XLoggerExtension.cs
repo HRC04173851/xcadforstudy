@@ -15,17 +15,19 @@ namespace Xarial.XCad.Base
 {
     /// <summary>
     /// Additional extension methods for the logger
+    /// 日志记录器的扩展方法
     /// </summary>
     public static class XLoggerExtension
     {
         /// <summary>
         /// Prints the message to trace
+        /// 将消息输出到跟踪记录
         /// </summary>
-        /// <param name="logger">Logger</param>
-        /// <param name="msg">Message to trace</param>
-        /// <param name="category">Trace category</param>
+        /// <param name="logger">Logger 日志记录器</param>
+        /// <param name="msg">Message to trace 要跟踪的消息</param>
+        /// <param name="category">Trace category 跟踪类别</param>
         /// <param name="severity"></param>
-        /// <param name="singleLine">True to merge multiline into a single line</param>
+        /// <param name="singleLine">True to merge multiline into a single line 为 true 则将多行内容合并为单行</param>
         public static void Trace(this IXLogger logger, string msg, string category, LoggerMessageSeverity_e severity, bool singleLine = false)
         {
             if (singleLine)
@@ -38,11 +40,12 @@ namespace Xarial.XCad.Base
 
         /// <summary>
         /// Logs error
+        /// 记录异常错误
         /// </summary>
-        /// <param name="logger">Logger</param>
-        /// <param name="ex">Exception</param>
-        /// <param name="stackTrace">True to log stack trace</param>
-        /// <param name="severity">Severity of the message</param>
+        /// <param name="logger">Logger 日志记录器</param>
+        /// <param name="ex">Exception 异常</param>
+        /// <param name="stackTrace">True to log stack trace 为 true 则记录堆栈跟踪</param>
+        /// <param name="severity">Severity of the message 消息严重程度</param>
         public static void Log(this IXLogger logger, Exception ex, bool stackTrace = true, LoggerMessageSeverity_e severity = LoggerMessageSeverity_e.Error)
         {
             var msg = new StringBuilder();

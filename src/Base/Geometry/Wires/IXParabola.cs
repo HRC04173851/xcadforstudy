@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Wires
 {
     /// <summary>
     /// Parabolic segment
+    /// 表示抛物线线段
     /// </summary>
     public interface IXParabola : IXSegment
     {

@@ -13,26 +13,31 @@ namespace Xarial.XCad.Base.Enums
 {
     /// <summary>
     /// Icons of message box
+    /// 消息框的图标类型
     /// </summary>
     public enum MessageBoxIcon_e
     {
         /// <summary>
         /// Information
+        /// 信息
         /// </summary>
         Info,
 
         /// <summary>
         /// Question
+        /// 问题
         /// </summary>
         Question,
 
         /// <summary>
         /// Error
+        /// 错误
         /// </summary>
         Error,
 
         /// <summary>
         /// Warning
+        /// 警告
         /// </summary>
         Warning
     }

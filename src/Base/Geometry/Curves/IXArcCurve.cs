@@ -14,6 +14,7 @@ namespace Xarial.XCad.Geometry.Curves
 {
     /// <summary>
     /// Represents the circle curve
+    /// 表示圆曲线
     /// </summary>
     public interface IXCircleCurve : IXCurve, IXCircle
     {
@@ -21,6 +22,7 @@ namespace Xarial.XCad.Geometry.Curves
 
     /// <summary>
     /// Represents the arc curve
+    /// 表示圆弧曲线
     /// </summary>
     public interface IXArcCurve : IXCircleCurve , IXArc
     {

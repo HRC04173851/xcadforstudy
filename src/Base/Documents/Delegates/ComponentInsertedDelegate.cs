@@ -15,6 +15,7 @@ namespace Xarial.XCad.Documents.Delegates
 {
     /// <summary>
     /// Delegate of <see cref="IXAssembly.ComponentInserted"/> notification
+    /// <see cref="IXAssembly.ComponentInserted"/> 通知委托
     /// </summary>
     /// <param name="assembly">Assembly where component is inserted</param>
     /// <param name="component">Component inserted into the assembly</param>

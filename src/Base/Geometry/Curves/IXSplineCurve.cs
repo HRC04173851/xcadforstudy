@@ -14,6 +14,7 @@ namespace Xarial.XCad.Geometry.Curves
 {
     /// <summary>
     /// Represents the spline curve
+    /// 表示样条曲线
     /// </summary>
     public interface IXSplineCurve : IXCurve, IXSpline
     {

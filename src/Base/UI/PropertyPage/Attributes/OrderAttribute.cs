@@ -14,6 +14,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Defines the order of control generation based on the data model
+    /// 定义基于数据模型生成控件的顺序
     /// </summary>
     public interface IOrderAttribute : IAttribute
     {

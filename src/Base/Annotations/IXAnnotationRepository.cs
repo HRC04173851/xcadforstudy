@@ -16,6 +16,7 @@ namespace Xarial.XCad.Annotations
 {
     /// <summary>
     /// Collection of annotations
+    /// 标注集合
     /// </summary>
     public interface IXAnnotationRepository : IXRepository<IXAnnotation>
     {

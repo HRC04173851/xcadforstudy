@@ -16,22 +16,26 @@ namespace Xarial.XCad.Geometry.Evaluation
 {
     /// <summary>
     /// Represents the bounding box of the geometrical object
+    /// 表示几何对象的包围盒评估结果
     /// </summary>
     public interface IXBoundingBox : IEvaluation
     {
         /// <summary>
         /// True to automatically find the best orientation to fit
+        /// 为 true 时自动搜索最优朝向以获得更紧凑包围盒
         /// </summary>
         bool BestFit { get; set; }
 
         /// <summary>
         /// Bounding box data
+        /// 包围盒数据
         /// </summary>
         Box3D Box { get; }
     }
 
     /// <summary>
     /// Bounding box specific to the assembly
+    /// 装配体上下文专用包围盒评估
     /// </summary>
     public interface IXAssemblyBoundingBox : IXBoundingBox, IAssemblyEvaluation
     {

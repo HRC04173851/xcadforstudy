@@ -17,11 +17,13 @@ namespace Xarial.XCad.Features.CustomFeature
 {
     /// <summary>
     /// Represents the definition of custom feature where business logic is defined
+    /// 表示定义业务逻辑的自定义特征定义接口
     /// </summary>
     public interface IXCustomFeatureDefinition
     {
         /// <summary>
         /// Called when the Edit feature menu is clicked from the feature manager tree
+        /// 当在特征树中点击“编辑特征”时调用
         /// </summary>
         /// <param name="app">Pointer to the application</param>
         /// <param name="model">Pointer to the current model where the feature resided</param>
@@ -33,6 +35,7 @@ namespace Xarial.XCad.Features.CustomFeature
 
         /// <summary>
         /// Called when macro feature is rebuilding
+        /// 当宏特征重建时调用
         /// </summary>
         /// <param name="app">Pointer to the SOLIDWORKS application</param>
         /// <param name="model">Pointer to the document where the macro feature being rebuild</param>
@@ -44,6 +47,7 @@ namespace Xarial.XCad.Features.CustomFeature
         /// <summary>
         /// Called when state of the feature is changed (i.e. feature is selected, moved, updated etc.)
         /// Use this method to provide additional dynamic security options on your feature (i.e. do not allow dragging, editing etc.)
+        /// 当特征状态变化（如选择、移动、更新）时调用，可用于动态限制拖拽/编辑等行为
         /// </summary>
         /// <param name="app">Pointer to the application</param>
         /// <param name="model">Pointer to the model where the feature resides</param>
@@ -54,6 +58,7 @@ namespace Xarial.XCad.Features.CustomFeature
 
     /// <summary>
     /// Represents the custom feature definition bound to the parameters data model
+    /// 表示绑定参数数据模型的自定义特征定义
     /// </summary>
     /// <typeparam name="TParams"></typeparam>
     public interface IXCustomFeatureDefinition<TParams> : IXCustomFeatureDefinition
@@ -78,6 +83,7 @@ namespace Xarial.XCad.Features.CustomFeature
 
     /// <summary>
     /// Represents custom feature with a built-in custom page editor
+    /// 表示带内置页面编辑器的自定义特征定义
     /// </summary>
     /// <typeparam name="TParams">Parameters of this custom feature</typeparam>
     /// <typeparam name="TPage">Page editor of this custom feature</typeparam>

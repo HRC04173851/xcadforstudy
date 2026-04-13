@@ -14,11 +14,13 @@ namespace Xarial.XCad.Features
 {
     /// <summary>
     /// Represents the feature which holds the dumb body
+    /// 表示承载哑实体（无历史特征体）的特征
     /// </summary>
     public interface IXDumbBody : IXFeature
     {
         /// <summary>
         /// Body geometry of the feature
+        /// 该特征对应的几何体
         /// </summary>
         IXBody BaseBody { get; set; }
     }

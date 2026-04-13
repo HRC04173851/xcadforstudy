@@ -14,6 +14,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Indicates that this control should not raise the <see cref="IXPropertyPage{TDataModel}.DataChanged"/> notification
+    /// 指示该控件不触发 <see cref="IXPropertyPage{TDataModel}.DataChanged"/> 通知
     /// </summary>
     public class SilentControlAttribute : Attribute, ISilentBindingAttribute
     {

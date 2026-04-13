@@ -16,6 +16,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 
     /// <summary>
     /// Attribute indicates that current property or class should be rendered as tab box
+    /// 指示当前属性或类应渲染为选项卡容器
     /// </summary>
     /// <remarks>This attribute is only applicable for complex types which contain nested properties</remarks>
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]

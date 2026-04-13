@@ -11,6 +11,7 @@ namespace Xarial.XCad.UI.PropertyPage.Delegates
 {
     /// <summary>
     /// Delegate of <see cref="IXPropertyPage{TDataModel}.Closed"/> event
+    /// <see cref="IXPropertyPage{TDataModel}.Closed"/> 事件委托
     /// </summary>
     /// <param name="reason">Reason of page closing</param>
     public delegate void PageClosedDelegate(PageCloseReasons_e reason);

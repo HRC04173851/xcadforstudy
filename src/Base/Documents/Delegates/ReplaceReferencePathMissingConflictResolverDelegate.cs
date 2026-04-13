@@ -16,6 +16,7 @@ namespace Xarial.XCad.Documents.Delegates
     /// <summary>
     /// Delegate used in the <see cref="XDocumentDependenciesExtension.ReplaceAll(IXDocumentDependencies, ReplaceReferencePathProviderDelegate, Func{string, string})"/>
     /// when target file reference cannot be resolved
+    /// 在 <see cref="XDocumentDependenciesExtension.ReplaceAll(IXDocumentDependencies, ReplaceReferencePathProviderDelegate, Func{string, string})"/> 中用于处理目标引用路径无法解析时的委托
     /// </summary>
     /// <param name="requestingFilePath">Parent file path which is requesting this reference</param>
     /// <param name="missingPath">Path that was not found in the rename map</param>

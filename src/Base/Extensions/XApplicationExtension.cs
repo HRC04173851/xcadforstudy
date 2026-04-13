@@ -16,6 +16,7 @@ namespace Xarial.XCad.Extensions
 {
     /// <summary>
     /// Collection of additional functions of <see cref="IXApplication"/>
+    /// <see cref="IXApplication"/> 扩展方法集合
     /// </summary>
     public static class XApplicationExtension
     {
@@ -37,6 +38,7 @@ namespace Xarial.XCad.Extensions
 
         /// <summary>
         /// Displays the tooltip
+        /// 显示提示气泡
         /// </summary>
         /// <param name="app">Application</param>
         /// <param name="title">Tooltip title</param>

@@ -17,11 +17,13 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Represents the memory (temp) body object
+    /// 表示内存中的临时几何体对象
     /// </summary>
     public interface IXMemoryBody : IXBody, IDisposable
     {
         /// <summary>
         /// DIsplays the preview of the memory body
+        /// 显示临时几何体的预览图形
         /// </summary>
         /// <param name="context">Context where preview should be displayed (e.g. document or component)</param>
         /// <param name="color">Color of the body</param>
@@ -29,6 +31,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Boolean add operation on body
+        /// 对几何体执行布尔并（Union）运算
         /// </summary>
         /// <param name="other">Other body</param>
         /// <returns>Resulting body</returns>
@@ -37,6 +40,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Boolean substract operation
+        /// 对几何体执行布尔差（Subtract）运算
         /// </summary>
         /// <param name="other">Body to substract</param>
         /// <returns>Resulting bodies</returns>
@@ -45,6 +49,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Boolean common operation
+        /// 对几何体执行布尔交（Common/Intersect）运算
         /// </summary>
         /// <param name="other">Body to get common with</param>
         /// <returns>Resulting body</returns>
@@ -54,6 +59,7 @@ namespace Xarial.XCad.Geometry
 
     /// <summary>
     /// Represents the memory (temp) sheet (surface) body
+    /// 表示内存中的临时片体（曲面体）
     /// </summary>
     public interface IXMemorySheetBody : IXMemoryBody, IXSheetBody
     {
@@ -68,6 +74,7 @@ namespace Xarial.XCad.Geometry
 
     /// <summary>
     /// Represents the memory (temp) solid body geometry
+    /// 表示内存中的临时实体体
     /// </summary>
     public interface IXMemorySolidBody : IXMemoryBody, IXSolidBody
     {
@@ -75,6 +82,7 @@ namespace Xarial.XCad.Geometry
 
     /// <summary>
     /// Represents the the memory (temp) wire body
+    /// 表示内存中的临时线框体
     /// </summary>
     public interface IXMemoryWireBody : IXMemoryBody, IXWireBody
     {

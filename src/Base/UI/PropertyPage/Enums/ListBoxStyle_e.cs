@@ -11,6 +11,10 @@ using System.Text;
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// List box style flags
+    /// 列表框样式标志
+    /// </summary>
     [Flags]
     public enum ListBoxStyle_e
     {

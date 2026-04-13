@@ -14,11 +14,13 @@ namespace Xarial.XCad.Features
 {
     /// <summary>
     /// Represents the coordinate system feature
+    /// 表示坐标系特征
     /// </summary>
     public interface IXCoordinateSystem : IXFeature
     {
         /// <summary>
         /// Transformation of this coordinate system
+        /// 该坐标系相对于全局坐标系的变换矩阵
         /// </summary>
         TransformMatrix Transform { get; }
     }

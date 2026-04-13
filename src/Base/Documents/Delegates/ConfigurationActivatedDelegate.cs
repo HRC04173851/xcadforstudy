@@ -13,6 +13,7 @@ namespace Xarial.XCad.Documents.Delegates
 {
     /// <summary>
     /// Delegate for <see cref="IXConfigurationRepository.ConfigurationActivated"/> event
+    /// <see cref="IXConfigurationRepository.ConfigurationActivated"/> 事件委托
     /// </summary>
     /// <param name="doc">Document owner of this configuration</param>
     /// <param name="newConf">Configuration which is activated</param>

@@ -14,6 +14,10 @@ using Xarial.XCad.UI.PropertyPage.Structures;
 
 namespace Xarial.XCad.UI.PropertyPage.Services
 {
+    /// <summary>
+    /// Dependency handler that refreshes items controls from custom provider
+    /// 用于从自定义提供器刷新项控件内容的依赖处理器
+    /// </summary>
     internal class CustomItemsAttributeDependencyHandler : IDependencyHandler
     {
         private readonly ICustomItemsProvider m_ItemsProvider;

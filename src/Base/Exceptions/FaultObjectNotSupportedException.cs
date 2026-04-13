@@ -13,13 +13,15 @@ namespace Xarial.XCad.Exceptions
 {
     /// <summary>
     /// Exception is thrown for all properties and methods of <see cref="IFaultObject"/>
+    /// 访问 <see cref="IFaultObject"/> 的所有属性和方法时抛出此异常
     /// </summary>
     public class FaultObjectNotSupportedException : NotSupportedException
     {
         /// <summary>
         /// Default constructor
+        /// 默认构造函数
         /// </summary>
-        public FaultObjectNotSupportedException() : base("Accessing methods and properties of a fault object is not supported") 
+        public FaultObjectNotSupportedException() : base("Accessing methods and properties of a fault object is not supported")
         {
         }
     }

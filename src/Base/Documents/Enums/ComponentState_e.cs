@@ -13,12 +13,14 @@ namespace Xarial.XCad.Documents.Enums
 {
     /// <summary>
     /// States of the component <see cref="IXComponent.State"/>
+    /// 组件 <see cref="IXComponent.State"/> 的状态标志
     /// </summary>
     [Flags]
     public enum ComponentState_e
     {
         /// <summary>
         /// Default state of the component
+        /// 组件默认状态
         /// </summary>
         Default = 0,
 

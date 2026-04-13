@@ -12,17 +12,20 @@ namespace Xarial.XCad.Documents.Services
 {
     /// <summary>
     /// Group of operations (commands)
+    /// 操作（命令）分组
     /// </summary>
     /// <remarks>This allows to group APi command under as single command for undo-redo purposes</remarks>
     public interface IOperationGroup : IXTransaction, IDisposable
     {
         /// <summary>
         /// Name of the group
+        /// 分组名称
         /// </summary>
         string Name { get; set; }
 
         /// <summary>
         /// Indicates if this group is temporar and should be restored after the execution
+        /// 指示该分组是否为临时分组（执行后恢复）
         /// </summary>
         bool IsTemp { get; set; }
     }

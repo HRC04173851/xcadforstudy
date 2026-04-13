@@ -13,16 +13,19 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Represents an edge element of the geometry
+    /// 表示几何体的轮廓边（Silhouette Edge）
     /// </summary>
     public interface IXSilhouetteEdge : IXEntity, IXSegment
     {
         /// <summary>
         /// Owner face of this silhouette edge
+        /// 该轮廓边所属的面
         /// </summary>
         IXFace Face { get; }
 
         /// <summary>
         /// Underlyining curve defining this edge
+        /// 定义该轮廓边的底层曲线
         /// </summary>
         IXCurve Definition { get; }
     }

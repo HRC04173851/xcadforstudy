@@ -15,16 +15,19 @@ namespace Xarial.XCad.UI.Enums
 {
     /// <summary>
     /// Dock for the popup window
+    /// 弹出窗口停靠位置
     /// </summary>
     public enum PopupDock_e
     {
         /// <summary>
         /// Center of the parent Window
+        /// 父窗口中心
         /// </summary>
         Center,
 
         /// <summary>
         /// Top right corner of the parent window
+        /// 父窗口右上角
         /// </summary>
         TopRight,
 

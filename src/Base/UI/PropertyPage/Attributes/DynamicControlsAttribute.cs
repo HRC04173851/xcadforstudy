@@ -14,6 +14,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Indicates that this property provides dynamic control for property page
+    /// 指示此属性为属性页提供动态控件
     /// </summary>
     /// <remarks>Specify the handler in <see cref="IXExtension.CreatePage{TData}(Delegates.CreateDynamicControlsDelegate)"/> to provide controls</remarks>
     public class DynamicControlsAttribute : Attribute

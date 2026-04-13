@@ -14,6 +14,7 @@ namespace Xarial.XCad.Data
 {
     /// <summary>
     /// Represents the collection of properties
+    /// 表示属性集合仓储
     /// </summary>
     public interface IXPropertyRepository : IXRepository<IXProperty>
     {

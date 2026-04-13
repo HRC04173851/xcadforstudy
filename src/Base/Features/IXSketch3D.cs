@@ -9,6 +9,7 @@ namespace Xarial.XCad.Features
 {
     /// <summary>
     /// Represents specific 3D sketch
+    /// 表示三维草图
     /// </summary>
     public interface IXSketch3D : IXSketchBase
     {

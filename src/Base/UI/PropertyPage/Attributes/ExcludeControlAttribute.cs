@@ -12,6 +12,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Control should not be created for this property
+    /// 指示该属性不应创建控件
     /// </summary>
     public class ExcludeControlAttribute : Attribute, IIgnoreBindingAttribute
     {

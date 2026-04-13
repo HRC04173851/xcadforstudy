@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.Exceptions
 {
     /// <summary>
     /// Exception indicates that the parent group is set as a parent of itself
+    /// 表示父命令组出现循环依赖（将自身设为父组）
     /// </summary>
     public class ParentGroupCircularDependencyException : Exception
     {

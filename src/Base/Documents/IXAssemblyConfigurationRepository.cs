@@ -11,6 +11,7 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Represents the collection of configurations in <see cref="IXAssembly"/>
+    /// 表示 <see cref="IXAssembly"/> 的配置集合
     /// </summary>
     public interface IXAssemblyConfigurationRepository : IXConfigurationRepository
     {

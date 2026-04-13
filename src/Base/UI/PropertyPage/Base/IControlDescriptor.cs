@@ -13,16 +13,19 @@ namespace Xarial.XCad.UI.PropertyPage.Base
 {
     /// <summary>
     /// Describes the control in this property page
+    /// 描述属性页中的控件信息
     /// </summary>
     public interface IControlDescriptor
     {
         /// <summary>
         /// Display name of the control
+        /// 控件显示名称
         /// </summary>
         string DisplayName { get; }
 
         /// <summary>
         /// Tooltip of the control
+        /// 控件提示信息
         /// </summary>
         string Description { get; }
 

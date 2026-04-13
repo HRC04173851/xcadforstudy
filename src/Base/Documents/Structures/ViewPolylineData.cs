@@ -17,16 +17,19 @@ namespace Xarial.XCad.Documents.Structures
 {
     /// <summary>
     /// Represents the polyline information of <see cref="IXDrawingView"/>
+    /// 表示 <see cref="IXDrawingView"/> 的多段线信息
     /// </summary>
     public class ViewPolylineData
     {
         /// <summary>
         /// Tesselation points of the polyline
+        /// 多段线离散点（剖分点）
         /// </summary>
         public Point[] Points { get; }
 
         /// <summary>
         /// Correposnidng 3D model entity
+        /// 对应的三维模型实体
         /// </summary>
         public IXEntity Entity { get; }
 

@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Provides additional options for the list box
+    /// 为列表框提供附加选项
     /// </summary>
     /// <remarks>Must be applied to the property decorated with <see cref="ListBoxAttribute"/></remarks>
     public class ListBoxOptionsAttribute : Attribute, IAttribute

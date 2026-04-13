@@ -7,6 +7,10 @@
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Standard control bitmap label types
+    /// 标准控件位图标签类型
+    /// </summary>
     public enum BitmapLabelType_e
     {
         LinearDistance = 1,

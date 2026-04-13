@@ -12,6 +12,7 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Save as operation for the document
+    /// 文档“另存为”操作接口
     /// </summary>
     /// <remarks>Created via <see cref="IXDocument.PreCreateSaveAsOperation(string)"/></remarks>
     /// <exception cref="Exceptions.SaveDocumentFailedException"/>
@@ -19,12 +20,14 @@ namespace Xarial.XCad.Documents
     {
         /// <summary>
         /// Output file path
+        /// 输出文件路径
         /// </summary>
         string FilePath { get; }
     }
 
     /// <summary>
     /// Save operation of <see cref="IXDrawing"/> files
+    /// <see cref="IXDrawing"/> 的保存操作
     /// </summary>
     public interface IXDrawingSaveOperation : IXSaveOperation
     {
@@ -37,6 +40,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Save operation of <see cref="IXDocument3D"/> files
+    /// <see cref="IXDocument3D"/> 的保存操作
     /// </summary>
     public interface IXDocument3DSaveOperation : IXSaveOperation 
     {
@@ -49,6 +53,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Step format type
+    /// STEP 格式类型
     /// </summary>
     public enum StepFormat_e
     {

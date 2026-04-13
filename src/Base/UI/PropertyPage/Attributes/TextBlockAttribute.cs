@@ -12,6 +12,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Constructor of text block
+    /// 文本块控件构造器标记接口
     /// </summary>
     public interface ITextBlockConstructor
     {
@@ -19,6 +20,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 
     /// <summary>
     /// Attribute indicates that current property should be rendered as text block
+    /// 指示当前属性应渲染为文本块
     /// </summary>
     /// <remarks>This attribute is only applicable for <see cref="Enum">enum</see> types</remarks>
     public class TextBlockAttribute : Attribute, ISpecificConstructorAttribute

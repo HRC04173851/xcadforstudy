@@ -13,7 +13,8 @@ namespace Xarial.XCad.Delegates
 {
     /// <summary>
     /// Delegate of <see cref="IXApplication.Idle"/> event
+    /// <see cref="IXApplication.Idle"/> 事件的委托类型
     /// </summary>
-    /// <param name="app">Pointer to the application</param>
+    /// <param name="app">Pointer to the application 指向应用程序的指针</param>
     public delegate void ApplicationIdleDelegate(IXApplication app);
 }

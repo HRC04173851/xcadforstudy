@@ -14,11 +14,13 @@ namespace Xarial.XCad.UI.Commands.Structures
 {
     /// <summary>
     /// Additional methods of <see cref="CommandState"/>
+    /// <see cref="CommandState"/> 的扩展方法
     /// </summary>
     public static class CommandStateExtension
     {
         /// <summary>
         /// Resolves the default state based on the workspace
+        /// 根据工作区解析命令默认状态
         /// </summary>
         /// <param name="state">Current state</param>
         /// <param name="ws">Workspace</param>

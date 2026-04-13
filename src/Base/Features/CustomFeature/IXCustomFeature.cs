@@ -13,28 +13,33 @@ namespace Xarial.XCad.Features.CustomFeature
 {
      /// <summary>
      /// Instance of the custom feature
+     /// 自定义特征实例
      /// </summary>
     public interface IXCustomFeature : IXFeature
     {
         /// <summary>
         /// Type of the definition of this custom feature
+        /// 该自定义特征定义类型
         /// </summary>
         Type DefinitionType { get; set; }
 
         /// <summary>
         /// Transformation of this feature
+        /// 该特征的目标变换矩阵
         /// </summary>
         /// <remarks>This is useful when the feature is inserted in the context of the assembly</remarks>
         TransformMatrix TargetTransformation { get; }
 
         /// <summary>
         /// Referenced configuration
+        /// 引用配置
         /// </summary>
         IXConfiguration Configuration { get; }
     }
 
     /// <summary>
     /// Instance of the custom feature with parameters
+    /// 带参数数据模型的自定义特征实例
     /// </summary>
     /// <typeparam name="TParams">Parameters data model</typeparam>
     public interface IXCustomFeature<TParams> : IXCustomFeature
@@ -42,11 +47,13 @@ namespace Xarial.XCad.Features.CustomFeature
     {
         /// <summary>
         /// Parameters of this feature
+        /// 该特征参数
         /// </summary>
         TParams Parameters { get; set; }
 
         /// <summary>
         /// Gets the transformation matrix of the specified entity of the macro feature
+        /// 获取宏特征中指定实体的变换矩阵
         /// </summary>
         /// <param name="entity">Entity to get the transformation from</param>
         /// <returns>Entity transformation matrix</returns>
@@ -56,11 +63,13 @@ namespace Xarial.XCad.Features.CustomFeature
 
     /// <summary>
     /// Additional methods for <see cref="IXCustomFeature"/>
+    /// <see cref="IXCustomFeature"/> 扩展方法
     /// </summary>
     public static class XCustomFeatureExtension 
     {
         /// <summary>
         /// Gets the actual transformation of the entity in case of the in-context editing
+        /// 在就地编辑场景下获取实体到目标的实际变换
         /// </summary>
         /// <typeparam name="TParams">Parameters</typeparam>
         /// <param name="feat">Custom feature</param>

@@ -12,6 +12,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Provides the additional help links for the page
+    /// 为页面提供附加帮助链接
     /// </summary>
     /// <remarks>Applied to the model class</remarks>
     public class HelpAttribute : Attribute, IAttribute

@@ -19,21 +19,25 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Manages dependencies of the <see cref="IXDocument"/>
+    /// 管理 <see cref="IXDocument"/> 的引用依赖关系
     /// </summary>
     public interface IXDocumentDependencies : IEnumerable<IXDocument3D>
     {
         /// <summary>
         /// Owner of these dependencies
+        /// 这些依赖项所属文档
         /// </summary>
         IXDocument OwnerDocument { get; }
 
         /// <summary>
         /// True to read the cached dependencies, false to automaticaly resolve the paths
+        /// 为 true 时读取缓存依赖；为 false 时自动解析最新路径
         /// </summary>
         bool Cached { get; set; }
 
         /// <summary>
         /// Replaces the dependency
+        /// 替换依赖引用
         /// </summary>
         /// <param name="source">Source dependency to replace</param>
         /// <param name="target">New dependency</param>
@@ -42,11 +46,13 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Additional methods for <see cref="IXDocumentDependencies"/>
+    /// <see cref="IXDocumentDependencies"/> 的扩展方法
     /// </summary>
     public static class XDocumentDependenciesExtension 
     {
         /// <summary>
         /// Replaces all dependencies recursively
+        /// 递归替换所有依赖引用
         /// </summary>
         /// <param name="deps">Dependencies to replace</param>
         /// <param name="replacementPathProvider">File path replacer</param>
@@ -137,6 +143,7 @@ namespace Xarial.XCad.Documents
 
         /// <summary>
         /// Returns all dependencies including nested dependencies, skipping the errors
+        /// 返回所有依赖（含嵌套依赖），并跳过错误项
         /// </summary>
         /// <param name="deps">Input dependencies</param>
         /// <param name="topLevelOnly">True to only load top level references, false to recursively load all references</param>

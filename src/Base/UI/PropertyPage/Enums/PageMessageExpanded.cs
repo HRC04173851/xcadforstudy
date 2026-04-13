@@ -7,6 +7,10 @@
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Expansion state of page message panel
+    /// 页面消息面板展开状态
+    /// </summary>
     public enum PageMessageExpanded
     {
         MaintainExpandState,

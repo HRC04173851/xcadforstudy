@@ -7,6 +7,10 @@
 
 namespace Xarial.XCad.UI.PropertyPage.Base
 {
+    /// <summary>
+    /// Attribute interface for assigning custom tag to control
+    /// 为控件分配自定义标签的特性接口
+    /// </summary>
     public interface IControlTagAttribute : IAttribute
     {
         /// <summary>

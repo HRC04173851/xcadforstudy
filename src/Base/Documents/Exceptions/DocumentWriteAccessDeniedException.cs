@@ -13,6 +13,7 @@ namespace Xarial.XCad.Documents.Exceptions
 {
     /// <summary>
     /// Exception indicates that document cannot be opened for write access
+    /// 表示文档无法以可写权限打开
     /// </summary>
     public class DocumentWriteAccessDeniedException : OpenDocumentFailedException
     {

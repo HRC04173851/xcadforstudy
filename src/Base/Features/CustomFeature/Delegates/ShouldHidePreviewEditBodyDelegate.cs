@@ -14,11 +14,12 @@ namespace Xarial.XCad.Features.CustomFeature.Delegates
 {
     /// <summary>
     /// Control if the edit body should be hidden during the preview
+    /// 控制预览期间是否隐藏编辑体
     /// </summary>
     /// <param name="body">Body which is about to be hidden</param>
     /// <param name="data">Macro feature data</param>
     /// <param name="page">Macro feature page</param>
-    /// <returns>True to hide body, false to kepe the body visible</returns>
+    /// <returns>True to hide body, false to kepe the body visible（true 表示隐藏）</returns>
     /// <remarks>usually edit body is hidden during the preview as it is replaced by the macro feature geometry
     /// In some cases user might need to perform multiple selections on edit body and thus hiding it preventing the further selections</remarks>
     public delegate bool ShouldHidePreviewEditBodyDelegate<TData, TPage>(IXBody body, TData data, TPage page)

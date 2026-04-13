@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Wires
 {
     /// <summary>
     /// Eliptical segment
+    /// 表示椭圆线段
     /// </summary>
     public interface IXEllipse : IXSegment
     {

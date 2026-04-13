@@ -13,13 +13,15 @@ namespace Xarial.XCad
 {
     /// <summary>
     /// Enables the display of progress bar and status
+    /// 启用进度条和状态显示
     /// </summary>
     public interface IXProgress : IDisposable, IProgress<double>
     {
         /// <summary>
         /// Sets status of the operation
+        /// 设置操作的状态文本
         /// </summary>
-        /// <param name="status">Status messae</param>
+        /// <param name="status">Status messae 状态消息</param>
         void SetStatus(string status);
     }
 }

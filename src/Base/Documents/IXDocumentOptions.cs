@@ -15,6 +15,7 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Visibility of the entity kinds
+    /// 各类实体显示可见性选项
     /// </summary>
     public interface IXViewEntityKindVisibilityOptions
     {
@@ -96,6 +97,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Document specific options
+    /// 文档专有选项
     /// </summary>
     public interface IXDocumentOptions : IXOptions
     {
@@ -107,6 +109,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Detailing options of the drawing
+    /// 工程图细节标注选项
     /// </summary>
     public interface IXDrawingDetailingOptions 
     {
@@ -138,6 +141,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Drawing specific options
+    /// 工程图专有选项
     /// </summary>
     public interface IXDrawingOptions : IXDocumentOptions 
     {

@@ -11,6 +11,7 @@ namespace Xarial.XCad.UI.PropertyPage.Base
 {
     /// <summary>
     /// Delegate of <see cref="IControl.ValueChanged"/> event
+    /// <see cref="IControl.ValueChanged"/> 事件委托
     /// </summary>
     /// <param name="sender">Control</param>
     /// <param name="newValue">New value of the control</param>
@@ -18,16 +19,19 @@ namespace Xarial.XCad.UI.PropertyPage.Base
 
     /// <summary>
     /// Represents the control in the page
+    /// 表示属性页中的控件
     /// </summary>
     public interface IControl : IDisposable
     {
         /// <summary>
         /// Fired when the value of the control has been changed
+        /// 控件值变化时触发
         /// </summary>
         event ControlObjectValueChangedDelegate ValueChanged;
 
         /// <summary>
         /// Metadata attached to this control
+        /// 附加到控件上的元数据
         /// </summary>
         IMetadata[] Metadata { get; }
 

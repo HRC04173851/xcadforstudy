@@ -13,11 +13,13 @@ namespace Xarial.XCad.Geometry.Structures
     /// <inheritdoc/>
     /// <summary>
     /// Represents the vector
+    /// 表示三维向量
     /// </summary>
     public class Vector : Point
     {
         /// <summary>
         ///Scales the vector
+        /// 按比例缩放向量
         /// </summary>
         /// <param name="vec">Vector to scale</param>
         /// <param name="scale">Scale</param>
@@ -35,6 +37,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Creates vector by direction
+        /// 使用方向数组创建向量
         /// </summary>
         /// <param name="dir">Direction of vector</param>
         public Vector(double[] dir) : base(dir)
@@ -51,6 +54,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Compares the vectors
+        /// 比较两个向量是否相同（可归一化比较）
         /// </summary>
         /// <param name="vec">Another vector</param>
         /// <param name="normalize">Normalized vectors while comparison</param>
@@ -79,6 +83,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Normalizes the vector
+        /// 将向量归一化为单位向量
         /// </summary>
         /// <returns>New normalized vector</returns>
         public Vector Normalize()
@@ -98,6 +103,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Creates a cross product of this vector with another vector
+        /// 计算当前向量与另一向量的叉乘
         /// </summary>
         /// <param name="vector">Another vector</param>
         /// <returns>New cross product vector</returns>
@@ -112,6 +118,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Returns the length of this vector
+        /// 计算向量模长
         /// </summary>
         /// <returns>Vector length</returns>
         public double GetLength()
@@ -123,6 +130,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Calculates the dot product between vectors
+        /// 计算两个向量的点乘
         /// </summary>
         /// <param name="vector">Other vector</param>
         /// <returns>Scalar dot product</returns>
@@ -131,6 +139,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Transforms this vector with the transformation matrix
+        /// 使用变换矩阵变换向量（不包含平移分量）
         /// </summary>
         /// <param name="matrix">Transformation matrix</param>
         /// <returns>Transformed vector</returns>

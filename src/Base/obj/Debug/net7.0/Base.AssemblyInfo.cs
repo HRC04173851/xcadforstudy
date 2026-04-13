@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © Xarial Pty Limited 2025")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Base interfaces of xCAD.NET - Framework for developing CAD applications")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.8.2.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.2+8ece9795508a11cf29e59e05da9a07db389a0f36")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.8.2")]
 [assembly: System.Reflection.AssemblyProductAttribute("xCAD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Xarial.XCad")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.8.2.0")]

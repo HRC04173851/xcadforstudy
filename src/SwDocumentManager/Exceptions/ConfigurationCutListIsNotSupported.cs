@@ -14,6 +14,7 @@ namespace Xarial.XCad.SwDocumentManager.Exceptions
 {
     /// <summary>
     /// Exception indicates that cut-lists cannot be exctrated for this version of the SOLIDWORKS file
+    /// 表示当前 SOLIDWORKS 文件版本不支持按该方式提取切割清单。
     /// </summary>
     public class ConfigurationCutListIsNotSupported : NotSupportedException, IUserException
     {

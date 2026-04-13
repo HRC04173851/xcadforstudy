@@ -13,6 +13,10 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Data
 {
+    /// <summary>
+    /// Wraps a third-party structured storage inside a SOLIDWORKS document managed by Document Manager.
+    /// 包装 SOLIDWORKS 文档中的第三方结构化存储（Storage），用于读写自定义二进制数据容器。
+    /// </summary>
     internal class SwDm3rdPartyStorage : ComStorage
     {
         private readonly ISwDMDocument19 m_Doc;
@@ -20,6 +24,10 @@ namespace Xarial.XCad.SolidWorks.Data
 
         private readonly bool m_IsActive;
 
+        /// <summary>
+        /// Opens the named third-party storage and loads it into the generic COM storage adapter.
+        /// 打开指定名称的第三方存储，并将其加载到通用 COM Storage 适配器中。
+        /// </summary>
         internal SwDm3rdPartyStorage(ISwDMDocument19 doc, string name, AccessType_e access) 
             : base(AccessTypeHelper.GetIsWriting(access))
         {
@@ -48,6 +56,10 @@ namespace Xarial.XCad.SolidWorks.Data
             }
         }
 
+        /// <summary>
+        /// Releases the third-party storage handle back to Document Manager.
+        /// 将第三方存储句柄释放回 Document Manager，避免文档保持占用状态。
+        /// </summary>
         public override void Dispose()
         {
             base.Dispose();

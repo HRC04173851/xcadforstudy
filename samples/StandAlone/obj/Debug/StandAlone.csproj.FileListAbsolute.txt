@@ -1,2 +1,0 @@
-C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\samples\StandAlone\obj\Debug\StandAlone.csproj.AssemblyReference.cache
-C:\Users\DELL\source\repos\xcadFeatureForComment\Toolkit\xcadforstudy\samples\StandAlone\obj\Debug\StandAlone.csproj.CoreCompileInputs.cache

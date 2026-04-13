@@ -22,6 +22,7 @@ namespace Xarial.XCad.SwDocumentManager
 {
     /// <summary>
     /// Provides a factory to create instance of the <see cref="ISwDmApplication"/>
+    /// 提供用于创建 <see cref="ISwDmApplication"/> 的工厂，屏蔽注册表、COM 和许可证连接细节。
     /// </summary>
     public static class SwDmApplicationFactory
     {
@@ -29,15 +30,18 @@ namespace Xarial.XCad.SwDocumentManager
 
         /// <summary>
         /// Pre-creates application
+        /// 预创建应用程序包装器，此时尚未真正连接到 Document Manager。
         /// </summary>
-        /// <returns>xCAD application</returns>
+        /// <returns>xCAD application / xCAD 应用对象</returns>
         public static ISwDmApplication PreCreate() => new SwDmApplication(null, false);
 
         /// <summary>
         /// Returns all installed SOLIDWORKS Document Manager versions
+        /// 返回本机已安装的 SOLIDWORKS Document Manager 版本。
         /// </summary>
-        /// <returns>Enumerates versions</returns>
-        /// <remarks>Latest supported file version of the application also depends on the version of the Document Manager license key</remarks>
+        /// <returns>Enumerates versions / 返回版本枚举</returns>
+        /// <remarks>Latest supported file version of the application also depends on the version of the Document Manager license key
+        /// 应用程序可支持的最新文件版本还受 Document Manager 许可证版本限制。</remarks>
         public static IEnumerable<ISwDmVersion> GetInstalledVersions()
         {
             var swDmAppRegKey = Registry.ClassesRoot.OpenSubKey($"{DM_CLASS_FACT_PROG_ID}\\CLSID");
@@ -57,6 +61,7 @@ namespace Xarial.XCad.SwDocumentManager
                         var majorVers = FileVersionInfo.GetVersionInfo(dmDllPath).FileMajorPart;
 
                         //only support SW 2000 or newer
+                        // 仅支持从 SOLIDWORKS 2000 开始的版本号映射。
                         if (majorVers >= 8) 
                         {
                             var dmVersList = ((SwDmVersion_e[])Enum.GetValues(typeof(SwDmVersion_e))).ToList();
@@ -81,9 +86,10 @@ namespace Xarial.XCad.SwDocumentManager
 
         /// <summary>
         /// Creates an instance of the application from the Document Manager key
+        /// 根据 Document Manager 许可证密钥创建应用实例。
         /// </summary>
-        /// <param name="dmKey">Document manager key</param>
-        /// <returns>xCAD application</returns>
+        /// <param name="dmKey">Document manager key / Document Manager 许可证密钥</param>
+        /// <returns>xCAD application / xCAD 应用对象</returns>
         public static ISwDmApplication Create(string dmKey) 
         {
             var app = PreCreate();
@@ -95,11 +101,16 @@ namespace Xarial.XCad.SwDocumentManager
 
         /// <summary>
         /// Creates instance of the application from the COM pointer
+        /// 使用现成的 COM 指针包装出 xCAD 应用实例。
         /// </summary>
-        /// <param name="app">Pointer to the application</param>
-        /// <returns>xCAD application</returns>
+        /// <param name="app">Pointer to the application / 应用程序 COM 指针</param>
+        /// <returns>xCAD application / xCAD 应用对象</returns>
         public static ISwDmApplication FromPointer(ISwDMApplication app) => new SwDmApplication(app, true);
 
+        /// <summary>
+        /// Connects to the native Document Manager COM server using the secure license key.
+        /// 使用安全字符串形式的许可证密钥连接到底层 Document Manager COM 服务器。
+        /// </summary>
         internal static ISwDMApplication ConnectToDm(SecureString dmKeySecure) 
         {
             ISwDMClassFactory classFactory = null;
@@ -142,9 +153,10 @@ namespace Xarial.XCad.SwDocumentManager
 
         /// <summary>
         /// Creates a version of the application
+        /// 根据主版本号创建 xCAD 的版本对象。
         /// </summary>
-        /// <param name="major">Major version</param>
-        /// <returns>Version</returns>
+        /// <param name="major">Major version / 主版本号</param>
+        /// <returns>Version / 版本对象</returns>
         public static ISwDmVersion CreateVersion(SwDmVersion_e major) => new SwDmVersion(new Version((int)major, 0));
     }
 }

@@ -21,6 +21,10 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Repository contract for opened or pre-created Document Manager documents.
+    /// 已打开或预创建的 Document Manager 文档仓库约定。
+    /// </summary>
     public interface ISwDmDocumentCollection : IXDocumentRepository, IDisposable 
     {
         bool TryGet(string name, out ISwDmDocument ent);
@@ -28,6 +32,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         new ISwDmDocument Active { get; set; }
     }
 
+    /// <summary>
+    /// Tracks all document wrappers owned by a Document Manager application instance.
+    /// 跟踪某个 Document Manager 应用实例所拥有的全部文档包装器。
+    /// </summary>
     internal class SwDmDocumentCollection : ISwDmDocumentCollection
     {
         #region NotSupported
@@ -77,6 +85,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         private ISwDmDocument m_Active;
 
+        /// <summary>
+        /// Active document in the repository; this is a logical xCAD concept rather than a UI selection.
+        /// 仓库中的当前活动文档；这里表示的是逻辑活动对象，而不是界面中的前台窗口。
+        /// </summary>
         public ISwDmDocument Active
         {
             get => m_Active;
@@ -99,6 +111,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         private readonly SwDmApplication m_DmApp;
 
+        /// <summary>
+        /// Creates a repository bound to the owning Document Manager application wrapper.
+        /// 创建绑定到所属 Document Manager 应用包装器的文档仓库。
+        /// </summary>
         internal SwDmDocumentCollection(SwDmApplication dmApp)
         {
             m_DmApp = dmApp;
@@ -123,6 +139,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Resolves an already tracked document by path, file name, or title.
+        /// 按完整路径、文件名或标题解析已跟踪的文档。
+        /// </summary>
         public bool TryGet(string name, out ISwDmDocument ent)
         {
             if (System.IO.Path.IsPathRooted(name))
@@ -156,6 +176,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         public IEnumerable Filter(bool reverseOrder, params RepositoryFilterQuery[] filters) => RepositoryHelper.FilterDefault(this, filters, reverseOrder);
 
+        /// <summary>
+        /// Pre-creates a document wrapper of the requested xCAD type.
+        /// 按请求的 xCAD 类型预创建文档包装器。
+        /// </summary>
         public T PreCreate<T>() where T : IXDocument
             => RepositoryHelper.PreCreate<IXDocument, T>(this,
                 () => new SwDmUnknownDocument(m_DmApp, null, false, OnDocumentCreated, OnDocumentClosed, null),
@@ -164,12 +188,20 @@ namespace Xarial.XCad.SwDocumentManager.Documents
                 () => new SwDmAssembly(m_DmApp, null, false, OnDocumentCreated, OnDocumentClosed, null),
                 () => new SwDmDrawing(m_DmApp, null, false, OnDocumentCreated, OnDocumentClosed, null));
 
+        /// <summary>
+        /// Registers a newly created document and updates the active document pointer.
+        /// 注册新创建的文档，并更新当前活动文档指针。
+        /// </summary>
         internal void OnDocumentCreated(ISwDmDocument doc)
         {
             m_Documents.Add(doc);
             Active = doc;
         }
 
+        /// <summary>
+        /// Unregisters a closed document and promotes the first remaining document as active.
+        /// 注销已关闭文档，并将剩余列表中的第一个文档设为活动文档。
+        /// </summary>
         internal void OnDocumentClosed(ISwDmDocument doc)
         {
             m_Documents.Remove(doc);
@@ -185,8 +217,16 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         }
     }
 
+    /// <summary>
+    /// Helper extensions for pre-creating a document from a file path.
+    /// 根据文件路径预创建文档的辅助扩展方法。
+    /// </summary>
     public static class ISwDmDocumentCollectionExtension 
     {
+        /// <summary>
+        /// Chooses the proper document wrapper type from the SOLIDWORKS file extension.
+        /// 根据 SOLIDWORKS 文件扩展名选择合适的文档包装器类型。
+        /// </summary>
         public static ISwDmDocument PreCreateFromPath(this ISwDmDocumentCollection docs, string path) 
         {
             ISwDmDocument doc;

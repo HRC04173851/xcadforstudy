@@ -14,6 +14,10 @@ using Xarial.XCad.Exceptions;
 
 namespace Xarial.XCad.SwDocumentManager.Exceptions
 {
+    /// <summary>
+    /// Raised when the caller tries to enumerate components from a SpeedPak configuration.
+    /// 当调用方尝试从 SpeedPak 配置中枚举组件时抛出该异常。
+    /// </summary>
     public class SpeedPakConfigurationComponentsException : Exception, IUserException
     {
         public SpeedPakConfigurationComponentsException() : base("Components cannot be extracted from the SpeedPak configuration")

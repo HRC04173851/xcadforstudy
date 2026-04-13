@@ -39,6 +39,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         public IXDimensionRepository Dimensions => throw new NotSupportedException();
         #endregion
 
+        /// <summary>
+        /// Internal quantity property used by SOLIDWORKS BOM and cut-list logic.
+        /// SOLIDWORKS BOM 与切割清单逻辑内部使用的数量属性名。
+        /// </summary>
         internal const string QTY_PROPERTY = "UNIT_OF_MEASURE";
 
         IXPropertyRepository IPropertiesOwner.Properties => Properties;
@@ -49,6 +53,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         public ISwDmCustomPropertiesCollection Properties => m_Properties.Value;
 
+        /// <summary>
+        /// Creates a configuration wrapper and its configuration-level property repository.
+        /// 创建配置包装器及其配置级自定义属性仓库。
+        /// </summary>
         internal SwDmConfiguration(ISwDMConfiguration conf, SwDmDocument3D doc) : base(conf, doc.OwnerApplication, doc)
         {
             Configuration = conf;
@@ -74,6 +82,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         internal protected virtual SwDmDocument3D Document { get; }
 
+        /// <summary>
+        /// Extracts the preview bitmap stored for this configuration.
+        /// 提取该配置保存的 PNG 预览图。
+        /// </summary>
         public IXImage Preview
         {
             get
@@ -93,6 +105,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Resolves BOM quantity by following the `UNIT_OF_MEASURE` property chain.
+        /// 按照 `UNIT_OF_MEASURE` 属性链解析 BOM 数量值。
+        /// </summary>
         public double Quantity
         {
             get
@@ -142,6 +158,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Determines how child components should be solved into the BOM for assembly configurations.
+        /// 决定装配体配置中的子组件应如何展开到 BOM 中。
+        /// </summary>
         public BomChildrenSolving_e BomChildrenSolving 
         {
             get 
@@ -181,6 +201,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Returns the parent derived configuration when one exists.
+        /// 如果存在派生关系，则返回父配置。
+        /// </summary>
         public virtual IXConfiguration Parent 
         {
             get 
@@ -198,6 +222,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Retrieves the parent configuration from the configuration manager.
+        /// 从配置管理器中取得父配置对象。
+        /// </summary>
         private SwDMConfiguration GetParentConfiguration() 
         {
             var parentConfName = Configuration.GetParentConfigurationName();
@@ -228,6 +256,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Tries to read a document-level custom property without failing the configuration query flow.
+        /// 尝试读取文档级属性，避免配置数量解析流程因单个读取失败而中断。
+        /// </summary>
         private string TryGetDocumentPropertyValue(string prpName)
         {
             try
@@ -240,6 +272,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Tries to read a configuration-level property and wraps invalid configuration errors with context.
+        /// 尝试读取配置级属性，并为无效配置错误补充上下文信息。
+        /// </summary>
         private string TryGetConfigurationPropertyValue(string prpName)
         {
             ISwDMConfiguration5 conf;
@@ -267,6 +303,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Resolves the BOM part number according to the SOLIDWORKS BOM source setting.
+        /// 按照 SOLIDWORKS BOM 零件号来源设置解析最终的物料号。
+        /// </summary>
         private string GetPartNumber(ISwDmConfiguration conf) 
         {
             switch ((swDmBOMPartNumberSource)((ISwDMConfiguration11)(conf.Configuration)).BOMPartNoSource)
@@ -287,10 +327,18 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         public override void Commit(CancellationToken cancellationToken) => throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Assembly configuration contract.
+    /// 装配体配置约定。
+    /// </summary>
     public interface ISwDmAssemblyConfiguration : ISwDmConfiguration, IXAssemblyConfiguration
     {
     }
 
+    /// <summary>
+    /// Concrete assembly configuration wrapper.
+    /// 装配体配置的具体包装实现。
+    /// </summary>
     internal class SwDmAssemblyConfiguration : SwDmConfiguration, ISwDmAssemblyConfiguration
     {
         internal SwDmAssemblyConfiguration(ISwDMConfiguration conf, SwDmAssembly assm) : base(conf, assm)
@@ -301,10 +349,18 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         public IXComponentRepository Components { get; }
     }
 
+    /// <summary>
+    /// Part configuration contract.
+    /// 零件配置约定。
+    /// </summary>
     public interface ISwDmPartConfiguration : ISwDmConfiguration, IXPartConfiguration
     {
     }
 
+    /// <summary>
+    /// Concrete part configuration wrapper that also exposes cut-list repositories.
+    /// 具体的零件配置包装实现，同时暴露切割清单仓库。
+    /// </summary>
     internal class SwDmPartConfiguration : SwDmConfiguration, ISwDmPartConfiguration
     {
         #region Not Supported

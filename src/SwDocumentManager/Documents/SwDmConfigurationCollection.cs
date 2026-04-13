@@ -21,12 +21,20 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Repository contract for document configurations.
+    /// 文档配置仓库约定。
+    /// </summary>
     public interface ISwDmConfigurationCollection : IXConfigurationRepository 
     {
         new ISwDmConfiguration this[string name] { get; }
         new ISwDmConfiguration Active { get; }
     }
 
+    /// <summary>
+    /// Shared configuration repository logic for parts and assemblies.
+    /// 零件与装配体共用的配置仓库逻辑。
+    /// </summary>
     internal abstract class SwDmConfigurationCollection : ISwDmConfigurationCollection
     {
         #region Not Supported
@@ -50,6 +58,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         public ISwDmConfiguration this[string name] => (ISwDmConfiguration)RepositoryHelper.Get(this, name);
 
+        /// <summary>
+        /// Returns the active configuration resolved by the underlying configuration manager.
+        /// 返回由底层配置管理器解析出的活动配置。
+        /// </summary>
         public ISwDmConfiguration Active 
         {
             get 
@@ -65,6 +77,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Counts available configurations, using the newer API when version-aware errors are exposed.
+        /// 统计可用配置数量；若版本支持，则使用可返回详细错误码的新 API。
+        /// </summary>
         public int Count
         {
             get
@@ -90,6 +106,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         private readonly SwDmDocument3D m_Doc;
         private readonly Dictionary<ISwDMConfiguration, ISwDmConfiguration> m_ConfigurationsCache;
 
+        /// <summary>
+        /// Initializes the repository and its configuration cache.
+        /// 初始化配置仓库以及内部配置缓存。
+        /// </summary>
         internal SwDmConfigurationCollection(SwDmDocument3D doc) 
         {
             m_Doc = doc;
@@ -99,6 +119,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         public IEnumerator<IXConfiguration> GetEnumerator()
             => GetConfigurationNames().Select(n => this[n]).GetEnumerator();
 
+        /// <summary>
+        /// Retrieves all configuration names from the model.
+        /// 从模型中提取全部配置名称。
+        /// </summary>
         protected string[] GetConfigurationNames()
         {
             string[] confNames;
@@ -120,6 +144,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             return confNames;
         }
 
+        /// <summary>
+        /// Resolves a configuration by name and caches the wrapper instance.
+        /// 按名称解析配置并缓存包装器实例。
+        /// </summary>
         public bool TryGet(string name, out IXConfiguration ent)
         {
             ISwDMConfiguration conf;
@@ -155,6 +183,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             return true;
         }
 
+        /// <summary>
+        /// Marks configurations for deletion, except the active configuration.
+        /// 将配置标记为删除，但不允许删除当前活动配置。
+        /// </summary>
         public void RemoveRange(IEnumerable<IXConfiguration> ents, CancellationToken cancellationToken) 
         {
             var activeConfName = m_Doc.Document.ConfigurationManager.GetActiveConfigurationName();
@@ -175,18 +207,30 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         public IEnumerable Filter(bool reverseOrder, params RepositoryFilterQuery[] filters) => RepositoryHelper.FilterDefault(this, filters, reverseOrder);
     }
 
+    /// <summary>
+    /// Specialized repository contract for assembly configurations.
+    /// 装配体配置仓库的专用约定。
+    /// </summary>
     public interface ISwDmAssemblyConfigurationCollection : ISwDmConfigurationCollection, IXAssemblyConfigurationRepository 
     {
         new ISwDmAssemblyConfiguration this[string name] { get; }
         new ISwDmAssemblyConfiguration Active { get; set; }
     }
 
+    /// <summary>
+    /// Specialized repository contract for part configurations.
+    /// 零件配置仓库的专用约定。
+    /// </summary>
     public interface ISwDmPartConfigurationCollection : ISwDmConfigurationCollection, IXPartConfigurationRepository
     {
         new ISwDmPartConfiguration this[string name] { get; }
         new ISwDmPartConfiguration Active { get; set; }
     }
 
+    /// <summary>
+    /// Assembly configuration repository implementation.
+    /// 装配体配置仓库实现。
+    /// </summary>
     internal class SwDmAssemblyConfigurationCollection : SwDmConfigurationCollection, ISwDmAssemblyConfigurationCollection
     {
         private readonly SwDmAssembly m_Assm;
@@ -227,6 +271,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             => new SwDmAssemblyConfiguration(null, m_Assm);
     }
 
+    /// <summary>
+    /// Part configuration repository implementation.
+    /// 零件配置仓库实现。
+    /// </summary>
     internal class SwDmPartConfigurationCollection : SwDmConfigurationCollection, ISwDmPartConfigurationCollection
     {
         private readonly SwDmPart m_Part;

@@ -21,6 +21,10 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SwDocumentManager.Features
 {
+    /// <summary>
+    /// Repository of cut-list items for a part configuration.
+    /// 某个零件配置对应的切割清单项目仓库。
+    /// </summary>
     internal class SwDmCutListItemCollection : IXCutListItemRepository
     {
         #region Not Supported
@@ -36,6 +40,10 @@ namespace Xarial.XCad.SwDocumentManager.Features
         private readonly ISwDmPartConfiguration m_Conf;
         private readonly SwDmPart m_Part;
 
+        /// <summary>
+        /// Creates a cut-list repository bound to a part and configuration.
+        /// 创建绑定到零件及其配置的切割清单仓库。
+        /// </summary>
         internal SwDmCutListItemCollection(ISwDmPartConfiguration conf, SwDmPart part) 
         {
             m_Conf = conf;
@@ -74,6 +82,10 @@ namespace Xarial.XCad.SwDocumentManager.Features
 
         public IEnumerable Filter(bool reverseOrder, params RepositoryFilterQuery[] filters) => RepositoryHelper.FilterDefault(this, filters, reverseOrder);
 
+        /// <summary>
+        /// Enumerates cut-list items using the best available API for the current SOLIDWORKS version.
+        /// 根据当前 SOLIDWORKS 版本选择合适的 API 来枚举切割清单项目。
+        /// </summary>
         private IEnumerable<IXCutListItem> IterateCutLists() 
         {
             object[] cutListItems = null;

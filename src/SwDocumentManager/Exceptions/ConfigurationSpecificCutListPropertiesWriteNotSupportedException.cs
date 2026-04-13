@@ -12,6 +12,10 @@ using Xarial.XCad.Exceptions;
 
 namespace Xarial.XCad.SwDocumentManager.Exceptions
 {
+    /// <summary>
+    /// Raised when code attempts to write cut-list properties for a non-active configuration.
+    /// 当代码尝试写入非活动配置的切割清单属性时抛出该异常。
+    /// </summary>
     public class ConfigurationSpecificCutListPropertiesWriteNotSupportedException : NotSupportedException, IUserException
     {
         public ConfigurationSpecificCutListPropertiesWriteNotSupportedException()

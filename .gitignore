@@ -233,3 +233,14 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.lnk
+
+# Project-specific build output
+_build/
+tools/_build/
+
+# NuGet local packages cache
+packages/
+
+# Editor & tool directories
+.vscode/
+.claude/

@@ -13,11 +13,13 @@ namespace Xarial.XCad.Exceptions
 {
     /// <summary>
     /// Exception indicates that parameter of <see cref="Base.IXTransaction"/> cannot be modified after the commit
+    /// 此异常表示 <see cref="Base.IXTransaction"/> 的参数在提交后无法修改
     /// </summary>
     public class CommitedElementReadOnlyParameterException : Exception
     {
         /// <summary>
         /// Default constructor
+        /// 默认构造函数
         /// </summary>
         public CommitedElementReadOnlyParameterException() : base("Parameter cannot be modified after element is committed")
         {
@@ -25,8 +27,9 @@ namespace Xarial.XCad.Exceptions
 
         /// <summary>
         /// Constructor with custom message
+        /// 带自定义消息的构造函数
         /// </summary>
-        /// <param name="message">Custom message</param>
+        /// <param name="message">Custom message 自定义消息</param>
         public CommitedElementReadOnlyParameterException(string message) : base(message)
         {
         }

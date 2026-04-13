@@ -14,6 +14,7 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Represents the collection of bodies
+    /// 表示几何体集合仓储
     /// </summary>
     public interface IXBodyRepository : IXRepository<IXBody>
     {

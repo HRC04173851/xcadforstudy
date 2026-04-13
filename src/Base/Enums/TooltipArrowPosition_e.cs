@@ -13,6 +13,7 @@ namespace Xarial.XCad.Enums
 {
     /// <summary>
     /// Position of tooltip for <see cref="IXApplication.ShowTooltip(string, System.Drawing.Point, Base.Enums.MessageBoxIcon_e)"/>
+    /// 提示气泡箭头位置
     /// </summary>
     public enum TooltipArrowPosition_e
     {

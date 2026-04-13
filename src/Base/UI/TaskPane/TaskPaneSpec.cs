@@ -14,6 +14,10 @@ namespace Xarial.XCad.UI.TaskPane
 {
     public class TaskPaneSpec : ButtonGroupSpec
     {
+        /// <summary>
+        /// Buttons displayed in the task pane
+        /// 任务窗格按钮列表
+        /// </summary>
         public TaskPaneButtonSpec[] Buttons { get; set; }
     }
 }

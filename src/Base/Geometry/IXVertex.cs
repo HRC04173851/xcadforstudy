@@ -15,6 +15,7 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Represents the vertex
+    /// 表示拓扑顶点（Vertex）
     /// </summary>
     public interface IXVertex : IXEntity, IXPoint
     {

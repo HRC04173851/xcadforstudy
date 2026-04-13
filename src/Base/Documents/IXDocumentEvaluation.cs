@@ -14,41 +14,48 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Provides evaluation features to the see <see cref="IXDocument3D"/>
+    /// 为 <see cref="IXDocument3D"/> 提供评估功能入口
     /// </summary>
     public interface IXDocumentEvaluation
     {
         /// <summary>
         /// Pre creates the 3D bounding box of the document
+        /// 预创建文档三维包围盒评估
         /// </summary>
         /// <returns>Bounding box</returns>
         IXBoundingBox PreCreateBoundingBox();
 
         /// <summary>
         /// Pre creates the mass property evaluator for the document
+        /// 预创建文档质量属性评估器
         /// </summary>
         /// <returns>Mass property</returns>
         IXMassProperty PreCreateMassProperty();
 
         /// <summary>
         /// Pre creates ray intersection calculator
+        /// 预创建射线相交计算器
         /// </summary>
         /// <returns>Ray intersection</returns>
         IXRayIntersection PreCreateRayIntersection();
 
         /// <summary>
         /// Pre creates a geometry tessellation
+        /// 预创建几何三角剖分评估
         /// </summary>
         /// <returns>Tesselation</returns>
         IXTessellation PreCreateTessellation();
 
         /// <summary>
         /// Pre creates collision detection utility
+        /// 预创建碰撞检测评估器
         /// </summary>
         /// <returns>Collision detection</returns>
         IXCollisionDetection PreCreateCollisionDetection();
 
         /// <summary>
         /// Pre creates measure utility
+        /// 预创建测量工具
         /// </summary>
         /// <returns>Measure utility</returns>
         IXMeasure PreCreateMeasure();

@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Surfaces
 {
     /// <summary>
     /// Represents the extruded surface
+    /// 表示拉伸曲面
     /// </summary>
     public interface IXExtrudedSurface : IXSurface
     {

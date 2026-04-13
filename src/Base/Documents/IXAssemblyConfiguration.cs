@@ -9,11 +9,13 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Represents the configuration of the assembly
+    /// 表示装配体配置
     /// </summary>
     public interface IXAssemblyConfiguration : IXConfiguration 
     {
         /// <summary>
         /// Components in this assembly configuration
+        /// 此装配配置中的组件集合
         /// </summary>
         IXComponentRepository Components { get; }
     }

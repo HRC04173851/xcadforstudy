@@ -14,6 +14,7 @@ namespace Xarial.XCad.Geometry.Curves
 {
     /// <summary>
     /// Represents elliptical curve
+    /// 表示椭圆曲线
     /// </summary>
     public interface IXEllipseCurve : IXCurve, IXEllipse
     {

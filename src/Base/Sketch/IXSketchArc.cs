@@ -14,6 +14,7 @@ namespace Xarial.XCad.Sketch
 {
     /// <summary>
     /// Represents the sketch circle
+    /// 表示草图圆
     /// </summary>
     public interface IXSketchCircle : IXSketchSegment, IXCircle
     {
@@ -21,6 +22,7 @@ namespace Xarial.XCad.Sketch
 
     /// <summary>
     /// Represents the sketch arc
+    /// 表示草图圆弧
     /// </summary>
     public interface IXSketchArc : IXSketchCircle, IXArc
     {

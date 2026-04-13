@@ -13,6 +13,7 @@ namespace Xarial.XCad.Extensions.Delegates
 {
     /// <summary>
     /// Delegate for <see cref="IXExtension.Connect"/> event
+    /// <see cref="IXExtension.Connect"/> 事件委托
     /// </summary>
     /// <param name="ext">Extension</param>
     public delegate void ExtensionConnectDelegate(IXExtension ext);

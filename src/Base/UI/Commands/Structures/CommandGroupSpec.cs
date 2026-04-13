@@ -12,11 +12,13 @@ namespace Xarial.XCad.UI.Commands.Structures
 {
     /// <summary>
     /// Represents the group of commands
+    /// 表示命令组规格
     /// </summary>
     public class CommandGroupSpec : ButtonGroupSpec
     {
         /// <summary>
         /// Parent group or null for root group
+        /// 父命令组；根组为 null
         /// </summary>
         public CommandGroupSpec Parent { get; set; }
 
@@ -27,6 +29,7 @@ namespace Xarial.XCad.UI.Commands.Structures
 
         /// <summary>
         /// Commands associated with this group
+        /// 该组关联的命令集合
         /// </summary>
         public virtual CommandSpec[] Commands { get; set; }
 

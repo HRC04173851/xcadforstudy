@@ -11,29 +11,34 @@ namespace Xarial.XCad.Geometry.Structures
 {
     /// <summary>
     /// Represents the 3D bounding box
+    /// 表示三维包围盒（Bounding Box）
     /// </summary>
     [DebuggerDisplay("{" + nameof(Width) + "} x {" + nameof(Height) + "} x {" + nameof(Length) + "}")]
     public class Box3D
     {
         /// <summary>
         /// Width of the bounding box relative to X axis
+        /// 包围盒相对于 X 轴方向的宽度
         /// </summary>
         public double Width { get; }
 
         /// <summary>
         /// Height of the bounding box relative to Y axis
+        /// 包围盒相对于 Y 轴方向的高度
         /// </summary>
         public double Height { get; }
 
         /// <summary>
         /// Length of the bounding box relative to Z axis
+        /// 包围盒相对于 Z 轴方向的长度
         /// </summary>
         public double Length { get; }
 
         /// <summary>
         /// Center point of the bounding box
+        /// 包围盒中心点
         /// </summary>
-        /// <remarks>This is the center point of the diagonal</remarks>
+        /// <remarks>This is the center point of the diagonal. 即体对角线中点。</remarks>
         public Point CenterPoint { get; }
         
         /// <summary>
@@ -53,6 +58,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Default constructor
+        /// 构造函数
         /// </summary>
         public Box3D(double width, double height, double length, Point centerPt, Vector axisX, Vector axisY , Vector axisZ)
         {
@@ -68,6 +74,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Constructor based onend points of diagonal
+        /// 基于包围盒体对角线两端点构造
         /// </summary>
         public Box3D(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) 
         {
@@ -85,11 +92,13 @@ namespace Xarial.XCad.Geometry.Structures
 
     /// <summary>
     /// Additional methods for <see cref="Box3D"/>
+    /// <see cref="Box3D"/> 的扩展方法
     /// </summary>
     public static class Box3DExtension 
     {
         /// <summary>
         /// Left-Bottom-Front point of the bounding box
+        /// 包围盒左-下-前角点
         /// </summary>
         public static Point GetLeftBottomFront(this Box3D box)
             => GetEndPoint(box, false, false, true);
@@ -132,6 +141,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Right-Top-Back point of the bounding box
+        /// 包围盒右-上-后角点
         /// </summary>
         public static Point GetRightTopBack(this Box3D box)
             => GetEndPoint(box, true, true, false);

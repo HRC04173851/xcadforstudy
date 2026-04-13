@@ -15,6 +15,10 @@ namespace Xarial.XCad.UI.TaskPane
 {
     public class TaskPaneButtonSpec : ButtonSpec
     {
+        /// <summary>
+        /// Standard icon type of this task pane button
+        /// 任务窗格按钮的标准图标类型
+        /// </summary>
         public TaskPaneStandardIcons_e? StandardIcon { get; set; }
 
         public TaskPaneButtonSpec(int userId) : base(userId) 

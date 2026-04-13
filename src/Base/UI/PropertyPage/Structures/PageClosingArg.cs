@@ -9,6 +9,7 @@ namespace Xarial.XCad.UI.PropertyPage.Structures
 {
     /// <summary>
     /// Represents the parameter of <see cref="IXPropertyPage{TDataModel}.Closing"/> notification
+    /// <see cref="IXPropertyPage{TDataModel}.Closing"/> 事件参数
     /// </summary>
     /// <remarks>If <see cref="Cancel"/> parameter is set to true and <see cref="ErrorTitle"/>
     /// and <see cref="ErrorMessage"/> are not empty. Framework will display the error popup box
@@ -17,6 +18,7 @@ namespace Xarial.XCad.UI.PropertyPage.Structures
     {
         /// <summary>
         /// True to cancel the closing of property manager page
+        /// 为 true 时取消属性页关闭
         /// </summary>
         public bool Cancel { get; set; }
 

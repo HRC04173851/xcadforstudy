@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Surfaces
 {
     /// <summary>
     /// Offset surface
+    /// 表示偏置曲面
     /// </summary>
     public interface IXOffsetSurface : IXSurface
     {

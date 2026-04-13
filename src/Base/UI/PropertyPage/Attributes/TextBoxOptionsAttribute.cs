@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Additional options for text box control
+    /// 文本框控件附加选项
     /// </summary>
     /// <remarks>Applied to property of type <see cref="string"/></remarks>
     public class TextBoxOptionsAttribute : Attribute, IAttribute

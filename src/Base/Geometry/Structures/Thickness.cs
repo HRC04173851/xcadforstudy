@@ -14,28 +14,33 @@ namespace Xarial.XCad.Geometry.Structures
 {
     /// <summary>
     /// Represents thickness
+    /// 表示厚度/边距定义
     /// </summary>
-    /// <remarks>Usually used to define margin and padding</remarks>
+    /// <remarks>Usually used to define margin and padding. 常用于界面布局中的外边距与内边距。</remarks>
     [DebuggerDisplay("{" + nameof(Left) + "} {" + nameof(Right) + "} {" + nameof(Top) + "} {" + nameof(Bottom) + "}")]
     public class Thickness
     {
         /// <summary>
         /// Left width
+        /// 左侧厚度
         /// </summary>
         public double Left { get; }
 
         /// <summary>
         /// Right width
+        /// 右侧厚度
         /// </summary>
         public double Right { get; }
 
         /// <summary>
         /// Toip width
+        /// 上侧厚度
         /// </summary>
         public double Top { get; }
 
         /// <summary>
         /// Bottom width
+        /// 下侧厚度
         /// </summary>
         public double Bottom { get; }
 

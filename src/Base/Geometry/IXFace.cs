@@ -16,31 +16,37 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Represents face entity
+    /// 表示面实体（Face）
     /// </summary>
     public interface IXFace : IXEntity, IHasColor, IXRegion
     {
         /// <summary>
         /// True if the direction of the face conicides with the direction of its surface definition, False if the directions are opposite
+        /// 若面方向与曲面定义方向一致则为 true，反向则为 false
         /// </summary>
         bool Sense { get; }
 
         /// <summary>
         /// Area of the face
+        /// 面积
         /// </summary>
         double Area { get; }
 
         /// <summary>
         /// Underlying definition for this face
+        /// 该面的底层曲面定义
         /// </summary>
         IXSurface Definition { get; }
 
         /// <summary>
         /// Returns the feature which owns this face
+        /// 返回拥有该面的特征（Feature）
         /// </summary>
         IXFeature Feature { get; }
 
         /// <summary>
         /// Projects the specified point onto the surface
+        /// 将指定点沿给定方向投影到曲面
         /// </summary>
         /// <param name="point">Input point</param>
         /// <param name="direction">Projection direction</param>
@@ -50,6 +56,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Finds the boundary of this face
+        /// 获取该面的 UV 参数边界
         /// </summary>
         /// <param name="uMin">Minimum u-parameter</param>
         /// <param name="uMax">Maximum u-parameter</param>
@@ -59,6 +66,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Finds u and v parameters of the face based on the point location
+        /// 根据点位置计算面上的 U/V 参数
         /// </summary>
         /// <param name="point">Point</param>
         /// <param name="uParam">U-parameter</param>
@@ -86,11 +94,13 @@ namespace Xarial.XCad.Geometry
 
     /// <summary>
     /// Additional methods for <see cref="IXPlanarFace"/>
+    /// <see cref="IXPlanarFace"/> 的扩展方法
     /// </summary>
     public static class XPlanarFaceExtension 
     {
         /// <summary>
         /// Returns the normal vector of the planar face
+        /// 返回平面面的法向量
         /// </summary>
         /// <param name="face">Face to get normal from</param>
         /// <returns>Normal vector</returns>

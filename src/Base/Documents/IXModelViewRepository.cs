@@ -14,17 +14,20 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Represents collection of views in the <see cref="IXDocument"/>
+    /// 表示 <see cref="IXDocument"/> 的视图集合
     /// </summary>
     public interface IXModelViewRepository : IXRepository<IXModelView>
     {
         /// <summary>
         /// Gets active view
+        /// 获取当前激活视图
         /// </summary>
         IXModelView Active { get; }
     }
 
     /// <summary>
     /// Represents collection of views in the <see cref="IXDocument3D"/>
+    /// 表示 <see cref="IXDocument3D"/> 的三维视图集合
     /// </summary>
     public interface IXModelView3DRepository : IXModelViewRepository
     {

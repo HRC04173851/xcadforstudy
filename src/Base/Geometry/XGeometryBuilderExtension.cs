@@ -16,11 +16,13 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Additional methods for <see cref="IXGeometryBuilder"/>
+    /// <see cref="IXGeometryBuilder"/> 的扩展辅助方法
     /// </summary>
     public static class XGeometryBuilderExtension
     {
         /// <summary>
         /// Creates region from the specified list of segments
+        /// 由给定线段集合创建闭合平面区域
         /// </summary>
         /// <param name="builder">Builder</param>
         /// <param name="segments">Segments</param>
@@ -41,6 +43,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates a box body from the specified parameters
+        /// 按指定参数创建实体长方体（拉伸实现）
         /// </summary>
         /// <param name="builder">Geometry builder</param>
         /// <param name="center">Center of the box base face</param>
@@ -77,6 +80,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates solid cylindrical extrusion from input parameters
+        /// 按输入参数创建实体圆柱拉伸体
         /// </summary>
         /// <param name="builder">Geometry builder</param>
         /// <param name="center">Center of the cylinder base</param>
@@ -89,6 +93,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates surface cylindrical extrusion from input parameters
+        /// 按输入参数创建曲面圆柱拉伸体
         /// </summary>
         /// <param name="builder">Geometry builder</param>
         /// <param name="center">Center of the cylinder base</param>
@@ -101,6 +106,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Create a conical revolve body
+        /// 创建圆锥旋转体
         /// </summary>
         /// <param name="builder">Geometry builder</param>
         /// <param name="center">Center of the cone base</param>
@@ -140,6 +146,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates solid body extrusion
+        /// 创建实体拉伸体
         /// </summary>
         /// <param name="builder">Builder</param>
         /// <param name="depth">Extrusion depth</param>
@@ -160,6 +167,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates solid body revolve
+        /// 创建实体旋转体
         /// </summary>
         /// <param name="builder">Builder</param>
         /// <param name="axis">Revolution axis</param>
@@ -179,6 +187,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates solid body sweep
+        /// 创建实体扫描体
         /// </summary>
         /// <param name="builder">Builder</param>
         /// <param name="path">Sweep path</param>
@@ -196,6 +205,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates the planar sheet body
+        /// 创建平面片体
         /// </summary>
         /// <param name="builder">Builder</param>
         /// <param name="boundary">Boundary</param>
@@ -211,6 +221,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates a line segment
+        /// 创建直线段
         /// </summary>
         /// <param name="builder">Builder</param>
         /// <param name="startPt">Start point</param>
@@ -227,6 +238,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates circle segment
+        /// 创建圆线段
         /// </summary>
         /// <param name="builder">Builder</param>
         /// <param name="centerPt">Center point</param>

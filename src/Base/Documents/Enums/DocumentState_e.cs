@@ -13,12 +13,14 @@ namespace Xarial.XCad.Documents.Enums
 {
     /// <summary>
     /// Represents the state of the document
+    /// 表示文档状态标志
     /// </summary>
     [Flags]
     public enum DocumentState_e
     {
         /// <summary>
         /// Default state of the document
+        /// 文档默认状态
         /// </summary>
         Default = 0,
 

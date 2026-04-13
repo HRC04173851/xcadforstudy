@@ -12,11 +12,13 @@ namespace Xarial.XCad.Reflection
 {
     /// <summary>
     /// Additional methods for <see cref="Type"/>
+    /// <see cref="Type"/> 的附加扩展方法
     /// </summary>
     public static class TypeExtension
     {
         /// <summary>
         /// Attempts to get the attribute from the type, all parent types and interfaces
+        /// 尝试从类型、所有父类型及接口中获取特性
         /// </summary>
         /// <typeparam name="TAtt">Type of the attribute</typeparam>
         /// <param name="type">Type to get attribute from</param>

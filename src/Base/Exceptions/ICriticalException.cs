@@ -13,6 +13,7 @@ namespace Xarial.XCad.Exceptions
 {
     /// <summary>
     /// Exception indicates that the error might have corrupted the current process
+    /// 此异常表示错误可能已损坏当前进程
     /// </summary>
     public interface ICriticalException
     {

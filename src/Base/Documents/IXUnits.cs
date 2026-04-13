@@ -13,6 +13,7 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Represents length unit
+    /// 表示长度单位
     /// </summary>
     public enum Length_e 
     {
@@ -69,6 +70,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Represents mass units
+    /// 表示质量单位
     /// </summary>
     public enum Mass_e
     {
@@ -95,6 +97,7 @@ namespace Xarial.XCad.Documents
     
     /// <summary>
     /// Represents angle units
+    /// 表示角度单位
     /// </summary>
     public enum Angle_e
     {
@@ -111,6 +114,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Represents time units
+    /// 表示时间单位
     /// </summary>
     public enum Time_e
     {
@@ -147,6 +151,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Represents the units system of the document
+    /// 表示文档单位系统
     /// </summary>
     public interface IXUnits
     {
@@ -193,6 +198,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Additional methods of <see cref="IXUnits"/>
+    /// <see cref="IXUnits"/> 的扩展与换算数据
     /// </summary>
     public static class XUnitsExtension 
     {

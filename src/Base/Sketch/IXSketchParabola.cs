@@ -14,6 +14,7 @@ namespace Xarial.XCad.Sketch
 {
     /// <summary>
     /// Represents sketch parabola
+    /// 表示草图抛物线
     /// </summary>
     public interface IXSketchParabola : IXSketchSegment, IXParabola
     {

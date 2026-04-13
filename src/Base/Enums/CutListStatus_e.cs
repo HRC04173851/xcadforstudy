@@ -14,12 +14,14 @@ namespace Xarial.XCad.Enums
 {
     /// <summary>
     /// Represents the <see cref="IXCutListItem.Status"/> of the cut-list
+    /// 表示切割清单 <see cref="IXCutListItem.Status"/> 状态
     /// </summary>
     [Flags]
     public enum CutListStatus_e
     {
         /// <summary>
         /// Cut-list is excluded from BOM
+        /// 切割清单项从 BOM 中排除
         /// </summary>
         ExcludeFromBom = 1
     }

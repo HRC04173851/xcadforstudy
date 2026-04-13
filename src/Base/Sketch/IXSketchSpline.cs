@@ -14,6 +14,7 @@ namespace Xarial.XCad.Sketch
 {
     /// <summary>
     /// Represents sketch spline
+    /// 表示草图样条
     /// </summary>
     public interface IXSketchSpline : IXSketchSegment, IXSpline
     {

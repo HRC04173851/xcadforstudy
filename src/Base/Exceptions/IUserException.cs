@@ -13,6 +13,7 @@ namespace Xarial.XCad.Exceptions
 {
     /// <summary>
     /// Indicates that the message of this exception can be displayed to the user
+    /// 表示此异常的消息可以显示给用户
     /// </summary>
     public interface IUserException
     {

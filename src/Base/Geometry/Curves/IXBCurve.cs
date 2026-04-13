@@ -14,6 +14,7 @@ namespace Xarial.XCad.Geometry.Curves
 {
     /// <summary>
     /// Represents B-Curve
+    /// 表示 B 样条曲线
     /// </summary>
     public interface IXBCurve : IXCurve, IXBSpline
     {

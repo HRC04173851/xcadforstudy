@@ -20,6 +20,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 
     /// <summary>
     /// Attribute indicates that current property should be rendered as bitmap button
+    /// 指示当前属性应渲染为位图按钮
     /// </summary>
     /// <remarks>This attribute is only applicable for <see cref="bool"/> and <see cref="Action"/> types.
     /// Checkable button will be rendered for the first case

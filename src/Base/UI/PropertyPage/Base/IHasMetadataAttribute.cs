@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Base
 {
     /// <summary>
     /// Indicates that this binding uses metadata
+    /// 指示该绑定使用元数据
     /// </summary>
     public interface IHasMetadataAttribute : IAttribute
     {

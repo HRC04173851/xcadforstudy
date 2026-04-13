@@ -15,17 +15,20 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Provides graphics features to the see <see cref="IXDocument3D"/>
+    /// 为 <see cref="IXDocument3D"/> 提供图形交互与可视化能力
     /// </summary>
     public interface IXDocumentGraphics
     {
         /// <summary>
         /// Pre-creates callout instance
+        /// 预创建标注气泡（Callout）
         /// </summary>
         /// <returns>Instance of the callout</returns>
         IXCallout PreCreateCallout();
 
         /// <summary>
         /// Pre-creates triad manipulator
+        /// 预创建三轴操控器（Triad）
         /// </summary>
         /// <returns>Instance of triad manipulator</returns>
         IXTriad PreCreateTriad();

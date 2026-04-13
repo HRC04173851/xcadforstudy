@@ -14,8 +14,9 @@ namespace Xarial.XCad.Delegates
 {
     /// <summary>
     /// Delegate for <see cref="IXApplication.Starting"/> event
+    /// <see cref="IXApplication.Starting"/> 事件的委托类型
     /// </summary>
-    /// <param name="sender">Application which is starting</param>
-    /// <param name="process">Application process</param>
+    /// <param name="sender">Application which is starting 正在启动的应用程序</param>
+    /// <param name="process">Application process 应用程序进程</param>
     public delegate void ApplicationStartingDelegate(IXApplication sender, Process process);
 }

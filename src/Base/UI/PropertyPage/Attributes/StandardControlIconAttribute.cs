@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Provides additional attribution options (i.e. icons, labels, tooltips etc.) for all controls
+    /// 为控件提供附加属性选项（图标、标签、提示等）
     /// </summary>
     /// <remarks>Can be applied to any property which is bound to the property manager page control</remarks>
     public class StandardControlIconAttribute : Attribute, IAttribute

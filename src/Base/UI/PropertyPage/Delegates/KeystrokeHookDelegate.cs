@@ -17,6 +17,7 @@ namespace Xarial.XCad.UI.PropertyPage.Delegates
 
     /// <summary>
     /// Delegate for the <see cref="IXPropertyPage.KeystrokeHook"/> event
+    /// <see cref="IXPropertyPage.KeystrokeHook"/> 事件委托
     /// </summary>
     /// <param name="ctrl">Control that has focus when keystroke was made</param>
     /// <param name="msg">Message identifier</param>

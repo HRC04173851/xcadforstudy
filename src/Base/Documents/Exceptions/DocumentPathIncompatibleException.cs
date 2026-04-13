@@ -13,6 +13,7 @@ namespace Xarial.XCad.Documents.Exceptions
 {
     /// <summary>
     /// Indicates that the path of <see cref="IXDocument"/> cannot be set to the specific type of the document
+    /// 表示 <see cref="IXDocument"/> 的路径与文档类型不兼容
     /// </summary>
     public class DocumentPathIncompatibleException : Exception
     {

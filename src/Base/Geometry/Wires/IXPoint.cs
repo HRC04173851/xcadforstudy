@@ -15,11 +15,13 @@ namespace Xarial.XCad.Geometry.Wires
 {
     /// <summary>
     /// Represents the point entity
+    /// 表示点实体
     /// </summary>
     public interface IXPoint : IXWireEntity
     {
         /// <summary>
         /// Coodinate of the point
+        /// 点坐标
         /// </summary>
         Point Coordinate { get; set; }
     }

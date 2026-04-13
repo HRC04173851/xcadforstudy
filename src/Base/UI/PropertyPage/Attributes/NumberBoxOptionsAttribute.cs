@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Provides additional options for number box control
+    /// 为数值输入框提供附加选项
     /// </summary>
     /// <remarks>Applied to all numeric properties (i.e. <see cref="double"/>, <see cref="int"/>)</remarks>
     public class NumberBoxOptionsAttribute : Attribute, IAttribute

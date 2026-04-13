@@ -12,6 +12,7 @@ namespace Xarial.XCad.UI.PropertyPage.Base
 {
     /// <summary>
     /// Marks the current control to be dependent on other control values
+    /// 标记当前控件依赖于其他控件值
     /// </summary>
     public interface IDependentOnAttribute : IAttribute
     {

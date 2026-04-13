@@ -13,6 +13,7 @@ namespace Xarial.XCad.Data
 {
     /// <summary>
     /// Manages custom user metadata within this <see cref="IXObject.Tags"/>
+    /// 管理 <see cref="IXObject.Tags"/> 中的用户自定义元数据
     /// </summary>
     public interface ITagsManager
     {

@@ -13,7 +13,8 @@ namespace Xarial.XCad.Documents.Delegates
 {
     /// <summary>
     /// Delegate for <see cref="IXSelectionRepository.ClearSelection"/> event
+    /// <see cref="IXSelectionRepository.ClearSelection"/> 事件委托
     /// </summary>
-    /// <param name="doc">Document where the selection is cleared</param>
+    /// <param name="doc">Document where the selection is cleared（清空选择所在文档）</param>
     public delegate void ClearSelectionDelegate(IXDocument doc);
 }

@@ -11,6 +11,7 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Represents the collection of <see cref="IXEntity"/>
+    /// 表示 <see cref="IXEntity"/> 的集合仓储
     /// </summary>
     public interface IXEntityRepository : IXRepository<IXEntity> 
     {

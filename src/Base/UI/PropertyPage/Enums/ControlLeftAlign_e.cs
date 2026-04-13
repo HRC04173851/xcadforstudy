@@ -7,6 +7,10 @@
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Left alignment modes for controls
+    /// 控件左侧对齐模式
+    /// </summary>
     public enum ControlLeftAlign_e
     {
         LeftEdge = 1,

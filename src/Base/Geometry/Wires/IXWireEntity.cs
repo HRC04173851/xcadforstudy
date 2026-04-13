@@ -14,6 +14,7 @@ namespace Xarial.XCad.Geometry.Wires
 {
     /// <summary>
     /// Represents the common entity for <see cref="IXPoint"/> and <see cref="IXSegment"/>
+    /// 表示 <see cref="IXPoint"/> 与 <see cref="IXSegment"/> 的通用线框实体
     /// </summary>
     public interface IXWireEntity : IXTransaction, IXObject
     {

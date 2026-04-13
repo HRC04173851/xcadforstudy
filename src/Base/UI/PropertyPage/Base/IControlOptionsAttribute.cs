@@ -17,6 +17,7 @@ namespace Xarial.XCad.UI.PropertyPage.Base
 {
     /// <summary>
     /// Generic options for all controls
+    /// 所有控件通用选项
     /// </summary>
     public interface IControlOptionsAttribute : IAttribute
     {

@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Property manager page options
+    /// 属性管理器页面选项
     /// </summary>
     /// <remarks>Applied to the main class of the data model</remarks>
     public class PageOptionsAttribute : Attribute, IAttribute

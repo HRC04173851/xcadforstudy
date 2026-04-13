@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Surfaces
 {
     /// <summary>
     /// Blend surface
+    /// 表示混接曲面（Blend）
     /// </summary>
     public interface IXBlendSurface : IXSurface
     {

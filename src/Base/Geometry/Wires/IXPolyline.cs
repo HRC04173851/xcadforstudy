@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Wires
 {
     /// <summary>
     /// Polyline segment
+    /// 表示多段线线段
     /// </summary>
     public interface IXPolyline : IXSegment
     {

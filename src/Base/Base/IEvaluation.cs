@@ -16,26 +16,31 @@ namespace Xarial.XCad.Base
 {
     /// <summary>
     /// This interfaces represents the geometrical evaluation features
+    /// 此接口表示几何求値功能
     /// </summary>
     public interface IEvaluation : IXTransaction, IDisposable
     {
         /// <summary>
         /// Evaluates geometry relative to the specified transformation matrix
+        /// 相对于指定变换矩阵进行几何求値
         /// </summary>
         TransformMatrix RelativeTo { get; set; }
 
         /// <summary>
         /// True to use user specific units, false to use system units
+        /// true 使用用户自定义单位，false 使用系统单位
         /// </summary>
         bool UserUnits { get; set; }
 
         /// <summary>
         /// True to only use visible bodies or components
+        /// true 仅对可见实体或组件进行求値
         /// </summary>
         bool VisibleOnly { get; set; }
 
         /// <summary>
         /// Bodies to include into the evaluation
+        /// 包含在求値范围内的实体
         /// </summary>
         IXBody[] Scope { get; set; }
 

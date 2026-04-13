@@ -13,6 +13,7 @@ namespace Xarial.XCad.Enums
 {
     /// <summary>
     /// Represents the state of the application
+    /// 表示应用程序状态
     /// </summary>
     [Flags]
     public enum ApplicationState_e

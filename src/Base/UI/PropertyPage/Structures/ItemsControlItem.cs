@@ -17,6 +17,7 @@ namespace Xarial.XCad.UI.PropertyPage.Structures
 {
     /// <summary>
     /// Represents the item in the <see cref="Base.IItemsControl"/>
+    /// 表示 <see cref="Base.IItemsControl"/> 中的项
     /// </summary>
     [DebuggerDisplay("{" + nameof(DisplayName) + "} [{" + nameof(Value) + "}]")]
     public class ItemsControlItem
@@ -93,16 +94,19 @@ namespace Xarial.XCad.UI.PropertyPage.Structures
 
         /// <summary>
         /// Display name of the item
+        /// 项显示名称
         /// </summary>
         public string DisplayName { get; }
 
         /// <summary>
         /// Value of the item
+        /// 项值
         /// </summary>
         public object Value { get; }
 
         /// <summary>
         /// Description of the item
+        /// 项描述
         /// </summary>
         public string Description { get; }
 

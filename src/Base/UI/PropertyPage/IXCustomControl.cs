@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage
 {
     /// <summary>
     /// Delegate for <see cref="IXCustomControl.ValueChanged"/> event
+    /// <see cref="IXCustomControl.ValueChanged"/> 事件委托
     /// </summary>
     /// <param name="sender">Sender control</param>
     /// <param name="newValue">New value</param>
@@ -20,6 +21,7 @@ namespace Xarial.XCad.UI.PropertyPage
 
     /// <summary>
     /// Represents the custom control hosted in the page
+    /// 表示属性页中托管的自定义控件
     /// </summary>
     public interface IXCustomControl
     {

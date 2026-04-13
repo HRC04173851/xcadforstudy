@@ -23,6 +23,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 
     /// <summary>
     /// Indicates that the current property must be rendered as list box
+    /// 指示当前属性应渲染为列表框
     /// </summary>
     public class ListBoxAttribute : ItemsSourceControlAttribute, ISpecificConstructorAttribute
     {

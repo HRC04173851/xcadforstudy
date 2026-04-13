@@ -11,12 +11,14 @@ namespace Xarial.XCad.UI.PropertyPage.Services
 {
     /// <summary>
     /// Handling the dynamic control dependencies
+    /// 处理动态控件依赖关系
     /// </summary>
     /// <remarks>This is asigned via <see cref="Attributes.DependentOnAttribute"/></remarks>
     public interface IDependencyHandler
     {
         /// <summary>
         /// Invokes when any of the dependencies controls changed
+        /// 当任一依赖控件变化时调用
         /// </summary>
         /// <param name="app">Main application</param>
         /// <param name="source">This control to update state on</param>

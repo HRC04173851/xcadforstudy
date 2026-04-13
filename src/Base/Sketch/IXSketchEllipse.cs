@@ -14,6 +14,7 @@ namespace Xarial.XCad.Sketch
 {
     /// <summary>
     /// Represents sketch ellipse
+    /// 表示草图椭圆
     /// </summary>
     public interface IXSketchEllipse : IXSketchSegment, IXEllipse
     {

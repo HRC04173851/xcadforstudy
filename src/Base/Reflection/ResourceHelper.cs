@@ -16,6 +16,7 @@ namespace Xarial.XCad.Reflection
 {
     /// <summary>
     /// Helper class to work with resources
+    /// 用于访问资源的辅助类
     /// </summary>
     /// <remarks>Use this method in attributes to provide the reference to the data from the resources (i.e. text and image)</remarks>
     public static class ResourceHelper
@@ -24,6 +25,7 @@ namespace Xarial.XCad.Reflection
 
         /// <summary>
         /// Gets the specified resource by name
+        /// 按名称获取指定资源
         /// </summary>
         /// <typeparam name="T">Type of the resource</typeparam>
         /// <param name="resType">Type of the resource class (usually Resources)</param>

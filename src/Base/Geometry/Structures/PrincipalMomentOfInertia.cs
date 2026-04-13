@@ -11,21 +11,25 @@ namespace Xarial.XCad.Geometry.Structures
 {
     /// <summary>
     /// Principal moment of inertia used in <see cref="IXMassProperty"/>
+    /// 用于 <see cref="IXMassProperty"/> 的主惯性矩
     /// </summary>
     public class PrincipalMomentOfInertia
     {
         /// <summary>
         /// Px (mass * square length)
+        /// 第一主惯性矩（质量 × 长度平方）
         /// </summary>
         public double Px { get; }
 
         /// <summary>
         /// Py (mass * square length)
+        /// 第二主惯性矩（质量 × 长度平方）
         /// </summary>
         public double Py { get; }
 
         /// <summary>
         /// Pz (mass * square length)
+        /// 第三主惯性矩（质量 × 长度平方）
         /// </summary>
         public double Pz { get; }
 

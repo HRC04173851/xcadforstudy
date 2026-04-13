@@ -15,6 +15,7 @@ namespace Xarial.XCad.Documents.Enums
 {
     /// <summary>
     /// Direction of the view projection of <see cref="IXProjectedDrawingView"/>
+    /// <see cref="IXProjectedDrawingView"/> 的投影视图方向
     /// </summary>
     public enum ProjectedViewDirection_e
     {

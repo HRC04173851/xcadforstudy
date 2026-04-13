@@ -14,6 +14,7 @@ namespace Xarial.XCad.Geometry.Curves
 {
     /// <summary>
     /// Represents the parabolic curve
+    /// 表示抛物线曲线
     /// </summary>
     public interface IXParabolaCurve : IXCurve, IXParabola
     {

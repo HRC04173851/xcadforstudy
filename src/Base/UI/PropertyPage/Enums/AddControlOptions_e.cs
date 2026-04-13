@@ -9,6 +9,10 @@ using System;
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Options when adding a control to property page
+    /// 向属性页添加控件时的选项标志
+    /// </summary>
     [Flags]
     public enum AddControlOptions_e
     {

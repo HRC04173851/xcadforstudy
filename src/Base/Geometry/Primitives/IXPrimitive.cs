@@ -16,11 +16,13 @@ namespace Xarial.XCad.Geometry.Primitives
 {
     /// <summary>
     /// Represents the 3D geometry of a primitive
+    /// 表示三维几何基元
     /// </summary>
     public interface IXPrimitive : IXTransaction
     {
         /// <summary>
         /// Bodies associated with this primitive
+        /// 与该几何基元关联的几何体集合
         /// </summary>
         IXBody[] Bodies { get; }
     }

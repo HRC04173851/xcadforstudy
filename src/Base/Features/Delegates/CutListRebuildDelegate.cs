@@ -14,7 +14,8 @@ namespace Xarial.XCad.Features.Delegates
 {
     /// <summary>
     /// Delegate for <see cref="IXCutListItemRepository.CutListRebuild"/> event
+    /// <see cref="IXCutListItemRepository.CutListRebuild"/> 事件委托
     /// </summary>
-    /// <param name="cutList">Cut-list being rebuilt</param>
+    /// <param name="cutList">Cut-list being rebuilt（正在重建的切割清单）</param>
     public delegate void CutListRebuildDelegate(IXCutListItemRepository cutList);
 }

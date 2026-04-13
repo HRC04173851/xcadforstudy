@@ -16,8 +16,9 @@ namespace Xarial.XCad.Features.Delegates
 {
     /// <summary>
     /// Delegate of <see cref="IXFeatureRepository.FeatureCreated"/> notification
+    /// <see cref="IXFeatureRepository.FeatureCreated"/> 通知委托
     /// </summary>
-    /// <param name="doc">Document where new feature is added</param>
-    /// <param name="feature">Feature which is added to the document</param>
+    /// <param name="doc">Document where new feature is added（新增特征所在文档）</param>
+    /// <param name="feature">Feature which is added to the document（新创建特征）</param>
     public delegate void FeatureCreatedDelegate(IXDocument doc, IXFeature feature);
 }

@@ -219,6 +219,7 @@ namespace Xarial.XCad.SolidWorks
         public IXLogger Logger { get; private set; }
 
         private readonly List<IDisposable> m_Disposables;
+        private bool m_IsDisposed;
 
         /// <summary>
         /// Service provider resolved after service collection is built

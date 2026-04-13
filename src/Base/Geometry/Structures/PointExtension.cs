@@ -11,15 +11,17 @@ namespace Xarial.XCad.Geometry.Structures
 {
     /// <summary>
     /// Additional methods for the <see cref="Point"/> class
+    /// <see cref="Point"/> 的扩展方法
     /// </summary>
     public static class PointExtension 
     {
         /// <summary>
         /// Projects this point onto the plane
+        /// 将点正交投影到指定平面
         /// </summary>
-        /// <param name="pt">Point to project</param>
-        /// <param name="plane">Plane to project to</param>
-        /// <returns>New projected point</returns>
+        /// <param name="pt">Point to project（待投影点）</param>
+        /// <param name="plane">Plane to project to（目标平面）</param>
+        /// <returns>New projected point（投影后的点）</returns>
         public static Point Project(this Point pt, Plane plane)
         {
             var a = plane.Normal.X;

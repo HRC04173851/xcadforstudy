@@ -15,6 +15,7 @@ namespace Xarial.XCad.Features
 {
     /// <summary>
     /// Represents the coordinate system origin feature
+    /// 表示坐标系原点特征
     /// </summary>
     public interface IXOrigin : IXFeature
     {

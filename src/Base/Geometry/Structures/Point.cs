@@ -13,31 +13,36 @@ namespace Xarial.XCad.Geometry.Structures
 {
     /// <summary>
     /// Structure representing 3D point
+    /// 表示三维点坐标的数据结构
     /// </summary>
     [DebuggerDisplay("{" + nameof(X) + "};{" + nameof(Y) + "};{" + nameof(Z) + "}")]
     public class Point
     {
         /// <summary>
         /// X coordinate
+        /// X 坐标
         /// </summary>
         public double X { get; set; }
 
         /// <summary>
         /// Y coordinate
+        /// Y 坐标
         /// </summary>
         public double Y { get; set; }
 
         /// <summary>
         /// Z coordinate
+        /// Z 坐标
         /// </summary>
         public double Z { get; set; }
 
         /// <summary>
         /// Creates point by 3 coordinates
+        /// 通过三个坐标值创建点
         /// </summary>
-        /// <param name="x">X coordinate</param>
-        /// <param name="y">Y coordinate</param>
-        /// <param name="z">Z coordinate</param>
+        /// <param name="x">X coordinate（X 坐标）</param>
+        /// <param name="y">Y coordinate（Y 坐标）</param>
+        /// <param name="z">Z coordinate（Z 坐标）</param>
         public Point(double x, double y, double z)
         {
             X = x;
@@ -70,6 +75,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Converts the point to an array of 3 coordinates
+        /// 将点转换为包含 3 个坐标值的数组
         /// </summary>
         /// <returns>Array of coordinates</returns>
         public double[] ToArray()
@@ -77,6 +83,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Compares two points coordinates by exact values
+        /// 在给定容差内比较两个点坐标是否一致
         /// </summary>
         /// <param name="pt">Point to compare</param>
         /// <param name="tol">Comparison tolerance</param>
@@ -114,6 +121,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Moves point along the vector
+        /// 沿向量方向平移点
         /// </summary>
         /// <param name="pt">Point to move</param>
         /// <param name="vec">Direction of move</param>
@@ -123,6 +131,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Applies the transformation to the point
+        /// 对点应用变换矩阵
         /// </summary>
         /// <param name="pt">Source point</param>
         /// <param name="matrix">Matrix</param>
@@ -132,6 +141,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Moves the point along the vector by specified distance
+        /// 按指定距离沿方向向量移动点
         /// </summary>
         /// <param name="dir">Direction of move</param>
         /// <param name="dist">Distance</param>
@@ -149,12 +159,14 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Converts this point to vector
+        /// 将点坐标转换为向量
         /// </summary>
         /// <returns>Resulting vector</returns>
         public Vector ToVector() => new Vector(X, Y, Z);
 
         /// <summary>
         /// Transforms this point with the transformation matrix
+        /// 使用变换矩阵变换当前点
         /// </summary>
         /// <param name="matrix">Transformation matrix</param>
         /// <returns>Transformed point</returns>

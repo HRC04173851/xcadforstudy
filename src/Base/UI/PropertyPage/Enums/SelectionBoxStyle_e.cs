@@ -9,6 +9,10 @@ using System;
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Selection box style flags
+    /// 选择框样式标志
+    /// </summary>
     [Flags]
     public enum SelectionBoxStyle_e
     {

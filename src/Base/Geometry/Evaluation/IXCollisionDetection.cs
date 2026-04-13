@@ -17,16 +17,19 @@ namespace Xarial.XCad.Geometry.Evaluation
 {
     /// <summary>
     /// Represents the result of the collision
+    /// 表示干涉/碰撞检测结果
     /// </summary>
     public interface IXCollisionResult
     {
         /// <summary>
         /// Bodies that are involved in collision
+        /// 发生碰撞的几何体集合
         /// </summary>
         IXBody[] CollidedBodies { get; }
 
         /// <summary>
         /// Represents the geometry of the collision
+        /// 碰撞区域对应的几何体（体积）
         /// </summary>
         IXMemoryBody[] CollisionVolume { get; }
     }
@@ -44,11 +47,13 @@ namespace Xarial.XCad.Geometry.Evaluation
 
     /// <summary>
     /// Represents collision detection between elements
+    /// 表示元素间碰撞检测评估
     /// </summary>
     public interface IXCollisionDetection : IEvaluation
     {
         /// <summary>
         /// Collision results
+        /// 碰撞结果集合
         /// </summary>
         IXCollisionResult[] Results { get; }
     }

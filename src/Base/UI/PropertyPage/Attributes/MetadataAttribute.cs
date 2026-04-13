@@ -19,6 +19,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 
         /// <summary>
         /// Marks this property as metadata
+    /// 将该属性标记为元数据
         /// </summary>
         /// <param name="tag">Tag of the metadata</param>
         public MetadataAttribute(object tag)

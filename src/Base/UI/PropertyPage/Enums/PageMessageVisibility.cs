@@ -7,6 +7,10 @@
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Visibility mode of page message
+    /// 页面消息可见性模式
+    /// </summary>
     public enum PageMessageVisibility
     {
         None = 1,

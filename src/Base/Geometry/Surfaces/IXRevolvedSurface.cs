@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Surfaces
 {
     /// <summary>
     /// Surface of revolution
+    /// 表示旋转曲面
     /// </summary>
     public interface IXRevolvedSurface : IXSurface
     {

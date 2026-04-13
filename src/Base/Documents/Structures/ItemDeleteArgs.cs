@@ -15,11 +15,13 @@ namespace Xarial.XCad.Documents.Structures
 {
     /// <summary>
     /// Argument of the item deletion event
+    /// 项目删除事件参数
     /// </summary>
     public class ItemDeleteArgs
     {
         /// <summary>
         /// Specifies if the deleting operation needs to be cancelled
+        /// 指定是否取消删除操作
         /// </summary>
         public bool Cancel { get; set; }
     }

@@ -14,11 +14,13 @@ namespace Xarial.XCad.Data
 {
     /// <summary>
     /// Additional methods for <see cref="IXPropertyRepository"/>
+    /// <see cref="IXPropertyRepository"/> 的扩展方法
     /// </summary>
     public static class XPropertyRepositoryExtension
     {
         /// <summary>
         /// Sets the value for this poperty
+        /// 设置属性值
         /// </summary>
         /// <param name="prps">Repository</param>
         /// <param name="prpName">Name of the property</param>
@@ -36,6 +38,7 @@ namespace Xarial.XCad.Data
 
         /// <summary>
         /// Gets or pre creates property
+        /// 获取属性或预创建属性
         /// </summary>
         /// <param name="prps">Repository</param>
         /// <param name="name">Name of the property</param>

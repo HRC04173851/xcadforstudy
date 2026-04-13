@@ -9,6 +9,7 @@ namespace Xarial.XCad.UI.Commands.Enums
 {
     /// <summary>
     /// Type of text display in the ribbon
+    /// 功能区文本显示方式
     /// </summary>
     public enum RibbonTabTextDisplay_e
     {

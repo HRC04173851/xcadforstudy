@@ -9,6 +9,10 @@ using System;
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Combo box style flags
+    /// 下拉框样式标志
+    /// </summary>
     [Flags]
     public enum ComboBoxStyle_e
     {

@@ -11,6 +11,10 @@ using Xarial.XCad.UI.PropertyPage.Services;
 
 namespace Xarial.XCad.UI.PropertyPage.Attributes
 {   
+    /// <summary>
+    /// Attribute declaring control dependency on other controls
+    /// 声明控件依赖其他控件的特性
+    /// </summary>
     /// <inheritdoc/>
     public class DependentOnAttribute : Attribute, IDependentOnAttribute
     {

@@ -17,6 +17,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Additional options for selection box control
+    /// 选择框控件附加选项
     /// </summary>
     public class SelectionBoxOptionsAttribute : Attribute, IAttribute
     {

@@ -11,11 +11,13 @@ namespace Xarial.XCad.Geometry.Primitives
 {
     /// <summary>
     /// Represents loft
+    /// 表示放样几何体（Loft）
     /// </summary>
     public interface IXLoft : IXPrimitive
     {
         /// <summary>
         /// Profiles of this loft
+        /// 放样使用的截面轮廓序列
         /// </summary>
         IXPlanarRegion[] Profiles { get; set; }
     }

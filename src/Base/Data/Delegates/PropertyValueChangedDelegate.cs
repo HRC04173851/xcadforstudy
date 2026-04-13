@@ -13,6 +13,7 @@ namespace Xarial.XCad.Data.Delegates
 {
     /// <summary>
     /// Delegate for <see cref="IXProperty.ValueChanged"/> event
+    /// <see cref="IXProperty.ValueChanged"/> 事件委托
     /// </summary>
     /// <param name="prp">Event sender</param>
     /// <param name="newValue">New value assigned to the property</param>

@@ -13,12 +13,14 @@ namespace Xarial.XCad.UI.Commands.Structures
 {
     /// <summary>
     /// Command group spec created from enumeration
+    /// 由枚举生成的命令组规格
     /// </summary>
     [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
     public class EnumCommandGroupSpec : CommandGroupSpec
     {
         /// <summary>
         /// Enumeration type associated with this command group
+        /// 与该命令组关联的枚举类型
         /// </summary>
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public Type CmdGrpEnumType { get; }
@@ -37,6 +39,7 @@ namespace Xarial.XCad.UI.Commands.Structures
 
     /// <summary>
     /// Context menu command group spec created from the enumeration
+    /// 由枚举生成的上下文菜单命令组规格
     /// </summary>
     [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
     public class ContextMenuEnumCommandGroupSpec : ContextMenuCommandGroupSpec

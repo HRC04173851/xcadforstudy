@@ -10,24 +10,48 @@ using System.Collections.Generic;
 
 namespace Xarial.XCad.Utils.PageBuilder.Core
 {
+    /// <summary>
+    /// Defines special pseudo-types used to resolve generic page element constructors.
+    /// <para>定义用于解析通用页面元素构造器的特殊伪类型。</para>
+    /// </summary>
     public static class SpecialTypes
     {
+        /// <summary>
+        /// Marker interface for special constructor categories.
+        /// <para>特殊构造器分类的标记接口。</para>
+        /// </summary>
         internal interface ISpecialType
         {
         }
 
+        /// <summary>
+        /// Special type representing any unmatched data type.
+        /// <para>表示任意未匹配数据类型的特殊类型。</para>
+        /// </summary>
         public class AnyType : ISpecialType
         {
         }
 
+        /// <summary>
+        /// Special type representing complex non-primitive data.
+        /// <para>表示复杂非基础数据类型的特殊类型。</para>
+        /// </summary>
         public class ComplexType : ISpecialType
         {
         }
 
+        /// <summary>
+        /// Special type representing enumeration data.
+        /// <para>表示枚举数据类型的特殊类型。</para>
+        /// </summary>
         public class EnumType : ISpecialType
         {
         }
 
+        /// <summary>
+        /// Finds matching special constructor categories for a data type.
+        /// <para>查找与数据类型匹配的特殊构造器分类。</para>
+        /// </summary>
         internal static IEnumerable<Type> FindMathingSpecialTypes(Type type)
         {
             if (type == null)
@@ -49,6 +73,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Core
             }
         }
 
+        /// <summary>
+        /// Determines whether type should be treated as complex type.
+        /// <para>判断类型是否应视为复杂类型。</para>
+        /// </summary>
         private static bool IsComplexType(Type type)
         {
             return !(type.IsPrimitive

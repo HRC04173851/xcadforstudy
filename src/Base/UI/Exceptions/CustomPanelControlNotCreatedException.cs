@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.Exceptions
 {
     /// <summary>
     /// Exception indicates that control of custom pane accessed when control has not been created yet
+    /// 表示在自定义面板控件尚未创建时访问控件引发的异常
     /// </summary>
     public class CustomPanelControlNotCreatedException : Exception
     {

@@ -13,14 +13,16 @@ namespace Xarial.XCad.Base.Attributes
 {
     /// <summary>
     /// Decorates the display name for the element (e.g. command, user control, object etc.)
+    /// 为元素（如命令、用户控件、对象等）设置显示名称
     /// </summary>
     [AttributeUsage(AttributeTargets.All)]
     public class TitleAttribute : DisplayNameAttribute
     {
         /// <summary>
         /// Constructor for element title
+        /// 元素显示名称的构造函数
         /// </summary>
-        /// <param name="dispName">Display name of the element</param>
+        /// <param name="dispName">Display name of the element 元素的显示名称</param>
         public TitleAttribute(string dispName) : base(dispName)
         {
         }

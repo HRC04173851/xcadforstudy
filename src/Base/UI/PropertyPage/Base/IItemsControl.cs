@@ -14,11 +14,13 @@ namespace Xarial.XCad.UI.PropertyPage.Base
 {
     /// <summary>
     /// Represents the base control for items source
+    /// 表示带选项项集合的数据源控件基类接口
     /// </summary>
     public interface IItemsControl : IControl
     {
         /// <summary>
         /// Items of this control
+        /// 控件项集合
         /// </summary>
         ItemsControlItem[] Items { get; set; }
     }

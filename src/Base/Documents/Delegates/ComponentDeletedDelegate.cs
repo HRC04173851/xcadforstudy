@@ -15,8 +15,9 @@ namespace Xarial.XCad.Documents.Delegates
 {
     /// <summary>
     /// Delegate of <see cref="IXAssembly.ComponentDeleted"/> notification
+    /// <see cref="IXAssembly.ComponentDeleted"/> 通知委托
     /// </summary>
-    /// <param name="assembly">Assembly where component is deleted</param>
-    /// <param name="component">Component deleted from the assembly. The pointer to the component may be disconnected from the client</param>
+    /// <param name="assembly">Assembly where component is deleted（发生删除的装配体）</param>
+    /// <param name="component">Component deleted from the assembly（被删除组件，指针可能已失效）</param>
     public delegate void ComponentDeletedDelegate(IXAssembly assembly, IXComponent component);
 }

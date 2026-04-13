@@ -23,15 +23,27 @@ using Xarial.XCad.Utils.PageBuilder.Core;
 
 namespace Xarial.XCad.Utils.PageBuilder.Binders
 {
+    /// <summary>
+    /// Reflection-based binder that builds controls, bindings, and dependencies from data model type.
+    /// <para>基于反射的数据绑定器：从数据模型类型构建控件、绑定与依赖关系。</para>
+    /// </summary>
     public class TypeDataBinder : IDataModelBinder
     {
         private readonly IXLogger m_Logger;
 
+        /// <summary>
+        /// Initializes binder with logger.
+        /// <para>使用日志器初始化绑定器。</para>
+        /// </summary>
         public TypeDataBinder(IXLogger logger) 
         {
             m_Logger = logger;
         }
 
+        /// <summary>
+        /// Builds page bindings, dependencies, and metadata for model type.
+        /// <para>为模型类型构建页面绑定、依赖关系与元数据。</para>
+        /// </summary>
         public void Bind<TDataModel>(CreateBindingPageDelegate pageCreator,
             CreateBindingControlDelegate ctrlCreator, CreateDynamicControlsDelegate dynCtrlDescCreator,
             IContextProvider contextProvider,
@@ -63,10 +75,18 @@ namespace Xarial.XCad.Utils.PageBuilder.Binders
             OnBeforeControlsDataLoad(bindings);
         }
 
+        /// <summary>
+        /// Extension hook executed before control data load.
+        /// <para>控件数据加载前的扩展钩子。</para>
+        /// </summary>
         protected virtual void OnBeforeControlsDataLoad(IEnumerable<IBinding> bindings)
         {
         }
 
+        /// <summary>
+        /// Extension hook for customizing page-level attribute set.
+        /// <para>用于自定义页面级特性集合的扩展钩子。</para>
+        /// </summary>
         protected virtual void OnGetPageAttributeSet(Type pageType, ref IAttributeSet attSet)
         {
         }

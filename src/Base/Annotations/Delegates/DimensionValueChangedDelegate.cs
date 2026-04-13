@@ -13,6 +13,7 @@ namespace Xarial.XCad.Annotations.Delegates
 {
     /// <summary>
     /// Delegate of <see cref="IXDimension.ValueChanged"/> event
+    /// <see cref="IXDimension.ValueChanged"/> 事件的委托
     /// </summary>
     /// <param name="dim">Sender</param>
     /// <param name="newVal">New value of the dimension</param>

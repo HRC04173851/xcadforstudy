@@ -13,12 +13,20 @@ namespace Xarial.XCad.UI
 {
     public interface IXTaskPane<TControl> : IXCustomPanel<TControl>
     {
+        /// <summary>
+        /// Raised when a task pane button is clicked
+        /// 任务窗格按钮被点击时触发
+        /// </summary>
         event TaskPaneButtonClickDelegate ButtonClick;
     }
 
     public interface IXEnumTaskPane<TControl, TCmdEnum> : IXTaskPane<TControl>
         where TCmdEnum : Enum
     {
+        /// <summary>
+        /// Raised when an enum-based task pane button is clicked
+        /// 基于枚举的任务窗格按钮被点击时触发
+        /// </summary>
         new event TaskPaneButtonEnumClickDelegate<TCmdEnum> ButtonClick;
     }
 

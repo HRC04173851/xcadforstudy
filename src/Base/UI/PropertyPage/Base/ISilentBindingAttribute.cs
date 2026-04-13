@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Base
 {
     /// <summary>
     /// Indicates that this binding should not fire the data changed notifications
+    /// 指示此绑定不触发数据变化通知
     /// </summary>
     public interface ISilentBindingAttribute : IAttribute
     {

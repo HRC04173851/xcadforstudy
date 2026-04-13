@@ -17,23 +17,27 @@ namespace Xarial.XCad.Extensions
 {
     /// <summary>
     /// Represents the extensibility interface (add-in)
+    /// 表示扩展接口（加载项）
     /// </summary>
     public interface IXExtension
     {
         /// <summary>
         /// Event for <see cref="OnConnect"/>
+        /// <see cref="OnConnect"/> 事件
         /// </summary>
         /// <remarks>If <see cref="OnConnect"/> is overridden this event will not be raised</remarks>
         event ExtensionConnectDelegate Connect;
 
         /// <summary>
         /// Event for <see cref="OnDisconnect"/>
+        /// <see cref="OnDisconnect"/> 事件
         /// </summary>
         /// <remarks>If <see cref="OnDisconnect"/> is overridden this event will not be raised</remarks>
         event ExtensionDisconnectDelegate Disconnect;
 
         /// <summary>
         /// Fired when extension startup is completed and all the components and application fully loaded
+        /// 扩展启动完成且应用与组件完全加载后触发
         /// </summary>
         event ExtensionStartupCompletedDelegate StartupCompleted;
 

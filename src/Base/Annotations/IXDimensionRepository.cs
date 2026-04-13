@@ -15,6 +15,7 @@ namespace Xarial.XCad.Annotations
 {
     /// <summary>
     /// Collection of dimensions
+    /// 尺寸标注集合
     /// </summary>
     public interface IXDimensionRepository : IXRepository<IXDimension>
     {

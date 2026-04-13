@@ -14,21 +14,25 @@ namespace Xarial.XCad.Geometry.Structures
 {
     /// <summary>
     /// Principal axes of inertia of the solid geometry used in <see cref="IXMassProperty"/>
+    /// 用于 <see cref="IXMassProperty"/> 的实体主惯性轴
     /// </summary>
     public class PrincipalAxesOfInertia
     {
         /// <summary>
         /// X direction
+        /// 第一主轴方向
         /// </summary>
         public Vector Ix { get; }
 
         /// <summary>
         /// Y direction
+        /// 第二主轴方向
         /// </summary>
         public Vector Iy { get; }
 
         /// <summary>
         /// Z direction
+        /// 第三主轴方向
         /// </summary>
         public Vector Iz { get; }
 

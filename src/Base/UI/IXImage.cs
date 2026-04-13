@@ -13,18 +13,21 @@ namespace Xarial.XCad.UI
 {
     /// <summary>
     /// Represents the image
+    /// 表示图像资源
     /// </summary>
-    /// <remarks>This is usually used for icons</remarks>
+    /// <remarks>This is usually used for icons. 通常用于图标资源。</remarks>
     public interface IXImage
     {
         /// <summary>
         /// Byte data of this image
+        /// 图像的字节数据
         /// </summary>
         byte[] Buffer { get; }
     }
 
     /// <summary>
     /// Represents base image
+    /// 表示基础图像实现
     /// </summary>
     public class BaseImage : IXImage
     {

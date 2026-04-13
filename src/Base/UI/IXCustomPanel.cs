@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI
 {
     /// <summary>
     /// Delegate of <see cref="IXCustomPanel{TControl}.ControlCreated"/> event
+    /// <see cref="IXCustomPanel{TControl}.ControlCreated"/> 事件委托
     /// </summary>
     /// <typeparam name="TControl"></typeparam>
     /// <param name="ctrl">Control</param>
@@ -20,6 +21,7 @@ namespace Xarial.XCad.UI
 
     /// <summary>
     /// Delegate of <see cref="IXCustomPanel{TControl}.Activated"/> event
+    /// <see cref="IXCustomPanel{TControl}.Activated"/> 事件委托
     /// </summary>
     /// <typeparam name="TControl">Type of control</typeparam>
     /// <param name="sender">Activated tab</param>
@@ -27,6 +29,7 @@ namespace Xarial.XCad.UI
 
     /// <summary>
     /// Represents the panel with custom User Control
+    /// 表示承载自定义用户控件的面板
     /// </summary>
     /// <typeparam name="TControl">Type of user control</typeparam>
     public interface IXCustomPanel<TControl>

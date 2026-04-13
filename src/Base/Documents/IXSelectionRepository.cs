@@ -19,26 +19,31 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Handles the selection objects
+    /// 管理选择对象集合
     /// </summary>
     public interface IXSelectionRepository : IXRepository<IXSelObject>
     {
         /// <summary>
         /// Raised when new object is selected
+        /// 新对象被选择时触发
         /// </summary>
         event NewSelectionDelegate NewSelection;
 
         /// <summary>
         /// Raised when the selection is cleared
+        /// 选择集被清空时触发
         /// </summary>
         event ClearSelectionDelegate ClearSelection;
 
         /// <summary>
         /// Clears all current selections
+        /// 清空当前全部选择
         /// </summary>
         void Clear();
 
         /// <summary>
         /// Replaces the selection (clears previous selection)
+        /// 替换选择集（先清空原选择）
         /// </summary>
         /// <param name="ents">Entities to select</param>
         /// <param name="cancellationToken">Cancellation token</param>
@@ -46,6 +51,7 @@ namespace Xarial.XCad.Documents
 
         /// <summary>
         /// Pre-creates selection callout instance
+        /// 预创建选择标注气泡实例
         /// </summary>
         /// <returns>Instance of the selection callout</returns>
         IXSelCallout PreCreateCallout();
@@ -53,6 +59,7 @@ namespace Xarial.XCad.Documents
 
     /// <summary>
     /// Additional methods for <see cref="IXSelectionRepository"/>
+    /// <see cref="IXSelectionRepository"/> 的扩展方法
     /// </summary>
     public static class XSelectionRepositoryExtension 
     {

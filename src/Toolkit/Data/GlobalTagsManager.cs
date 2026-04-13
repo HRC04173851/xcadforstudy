@@ -18,8 +18,10 @@ namespace Xarial.XCad.Toolkit.Data
 {
     /// <summary>
     /// Golbal tags registry used in <see cref="GlobalTagsManager"/>
+    /// <para>供 <see cref="GlobalTagsManager"/> 使用的全局标签注册表。</para>
     /// </summary>
-    /// <remarks>Store a singleton instance of this service and pass to all instances of <see cref="GlobalTagsManager"/></remarks>
+    /// <remarks>Store a singleton instance of this service and pass to all instances of <see cref="GlobalTagsManager"/>
+    /// <para>建议以单例方式保存该服务，并传递给所有 <see cref="GlobalTagsManager"/> 实例。</para></remarks>
     public class GlobalTagsRegistry : IDisposable
     {
         private class DocumentObjectTags : Dictionary<IXObject, LocalTagsManager>
@@ -31,11 +33,19 @@ namespace Xarial.XCad.Toolkit.Data
 
         private readonly Dictionary<IXDocument, DocumentObjectTags> m_Tags;
 
+        /// <summary>
+        /// Initializes global tags registry.
+        /// <para>初始化全局标签注册表。</para>
+        /// </summary>
         public GlobalTagsRegistry()
         {
             m_Tags = new Dictionary<IXDocument, DocumentObjectTags>(new XObjectEqualityComparer<IXDocument>());
         }
 
+        /// <summary>
+        /// Number of tracked owner-document groups.
+        /// <para>当前跟踪的“所属文档-标签组”数量。</para>
+        /// </summary>
         public int Count => m_Tags.Count;
 
         public bool IsEmpty(IXObject owner) 
@@ -156,6 +166,10 @@ namespace Xarial.XCad.Toolkit.Data
             return false;
         }
 
+        /// <summary>
+        /// Releases document subscriptions and clears registry.
+        /// <para>释放文档事件订阅并清空注册表。</para>
+        /// </summary>
         public void Dispose()
         {
             foreach (var tag in m_Tags) 
@@ -176,14 +190,20 @@ namespace Xarial.XCad.Toolkit.Data
 
     /// <summary>
     /// Manages tags with global registry
+    /// <para>通过全局注册表管理对象标签。</para>
     /// </summary>
     /// <remarks>Use this service instead of <see cref="LocalTagsManager"/> when instance of <see cref="IXObject"/>
-    /// is not guaranteed to be the same for the native (underline) object</remarks>
+    /// is not guaranteed to be the same for the native (underline) object
+    /// <para>当 <see cref="IXObject"/> 包装实例无法与底层原生对象保持同一实例语义时，使用本服务代替 <see cref="LocalTagsManager"/>。</para></remarks>
     public class GlobalTagsManager : ITagsManager
     {
         private readonly IXObject m_Owner;
         private readonly GlobalTagsRegistry m_Tags;
 
+        /// <summary>
+        /// Initializes global tags manager for owner object.
+        /// <para>为所属对象初始化全局标签管理器。</para>
+        /// </summary>
         public GlobalTagsManager(IXObject owner, GlobalTagsRegistry globalTagsReg)
         {
             m_Owner = owner;

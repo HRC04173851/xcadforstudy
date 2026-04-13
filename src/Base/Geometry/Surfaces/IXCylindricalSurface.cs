@@ -15,16 +15,19 @@ namespace Xarial.XCad.Geometry.Surfaces
 {
     /// <summary>
     /// Represents the specific cylindrical surface
+    /// 表示圆柱曲面
     /// </summary>
     public interface IXCylindricalSurface : IXSurface
     {
         /// <summary>
         /// Axis of this cylindrical face
+        /// 圆柱曲面的轴线
         /// </summary>
         Axis Axis { get; }
 
         /// <summary>
         /// Radius of cylindrical face
+        /// 圆柱曲面半径
         /// </summary>
         double Radius { get; }
     }

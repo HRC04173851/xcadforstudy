@@ -11,6 +11,7 @@ namespace Xarial.XCad.UI.PropertyPage.Enums
 {
     /// <summary>
     /// Alignment option for the text
+    /// 文本对齐选项
     /// </summary>
     [Flags]
     public enum TextAlignment_e

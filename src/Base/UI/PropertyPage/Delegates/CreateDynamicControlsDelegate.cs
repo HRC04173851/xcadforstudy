@@ -14,6 +14,7 @@ namespace Xarial.XCad.UI.PropertyPage.Delegates
 {
     /// <summary>
     /// Handler of dynamic controls in the proeprty page
+    /// 属性页动态控件创建委托
     /// </summary>
     /// <param name="tag">Control tag</param>
     /// <returns>Dynamic control descriptors</returns>

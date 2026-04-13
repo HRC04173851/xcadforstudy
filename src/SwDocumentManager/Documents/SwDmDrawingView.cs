@@ -25,11 +25,19 @@ using Xarial.XCad.Geometry.Structures;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Drawing view contract exposed by Document Manager.
+    /// 由 Document Manager 暴露的工程图视图约定。
+    /// </summary>
     public interface ISwDmDrawingView : IXDrawingView, ISwDmObject
     {
         ISwDMView DrawingView { get; }
     }
 
+    /// <summary>
+    /// Wrapper for a drawing view and its referenced model/configuration.
+    /// 工程图视图包装器，同时负责解析其引用模型与配置。
+    /// </summary>
     internal class SwDmDrawingView : SwDmSelObject, ISwDmDrawingView
     {
         #region Not Supported
@@ -60,6 +68,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             set => throw new NotSupportedException(); 
         }
 
+        /// <summary>
+        /// Resolves the model document referenced by the drawing view.
+        /// 解析该工程图视图所引用的模型文档。
+        /// </summary>
         public IXDocument3D ReferencedDocument 
         {
             get 
@@ -91,6 +103,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             set => throw new NotSupportedException();
         }
 
+        /// <summary>
+        /// Resolves the referenced configuration within the referenced model document.
+        /// 在引用模型文档中解析该视图对应的配置。
+        /// </summary>
         public IXConfiguration ReferencedConfiguration 
         {
             get 
@@ -120,6 +136,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         private readonly SwDmDrawing m_Drw;
         private IXDocument3D m_CachedDocument;
 
+        /// <summary>
+        /// Creates the drawing view wrapper and binds it to the owning drawing.
+        /// 创建工程图视图包装器，并绑定到所属工程图。
+        /// </summary>
         internal SwDmDrawingView(ISwDMView view, SwDmDrawing drw) : base(view, drw.OwnerApplication, drw)
         {
             DrawingView = view;

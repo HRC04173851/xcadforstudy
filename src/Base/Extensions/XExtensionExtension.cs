@@ -21,6 +21,7 @@ namespace Xarial.XCad.Extensions
 {
     /// <summary>
     /// Additional methods for the <see cref="IXExtension"/>
+    /// <see cref="IXExtension"/> 的扩展方法
     /// </summary>
     public static class XExtensionExtension
     {
@@ -36,6 +37,7 @@ namespace Xarial.XCad.Extensions
 
         /// <summary>
         /// Creates Task Pane from the enumeration definition
+        /// 根据枚举定义创建任务窗格
         /// </summary>
         /// <typeparam name="TControl">Type of control</typeparam>
         /// <typeparam name="TEnum">Enumeration defining the commands for Task Pane</typeparam>
@@ -61,6 +63,7 @@ namespace Xarial.XCad.Extensions
 
         /// <summary>
         /// Creates new popup window
+        /// 创建新的弹出窗口
         /// </summary>
         /// <typeparam name="TWindow">Type of window</typeparam>
         /// <param name="ext">Extension</param>
@@ -70,6 +73,7 @@ namespace Xarial.XCad.Extensions
 
         /// <summary>
         /// Creates and runs work unit
+        /// 创建并运行后台工作单元
         /// </summary>
         /// <typeparam name="TRes"></typeparam>
         /// <param name="ext">Extension</param>

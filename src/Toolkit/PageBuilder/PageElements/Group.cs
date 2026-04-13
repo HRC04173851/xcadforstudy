@@ -10,6 +10,11 @@ using Xarial.XCad.Utils.PageBuilder.Base;
 
 namespace Xarial.XCad.Utils.PageBuilder.PageElements
 {
+    /// <summary>
+    /// Base group control wrapper with generic value type.
+    /// <para>带泛型值类型的分组控件包装器基类。</para>
+    /// </summary>
+    /// <typeparam name="TVal">Group value type.<para>分组值类型。</para></typeparam>
     public abstract class Group<TVal> : Control<TVal>, IGroup
     {
 #pragma warning disable CS0067
@@ -18,6 +23,10 @@ namespace Xarial.XCad.Utils.PageBuilder.PageElements
 
 #pragma warning restore CS0067
 
+        /// <summary>
+        /// Initializes group control wrapper.
+        /// <para>初始化分组控件包装对象。</para>
+        /// </summary>
         protected Group(int id, object tag, IMetadata[] metadata) : base(id, tag, metadata)
         {
         }
@@ -29,8 +38,16 @@ namespace Xarial.XCad.Utils.PageBuilder.PageElements
         }
     }
 
+    /// <summary>
+    /// Non-generic group base implementation.
+    /// <para>非泛型分组基类实现。</para>
+    /// </summary>
     public abstract class Group : Group<object>
     {
+        /// <summary>
+        /// Initializes non-generic group.
+        /// <para>初始化非泛型分组。</para>
+        /// </summary>
         protected Group(int id, object tag, IMetadata[] metadata) : base(id, tag, metadata)
         {
         }

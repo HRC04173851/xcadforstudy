@@ -15,6 +15,7 @@ namespace Xarial.XCad
 {
     /// <summary>
     /// User options
+    /// 用户选项（选项基础接口）
     /// </summary>
     public interface IXOptions
     {

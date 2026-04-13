@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Wires
 {
     /// <summary>
     /// Spline segment
+    /// 表示样条线段
     /// </summary>
     public interface IXSpline : IXSegment
     {

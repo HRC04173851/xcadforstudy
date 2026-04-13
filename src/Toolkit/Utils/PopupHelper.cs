@@ -18,6 +18,7 @@ namespace Xarial.XCad.Toolkit.Utils
 {
     /// <summary>
     /// Utilities for <see cref="UI.IXPopupWindow{TWindow}>"/>
+    /// <para>用于 <see cref="UI.IXPopupWindow{TWindow}"/> 的位置与显示辅助工具。</para>
     /// </summary>
     public static class PopupHelper
     {
@@ -32,14 +33,15 @@ namespace Xarial.XCad.Toolkit.Utils
 
         /// <summary>
         /// Returns top-left location of the popup
+        /// <para>返回弹窗左上角坐标位置。</para>
         /// </summary>
-        /// <param name="parentWnd">Parent window</param>
-        /// <param name="dock"></param>
-        /// <param name="scaleDpi">True to scale according to the screen resolution</param>
-        /// <param name="width">Width of the popup</param>
-        /// <param name="height">Height of the popup</param>
-        /// <param name="padding">Padding of the popup</param>
-        /// <returns>Top-left location</returns>
+        /// <param name="parentWnd">Parent window<para>父窗口句柄。</para></param>
+        /// <param name="dock">Popup dock mode<para>弹窗停靠位置。</para></param>
+        /// <param name="scaleDpi">True to scale according to the screen resolution<para>是否按 DPI 缩放坐标。</para></param>
+        /// <param name="width">Width of the popup<para>弹窗宽度。</para></param>
+        /// <param name="height">Height of the popup<para>弹窗高度。</para></param>
+        /// <param name="padding">Padding of the popup<para>弹窗边距。</para></param>
+        /// <returns>Top-left location<para>弹窗左上角坐标点。</para></returns>
         public static Point CalculateLocation(IntPtr parentWnd, PopupDock_e dock, bool scaleDpi, double width, double height, Thickness padding)
         {
             GetWindowRect(parentWnd, out var rect);

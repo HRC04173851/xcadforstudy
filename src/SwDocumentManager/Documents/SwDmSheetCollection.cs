@@ -19,10 +19,18 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Repository contract for drawing sheets.
+    /// 工程图图纸页仓库约定。
+    /// </summary>
     public interface ISwDmSheetCollection : IXSheetRepository 
     {
     }
 
+    /// <summary>
+    /// Enumerates and resolves sheets contained in a drawing document.
+    /// 枚举并解析工程图文档中的全部图纸页。
+    /// </summary>
     internal class SwDmSheetCollection : ISwDmSheetCollection
     {
         #region Not Supported
@@ -35,6 +43,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         private readonly SwDmDrawing m_Drw;
 
+        /// <summary>
+        /// Creates a sheet repository for the specified drawing.
+        /// 为指定工程图创建图纸页仓库。
+        /// </summary>
         internal SwDmSheetCollection(SwDmDrawing drw) 
         {
             m_Drw = drw;
@@ -42,6 +54,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         public IXSheet this[string name]  => RepositoryHelper.Get(this, name);
 
+        /// <summary>
+        /// Returns the active sheet recorded in the drawing document.
+        /// 返回工程图当前记录的活动图纸页。
+        /// </summary>
         public IXSheet Active 
         {
             get 
@@ -68,6 +84,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             => GetEnumerator();
     }
 
+    /// <summary>
+    /// Custom enumerator over drawing sheets.
+    /// 工程图图纸页的自定义枚举器。
+    /// </summary>
     internal class SwDmSheetEnumerator : IEnumerator<IXSheet>
     {
         public IXSheet Current
@@ -81,6 +101,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         private ISwDMSheet[] m_Sheets;
 
+        /// <summary>
+        /// Captures the raw sheet COM objects once at enumerator construction time.
+        /// 在枚举器构造时一次性抓取原始图纸页 COM 对象。
+        /// </summary>
         internal SwDmSheetEnumerator(SwDmDrawing drw)
         {
             m_Drw = drw;

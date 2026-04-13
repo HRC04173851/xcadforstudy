@@ -68,6 +68,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         private readonly Lazy<string> m_PathLazy;
         private readonly Lazy<IXComponentRepository> m_ChildrenLazy;
                 
+        /// <summary>
+        /// Builds a component wrapper and prepares lazy path and child-resolution logic.
+        /// 构建组件包装器，并准备延迟路径解析与子组件解析逻辑。
+        /// </summary>
         internal SwDmComponent(SwDmAssembly parentAssm, ISwDMComponent comp) : base(comp, parentAssm.OwnerApplication, parentAssm)
         {
             Component = comp;
@@ -95,6 +99,7 @@ namespace Xarial.XCad.SwDocumentManager.Documents
                 {
                     //if component is inserted into the virtual sub-assembly it needs to be searched in the first non-virtual parent path
                     //as it won't be present in the virtual temp directory
+                    // 如果组件插入到了虚拟子装配体，则需要从第一个非虚拟父级目录中查找，因为虚拟临时目录并不包含真实文件。
                     var nonVirtRootDir = GetFirstNonVirtualParentDirectry();
 
                     if (!string.Equals(rootDir, nonVirtRootDir, StringComparison.CurrentCultureIgnoreCase))
@@ -128,6 +133,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             });
         }
 
+        /// <summary>
+        /// Finds the first parent directory that belongs to a non-virtual component chain.
+        /// 找到第一个属于非虚拟组件链的父级目录，用于解析真实文件路径。
+        /// </summary>
         private string GetFirstNonVirtualParentDirectry() 
         {
             var comp = this;
@@ -181,6 +190,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         protected internal abstract ISwDmConfiguration GetReferencedConfiguration(string confName);
         protected abstract ISwDmDocument3D GetReferencedDocument();
 
+        /// <summary>
+        /// Calculates the component state flags from suppression, visibility, BOM, and envelope data.
+        /// 根据压缩、显示、BOM 和信封体状态计算组件状态位标志。
+        /// </summary>
         public ComponentState_e State
         {
             get
@@ -195,6 +208,7 @@ namespace Xarial.XCad.SwDocumentManager.Documents
                 if (Component.IsHidden())
                 {
                     if (!state.HasFlag(ComponentState_e.Suppressed))//Document Manager reports suppressed as hidden as well
+                    // Document Manager 会把被压缩组件同时报告为隐藏状态，这里需要做语义修正。
                     {
                         state |= ComponentState_e.Hidden;
                     }
@@ -232,6 +246,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Returns the transform matrix of the component in assembly space.
+        /// 返回组件在装配体坐标空间中的变换矩阵。
+        /// </summary>
         public TransformMatrix Transformation
         {
             get 
@@ -276,6 +294,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         
         public IXComponentRepository Children => m_ChildrenLazy.Value;
 
+        /// <summary>
+        /// Resolves and opens the referenced part or assembly document, including support for virtual components.
+        /// 解析并打开组件引用的零件或装配体文档，同时兼容虚拟组件。
+        /// </summary>
         protected TDocument GetSpecificReferencedDocument<TDocument>()
             where TDocument : ISwDmDocument3D
         {
@@ -292,6 +314,7 @@ namespace Xarial.XCad.SwDocumentManager.Documents
                     var isVirtual = ((ISwDMComponent3)Component).IsVirtual;
 
                     //NOTE: Do not use ISwDMComponent4::GetDocument2 to get the document as it will firstly load the file from the cached path which may result in the wrong file loaded if assembly is copied
+                    // 注意：装配体被复制后，缓存路径可能已经过期，因此不能盲目信任缓存路径加载模型。
                     if (isVirtual)
                     {
                         var searchOpts = ParentAssembly.OwnerApplication.SwDocMgr.GetSearchOptionObject();
@@ -387,6 +410,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         }
     }
 
+    /// <summary>
+    /// Wrapper for a part component inside an assembly.
+    /// 装配体中的零件组件包装器。
+    /// </summary>
     internal class SwDmPartComponent : SwDmComponent, IXPartComponent
     {
         IXPart IXPartComponent.ReferencedDocument { get => (IXPart)base.ReferencedDocument; set => base.ReferencedDocument = (ISwDmDocument3D)value; }
@@ -400,6 +427,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         protected override ISwDmDocument3D GetReferencedDocument() => GetSpecificReferencedDocument<ISwDmPart>();
     }
 
+    /// <summary>
+    /// Wrapper for a subassembly component inside an assembly.
+    /// 装配体中的子装配体组件包装器。
+    /// </summary>
     internal class SwDmAssemblyComponent : SwDmComponent, IXAssemblyComponent
     {
         IXAssembly IXAssemblyComponent.ReferencedDocument { get => (IXAssembly)base.ReferencedDocument; set => base.ReferencedDocument = (ISwDmDocument3D)value; }
@@ -413,6 +444,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         protected override ISwDmDocument3D GetReferencedDocument() => GetSpecificReferencedDocument<ISwDmAssembly>();
     }
 
+    /// <summary>
+    /// Configuration proxy used when a component references a named configuration of another document.
+    /// 当组件引用另一个文档的具名配置时使用的配置代理。
+    /// </summary>
     internal abstract class SwDmComponentConfiguration : SwDmConfiguration
     {
         #region Not Supported
@@ -461,6 +496,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         public override bool IsCommitted => Document.IsCommitted;
     }
 
+    /// <summary>
+    /// Part configuration proxy exposed through a component reference.
+    /// 通过组件引用暴露出来的零件配置代理。
+    /// </summary>
     internal class SwDmPartComponentConfiguration : SwDmComponentConfiguration, ISwDmPartConfiguration
     {
         private readonly Lazy<IXCutListItemRepository> m_CutListsLazy;
@@ -474,6 +513,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         public IXCutListItemRepository CutLists => m_CutListsLazy.Value;
     }
 
+    /// <summary>
+    /// Assembly configuration proxy exposed through a component reference.
+    /// 通过组件引用暴露出来的装配体配置代理。
+    /// </summary>
     internal class SwDmAssemblyComponentConfiguration : SwDmComponentConfiguration, ISwDmAssemblyConfiguration
     {
         public SwDmAssemblyComponentConfiguration(SwDmComponent comp, string confName) : base(comp, confName)
@@ -483,6 +526,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         public IXComponentRepository Components => m_Comp.Children;
     }
 
+    /// <summary>
+    /// Child component repository that also links each component back to its parent node.
+    /// 子组件仓库实现，同时把每个生成的组件节点回链到其父组件。
+    /// </summary>
     internal class SwDmSubComponentCollection : SwDmComponentCollection
     {
         private readonly SwDmComponent m_ParentComp;
@@ -502,6 +549,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         }
     }
 
+    /// <summary>
+    /// Empty repository used when a component cannot have children.
+    /// 当组件不可能包含子节点时使用的空仓库实现。
+    /// </summary>
     internal class EmptyComponentCollection : IXComponentRepository
     {
         #region Not Supported

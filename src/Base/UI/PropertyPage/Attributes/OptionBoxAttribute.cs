@@ -12,6 +12,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Constructor of option box
+    /// 选项框控件构造器标记接口
     /// </summary>
     public interface IOptionBoxConstructor
     {
@@ -19,6 +20,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 
     /// <summary>
     /// Attribute indicates that current property should be rendered as option box
+    /// 指示当前属性应渲染为选项框
     /// </summary>
     /// <remarks>This attribute is only applicable for <see cref="Enum">enum</see> types or <see cref="System.Collections.IList"/> if items source is specified</remarks>
     public class OptionBoxAttribute : ItemsSourceControlAttribute, ISpecificConstructorAttribute

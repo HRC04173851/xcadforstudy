@@ -15,6 +15,7 @@ namespace Xarial.XCad.Documents.Enums
 {
     /// <summary>
     /// Identifies the standard size of the drawing sheet
+    /// 标识工程图图纸的标准纸张尺寸
     /// </summary>
     public enum StandardPaperSize_e
     {

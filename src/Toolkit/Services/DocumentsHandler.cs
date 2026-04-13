@@ -23,6 +23,7 @@ namespace Xarial.XCad.Toolkit.Services
 {
     /// <summary>
     /// Handles documents lifecycle
+    /// <para>处理文档生命周期及其处理器注册/释放流程。</para>
     /// </summary>
     public class DocumentsHandler : IDisposable
     {
@@ -47,6 +48,10 @@ namespace Xarial.XCad.Toolkit.Services
 
         private readonly IXLogger m_Logger;
 
+        /// <summary>
+        /// Initializes document handler manager.
+        /// <para>初始化文档处理器管理器。</para>
+        /// </summary>
         public DocumentsHandler(IXApplication app, IXLogger logger) 
         {
             m_App = app;
@@ -58,6 +63,7 @@ namespace Xarial.XCad.Toolkit.Services
 
         /// <summary>
         /// Registers the specified handler
+        /// <para>注册指定类型的文档处理器。</para>
         /// </summary>
         /// <typeparam name="THandler">Handler type</typeparam>
         /// <param name="handlerFact">Handler instance factory</param>
@@ -97,6 +103,7 @@ namespace Xarial.XCad.Toolkit.Services
 
         /// <summary>
         /// Unregisters the specific handler
+        /// <para>注销指定类型的文档处理器。</para>
         /// </summary>
         /// <typeparam name="THandler">Handler type</typeparam>
         public void UnregisterHandler<THandler>() where THandler : IDocumentHandler
@@ -153,6 +160,7 @@ namespace Xarial.XCad.Toolkit.Services
 
         /// <summary>
         /// Retrieves the specific handle of this document
+        /// <para>获取指定文档对应的处理器实例。</para>
         /// </summary>
         /// <typeparam name="THandler">Handler type</typeparam>
         /// <param name="doc">Document</param>
@@ -245,6 +253,10 @@ namespace Xarial.XCad.Toolkit.Services
         private void OnDocumentDestroyed(IXDocument doc)
             => TryReleaseHandlers(doc);
 
+        /// <summary>
+        /// Releases registered events and active document handlers.
+        /// <para>释放已注册事件与当前活动文档处理器。</para>
+        /// </summary>
         public void Dispose()
         {
             m_App.Documents.DocumentLoaded -= OnDocumentLoaded;

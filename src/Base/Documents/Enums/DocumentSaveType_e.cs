@@ -13,6 +13,7 @@ namespace Xarial.XCad.Documents.Enums
 {
     /// <summary>
     /// Saving type of the document in the <see cref="IXDocument.Saving"/> event
+    /// <see cref="IXDocument.Saving"/> 事件中的文档保存类型
     /// </summary>
     public enum DocumentSaveType_e
     {

@@ -12,6 +12,7 @@ namespace Xarial.XCad.UI.Commands.Attributes
 {
     /// <summary>
     /// Provides additional information about the item command
+    /// 提供命令项附加信息
     /// </summary>
     [AttributeUsage(AttributeTargets.Field)]
     public class CommandItemInfoAttribute : Attribute
@@ -24,6 +25,7 @@ namespace Xarial.XCad.UI.Commands.Attributes
 
         /// <summary>
         /// Constructor for specifying additional information about command item
+        /// 指定命令项附加信息的构造函数
         /// </summary>
         /// <param name="suppWorkspaces">Indicates the workspaces where this command is enabled. This information is used in the default command enable handler</param>
         public CommandItemInfoAttribute(WorkspaceTypes_e suppWorkspaces)

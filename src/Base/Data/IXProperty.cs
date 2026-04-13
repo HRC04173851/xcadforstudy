@@ -15,11 +15,13 @@ namespace Xarial.XCad.Data
 {
     /// <summary>
     /// Represents the custom property
+    /// 表示自定义属性
     /// </summary>
     public interface IXProperty : IXTransaction
     {
         /// <summary>
         /// Raised when the value of this property is changed
+        /// 属性值变化时触发
         /// </summary>
         event PropertyValueChangedDelegate ValueChanged;
         
@@ -42,6 +44,7 @@ namespace Xarial.XCad.Data
 
     /// <summary>
     /// Additional methods for property
+    /// 属性扩展方法
     /// </summary>
     public static class XPropertyExtension 
     {

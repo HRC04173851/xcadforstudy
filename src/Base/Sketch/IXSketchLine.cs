@@ -12,6 +12,7 @@ namespace Xarial.XCad.Sketch
 {
     /// <summary>
     /// Represents sketch line
+    /// 表示草图直线
     /// </summary>
     public interface IXSketchLine : IXSketchSegment, IXLine
     {

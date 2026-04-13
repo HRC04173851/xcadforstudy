@@ -9,7 +9,8 @@ namespace Xarial.XCad.Documents.Delegates
 {
     /// <summary>
     /// Delegate for the different document events
+    /// 通用文档事件委托
     /// </summary>
-    /// <param name="doc">Document</param>
+    /// <param name="doc">Document（事件关联文档）</param>
     public delegate void DocumentEventDelegate(IXDocument doc);
 }

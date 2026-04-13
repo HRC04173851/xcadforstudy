@@ -11,6 +11,7 @@ namespace Xarial.XCad.Features.CustomFeature.Enums
 {
     /// <summary>
     /// State of the <see cref="IXCustomFeature"/> within the <see cref="IXCustomFeatureDefinition.OnUpdateState(IXApplication, Documents.IXDocument, IXCustomFeature)"/>
+    /// <see cref="IXCustomFeature"/> 在状态更新回调中的状态标志
     /// </summary>
     [Flags]
     public enum CustomFeatureState_e

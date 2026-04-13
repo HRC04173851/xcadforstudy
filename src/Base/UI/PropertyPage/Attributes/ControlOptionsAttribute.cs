@@ -44,6 +44,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 
         /// <summary>
         /// Constructor allowing to specify control common parameters
+    /// 用于指定控件通用参数的构造函数
         /// </summary>
         /// <param name="opts">Generic control options</param>
         /// <param name="align">Control alignment options</param>

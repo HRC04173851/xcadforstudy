@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Surfaces
 {
     /// <summary>
     /// B-surface
+    /// 表示 B 样条曲面
     /// </summary>
     public interface IXBSurface : IXSurface
     {

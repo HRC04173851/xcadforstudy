@@ -9,6 +9,10 @@ using System;
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Text box style flags
+    /// 文本框样式标志
+    /// </summary>
     [Flags]
     public enum TextBoxStyle_e
     {

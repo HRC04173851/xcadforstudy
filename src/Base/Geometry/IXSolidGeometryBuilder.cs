@@ -9,6 +9,7 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Builds solid geometry
+    /// 用于构建实体几何
     /// </summary>
     public interface IXSolidGeometryBuilder : IX3DGeometryBuilder
     {

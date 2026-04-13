@@ -40,10 +40,20 @@ namespace Xarial.XCad.Features
 
     /// <summary>
     /// Represents the weldment structural member feature
+    /// 表示焊件结构构件（Structural Member）特征
     /// </summary>
     public interface IXStructuralMember : IXFeature
     {
+        /// <summary>
+        /// Profile sketch of the structural member
+        /// 构件截面草图
+        /// </summary>
         IXSketch2D Profile { get; }
+
+        /// <summary>
+        /// Groups of structural member pieces
+        /// 结构构件分组集合
+        /// </summary>
         IXSructuralMemberGroupRepository Groups { get; }
     }
 }

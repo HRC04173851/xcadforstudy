@@ -14,6 +14,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Additional options for text block control
+    /// 文本块控件附加选项
     /// </summary>
     /// <remarks>Applied to property of type <see cref="string"/></remarks>
     public class TextBlockOptionsAttribute : Attribute, IAttribute

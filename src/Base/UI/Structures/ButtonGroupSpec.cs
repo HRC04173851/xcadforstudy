@@ -17,21 +17,25 @@ namespace Xarial.XCad.UI.Structures
 {
     /// <summary>
     /// Defines the group of buttons
+    /// 定义按钮组规格
     /// </summary>
     public class ButtonGroupSpec
     {
         /// <summary>
         /// Title of the group
+        /// 按钮组标题
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
         /// Help text (tooltip) of the group
+        /// 按钮组帮助文本（提示）
         /// </summary>
         public string Tooltip { get; set; }
 
         /// <summary>
         /// Group icon
+        /// 按钮组图标
         /// </summary>
         public IXImage Icon { get; set; }
     }

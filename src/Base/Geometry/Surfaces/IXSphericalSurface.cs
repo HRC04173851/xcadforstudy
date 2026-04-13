@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Surfaces
 {
     /// <summary>
     /// Spherical surface
+    /// 表示球面曲面
     /// </summary>
     public interface IXSphericalSurface : IXSurface
     {

@@ -13,6 +13,7 @@ namespace Xarial.XCad.Geometry.Surfaces
 {
     /// <summary>
     /// Conical surface
+    /// 表示圆锥曲面
     /// </summary>
     public interface IXConicalSurface : IXSurface
     {

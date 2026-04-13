@@ -16,12 +16,20 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Data
 {
+    /// <summary>
+    /// Wraps a third-party stream inside a SOLIDWORKS document.
+    /// 包装 SOLIDWORKS 文档中的第三方数据流（Stream），常用于顺序读写插件自定义数据。
+    /// </summary>
     internal class SwDm3rdPartyStream : ComStream
     {
         private readonly ISwDMDocument19 m_Doc;
         private readonly string m_Name;
         private readonly bool m_IsActive;
 
+        /// <summary>
+        /// Opens the named third-party stream and positions the cursor at the beginning.
+        /// 打开指定名称的第三方数据流，并把读写游标定位到流起始位置。
+        /// </summary>
         internal SwDm3rdPartyStream(ISwDMDocument19 doc, string name, AccessType_e access) 
             : base(AccessTypeHelper.GetIsWriting(access), false)
         {
@@ -52,6 +60,10 @@ namespace Xarial.XCad.SolidWorks.Data
             Seek(0, SeekOrigin.Begin);
         }
 
+        /// <summary>
+        /// Releases the stream back to Document Manager after the wrapper is disposed.
+        /// 在包装器释放后，把底层流句柄归还给 Document Manager。
+        /// </summary>
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

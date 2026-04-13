@@ -15,15 +15,27 @@ using Xarial.XCad.Geometry;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Part document contract.
+    /// 零件文档约定。
+    /// </summary>
     public interface ISwDmPart : ISwDmDocument3D, IXPart
     {
         new ISwDmPartConfigurationCollection Configurations { get; }
     }
 
+    /// <summary>
+    /// Part document wrapper for configurations and part-specific data.
+    /// 零件文档包装器，负责暴露配置以及零件特有的数据入口。
+    /// </summary>
     internal class SwDmPart : SwDmDocument3D, ISwDmPart
     {
         private readonly Lazy<SwDmPartConfigurationCollection> m_LazyConfigurations;
 
+        /// <summary>
+        /// Initializes the part wrapper and delays configuration creation until needed.
+        /// 初始化零件包装器，并在需要时再延迟创建配置集合。
+        /// </summary>
         internal SwDmPart(SwDmApplication dmApp, ISwDMDocument doc, bool isCreated,
             Action<ISwDmDocument> createHandler, Action<ISwDmDocument> closeHandler, bool? isReadOnly)
             : base(dmApp, doc, isCreated, createHandler, closeHandler, isReadOnly)
@@ -42,6 +54,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         protected override bool IsDocumentTypeCompatible(SwDmDocumentType docType) => docType == SwDmDocumentType.swDmDocumentPart;
     }
 
+    /// <summary>
+    /// Represents a virtual part embedded into another owning document.
+    /// 表示嵌入在其他父文档中的虚拟零件。
+    /// </summary>
     internal class SwDmVirtualPart : SwDmPart
     {
         private readonly SwDmDocument m_Owner;

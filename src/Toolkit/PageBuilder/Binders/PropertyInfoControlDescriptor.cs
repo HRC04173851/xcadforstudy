@@ -15,6 +15,10 @@ using Xarial.XCad.UI.PropertyPage.Base;
 
 namespace Xarial.XCad.Utils.PageBuilder.Binders
 {
+    /// <summary>
+    /// Control descriptor built from reflected property information.
+    /// <para>基于反射属性信息构建的控件描述符。</para>
+    /// </summary>
     public class PropertyInfoControlDescriptor : IControlDescriptor
     {
         public string Name => m_PrpInfo.Name;
@@ -35,6 +39,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Binders
 
         private readonly PropertyInfo m_PrpInfo;
 
+        /// <summary>
+        /// Initializes descriptor from property info.
+        /// <para>根据属性信息初始化描述符。</para>
+        /// </summary>
         public PropertyInfoControlDescriptor(PropertyInfo prpInfo) 
         {
             m_PrpInfo = prpInfo;

@@ -18,6 +18,7 @@ namespace Xarial.XCad.Features.CustomFeature.Services
     /// <summary>
     /// Mechanism allowing to support backward compatibility of the macro feature parameters across the versions.
     /// This interface is coupled with <see cref="Attributes.ParametersVersionAttribute"/>
+    /// 支持宏特征参数跨版本向后兼容的转换机制（与 <see cref="Attributes.ParametersVersionAttribute"/> 配合使用）
     /// </summary>
     /// <remarks>This class is a dictionary of version and the appropriate converter from the previous version to
     /// the specified one. Use <see cref="ParametersVersionConverter"/> for the specific implementation</remarks>
@@ -27,6 +28,7 @@ namespace Xarial.XCad.Features.CustomFeature.Services
 
     /// <summary>
     /// Specific implementation of <see cref="IParametersVersionConverter"/>
+    /// <see cref="IParametersVersionConverter"/> 的默认实现
     /// </summary>
     public class ParametersVersionConverter : Dictionary<Version, IParameterConverter>, IParametersVersionConverter
     {
@@ -42,11 +44,13 @@ namespace Xarial.XCad.Features.CustomFeature.Services
 
     /// <summary>
     /// Represents the conversion routines between this version of parameters and previous version of the parameters
+    /// 表示当前参数版本与上一版本之间的转换规则
     /// </summary>
     public interface IParameterConverter
     {
         /// <summary>
         /// Converts parameters from previous version
+        /// 将上一版本参数转换为当前版本参数
         /// </summary>
         /// <param name="model">Pointer to current model</param>
         /// <param name="feat">Pointer to current feature</param>

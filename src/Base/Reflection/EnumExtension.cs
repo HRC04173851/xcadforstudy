@@ -10,10 +10,15 @@ using System.Linq;
 
 namespace Xarial.XCad.Reflection
 {
+    /// <summary>
+    /// Extension methods for enumeration types
+    /// 枚举类型的扩展方法
+    /// </summary>
     public static class EnumExtension
     {
         /// <summary>
         /// Tries to get attribute from the enumeration
+        /// 尝试从枚举值获取特性
         /// </summary>
         /// <typeparam name="TAtt">Type of attribute to get</typeparam>
         /// <param name="enumer">Enumerator value</param>

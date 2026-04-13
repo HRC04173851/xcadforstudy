@@ -13,6 +13,7 @@ namespace Xarial.XCad.Extensions.Delegates
 {
     /// <summary>
     /// Delegate for <see cref="IXExtension.Disconnect"/> event
+    /// <see cref="IXExtension.Disconnect"/> 事件委托
     /// </summary>
     /// <param name="ext">Extension</param>
     public delegate void ExtensionDisconnectDelegate(IXExtension ext);

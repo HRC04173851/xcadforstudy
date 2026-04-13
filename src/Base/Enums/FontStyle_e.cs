@@ -15,6 +15,7 @@ namespace Xarial.XCad.Enums
 {
     /// <summary>
     /// Style of <see cref="IFont"/>
+    /// <see cref="IFont"/> 字体样式
     /// </summary>
     [Flags]
     public enum FontStyle_e

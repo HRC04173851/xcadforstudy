@@ -11,6 +11,7 @@ namespace Xarial.XCad.UI.Commands.Attributes
 {
     /// <summary>
     /// Provides the additional information about the command group
+    /// 为命令组提供附加信息
     /// </summary>
     [AttributeUsage(AttributeTargets.Enum)]
     public class CommandGroupInfoAttribute : Attribute
@@ -30,6 +31,7 @@ namespace Xarial.XCad.UI.Commands.Attributes
 
         /// <summary>
         /// Constructor for specifying the additional information for group
+        /// 用于指定命令组附加信息的构造函数
         /// </summary>
         /// <param name="userId">User id for the command group. Must be unique per add-in</param>
         /// <param name="tabName">Name of the tab this group should be added to</param>

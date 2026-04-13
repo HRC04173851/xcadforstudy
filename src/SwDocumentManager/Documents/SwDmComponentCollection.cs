@@ -24,10 +24,18 @@ using Xarial.XCad.SwDocumentManager.Exceptions;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Repository of assembly components exposed by Document Manager.
+    /// 由 Document Manager 暴露的装配体组件仓库。
+    /// </summary>
     public interface ISwDmComponentCollection : IXComponentRepository 
     {
     }
 
+    /// <summary>
+    /// Enumerates and caches components for an assembly configuration.
+    /// 按装配体配置枚举并缓存组件，用于构建离线组件树。
+    /// </summary>
     internal class SwDmComponentCollection : ISwDmComponentCollection
     {
         #region Not Supported
@@ -43,6 +51,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         private readonly Dictionary<string, SwDmComponent> m_ComponentsCache;
 
+        /// <summary>
+        /// Creates a component repository for a specific assembly configuration.
+        /// 为指定装配体配置创建组件仓库。
+        /// </summary>
         internal SwDmComponentCollection(SwDmAssembly parentAssm, ISwDmConfiguration conf)
         {
             m_ParentAssm = parentAssm;
@@ -54,6 +66,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         public IXComponent this[string name] => RepositoryHelper.Get(this, name);
 
+        /// <summary>
+        /// Counts immediate child components of the current configuration.
+        /// 统计当前配置下的一级子组件数量。
+        /// </summary>
         public int Count
         {
             get
@@ -63,6 +79,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Counts all descendant components recursively, including nested subassemblies.
+        /// 递归统计全部后代组件数量，包括子装配体中的嵌套组件。
+        /// </summary>
         public int TotalCount 
         {
             get 
@@ -79,12 +99,20 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Reads the raw Document Manager component array for a configuration.
+        /// 读取指定配置对应的原始 Document Manager 组件数组。
+        /// </summary>
         private object[] GetComponents(ISwDMConfiguration conf) 
         {
             ValidateSpeedPak(conf);
             return ((ISwDMConfiguration2)conf).GetComponents() as object[] ?? new object[0];
         }
 
+        /// <summary>
+        /// Rejects SpeedPak configurations because Document Manager cannot expose a complete component tree for them.
+        /// 拒绝处理 SpeedPak 配置，因为 Document Manager 无法为其提供完整的组件树。
+        /// </summary>
         private void ValidateSpeedPak(ISwDMConfiguration conf) 
         {
             if (((ISwDMConfiguration11)conf).IsSpeedPak())
@@ -93,6 +121,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
         
+        /// <summary>
+        /// Recursively traverses subassemblies to accumulate a full component count.
+        /// 递归遍历子装配体，累计完整组件数量。
+        /// </summary>
         private void CountComponents(ISwDMConfiguration conf, Dictionary<string, int> cachedCount, ref int totalCount) 
         {
             foreach (ISwDMComponent6 comp in GetComponents(conf))
@@ -156,6 +188,7 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             if (m_Conf.IsCommitted)
             {
                 //if the parent document was closed calling the below method will open the document into the memory
+                // 如果父文档已关闭，下面的调用会把文档重新加载到内存中。
                 return GetComponents(m_Conf.Configuration).Cast<ISwDMComponent>();
             }
             else
@@ -171,6 +204,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         public IEnumerable Filter(bool reverseOrder, params RepositoryFilterQuery[] filters) => RepositoryHelper.FilterDefault(this, filters, reverseOrder);
 
+        /// <summary>
+        /// Creates or reuses a cached strongly typed component wrapper.
+        /// 创建或复用已缓存的强类型组件包装器。
+        /// </summary>
         protected virtual SwDmComponent CreateComponentInstance(ISwDMComponent dmComp) 
         {
             var compName = ((ISwDMComponent7)dmComp).Name2;

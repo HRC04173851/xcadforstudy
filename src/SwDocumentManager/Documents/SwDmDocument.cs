@@ -33,6 +33,10 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Base document contract for all Document Manager-backed xCAD documents.
+    /// 所有基于 Document Manager 的 xCAD 文档共用的基础约定。
+    /// </summary>
     public interface ISwDmDocument : ISwDmObject, IXDocument
     {
         ISwDMDocument Document { get; }
@@ -43,12 +47,18 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             where TObj : ISwDmObject;
     }
 
+    /// <summary>
+    /// Core document wrapper responsible for open, save, close, and repository integration.
+    /// 核心文档包装器，负责打开、保存、关闭以及与 xCAD 仓库体系的集成。
+    /// </summary>
     [DebuggerDisplay("{" + nameof(Title) + "}")]
     internal abstract class SwDmDocument : SwDmObject, ISwDmDocument
     {
         /// <summary>
         /// <see cref="ISwDmComponent.CachedPath"/> returns the last path when file was saved within SOLIDWORKS
         /// If files were renamed with Pack&Go, SOLIDWORKS File Utilities, PDM or Document Manager cached path will not be changed until opened
+        /// `<see cref="ISwDmComponent.CachedPath"/>` 返回的是文件上次在 SOLIDWORKS 中保存时记录的路径。
+        /// 如果文件通过 Pack and Go、SOLIDWORKS File Utilities、PDM 或 Document Manager 改名，缓存路径要等到文件被真正打开后才会刷新。
         /// </summary>
         internal class ChangedReferencesCollection 
         {
@@ -82,6 +92,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Determines the SOLIDWORKS native document type from the file extension.
+        /// 根据文件扩展名判断 SOLIDWORKS 原生文档类型。
+        /// </summary>
         internal static SwDmDocumentType GetDocumentType(string path)
         {
             SwDmDocumentType docType;
@@ -254,6 +268,7 @@ namespace Xarial.XCad.SwDocumentManager.Documents
                     try
                     {
                         //This not causing exception - so does not work - keeping as placeholder for future
+                        // 该调用当前不会触发异常，因此还不能可靠地作为存活性判断，只先保留占位逻辑。
                         var testVers = Document.GetVersion();
 
                         return true;
@@ -327,6 +342,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Opens the underlying document on first commit and raises storage availability notifications.
+        /// 在首次提交时打开底层文档，并触发流与存储可用通知。
+        /// </summary>
         private ISwDMDocument OpenDocument(CancellationToken cancellationToken) 
         {
             m_IsReadOnly = State.HasFlag(DocumentState_e.ReadOnly);
@@ -339,6 +358,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             return doc;
         }
 
+        /// <summary>
+        /// Opens a document by path and translates Document Manager open errors into xCAD exceptions.
+        /// 按路径打开文档，并把 Document Manager 的打开错误转换为 xCAD 异常。
+        /// </summary>
         private ISwDMDocument OpenDocument(string path, DocumentState_e state)
         {
             var isReadOnly = state.HasFlag(DocumentState_e.ReadOnly);
@@ -397,6 +420,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         protected abstract bool IsDocumentTypeCompatible(SwDmDocumentType docType);
 
+        /// <summary>
+        /// Closes the native document and detaches it from the repository.
+        /// 关闭底层文档，并将其从文档仓库中解除注册。
+        /// </summary>
         public void Close()
         {
             if (!m_IsClosed.HasValue || !m_IsClosed.Value)
@@ -410,12 +437,20 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Commits a pre-created document and publishes it into the document repository.
+        /// 提交预创建文档，并将其发布到文档仓库中。
+        /// </summary>
         public virtual void Commit(CancellationToken cancellationToken)
         {
             m_Creator.Create(cancellationToken);
             m_CreateHandler.Invoke(this);
         }
 
+        /// <summary>
+        /// Opens a named third-party structured storage inside the document.
+        /// 打开文档内指定名称的第三方结构化存储。
+        /// </summary>
         public IStorage OpenStorage(string name, AccessType_e access)
         {
             if (this.IsVersionNewerOrEqual(SwDmVersion_e.Sw2015)) 
@@ -428,6 +463,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Opens a named third-party stream inside the document.
+        /// 打开文档内指定名称的第三方数据流。
+        /// </summary>
         public Stream OpenStream(string name, AccessType_e access)
         {
             if (this.IsVersionNewerOrEqual(SwDmVersion_e.Sw2015))
@@ -440,6 +479,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Saves the current document back to its existing path.
+        /// 将当前文档保存回其现有路径。
+        /// </summary>
         public void Save()
             => PerformSave(DocumentSaveType_e.SaveCurrent, Path, f =>
             {
@@ -451,9 +494,17 @@ namespace Xarial.XCad.SwDocumentManager.Documents
                 return true;
             }, (d, f) => d.Save());
 
+        /// <summary>
+        /// Creates a deferred Save As operation that can be committed later.
+        /// 创建一个延迟执行的另存为操作，稍后可通过提交执行。
+        /// </summary>
         public IXSaveOperation PreCreateSaveAsOperation(string filePath)
             => new SwDmSaveOperation(this, filePath);
 
+        /// <summary>
+        /// Central save pipeline that raises events, exposes custom storages, and processes save results.
+        /// 统一的保存流程：触发事件、开放自定义存储写入，并处理保存结果。
+        /// </summary>
         internal void PerformSave(DocumentSaveType_e saveType, string path, Func<string, bool> canSave,
             Func<ISwDMDocument, string, SwDmDocumentSaveError> saveFunc) 
         {
@@ -479,6 +530,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             }
         }
 
+        /// <summary>
+        /// Converts save error codes into exceptions meaningful to xCAD callers.
+        /// 将保存错误码转换为对 xCAD 调用方更有意义的异常。
+        /// </summary>
         private bool ProcessSaveResult(SwDmDocumentSaveError res)
         {
             if (res != SwDmDocumentSaveError.swDmDocumentSaveErrorNone)
@@ -502,6 +557,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             return true;
         }
 
+        /// <summary>
+        /// Checks the Windows Explorer setting to decide whether titles should include file extensions.
+        /// 检查 Windows 资源管理器设置，以决定标题是否应包含文件扩展名。
+        /// </summary>
         private bool IsFileExtensionShown
         {
             get
@@ -542,6 +601,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         }
     }
 
+    /// <summary>
+    /// Temporary document wrapper that resolves its concrete type after the file path is known.
+    /// 临时未知文档包装器，会在已知文件路径后再解析为具体文档类型。
+    /// </summary>
     internal class SwDmUnknownDocument : SwDmDocument, IXUnknownDocument
     {
         private SwDmDocument m_SpecificDoc;
@@ -562,6 +625,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             m_CreateHandler.Invoke((ISwDmDocument)GetSpecific());
         }
 
+        /// <summary>
+        /// Converts the unknown wrapper into a concrete part, assembly, or drawing wrapper.
+        /// 把未知文档包装器转换为具体的零件、装配体或工程图包装器。
+        /// </summary>
         public IXDocument GetSpecific()
         {
             if (m_SpecificDoc != null)
@@ -594,6 +661,7 @@ namespace Xarial.XCad.SwDocumentManager.Documents
             if (!IsCommitted) 
             {
                 //TODO: implement copy cache on ElementCreator
+                // TODO：未来可把预创建阶段缓存的属性复制到具体文档包装器中。
                 m_SpecificDoc.Path = Path;
             }
 
@@ -603,6 +671,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         protected override bool IsDocumentTypeCompatible(SwDmDocumentType docType) => true;
     }
 
+    /// <summary>
+    /// Placeholder 3D unknown document used when the exact part/assembly type is still unresolved.
+    /// 当尚未确定是零件还是装配体时使用的三维未知文档占位实现。
+    /// </summary>
     internal class SwDmUnknownDocument3D : SwDmUnknownDocument, ISwDmDocument3D
     {
         public SwDmUnknownDocument3D(SwDmApplication dmApp, SwDMDocument doc, bool isCreated, Action<ISwDmDocument> createHandler, Action<ISwDmDocument> closeHandler, bool? isReadOnly = null)
@@ -619,6 +691,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         IXDocument3DSaveOperation IXDocument3D.PreCreateSaveAsOperation(string filePath) => throw new NotSupportedException();
     }
 
+    /// <summary>
+    /// Extension helpers for version-based document capability checks.
+    /// 基于版本判断文档能力的扩展辅助方法。
+    /// </summary>
     public static class SwDmDocumentExtension 
     {
         public static bool IsVersionNewerOrEqual(this ISwDmDocument doc, SwDmVersion_e version)

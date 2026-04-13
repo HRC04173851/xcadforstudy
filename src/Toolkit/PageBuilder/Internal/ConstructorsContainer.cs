@@ -16,25 +16,38 @@ using Xarial.XCad.Utils.PageBuilder.Exceptions;
 
 namespace Xarial.XCad.Utils.PageBuilder.Internal
 {
+    /// <summary>
+    /// Resolves element constructors for page builder controls.
+    /// <para>用于解析页面构建器控件元素构造器的容器。</para>
+    /// </summary>
+    /// <typeparam name="TPage">Page type.<para>页面类型。</para></typeparam>
+    /// <typeparam name="TGroup">Group type.<para>分组类型。</para></typeparam>
     internal class ConstructorsContainer<TPage, TGroup>
         where TPage : IPage
         where TGroup : IGroup
     {
         /// <summary>
         /// Constructors for the default data types (i.e. int, double, bool etc.)
+        /// <para>默认数据类型（如 int、double、bool 等）对应的构造器。</para>
         /// </summary>
         private readonly Dictionary<Type, IPageElementConstructor> m_DefaultConstructors;
 
         /// <summary>
         /// Constructors for the special types (i.e. complex, enums, etc.)
+        /// <para>特殊类型（如复合类型、枚举等）对应的构造器。</para>
         /// </summary>
         private readonly Dictionary<Type, IPageElementConstructor> m_SpecialTypeConstructors;
 
         /// <summary>
         /// Specific constructor for specific data types
+        /// <para>针对特定数据类型的专用构造器。</para>
         /// </summary>
         private readonly Dictionary<Type, IPageElementConstructor> m_SpecificConstructors;
 
+        /// <summary>
+        /// Initializes constructor container with available element constructors.
+        /// <para>使用可用元素构造器初始化构造器容器。</para>
+        /// </summary>
         internal ConstructorsContainer(params IPageElementConstructor[] constructors)
         {
             m_DefaultConstructors = new Dictionary<Type, IPageElementConstructor>();
@@ -92,6 +105,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Internal
             }
         }
 
+        /// <summary>
+        /// Creates element control by resolving best matching constructor.
+        /// <para>通过解析最佳匹配构造器创建元素控件。</para>
+        /// </summary>
         internal IControl CreateElement(Type type, IGroup parent, IAttributeSet atts, IMetadata[] metadata, ref int numberOfUsedIds)
         {
             if (type == null)
@@ -114,6 +131,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Internal
             return constr.Create(parent, atts, metadata, ref numberOfUsedIds);
         }
 
+        /// <summary>
+        /// Finds constructor according to specific/default/special type rules.
+        /// <para>按专用/默认/特殊类型规则查找构造器。</para>
+        /// </summary>
         private IPageElementConstructor FindConstructor(Type type, IAttributeSet atts)
         {
             if (atts == null)

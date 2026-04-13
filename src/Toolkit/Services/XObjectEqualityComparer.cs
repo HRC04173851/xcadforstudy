@@ -11,11 +11,16 @@ namespace Xarial.XCad.Services
 {
     /// <summary>
     /// Represents the generic equality of the <see cref="IXObject"/>
+    /// <para>提供 <see cref="IXObject"/> 的泛型相等性比较实现。</para>
     /// </summary>
-    /// <typeparam name="TObj">Specific type of <see cref="IXObject"/></typeparam>
+    /// <typeparam name="TObj">Specific type of <see cref="IXObject"/><para><see cref="IXObject"/> 的具体类型。</para></typeparam>
     public class XObjectEqualityComparer<TObj> : IEqualityComparer<TObj>
         where TObj : IXObject
     {
+        /// <summary>
+        /// Compares two xCAD objects for semantic equality.
+        /// <para>比较两个 xCAD 对象的语义相等性。</para>
+        /// </summary>
         public bool Equals(TObj x, TObj y)
         {
             if (object.ReferenceEquals(x, y))
@@ -31,6 +36,10 @@ namespace Xarial.XCad.Services
             return x.Equals(y);
         }
 
+        /// <summary>
+        /// Returns hash code placeholder for comparer usage in maps.
+        /// <para>返回用于映射比较器的哈希占位值。</para>
+        /// </summary>
         public int GetHashCode(TObj obj) => 0;
     }
 }

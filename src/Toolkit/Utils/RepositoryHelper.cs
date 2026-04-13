@@ -18,17 +18,19 @@ namespace Xarial.XCad.Toolkit.Utils
 {
     /// <summary>
     /// Helper functions of <see cref="IXRepository"/>
+    /// <para><see cref="IXRepository"/> 的通用辅助方法集合。</para>
     /// </summary>
     public static class RepositoryHelper
     {
         /// <summary>
         /// Helper tool to automatically create specific entities
+        /// <para>用于自动预创建特定实体类型的辅助方法。</para>
         /// </summary>
-        /// <typeparam name="TEnt">Generic entity</typeparam>
-        /// <typeparam name="TSpecEnt">Specific entity</typeparam>
-        /// <param name="repo">Repository</param>
-        /// <param name="factories">Factories of the specific objects</param>
-        /// <returns>Specific entity</returns>
+        /// <typeparam name="TEnt">Generic entity<para>通用实体类型。</para></typeparam>
+        /// <typeparam name="TSpecEnt">Specific entity<para>目标特定实体类型。</para></typeparam>
+        /// <param name="repo">Repository<para>目标仓储。</para></param>
+        /// <param name="factories">Factories of the specific objects<para>可用实体工厂表达式集合。</para></param>
+        /// <returns>Specific entity<para>返回创建出的特定实体。</para></returns>
         /// <exception cref="EntityNotSupportedException"/>
         public static TSpecEnt PreCreate<TEnt, TSpecEnt>(IXRepository<TEnt> repo, params Expression<Func<TEnt>>[] factories)
             where TEnt : IXTransaction
@@ -53,6 +55,7 @@ namespace Xarial.XCad.Toolkit.Utils
 
         /// <summary>
         /// Removes the entities
+        /// <para>移除实体集合。</para>
         /// </summary>
         /// <typeparam name="TEnt">Type of entity</typeparam>
         /// <param name="repo">Repository</param>
@@ -79,6 +82,7 @@ namespace Xarial.XCad.Toolkit.Utils
 
         /// <summary>
         /// Tries to find the <see cref="IHasName"/> entity in the repository
+        /// <para>尝试按名称在仓储中查找 <see cref="IHasName"/> 实体。</para>
         /// </summary>
         /// <typeparam name="TEnt">Entity type</typeparam>
         /// <param name="repo">Repository</param>
@@ -96,6 +100,7 @@ namespace Xarial.XCad.Toolkit.Utils
 
         /// <summary>
         /// Gets the entity by name
+        /// <para>按名称获取实体。</para>
         /// </summary>
         /// <typeparam name="TEnt">Type of entity</typeparam>
         /// <param name="repo">Target repository</param>
@@ -117,6 +122,7 @@ namespace Xarial.XCad.Toolkit.Utils
 
         /// <summary>
         /// Performs the default commiting of entities into repository one-by-one
+        /// <para>按默认方式逐个提交实体到仓储。</para>
         /// </summary>
         /// <typeparam name="TEnt">Entity type</typeparam>
         /// <param name="repo">Repository</param>
@@ -146,6 +152,7 @@ namespace Xarial.XCad.Toolkit.Utils
 
         /// <summary>
         /// Performs the default filtering of the entities
+        /// <para>按默认规则过滤实体集合。</para>
         /// </summary>
         /// <typeparam name="TEnt"></typeparam>
         /// <param name="repoEnts">Repository entities to filter</param>
@@ -181,6 +188,7 @@ namespace Xarial.XCad.Toolkit.Utils
 
         /// <summary>
         /// Checks if the specified entity matches the filter
+        /// <para>检查指定实体是否匹配过滤条件。</para>
         /// </summary>
         /// <typeparam name="TEnt">Entity type</typeparam>
         /// <param name="ent">Entity to match</param>

@@ -16,6 +16,7 @@ namespace Xarial.XCad.Toolkit.Utils
 {
     /// <summary>
     /// Creates fault object of the specified type
+    /// <para>为指定接口类型创建故障对象（调用时抛出不支持异常）。</para>
     /// </summary>
     public class FaultObjectFactory
     {
@@ -24,6 +25,10 @@ namespace Xarial.XCad.Toolkit.Utils
 
         private readonly Dictionary<Type, Type> m_Cache;
 
+        /// <summary>
+        /// Initializes dynamic fault object factory.
+        /// <para>初始化动态故障对象工厂。</para>
+        /// </summary>
         public FaultObjectFactory() 
         {
             m_AssmBuilder = AssemblyBuilder.DefineDynamicAssembly(
@@ -38,6 +43,10 @@ namespace Xarial.XCad.Toolkit.Utils
             where T : IXObject 
             => (T)CreateFaultObject(typeof(T));
 
+        /// <summary>
+        /// Creates fault object for specified xCAD interface type.
+        /// <para>为指定 xCAD 接口类型创建故障对象实例。</para>
+        /// </summary>
         public IFaultObject CreateFaultObject(Type type)
         {
             if (!m_Cache.TryGetValue(type, out Type impType))

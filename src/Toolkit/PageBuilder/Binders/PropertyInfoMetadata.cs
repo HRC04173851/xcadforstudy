@@ -15,8 +15,16 @@ using Xarial.XCad.Utils.PageBuilder;
 
 namespace Xarial.XCad.Toolkit.PageBuilder.Binders
 {
+    /// <summary>
+    /// Metadata implementation bound to reflected property value.
+    /// <para>绑定到反射属性值的元数据实现。</para>
+    /// </summary>
     public class PropertyInfoMetadata : IMetadata
     {
+        /// <summary>
+        /// Raised when metadata value changes.
+        /// <para>元数据值变化时触发。</para>
+        /// </summary>
         public event Action<IMetadata, object> Changed;
 
         private readonly PropertyInfo m_PrpInfo;
@@ -24,8 +32,16 @@ namespace Xarial.XCad.Toolkit.PageBuilder.Binders
 
         private object m_CurrentContext;
 
+        /// <summary>
+        /// Metadata tag key.
+        /// <para>元数据标签键。</para>
+        /// </summary>
         public object Tag { get; }
 
+        /// <summary>
+        /// Gets or sets metadata value from current context.
+        /// <para>从当前上下文读取或设置元数据值。</para>
+        /// </summary>
         public object Value 
         {
             get => GetValue();
@@ -34,6 +50,10 @@ namespace Xarial.XCad.Toolkit.PageBuilder.Binders
 
         private readonly IContextProvider m_ContextProvider;
 
+        /// <summary>
+        /// Initializes metadata binding for property.
+        /// <para>初始化属性元数据绑定。</para>
+        /// </summary>
         public PropertyInfoMetadata(PropertyInfo prpInfo, PropertyInfo[] parents, object tag, IContextProvider contextProvider)
         {
             m_PrpInfo = prpInfo;

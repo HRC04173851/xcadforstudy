@@ -7,9 +7,18 @@
 
 namespace Xarial.XCad.Utils.PageBuilder.Base
 {
+    /// <summary>
+    /// Creates page instances from attribute set.
+    /// <para>根据特性集合创建页面实例。</para>
+    /// </summary>
+    /// <typeparam name="TPage">Page type.<para>页面类型。</para></typeparam>
     public interface IPageConstructor<TPage>
         where TPage : IPage
     {
+        /// <summary>
+        /// Creates page object.
+        /// <para>创建页面对象。</para>
+        /// </summary>
         TPage Create(IAttributeSet atts);
     }
 }

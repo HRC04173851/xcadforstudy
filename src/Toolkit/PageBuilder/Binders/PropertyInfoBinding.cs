@@ -20,10 +20,19 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.Utils.PageBuilder.Binders
 {
+    /// <summary>
+    /// Binding implementation based on reflected property descriptor.
+    /// <para>基于反射属性描述符的数据绑定实现。</para>
+    /// </summary>
+    /// <typeparam name="TDataModel">Data model type.<para>数据模型类型。</para></typeparam>
     public class PropertyInfoBinding<TDataModel> : Binding<TDataModel>
     {
         private readonly IList<IControlDescriptor> m_Parents;
 
+        /// <summary>
+        /// Descriptor of the bound property.
+        /// <para>已绑定属性的描述符。</para>
+        /// </summary>
         public IControlDescriptor ControlDescriptor { get; }
 
         private readonly IMetadata[] m_Metadata;
@@ -32,6 +41,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Binders
 
         private readonly IContextProvider m_ContextProvider;
 
+        /// <summary>
+        /// Initializes property binding.
+        /// <para>初始化属性绑定对象。</para>
+        /// </summary>
         internal PropertyInfoBinding(IControl control,
             IControlDescriptor ctrlDesc, IList<IControlDescriptor> parents, IMetadata[] metadata, IContextProvider contextProvider, bool silent)
             : base(control, silent)
@@ -58,6 +71,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Binders
             }
         }
 
+        /// <summary>
+        /// Metadata linked to this binding.
+        /// <para>与该绑定关联的元数据。</para>
+        /// </summary>
         public override IMetadata[] Metadata => m_Metadata;
 
         protected override void SetDataModelValue(object value)

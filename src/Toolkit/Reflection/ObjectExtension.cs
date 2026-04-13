@@ -9,8 +9,16 @@ using System;
 
 namespace Xarial.XCad.Utils.Reflection
 {
+    /// <summary>
+    /// Provides internal object conversion helper methods.
+    /// <para>提供内部对象转换辅助方法。</para>
+    /// </summary>
     internal static class ObjectExtension
     {
+        /// <summary>
+        /// Converts boxed value to target type used by page builder/control binding.
+        /// <para>将装箱值转换为页面构建器或控件绑定所需的目标类型。</para>
+        /// </summary>
         internal static object Cast(this object value, Type type)
         {
             object destVal = null;

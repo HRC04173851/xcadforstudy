@@ -14,12 +14,15 @@ namespace Xarial.XCad.Toolkit.Exceptions
 {
     /// <summary>
     /// Exception indicates that proeprty of the <see cref="Base.IXTransaction"/> cannot be modified after the transaction is committed
+    /// <para>异常指示在事务（Transaction）提交后，<see cref="Base.IXTransaction"/> 的属性不能被修改。这里通常指SolidWorks等CAD环境中的操作事务已被执行。</para>
     /// </summary>
     public class CommittedElementPropertyChangeNotSupported : NotSupportedException
     {
         /// <summary>
         /// Default constructor
+        /// <para>默认构造函数。</para>
         /// </summary>
+        /// <param name="prpName">属性名称。</param>
         public CommittedElementPropertyChangeNotSupported([CallerMemberName]string prpName = "") 
             : base($"Property '{prpName}' can only be changed when element is not committed") 
         {

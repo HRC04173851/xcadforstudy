@@ -17,11 +17,13 @@ namespace Xarial.XCad.Toolkit.Utils
 {
     /// <summary>
     /// Represents the thumbnai
+    /// <para>表示 Shell 缩略图资源。</para>
     /// </summary>
     public interface IShellThumbnail : IDisposable 
     {
         /// <summary>
         /// hBitmap of the thumbnail image
+        /// <para>缩略图图像的 hBitmap 句柄。</para>
         /// </summary>
         IntPtr BitmapHandle { get; }
     }
@@ -72,6 +74,10 @@ namespace Xarial.XCad.Toolkit.Utils
 
         #endregion
 
+        /// <summary>
+        /// Creates shell thumbnail from file path.
+        /// <para>根据文件路径创建 Shell 缩略图。</para>
+        /// </summary>
         public ShellThumbnail(string filePath, int width = 1024, int height = 1024) 
         {
             if (!File.Exists(filePath))
@@ -90,6 +96,10 @@ namespace Xarial.XCad.Toolkit.Utils
             BitmapHandle = hBitmap;
         }
 
+        /// <summary>
+        /// Releases thumbnail bitmap handle.
+        /// <para>释放缩略图位图句柄资源。</para>
+        /// </summary>
         public void Dispose()
         {
             try

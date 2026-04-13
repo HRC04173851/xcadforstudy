@@ -26,14 +26,32 @@ using Xarial.XCad.SwDocumentManager.Documents;
 
 namespace Xarial.XCad.SwDocumentManager
 {
+    /// <summary>
+    /// Document Manager application wrapper exposed through xCAD.
+    /// 通过 xCAD 暴露的 Document Manager 应用程序包装器，用于把底层 COM API 映射为统一的 xCAD 应用入口。
+    /// </summary>
     public interface ISwDmApplication : IXApplication
     {
+        /// <summary>
+        /// Underlying SOLIDWORKS Document Manager COM application.
+        /// 底层的 SOLIDWORKS Document Manager COM 应用对象。
+        /// </summary>
         ISwDMApplication SwDocMgr { get; }
+
+        /// <summary>
+        /// License key required to establish the Document Manager session.
+        /// 建立 Document Manager 会话所需的许可证密钥。
+        /// </summary>
         SecureString LicenseKey { get; set; }
+
         new ISwDmDocumentCollection Documents { get; }
         new ISwDmVersion Version { get; }
     }
 
+    /// <summary>
+    /// Implements lazy connection, lifecycle management, and document ownership for the Document Manager environment.
+    /// 实现 Document Manager 环境的延迟连接、生命周期管理以及文档仓库的统一持有逻辑。
+    /// </summary>
     internal class SwDmApplication : ISwDmApplication
     {
         #region Not Supported        
@@ -109,6 +127,10 @@ namespace Xarial.XCad.SwDocumentManager
             Documents = new SwDmDocumentCollection(this);
         }
 
+        /// <summary>
+        /// Creates the native Document Manager application when the pre-created xCAD wrapper is committed.
+        /// 当预创建的 xCAD 包装器被提交时，再真正创建底层 Document Manager 应用对象。
+        /// </summary>
         private ISwDMApplication CreateApplication(CancellationToken cancellationToken)
         {
             var licKey = LicenseKey;
@@ -116,6 +138,10 @@ namespace Xarial.XCad.SwDocumentManager
             return SwDmApplicationFactory.ConnectToDm(licKey);
         }
 
+        /// <summary>
+        /// Closes all opened document wrappers before releasing the application COM object.
+        /// 在释放应用程序 COM 对象之前，先关闭当前包装器管理的全部已打开文档。
+        /// </summary>
         public void Close()
         {
             if (!m_IsClosed)
@@ -134,6 +160,10 @@ namespace Xarial.XCad.SwDocumentManager
             }
         }
 
+        /// <summary>
+        /// Releases COM resources owned by the application wrapper.
+        /// 释放应用包装器持有的 COM 资源，避免 Document Manager 句柄泄漏。
+        /// </summary>
         public void Dispose()
         {
             if (!m_IsDisposed)
@@ -155,10 +185,18 @@ namespace Xarial.XCad.SwDocumentManager
             }
         }
 
+        /// <summary>
+        /// Finalizes the lazy application creation.
+        /// 完成延迟创建流程，使预创建对象转为可用的 Document Manager 应用实例。
+        /// </summary>
         public void Commit(CancellationToken cancellationToken) 
             => m_Creator.Create(cancellationToken);
     }
 
+    /// <summary>
+    /// Convenience extensions for version comparison.
+    /// 便捷的版本比较扩展，便于按 SOLIDWORKS 年代版本做能力分支判断。
+    /// </summary>
     public static class SwDmApplicationExtension
     {
         public static bool IsVersionNewerOrEqual(this ISwDmApplication app, SwDmVersion_e version) 

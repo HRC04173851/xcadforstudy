@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Apply custom icon for the toggle button in the toggled off state
+    /// 为切换按钮在关闭状态应用自定义图标
     /// </summary>
     public class BitmapToggleButtonAttribute : BitmapButtonAttribute
     {

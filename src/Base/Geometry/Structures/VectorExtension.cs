@@ -14,11 +14,13 @@ namespace Xarial.XCad.Geometry.Structures
 {
     /// <summary>
     /// Additional methods for the vector
+    /// 向量相关扩展方法
     /// </summary>
     public static class VectorExtension
     {
         /// <summary>
         /// Creates perpendicular vector
+        /// 创建任意一个与当前向量垂直的向量
         /// </summary>
         /// <param name="dir">Vector to base on</param>
         /// <param name="tol">Tolerance</param>
@@ -42,6 +44,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Finds the angle between vectors
+        /// 计算两个向量夹角
         /// </summary>
         /// <param name="thisVec">First vector</param>
         /// <param name="otherVec">Other vector</param>
@@ -79,6 +82,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Gets the full angle (360 degress) between 2 vectors on the plane
+        /// 获取两个向量在指定平面上的有向全角（0~2π 映射）
         /// </summary>
         /// <param name="thisVec">First vector</param>
         /// <param name="otherVec">Second vector</param>
@@ -116,6 +120,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Checks if 2 vectors are parallel
+        /// 判断两个向量是否平行
         /// </summary>
         /// <param name="firstVec">First vector</param>
         /// <param name="secondVec">Second vector</param>
@@ -130,6 +135,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Finds the angle between this vector and plane
+        /// 计算向量与平面的夹角
         /// </summary>
         /// <param name="vec">Vector</param>
         /// <param name="plane">Plane</param>
@@ -139,6 +145,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Projects vector onto the specified plane
+        /// 将向量投影到指定平面
         /// </summary>
         /// <param name="vec">Vector to project</param>
         /// <param name="plane">Target plane</param>

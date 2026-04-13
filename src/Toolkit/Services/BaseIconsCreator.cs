@@ -21,13 +21,25 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.Toolkit.Services
 {
+    /// <summary>
+    /// Represents collection of generated image file resources.
+    /// <para>表示生成的图像文件资源集合。</para>
+    /// </summary>
     public interface IImageCollection : IDisposable
     {
+        /// <summary>
+        /// File paths of generated images.
+        /// <para>生成图像文件的路径集合。</para>
+        /// </summary>
         string[] FilePaths { get; }
     }
 
     public class ImageCollection : IImageCollection
     {
+        /// <summary>
+        /// Gets generated image file paths.
+        /// <para>获取生成的图像文件路径。</para>
+        /// </summary>
         public string[] FilePaths { get; }
 
         private bool m_IsDisposed;
@@ -36,6 +48,10 @@ namespace Xarial.XCad.Toolkit.Services
 
         private readonly bool m_IsPermanent;
 
+        /// <summary>
+        /// Initializes image collection.
+        /// <para>初始化图像集合对象。</para>
+        /// </summary>
         public ImageCollection(string dir, string[] filePaths, bool permanent)
         {
             TempDirectory = dir;
@@ -43,6 +59,10 @@ namespace Xarial.XCad.Toolkit.Services
             FilePaths = filePaths;
         }
 
+        /// <summary>
+        /// Disposes temporary image files when collection is not permanent.
+        /// <para>当集合非永久模式时，释放并删除临时图像文件。</para>
+        /// </summary>
         public void Dispose()
         {
             if (!m_IsDisposed) 
@@ -86,12 +106,20 @@ namespace Xarial.XCad.Toolkit.Services
         }
     }
 
+    /// <summary>
+    /// Base implementation of icon-to-image converter service.
+    /// <para>图标转图像服务的基础实现。</para>
+    /// </summary>
     public class BaseIconsCreator : IIconsCreator
     {
         private readonly string m_DefaultFolder;
 
         private readonly List<ImageCollection> m_CreatedImages;
 
+        /// <summary>
+        /// Initializes creator with auto-generated temporary folder.
+        /// <para>使用自动生成的临时目录初始化图标创建器。</para>
+        /// </summary>
         public BaseIconsCreator()
             : this(Path.Combine(Path.GetTempPath(), Guid.NewGuid().ToString()))
         {
@@ -99,6 +127,7 @@ namespace Xarial.XCad.Toolkit.Services
 
         /// <param name="iconsDir">Directory to store the icons</param>
         /// <param name="disposeIcons">True to remove the icons when class is disposed</param>
+        /// <para>将输出目录设置为指定目录。</para>
         public BaseIconsCreator(string iconsDir)
         {
             m_DefaultFolder = iconsDir;
@@ -107,6 +136,7 @@ namespace Xarial.XCad.Toolkit.Services
 
         /// <summary>
         /// Replaces the pixels in the image based on the custom replacer handler
+        /// <para>按像素执行自定义替换逻辑，用于掩码或颜色修正。</para>
         /// </summary>
         /// <param name="icon">Image to replace</param>
         /// <param name="mask">Handler to replace which is called for each pixel</param>
@@ -138,6 +168,10 @@ namespace Xarial.XCad.Toolkit.Services
             return maskImg;
         }
 
+        /// <summary>
+        /// Converts single icon into image files of all configured sizes.
+        /// <para>将单个图标转换为所有配置尺寸的图像文件。</para>
+        /// </summary>
         public IImageCollection ConvertIcon(IIcon icon, string folder = "")
         {
             var iconsFolder = GetIconsFolder(folder);
@@ -161,6 +195,10 @@ namespace Xarial.XCad.Toolkit.Services
             return imgsColl;
         }
         
+        /// <summary>
+        /// Creates bitmap strip(s) for icon group preserving size and format consistency.
+        /// <para>为图标组创建位图序列，并保持尺寸与格式一致性。</para>
+        /// </summary>
         /// <inheritdoc/>
         public IImageCollection ConvertIconsGroup(IIcon[] icons, string folder = "")
         {

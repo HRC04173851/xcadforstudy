@@ -20,37 +20,44 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Represents the drawing view on <see cref="IXSheet"/>
+    /// 表示 <see cref="IXSheet"/> 上的工程图视图
     /// </summary>
     public interface IXDrawingView : IXSelObject, IXObjectContainer, IDimensionable, IXTransaction
     {
         /// <summary>
         /// Display mode of the view
+        /// 视图显示模式
         /// </summary>
         /// <remarks>null means that display data is inherited from the base view</remarks>
         ViewDisplayMode_e? DisplayMode { get; set; }
 
         /// <summary>
         /// Bodies scope of this view
+        /// 该视图可见实体体范围
         /// </summary>
         IXBody[] Bodies { get; set; }
 
         /// <summary>
         /// Sketch space of this sheet
+        /// 该视图关联的草图空间
         /// </summary>
         IXSketch2D Sketch { get; }
 
         /// <summary>
         /// Collection of annotations
+        /// 注解集合
         /// </summary>
         IXAnnotationRepository Annotations { get; }
 
         /// <summary>
         /// Visible entities from this view
+        /// 该视图中的可见几何实体
         /// </summary>
         IXEntityRepository VisibleEntities { get; }
 
         /// <summary>
         /// Returns the visible polylines of the drawing view
+        /// 返回该视图可见多段线数据
         /// </summary>
         ViewPolylineData[] Polylines { get; }
 

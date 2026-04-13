@@ -96,13 +96,22 @@ namespace Xarial.XCad.Toolkit.Data
 
     /// <summary>
     /// Represents the implementation of Storage in .NET
+    /// <para>表示 .NET 中对 COM 结构化存储（Structured Storage）的实现封装。</para>
     /// </summary>
     public class ComStorage : IStorage
     {
         private bool m_IsWritable;
 
+        /// <summary>
+        /// Underlying COM storage instance.
+        /// <para>底层 COM 存储实例对象。</para>
+        /// </summary>
         public IComStorage Storage { get; private set; }
 
+        /// <summary>
+        /// Initializes storage wrapper and loads existing COM storage object.
+        /// <para>初始化存储包装器并加载现有 COM 存储对象。</para>
+        /// </summary>
         public ComStorage(IComStorage storage, bool writable) : this(writable)
         {
             Load(storage);
@@ -123,6 +132,10 @@ namespace Xarial.XCad.Toolkit.Data
             Storage = storage;
         }
 
+        /// <summary>
+        /// Tries to open sub-storage by name.
+        /// <para>尝试按名称打开子存储。</para>
+        /// </summary>
         public IStorage TryOpenStorage(string storageName, bool createIfNotExist)
         {
             try
@@ -147,6 +160,10 @@ namespace Xarial.XCad.Toolkit.Data
             }
         }
 
+        /// <summary>
+        /// Tries to open sub-stream by name.
+        /// <para>尝试按名称打开子流。</para>
+        /// </summary>
         public Stream TryOpenStream(string streamName, bool createIfNotExist)
         {
             try
@@ -171,6 +188,10 @@ namespace Xarial.XCad.Toolkit.Data
             }
         }
 
+        /// <summary>
+        /// Returns names of all stream elements in current storage.
+        /// <para>返回当前存储中所有流元素名称。</para>
+        /// </summary>
         public string[] GetSubStreamNames()
         {
             return EnumElements()
@@ -178,6 +199,10 @@ namespace Xarial.XCad.Toolkit.Data
                 .Select(e => e.pwcsName).ToArray();
         }
 
+        /// <summary>
+        /// Returns names of all nested storages.
+        /// <para>返回当前存储中所有子存储名称。</para>
+        /// </summary>
         public string[] GetSubStorageNames()
         {
             return EnumElements()
@@ -228,6 +253,10 @@ namespace Xarial.XCad.Toolkit.Data
             } while (numReturned > 0);
         }
 
+        /// <summary>
+        /// Commits and releases underlying COM storage.
+        /// <para>提交并释放底层 COM 存储对象。</para>
+        /// </summary>
         public void Close()
         {
             if (Storage != null)
@@ -258,6 +287,10 @@ namespace Xarial.XCad.Toolkit.Data
             }
         }
 
+        /// <summary>
+        /// Removes sub-element (stream/storage) by name.
+        /// <para>按名称移除子元素（流或子存储）。</para>
+        /// </summary>
         public void RemoveSubElement(string name)
         {
             Storage.DestroyElement(name);

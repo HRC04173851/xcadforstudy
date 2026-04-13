@@ -17,6 +17,7 @@ namespace Xarial.XCad.Features.CustomFeature.Attributes
     /// when changed within the <see cref="IXCustomFeatureDefinition.OnRebuild(IXApplication, Documents.IXDocument, IXCustomFeature)"/>
     /// as well as will contain the current value of the dimension when it got modified by the user in the
     /// graphics area
+    /// 指定当前属性为宏特征尺寸参数，支持参数与图形区尺寸值双向同步
     /// </summary>
     /// <remarks>This should only be used for numeric properties</remarks>
     [AttributeUsage(AttributeTargets.Property)]
@@ -26,6 +27,7 @@ namespace Xarial.XCad.Features.CustomFeature.Attributes
 
         /// <summary>
         /// Marks this property as dimension and assigns the dimension type
+        /// 将属性标记为尺寸参数并指定尺寸类型
         /// </summary>
         /// <param name="dimType">Type of the dimension</param>
         public ParameterDimensionAttribute(CustomFeatureDimensionType_e dimType)

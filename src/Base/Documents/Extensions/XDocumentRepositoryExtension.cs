@@ -15,11 +15,13 @@ namespace Xarial.XCad.Documents.Extensions
 {
     /// <summary>
     /// Additonal methods for <see cref="IXDocumentRepository"/>
+    /// <see cref="IXDocumentRepository"/> 的扩展方法
     /// </summary>
     public static class XDocumentRepositoryExtension
     {
         /// <summary>
         /// Creates new part document
+        /// 创建新零件文档
         /// </summary>
         /// <param name="repo">This repository</param>
         /// <returns>New part</returns>
@@ -28,6 +30,7 @@ namespace Xarial.XCad.Documents.Extensions
 
         /// <summary>
         /// Creates new assembly document
+        /// 创建新装配体文档
         /// </summary>
         /// <param name="repo">This repository</param>
         /// <returns>New aseembly</returns>
@@ -36,6 +39,7 @@ namespace Xarial.XCad.Documents.Extensions
 
         /// <summary>
         /// Creates new drawing document
+        /// 创建新工程图文档
         /// </summary>
         /// <param name="repo">This repository</param>
         /// <returns>New drawing</returns>

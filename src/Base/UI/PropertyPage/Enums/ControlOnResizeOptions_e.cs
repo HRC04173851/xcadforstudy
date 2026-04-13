@@ -7,6 +7,10 @@
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Control resize behavior options
+    /// 控件缩放行为选项
+    /// </summary>
     public enum ControlOnResizeOptions_e
     {
         LockLeft = 1,

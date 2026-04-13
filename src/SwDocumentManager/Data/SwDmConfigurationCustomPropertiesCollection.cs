@@ -15,6 +15,10 @@ using System.Linq;
 
 namespace Xarial.XCad.SwDocumentManager.Data
 {
+    /// <summary>
+    /// Repository of configuration-specific custom properties.
+    /// 配置特定（Configuration-specific）的自定义属性仓库。
+    /// </summary>
     internal class SwDmConfigurationCustomPropertiesCollection : SwDmCustomPropertiesCollection
     {
         public override int Count => m_Conf.Configuration.GetCustomPropertyCount();
@@ -26,6 +30,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Conf = conf;
         }
 
+        /// <summary>
+        /// Enumerates configuration properties except the internal quantity placeholder property.
+        /// 枚举指定配置的自定义属性，并排除内部数量占位属性。
+        /// </summary>
         public override IEnumerator<IXProperty> GetEnumerator()
         {
             var prpNames = m_Conf.Configuration.GetCustomPropertyNames() as string[] ?? new string[0];
@@ -42,6 +50,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             .Contains(name, StringComparer.CurrentCultureIgnoreCase) == true;
     }
 
+    /// <summary>
+    /// Custom property implementation backed by a specific configuration.
+    /// 由某个具体配置驱动的自定义属性实现。
+    /// </summary>
     internal class SwDmConfigurationCustomProperty : SwDmCustomProperty
     {
         private readonly SwDmConfiguration m_Conf;
@@ -52,6 +64,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Conf = conf;
         }
 
+        /// <summary>
+        /// Adds a new property to the active configuration record.
+        /// 向当前配置记录添加新的自定义属性。
+        /// </summary>
         protected override void AddValue(object value)
         {
             SwDmCustomInfoType type = GetPropertyType(value);
@@ -64,15 +80,27 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Conf.Document.IsDirty = true;
         }
 
+        /// <summary>
+        /// Reads the raw property payload from the configuration property table.
+        /// 从配置属性表读取原始属性数据。
+        /// </summary>
         protected override string ReadRawValue(out SwDmCustomInfoType type, out string linkedTo)
             => ((ISwDMConfiguration5)m_Conf.Configuration).GetCustomPropertyValues(Name, out type, out linkedTo);
 
+        /// <summary>
+        /// Updates an existing configuration-specific property.
+        /// 更新配置特定的现有自定义属性。
+        /// </summary>
         protected override void SetValue(object value)
         {
             m_Conf.Configuration.SetCustomProperty(Name, value?.ToString());
             m_Conf.Document.IsDirty = true;
         }
 
+        /// <summary>
+        /// Deletes the configuration-specific property from the document model.
+        /// 从文档模型中删除该配置特定属性。
+        /// </summary>
         internal override void Delete()
         {
             if (!m_Conf.Configuration.DeleteCustomProperty(Name))

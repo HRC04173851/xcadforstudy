@@ -13,6 +13,7 @@ namespace Xarial.XCad.Sketch
 {
     /// <summary>
     /// Represents sketch text
+    /// 表示草图文本
     /// </summary>
     public interface IXSketchText : IXSketchSegment
     {

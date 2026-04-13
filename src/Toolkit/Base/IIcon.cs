@@ -12,48 +12,57 @@ namespace Xarial.XCad.Toolkit.Base
 {
     /// <summary>
     /// Format of the image icon
+    /// <para>图像图标的格式。</para>
     /// </summary>
     public enum IconImageFormat_e
     {
         /// <summary>
         /// .bmp
+        /// <para>位图格式（.bmp）。</para>
         /// </summary>
         Bmp,
 
         /// <summary>
         /// .png
+        /// <para>便携式网络图形格式（.png）。</para>
         /// </summary>
         Png,
 
         /// <summary>
         /// .jpeg
+        /// <para>联合图片专家组格式（.jpeg）。</para>
         /// </summary>
         Jpeg
     }
 
     /// <summary>
     /// Represents the specific icon descriptor
+    /// <para>表示特定的图标描述符。</para>
     /// </summary>
     public interface IIcon
     {
         /// <summary>
         /// Indicates that this icon is permanent and should not be removed on dispose
+        /// <para>指示此图标是永久的，在释放（Dispose）时不应被移除。</para>
         /// </summary>
         bool IsPermanent { get; }
 
         /// <summary>
         /// Transparency key to be applied to transparent color
+        /// <para>应用于透明颜色的透明键（即表示透明色的掩码颜色）。</para>
         /// </summary>
         Color TransparencyKey { get; }
 
         /// <summary>
         /// List of required icon sizes
+        /// <para>所需图标大小（尺寸）的列表。</para>
         /// </summary>
-        /// <returns></returns>
+        /// <returns>图标规范（IIconSpec）数组。<para>返回图标尺寸规范的数组。</para></returns>
         IIconSpec[] IconSizes { get; }
 
         /// <summary>
         /// Image format
+        /// <para>图像格式。</para>
         /// </summary>
         IconImageFormat_e Format { get; }
     }

@@ -15,38 +15,45 @@ namespace Xarial.XCad.Geometry.Evaluation
 {
     /// <summary>
     /// Type of intersection
+    /// 相交类型
     /// </summary>
     public enum RayIntersectionType_e
     {
         /// <summary>
         /// Ray enters the body at hit point
+        /// 射线在命中点进入几何体
         /// </summary>
         Enter,
 
         /// <summary>
         /// Ray exists the body at hit point
+        /// 射线在命中点离开几何体
         /// </summary>
         Exit
     }
 
     /// <summary>
     /// Information about ray intersection
+    /// 射线相交信息
     /// </summary>
     public interface IXRay : IXTransaction
     {
         /// <summary>
         /// Axis
+        /// 射线轴（起点与方向）
         /// </summary>
         Axis Axis { get; }
 
         /// <summary>
         /// Hit result
+        /// 命中结果集合
         /// </summary>
         RayHitResult[] Hits { get; }
     }
 
     /// <summary>
     /// Result of ray hit
+    /// 射线命中结果
     /// </summary>
     public class RayHitResult
     {

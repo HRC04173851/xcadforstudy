@@ -12,11 +12,13 @@ namespace Xarial.XCad.Features
 {
     /// <summary>
     /// Additional methods for <see cref="IXFeatureRepository"/>
+    /// <see cref="IXFeatureRepository"/> 的扩展方法
     /// </summary>
     public static class XFeatureRepositoryExtension
     {
         /// <summary>
         /// Creates custom feature with specified parameters
+        /// 使用指定参数创建自定义特征
         /// </summary>
         /// <typeparam name="TDef">Definition</typeparam>
         /// <typeparam name="TParams">Paramteres</typeparam>
@@ -37,6 +39,7 @@ namespace Xarial.XCad.Features
 
         /// <summary>
         /// Creates parameterlsess custom feature
+        /// 创建无参数自定义特征
         /// </summary>
         /// <typeparam name="TDef">Defintion of the custom feature</typeparam>
         /// <param name="feats">Feature repository</param>
@@ -53,6 +56,7 @@ namespace Xarial.XCad.Features
 
         /// <summary>
         /// Starts the insertion of the custom feature with page editor
+        /// 启动带页面编辑器的自定义特征插入流程
         /// </summary>
         /// <typeparam name="TDef">Defintion</typeparam>
         /// <typeparam name="TParams">Parameters</typeparam>
@@ -66,24 +70,28 @@ namespace Xarial.XCad.Features
 
         /// <summary>
         /// Creates a template for 2D sketch
+        /// 预创建二维草图模板
         /// </summary>
         /// <returns>2D sketch template</returns>
         public static IXSketch2D PreCreate2DSketch(this IXFeatureRepository feats) => feats.PreCreate<IXSketch2D>();
 
         /// <summary>
         /// Creates a template for 3D sketch
+        /// 预创建三维草图模板
         /// </summary>
         /// <returns>2D sketch template</returns>
         public static IXSketch3D PreCreate3DSketch(this IXFeatureRepository feats) => feats.PreCreate<IXSketch3D>();
 
         /// <summary>
         /// Pre-creates custom feature
+        /// 预创建自定义特征
         /// </summary>
         /// <returns>Instance of custom feature</returns>
         public static IXCustomFeature PreCreateCustomFeature(this IXFeatureRepository feats) => feats.PreCreate<IXCustomFeature>();
 
         /// <summary>
         /// Pre-creates dumb body feature
+        /// 预创建哑实体特征
         /// </summary>
         /// <returns>Instance of dumb body feature</returns>
         public static IXDumbBody PreCreateDumbBody(this IXFeatureRepository feats) => feats.PreCreate<IXDumbBody>();

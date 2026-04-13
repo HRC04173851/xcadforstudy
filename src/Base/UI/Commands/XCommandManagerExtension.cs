@@ -22,6 +22,7 @@ namespace Xarial.XCad.UI.Commands
 {
     /// <summary>
     /// Additional methods for <see cref="IXCommandManager"/>
+    /// <see cref="IXCommandManager"/> 的扩展方法
     /// </summary>
     public static class XCommandManagerExtension
     {
@@ -29,12 +30,14 @@ namespace Xarial.XCad.UI.Commands
 
         /// <summary>
         /// Specific command spec associated with enumeration
+        /// 与枚举值关联的命令规格
         /// </summary>
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public class EnumCommandSpec : CommandSpec
         {
             /// <summary>
             /// Enumeration value of this command spec
+            /// 该命令规格对应的枚举值
             /// </summary>
             [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
             public Enum Value { get; }
@@ -57,6 +60,7 @@ namespace Xarial.XCad.UI.Commands
 
         /// <summary>
         /// Adds command group based on the enumeration where each enumeration field represents the command button
+        /// 基于枚举添加命令组（每个枚举项对应一个命令按钮）
         /// </summary>
         /// <typeparam name="TCmdEnum">Enumeration with commands</typeparam>
         /// <param name="cmdMgr">Command manager</param>
@@ -78,6 +82,7 @@ namespace Xarial.XCad.UI.Commands
 
         /// <summary>
         /// Adds context menu based on the enumeration
+        /// 基于枚举添加上下文菜单
         /// </summary>
         ///<inheritdoc cref="AddCommandGroup{TCmdEnum}(IXCommandManager)"/>
         public static IEnumCommandGroup<TCmdEnum> AddContextMenu<TCmdEnum>(this IXCommandManager cmdMgr)

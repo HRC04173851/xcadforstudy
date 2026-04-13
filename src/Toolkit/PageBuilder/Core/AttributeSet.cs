@@ -15,6 +15,10 @@ using Xarial.XCad.Utils.PageBuilder.Binders;
 
 namespace Xarial.XCad.Utils.PageBuilder.Core
 {
+    /// <summary>
+    /// Stores page-element attributes resolved from model metadata.
+    /// <para>存储从模型元数据解析得到的页面元素特性集合。</para>
+    /// </summary>
     public class AttributeSet : IAttributeSet
     {
         private readonly Dictionary<Type, List<IAttribute>> m_Attributes;
@@ -26,6 +30,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Core
         public string Name { get; }
         public object Tag { get; }
 
+        /// <summary>
+        /// Initializes a new attribute set instance.
+        /// <para>初始化新的特性集合实例。</para>
+        /// </summary>
         internal AttributeSet(int ctrlId, string ctrlName, string desc, Type contextType, object tag, IControlDescriptor ctrlDesc = null)
         {
             Id = ctrlId;
@@ -38,6 +46,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Core
             m_Attributes = new Dictionary<Type, List<IAttribute>>();
         }
 
+        /// <summary>
+        /// Adds attribute instance to the collection.
+        /// <para>向集合添加特性实例。</para>
+        /// </summary>
         public void Add<TAtt>(TAtt att) where TAtt : IAttribute
         {
             if (att == null)
@@ -56,12 +68,20 @@ namespace Xarial.XCad.Utils.PageBuilder.Core
             atts.Add(att);
         }
 
+        /// <summary>
+        /// Returns first attribute matching requested type.
+        /// <para>返回与请求类型匹配的首个特性。</para>
+        /// </summary>
         public TAtt Get<TAtt>()
             where TAtt : IAttribute
         {
             return GetAll<TAtt>().First();
         }
 
+        /// <summary>
+        /// Returns all attributes assignable to requested type.
+        /// <para>返回可赋值为请求类型的全部特性。</para>
+        /// </summary>
         public IEnumerable<TAtt> GetAll<TAtt>()
             where TAtt : IAttribute
         {
@@ -84,6 +104,10 @@ namespace Xarial.XCad.Utils.PageBuilder.Core
             }
         }
 
+        /// <summary>
+        /// Checks whether set contains attribute type.
+        /// <para>检查集合中是否包含指定特性类型。</para>
+        /// </summary>
         public bool Has<TAtt>()
             where TAtt : IAttribute
         {

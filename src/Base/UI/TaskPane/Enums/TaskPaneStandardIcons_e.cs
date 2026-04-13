@@ -11,6 +11,10 @@ using System.Text;
 
 namespace Xarial.XCad.UI.TaskPane.Enums
 {
+    /// <summary>
+    /// Standard task pane icon set
+    /// 任务窗格标准图标集合
+    /// </summary>
     public enum TaskPaneStandardIcons_e
     {
         Close = 1,

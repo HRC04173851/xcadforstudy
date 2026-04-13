@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Provides additional options for the drop-down list box
+    /// 为下拉列表框提供附加选项
     /// </summary>
     /// <remarks>Must be applied to the property of <see cref="Enum"/></remarks>
     public class ComboBoxOptionsAttribute : Attribute, IAttribute

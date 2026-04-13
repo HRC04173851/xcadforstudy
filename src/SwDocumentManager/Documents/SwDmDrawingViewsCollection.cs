@@ -19,10 +19,18 @@ using Xarial.XCad.Documents.Delegates;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Repository contract for drawing views on a sheet.
+    /// 图纸页上的工程图视图仓库约定。
+    /// </summary>
     public interface ISwDmDrawingViewsCollection : IXDrawingViewRepository 
     {
     }
 
+    /// <summary>
+    /// Enumerates drawing views belonging to a specific sheet.
+    /// 枚举某个图纸页上的全部工程图视图。
+    /// </summary>
     internal class SwDmDrawingViewsCollection : ISwDmDrawingViewsCollection
     {
         #region Not Supported
@@ -40,12 +48,20 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         private readonly SwDmDrawing m_Drw;
 
+        /// <summary>
+        /// Creates a sheet-scoped view repository.
+        /// 创建限定在单个图纸页范围内的视图仓库。
+        /// </summary>
         internal SwDmDrawingViewsCollection(SwDmSheet sheet, SwDmDrawing drw) 
         {
             m_Sheet = sheet;
             m_Drw = drw;
         }
 
+        /// <summary>
+        /// Converts raw view COM objects into xCAD drawing view wrappers.
+        /// 将原始视图 COM 对象转换为 xCAD 工程图视图包装器。
+        /// </summary>
         public IEnumerator<IXDrawingView> GetEnumerator()
         {
             var views = ((ISwDMSheet4)m_Sheet.Sheet).GetViews() as object[] ?? new object[0];

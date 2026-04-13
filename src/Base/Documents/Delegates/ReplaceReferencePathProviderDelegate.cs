@@ -15,6 +15,7 @@ namespace Xarial.XCad.Documents.Delegates
 {
     /// <summary>
     /// Delegate used in the <see cref="XDocumentDependenciesExtension.ReplaceAll(IXDocumentDependencies, ReplaceReferencePathProviderDelegate, Func{string, string})"/>
+    /// 在 <see cref="XDocumentDependenciesExtension.ReplaceAll(IXDocumentDependencies, ReplaceReferencePathProviderDelegate, Func{string, string})"/> 中用于提供替换引用路径的委托
     /// </summary>
     /// <param name="srcPath">Path to be replaced</param>
     /// <returns>Replacement path (can be the same if reference does not need to be replaced)</returns>

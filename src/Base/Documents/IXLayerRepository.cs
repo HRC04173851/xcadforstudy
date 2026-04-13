@@ -16,11 +16,13 @@ namespace Xarial.XCad.Documents
 {
     /// <summary>
     /// Represents the repository of layers
+    /// 表示图层仓储
     /// </summary>
     public interface IXLayerRepository : IXRepository<IXLayer>
     {
         /// <summary>
         /// Gets or sets the current layer
+        /// 获取或设置当前图层
         /// </summary>
         IXLayer Active { get; set; }
     }

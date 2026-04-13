@@ -11,10 +11,11 @@ namespace Xarial.XCad.Features.CustomFeature.Delegates
 {
     /// <summary>
     /// Handler function to align specific dimension of <see cref="IXCustomFeatureDefinition{TParams}"></see> within the <see cref="IXCustomFeatureDefinition.OnRebuild(IXApplication, Documents.IXDocument, IXCustomFeature)"/>/>
+    /// 在 <see cref="IXCustomFeatureDefinition.OnRebuild(IXApplication, Documents.IXDocument, IXCustomFeature)"/> 中用于对齐指定尺寸的委托
     /// </summary>
     /// <typeparam name="TData">Type of the data</typeparam>
-    /// <param name="paramName">Name of the parameter in the data model which corresponds to this dimension</param>
-    /// <param name="dim">Dimension to align</param>
+    /// <param name="paramName">Name of the parameter in the data model which corresponds to this dimension（对应尺寸的参数名）</param>
+    /// <param name="dim">Dimension to align（待对齐尺寸）</param>
     public delegate void AlignDimensionDelegate<TData>(string paramName, IXDimension dim)
         where TData : class;
 }

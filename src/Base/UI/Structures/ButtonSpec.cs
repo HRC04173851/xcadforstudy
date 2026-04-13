@@ -17,26 +17,31 @@ namespace Xarial.XCad.UI.Structures
 {
     /// <summary>
     /// Specification of the generic button
+    /// 通用按钮规格定义
     /// </summary>
     public class ButtonSpec
     {
         /// <summary>
         /// User id if this button
+        /// 按钮用户标识 ID
         /// </summary>
         public int UserId { get; }
 
         /// <summary>
         /// Title of the button
+        /// 按钮标题
         /// </summary>
         public string Title { get; set; }
 
         /// <summary>
         /// Tooltip of the button
+        /// 按钮提示文本
         /// </summary>
         public string Tooltip { get; set; }
 
         /// <summary>
         /// Icon associated with the button
+        /// 按钮关联图标
         /// </summary>
         public IXImage Icon { get; set; }
 

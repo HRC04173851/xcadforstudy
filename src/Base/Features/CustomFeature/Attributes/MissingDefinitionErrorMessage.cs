@@ -13,12 +13,14 @@ namespace Xarial.XCad.Features.CustomFeature.Attributes
 {
     /// <summary>
     /// Use this attribute to provide a user friendly message when definition of custom feature is not registered
+    /// 当自定义特征定义未注册时，使用此特性提供用户友好错误信息
     /// </summary>
     /// <remarks>The message might point to the download page of your extension or list a contact e-mail</remarks>
     public class MissingDefinitionErrorMessage : Attribute
     {
         /// <summary>
         /// Missing custom feature definition error message
+        /// 自定义特征定义缺失时显示的错误消息
         /// </summary>
         public string Message { get; }
 

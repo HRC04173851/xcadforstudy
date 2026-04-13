@@ -11,11 +11,13 @@ namespace Xarial.XCad.UI.Commands.Attributes
 {
     /// <summary>
     /// Allwos to customize the context menu command created with <see cref="IXCommandManager.AddContextMenu(Structures.ContextMenuCommandGroupSpec)"/>
+    /// 允许自定义通过 <see cref="IXCommandManager.AddContextMenu(Structures.ContextMenuCommandGroupSpec)"/> 创建的上下文菜单命令组
     /// </summary>
     public class ContextMenuCommandGroupInfoAttribute : CommandGroupInfoAttribute
     {
         /// <summary>
         /// Type where context menu is attached to
+        /// 上下文菜单附着的对象类型
         /// </summary>
         public Type Owner { get; }
 

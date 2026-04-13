@@ -15,11 +15,13 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Represents the connected and closed list of <see cref="IXCurve"/>
+    /// 表示由曲线段首尾相接形成的闭合环（Loop）
     /// </summary>
     public interface IXLoop : IXSelObject, IXWireEntity
     {
         /// <summary>
         /// Connected and closed segments of this loop
+        /// 构成该闭合环的连接线段集合
         /// </summary>
         IXSegment[] Segments { get; set; }
     }

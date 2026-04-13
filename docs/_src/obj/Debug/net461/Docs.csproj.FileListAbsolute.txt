@@ -1,8 +1,0 @@
-C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\docs\_src\obj\Debug\net461\Docs.csproj.AssemblyReference.cache
-C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\docs\_src\obj\Debug\net461\Extension\Panels\WpfControl.baml
-C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\docs\_src\obj\Debug\net461\PropertyPage\Controls\CustomWpfControl.baml
-C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\docs\_src\obj\Debug\net461\Extension\Panels\WpfControl.g.cs
-C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\docs\_src\obj\Debug\net461\Extension\Panels\WpfWindow.g.cs
-C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\docs\_src\obj\Debug\net461\PropertyPage\Controls\CustomWpfControl.g.cs
-C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\docs\_src\obj\Debug\net461\Xarial.XCad.Documentation_MarkupCompile.cache
-C:\Users\DELL\source\repos\xcadFeatureForComment\SolidWorks\xcadforstudy\docs\_src\obj\Debug\net461\Xarial.XCad.Documentation_MarkupCompile.lref

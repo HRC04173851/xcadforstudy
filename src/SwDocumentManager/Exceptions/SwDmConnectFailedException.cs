@@ -12,6 +12,10 @@ using Xarial.XCad.Exceptions;
 
 namespace Xarial.XCad.SwDocumentManager.Exceptions
 {
+    /// <summary>
+    /// Raised when the Document Manager COM application cannot be created or authenticated.
+    /// 当 Document Manager COM 应用无法创建或许可证认证失败时抛出该异常。
+    /// </summary>
     public class SwDmConnectFailedException : Exception, IUserException
     {
         internal SwDmConnectFailedException(Exception ex)

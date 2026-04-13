@@ -15,26 +15,31 @@ namespace Xarial.XCad.Geometry.Evaluation
 {
     /// <summary>
     /// Triangle representing a tesselation
+    /// 表示三角网格剖分中的三角形单元
     /// </summary>
     public class TesselationTriangle
     {
         /// <summary>
         /// Normal of the triangle
+        /// 三角形法向量
         /// </summary>
         public Vector Normal { get; }
 
         /// <summary>
         /// First point of the triangle
+        /// 三角形第一顶点
         /// </summary>
         public Point FirstPoint { get; }
 
         /// <summary>
         /// Second point of the triangle
+        /// 三角形第二顶点
         /// </summary>
         public Point SecondPoint { get; }
 
         /// <summary>
         /// Third point of the triangle
+        /// 三角形第三顶点
         /// </summary>
         public Point ThirdPoint { get; }
 
@@ -52,11 +57,13 @@ namespace Xarial.XCad.Geometry.Evaluation
 
     /// <summary>
     /// Provides the tesselation data for the geometry
+    /// 提供几何体的三角剖分数据
     /// </summary>
     public interface IXTessellation : IEvaluation
     {
         /// <summary>
         /// Triangulation of the geometry
+        /// 几何体三角化结果
         /// </summary>
         IEnumerable<TesselationTriangle> Triangles { get; }
     }

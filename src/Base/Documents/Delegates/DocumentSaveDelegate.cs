@@ -15,9 +15,10 @@ namespace Xarial.XCad.Documents.Delegates
 {
     /// <summary>
     /// Delegate for <see cref="IXDocument.Saving"/> event
+    /// <see cref="IXDocument.Saving"/> 事件委托
     /// </summary>
-    /// <param name="doc">Document being saved</param>
-    /// <param name="type">Save type</param>
-    /// <param name="args">Savig arguments</param>
+    /// <param name="doc">Document being saved（正在保存的文档）</param>
+    /// <param name="type">Save type（保存类型）</param>
+    /// <param name="args">Savig arguments（保存参数）</param>
     public delegate void DocumentSaveDelegate(IXDocument doc, DocumentSaveType_e type, DocumentSaveArgs args);
 }

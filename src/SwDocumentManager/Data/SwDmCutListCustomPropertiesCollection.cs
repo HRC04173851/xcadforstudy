@@ -17,6 +17,10 @@ using Xarial.XCad.SwDocumentManager.Exceptions;
 
 namespace Xarial.XCad.SwDocumentManager.Data
 {
+    /// <summary>
+    /// Repository of cut-list custom properties for weldment or sheet-metal bodies.
+    /// 焊件或钣金实体对应的切割清单自定义属性仓库。
+    /// </summary>
     internal class SwDmCutListCustomPropertiesCollection : SwDmCustomPropertiesCollection
     {
         public override int Count => (m_CutList.CutListItem.GetCustomPropertyNames() as string[])?.Length ?? 0;
@@ -32,6 +36,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Conf = conf;
         }
 
+        /// <summary>
+        /// Enumerates cut-list properties while skipping internal helper entries.
+        /// 枚举切割清单属性，同时跳过内部辅助属性项。
+        /// </summary>
         public override IEnumerator<IXProperty> GetEnumerator()
         {
             var prpNames = m_CutList.CutListItem.GetCustomPropertyNames() as string[] ?? new string[0];
@@ -47,6 +55,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             .Contains(name, StringComparer.CurrentCultureIgnoreCase) == true;
     }
 
+    /// <summary>
+    /// Custom property bound to a cut-list item and optionally scoped by configuration.
+    /// 绑定到切割清单项目的自定义属性实现，并可按配置范围进行约束。
+    /// </summary>
     internal class SwDmCutListCustomProperty : SwDmCustomProperty
     {
         private readonly ISwDmCutListItem m_CutList;
@@ -61,6 +73,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Conf = conf;
         }
 
+        /// <summary>
+        /// Adds a cut-list property only when the target configuration is writable through Document Manager.
+        /// 仅当目标配置可由 Document Manager 写入时，才允许新增切割清单属性。
+        /// </summary>
         protected override void AddValue(object value)
         {
             if (m_Conf == null || m_Conf.Configuration == m_Doc.Configurations.Active.Configuration)
@@ -80,9 +96,17 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Doc.IsDirty = true;
         }
 
+        /// <summary>
+        /// Reads the cut-list property raw value and the expression it is linked to.
+        /// 读取切割清单属性的原始值，以及它所链接到的表达式文本。
+        /// </summary>
         protected override string ReadRawValue(out SwDmCustomInfoType type, out string linkedTo)
             => m_CutList.CutListItem.GetCustomPropertyValue2(Name, out type, out linkedTo);
 
+        /// <summary>
+        /// Updates the cut-list property when the active configuration rules allow writing.
+        /// 当活动配置规则允许写入时，更新切割清单属性。
+        /// </summary>
         protected override void SetValue(object value)
         {
             if (m_Conf == null || m_Conf.Configuration == m_Doc.Configurations.Active.Configuration)
@@ -97,6 +121,10 @@ namespace Xarial.XCad.SwDocumentManager.Data
             m_Doc.IsDirty = true;
         }
 
+        /// <summary>
+        /// Deletes the cut-list property while respecting configuration limitations of Document Manager.
+        /// 在遵守 Document Manager 配置限制的前提下删除切割清单属性。
+        /// </summary>
         internal override void Delete()
         {
             if (m_Conf == null || m_Conf.Configuration == m_Doc.Configurations.Active.Configuration)

@@ -17,11 +17,13 @@ namespace Xarial.XCad.Features
 {
     /// <summary>
     /// Represents the collection of cut-list items
+    /// 表示切割清单项目集合
     /// </summary>
     public interface IXCutListItemRepository : IXRepository<IXCutListItem>
     {
         /// <summary>
         /// Fired when cut list is regenerated
+        /// 切割清单重建时触发
         /// </summary>
         event CutListRebuildDelegate CutListRebuild;
     }

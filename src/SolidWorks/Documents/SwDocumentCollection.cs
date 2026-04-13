@@ -504,6 +504,8 @@ namespace Xarial.XCad.SolidWorks.Documents
         /// <para>中文：释放文档集合资源，取消所有 SolidWorks 事件订阅（文档加载、激活、新建、打开），并释放文档处理器。</para>
         /// </summary>
         public void Dispose()
+        {
+            m_SwApp.DocumentLoadNotify2 -= OnDocumentLoadNotify2;
             m_SwApp.ActiveModelDocChangeNotify -= OnActiveModelDocChangeNotify;
             m_SwApp.FileNewNotify2 -= OnFileNewNotify;
             m_SwApp.FileOpenPostNotify -= OnFileOpenPostNotify;

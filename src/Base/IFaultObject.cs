@@ -13,6 +13,7 @@ namespace Xarial.XCad
 {
     /// <summary>
     /// Represents the fault or missing <see cref="IXObject"/>
+    /// 表示故障或缺失的 <see cref="IXObject"/>
     /// </summary>
     public interface IFaultObject
     {

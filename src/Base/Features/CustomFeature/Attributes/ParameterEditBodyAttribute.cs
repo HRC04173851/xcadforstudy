@@ -15,6 +15,7 @@ namespace Xarial.XCad.Features.CustomFeature.Attributes
     /// Edit bodies will be acquire by macro feature and replaced by the <see cref="Structures.CustomFeatureRebuildResult"/>
     /// returned from <see cref="IXCustomFeatureDefinition.OnRebuild(IXApplication, Documents.IXDocument, IXCustomFeature)"/>.
     /// Multiple bodies are supported
+    /// 指定当前属性为宏特征“编辑体”，用于替换或修改现有几何体，支持多个体
     /// </summary>
     /// <remarks>Supported property type is IXBody
     /// or <see cref="System.Collections.Generic.List{T}"/> of bodies</remarks>

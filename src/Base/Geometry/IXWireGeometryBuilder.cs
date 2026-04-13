@@ -18,11 +18,13 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Builds wire (1-dimensional) geometry
+    /// 用于构建线框（一维）几何
     /// </summary>
     public interface IXWireGeometryBuilder : IXRepository<IXWireEntity>
     {
         /// <summary>
         /// Merges the input curve into a single curve
+        /// 将输入曲线合并为单一曲线
         /// </summary>
         /// <param name="curves">Curves to merge</param>
         /// <returns>Merged curve</returns>
@@ -31,29 +33,34 @@ namespace Xarial.XCad.Geometry
 
     /// <summary>
     /// Additional methods for <see cref="IXWireGeometryBuilder"/>
+    /// <see cref="IXWireGeometryBuilder"/> 的扩展方法
     /// </summary>
     public static class XWireGeometryBuilderExtension 
     {
         /// <summary>
         /// Creates a wire body template
+        /// 创建线框体模板
         /// </summary>
         /// <returns>Wire body template</returns>
         public static IXMemoryWireBody PreCreateWireBody(this IXWireGeometryBuilder geomBuilder) => geomBuilder.PreCreate<IXMemoryWireBody>();
 
         /// <summary>
         /// Creates a line template
+        /// 创建直线模板
         /// </summary>
         /// <returns>Line template</returns>
         public static IXLine PreCreateLine(this IXWireGeometryBuilder geomBuilder) => geomBuilder.PreCreate<IXLine>();
 
         /// <summary>
         /// Creates an circle template
+        /// 创建圆模板
         /// </summary>
         /// <returns>Circle template</returns>
         public static IXCircle PreCreateCircle(this IXWireGeometryBuilder geomBuilder) => geomBuilder.PreCreate<IXCircle>();
 
         /// <summary>
         /// Creates an arc template
+        /// 创建圆弧模板
         /// </summary>
         /// <returns>Arc template</returns>
         public static IXArc PreCreateArc(this IXWireGeometryBuilder geomBuilder) => geomBuilder.PreCreate<IXArc>();
@@ -78,6 +85,7 @@ namespace Xarial.XCad.Geometry
 
         /// <summary>
         /// Creates rectangle in this sketch repository
+        /// 在此几何仓储中预创建矩形（由四条线段组成）
         /// </summary>
         /// <param name="repo">Repository</param>
         /// <param name="centerPt">Center point of the rectangle</param>

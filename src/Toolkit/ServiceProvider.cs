@@ -11,6 +11,10 @@ using Xarial.XCad.Toolkit.Exceptions;
 
 namespace Xarial.XCad.Toolkit
 {
+    /// <summary>
+    /// Internal service provider implementing singleton/transient lifetimes.
+    /// <para>实现单例/瞬态生命周期的内部服务提供器。</para>
+    /// </summary>
     internal class ServiceProvider : IServiceProvider, IDisposable
     {
         private interface IServiceCreator : IDisposable
@@ -61,6 +65,10 @@ namespace Xarial.XCad.Toolkit
         private readonly Dictionary<Type, IServiceCreator> m_Services;
         private bool m_IsDisposed;
 
+        /// <summary>
+        /// Initializes provider from service registrations.
+        /// <para>根据服务注册信息初始化提供器。</para>
+        /// </summary>
         internal ServiceProvider(Dictionary<Type, ServiceCollection.ServiceInfo> services)
         {
             m_Services = new Dictionary<Type, IServiceCreator>();
@@ -83,6 +91,10 @@ namespace Xarial.XCad.Toolkit
             }
         }
 
+        /// <summary>
+        /// Resolves service instance by type.
+        /// <para>按类型解析服务实例。</para>
+        /// </summary>
         public object GetService(Type serviceType)
         {
             if (m_Services.TryGetValue(serviceType, out var svcFact))
@@ -95,6 +107,10 @@ namespace Xarial.XCad.Toolkit
             }
         }
 
+        /// <summary>
+        /// Disposes managed singleton services.
+        /// <para>释放已创建的可释放单例服务。</para>
+        /// </summary>
         public void Dispose()
         {
             if (!m_IsDisposed)
@@ -109,8 +125,16 @@ namespace Xarial.XCad.Toolkit
         }
     }
 
+    /// <summary>
+    /// Extensions for strongly-typed service resolution.
+    /// <para>用于强类型服务解析的扩展方法。</para>
+    /// </summary>
     public static class IServiceProviderExtension 
     {
+        /// <summary>
+        /// Resolves service by generic type parameter.
+        /// <para>通过泛型参数解析服务实例。</para>
+        /// </summary>
         public static TService GetService<TService>(this IServiceProvider provider) 
             => (TService)provider.GetService(typeof(TService));
     }

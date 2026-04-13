@@ -27,12 +27,20 @@ using Xarial.XCad.SwDocumentManager.Geometry;
 
 namespace Xarial.XCad.SwDocumentManager.Features
 {
+    /// <summary>
+    /// Cut-list item contract backed by Document Manager.
+    /// 由 Document Manager 支持的切割清单项目约定。
+    /// </summary>
     public interface ISwDmCutListItem : ISwDmObject, IXCutListItem
     {
         new ISwDmCustomPropertiesCollection Properties { get; }
         ISwDMCutListItem2 CutListItem { get; }
     }
 
+    /// <summary>
+    /// Wraps a weldment or sheet-metal cut-list item.
+    /// 包装焊件或钣金中的切割清单项目。
+    /// </summary>
     [DebuggerDisplay("{" + nameof(Name) + "}")]
     internal class SwDmCutListItem : SwDmSelObject, ISwDmCutListItem
     {
@@ -58,6 +66,10 @@ namespace Xarial.XCad.SwDocumentManager.Features
         private readonly SwDmPart m_Part;
         private readonly ISwDmPartConfiguration m_Conf;
 
+        /// <summary>
+        /// Creates a cut-list item wrapper for the document-level cut-list scope.
+        /// 为文档级切割清单范围创建切割清单项目包装器。
+        /// </summary>
         internal SwDmCutListItem(ISwDMCutListItem2 cutListItem, SwDmPart doc) : base(cutListItem, doc.OwnerApplication, doc)
         {
             CutListItem = cutListItem;
@@ -72,6 +84,10 @@ namespace Xarial.XCad.SwDocumentManager.Features
             m_Conf = conf;
         }
 
+        /// <summary>
+        /// Enumerates placeholder solid bodies based on the cut-list quantity.
+        /// 根据切割清单数量枚举占位实体体，用于表达该清单项对应的实体数量。
+        /// </summary>
         public IEnumerable<IXSolidBody> Bodies 
         {
             get 
@@ -91,6 +107,10 @@ namespace Xarial.XCad.SwDocumentManager.Features
 
         public ISwDmCustomPropertiesCollection Properties => m_Properties.Value;
 
+        /// <summary>
+        /// Returns the BOM inclusion/exclusion status of the cut-list item.
+        /// 返回切割清单项目在物料清单中的包含或排除状态。
+        /// </summary>
         public CutListStatus_e Status
         {
             get 
@@ -119,6 +139,10 @@ namespace Xarial.XCad.SwDocumentManager.Features
             }
         }
 
+        /// <summary>
+        /// Returns the cut-list semantic type such as实体体、钣金或焊件。
+        /// Returns the cut-list semantic type such as solid body, sheet metal, or weldment.
+        /// </summary>
         public CutListType_e Type 
         {
             get 

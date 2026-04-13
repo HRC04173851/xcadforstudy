@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Options for the check-box list
+    /// 复选框列表选项
     /// </summary>
     public class CheckBoxListOptionsAttribute : Attribute, IAttribute
     {

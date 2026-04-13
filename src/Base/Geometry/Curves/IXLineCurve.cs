@@ -14,6 +14,7 @@ namespace Xarial.XCad.Geometry.Curves
 {
     /// <summary>
     /// Represents linear curve
+    /// 表示直线曲线
     /// </summary>
     public interface IXLineCurve : IXCurve, IXLine
     {

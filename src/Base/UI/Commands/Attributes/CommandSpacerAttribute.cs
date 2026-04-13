@@ -11,6 +11,7 @@ namespace Xarial.XCad.UI.Commands.Attributes
 {
     /// <summary>
     /// Marks the command to be separated by the spacer (separator) in the menu and the toolbar
+    /// 标记该命令在菜单/工具栏中前置分隔符
     /// </summary>
     /// <remarks>Spacer is added before the command marked with this attribute</remarks>
     [AttributeUsage(AttributeTargets.Field)]

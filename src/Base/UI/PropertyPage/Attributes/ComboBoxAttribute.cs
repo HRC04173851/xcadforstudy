@@ -23,6 +23,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 
     /// <summary>
     /// Indicates that the current property must be rendered as combo box
+    /// 指示当前属性应渲染为下拉框
     /// </summary>
     public class ComboBoxAttribute : ItemsSourceControlAttribute, ISpecificConstructorAttribute
     {

@@ -11,6 +11,7 @@ namespace Xarial.XCad.UI.Commands.Enums
 {
     /// <summary>
     /// Provides the enumeration of various workspaces
+    /// 提供各类工作区枚举
     /// </summary>
     [Flags]
     public enum WorkspaceTypes_e

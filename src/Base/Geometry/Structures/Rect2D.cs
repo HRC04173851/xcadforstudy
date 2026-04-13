@@ -15,24 +15,28 @@ namespace Xarial.XCad.Geometry.Structures
 {
     /// <summary>
     /// Represents the 2D rectangle
+    /// 表示二维矩形区域
     /// </summary>
     [DebuggerDisplay("{" + nameof(Width) + "} x {" + nameof(Height) + "}")]
     public class Rect2D
     {
         /// <summary>
         /// Width of the rectangle relative to X axis
+        /// 矩形沿 X 轴方向的宽度
         /// </summary>
         public double Width { get; }
 
         /// <summary>
         /// Height of the rectangle relative to Y axis
+        /// 矩形沿 Y 轴方向的高度
         /// </summary>
         public double Height { get; }
 
         /// <summary>
         /// Center point of the rectangle box
+        /// 矩形中心点
         /// </summary>
-        /// <remarks>This is the center point of the diagonal</remarks>
+        /// <remarks>This is the center point of the diagonal. 即对角线中点。</remarks>
         public Point CenterPoint { get; }
 
         /// <summary>
@@ -69,6 +73,7 @@ namespace Xarial.XCad.Geometry.Structures
 
     /// <summary>
     /// Additional methods for <see cref="Rect2D"/>
+    /// <see cref="Rect2D"/> 的扩展方法
     /// </summary>
     public static class Rect2DExtension
     {
@@ -98,6 +103,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Unions two rectangles
+        /// 计算两个矩形的并集包络矩形
         /// </summary>
         /// <param name="rect">This rectangle</param>
         /// <param name="otherRect">Other rectangle</param>
@@ -123,6 +129,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Checks if 2 rectangles overlap
+        /// 检查两个矩形是否相交/重叠
         /// </summary>
         /// <param name="thisRect"></param>
         /// <param name="otherRect"></param>

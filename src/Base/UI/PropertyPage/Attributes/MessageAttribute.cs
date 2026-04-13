@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Attributes allows to specify the message to be displayed in the property manager page
+    /// 允许在属性管理器页面显示消息文本的特性
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
     public class MessageAttribute : Attribute, IAttribute

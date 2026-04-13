@@ -11,6 +11,7 @@ namespace Xarial.XCad.UI.PropertyPage.Base
 {
     /// <summary>
     /// Indicates that the control for this property should be handled with the specific constructor
+    /// 指示此属性控件应使用指定构造器创建
     /// </summary>
     public interface ISpecificConstructorAttribute : IAttribute
     {

@@ -9,6 +9,10 @@ using Xarial.XCad.UI.PropertyPage.Base;
 
 namespace Xarial.XCad.Utils.PageBuilder.Base
 {
+    /// <summary>
+    /// Represents a container control group in PropertyManager page.
+    /// <para>表示 PropertyManager 页面中的容器分组控件。</para>
+    /// </summary>
     public interface IGroup : IControl
     {
     }

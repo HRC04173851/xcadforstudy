@@ -14,11 +14,13 @@ namespace Xarial.XCad.Features.CustomFeature
 {
     /// <summary>
     /// Additional methods for <see cref="IXCustomFeatureDefinition"/>
+    /// <see cref="IXCustomFeatureDefinition"/> 的扩展辅助方法
     /// </summary>
     public static class XCustomFeatureDefinitionExtension
     {
         /// <summary>
         /// Inserts new instance of macro feature with default parameters
+        /// 使用默认参数插入新的宏特征实例
         /// </summary>
         /// <typeparam name="TParams">Parameter type</typeparam>
         /// <param name="featDef">Custom Feature Definition</param>
@@ -30,6 +32,7 @@ namespace Xarial.XCad.Features.CustomFeature
 
         /// <summary>
         /// Aligns the linear dimension of custom feature
+        /// 对齐自定义特征的径向尺寸标注
         /// </summary>
         /// <typeparam name="TParams">Definition parameters</typeparam>
         /// <param name="featDef">Custom feature definition</param>
@@ -60,6 +63,7 @@ namespace Xarial.XCad.Features.CustomFeature
 
         /// <summary>
         /// Aligns the linear dimension of custom feature
+        /// 对齐自定义特征的线性尺寸标注
         /// </summary>
         /// <typeparam name="TParams">Definition parameters</typeparam>
         /// <param name="dim">Dimension to align</param>
@@ -88,6 +92,7 @@ namespace Xarial.XCad.Features.CustomFeature
 
         /// <summary>
         /// Aligns the angular dimension of custom feature
+        /// 对齐自定义特征的角度尺寸标注
         /// </summary>
         /// <typeparam name="TParams">Definition parameters</typeparam>
         /// <param name="featDef">Feature definition to align dimension for</param>

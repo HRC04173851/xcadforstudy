@@ -13,11 +13,13 @@ namespace Xarial.XCad.Annotations
 {
     /// <summary>
     /// Indicates that this object can have dimensions
+    /// 表示该对象可以包含尺寸标注
     /// </summary>
     public interface IDimensionable
     {
         /// <summary>
         /// Dimensions repository
+        /// 尺寸集合
         /// </summary>
         IXDimensionRepository Dimensions { get; }
     }

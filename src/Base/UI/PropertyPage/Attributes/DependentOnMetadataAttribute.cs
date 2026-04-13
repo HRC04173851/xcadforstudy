@@ -15,6 +15,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Indicates that the state of this control depends on the <see cref="IMetadata"/>
+    /// 指示该控件状态依赖于 <see cref="IMetadata"/>
     /// </summary>
     public interface IDependentOnMetadataAttribute : IAttribute
     {

@@ -11,27 +11,32 @@ namespace Xarial.XCad.Geometry.Wires
 {
     /// <summary>
     /// Represents the arc segment
+    /// 表示圆（整圆）线段接口
     /// </summary>
     public interface IXCircle : IXSegment
     {
         /// <summary>
         /// Geometry of this circle
+        /// 该圆的几何定义
         /// </summary>
         Circle Geometry { get; set; }
     }
 
     /// <summary>
     /// Represents the arc
+    /// 表示圆弧线段
     /// </summary>
     public interface IXArc : IXCircle
     {
         /// <summary>
         /// Start point of the arc
+        /// 圆弧起点
         /// </summary>
         Point Start { get; set; }
 
         /// <summary>
         /// End point of the arc
+        /// 圆弧终点
         /// </summary>
         Point End { get; set; }
     }

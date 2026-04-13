@@ -9,6 +9,10 @@ using System;
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Property page behavior/options flags
+    /// 属性页行为与功能选项标志
+    /// </summary>
     [Flags]
     public enum PageOptions_e
     {

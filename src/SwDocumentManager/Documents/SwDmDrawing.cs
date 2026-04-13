@@ -15,11 +15,19 @@ using Xarial.XCad.Geometry.Structures;
 
 namespace Xarial.XCad.SwDocumentManager.Documents
 {
+    /// <summary>
+    /// Drawing document contract.
+    /// 工程图文档约定。
+    /// </summary>
     public interface ISwDmDrawing : ISwDmDocument, IXDrawing
     {
         new ISwDmSheetCollection Sheets { get; }
     }
 
+    /// <summary>
+    /// Drawing document wrapper that exposes sheets through xCAD.
+    /// 工程图文档包装器，通过 xCAD 暴露图纸页集合。
+    /// </summary>
     internal class SwDmDrawing : SwDmDocument, ISwDmDrawing
     {
         #region Not Supported
@@ -34,6 +42,10 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
         private readonly Lazy<SwDmSheetCollection> m_SheetsLazy;
 
+        /// <summary>
+        /// Initializes the drawing wrapper and delays sheet enumeration until requested.
+        /// 初始化工程图包装器，并在真正访问时再延迟枚举图纸页。
+        /// </summary>
         public SwDmDrawing(SwDmApplication dmApp, ISwDMDocument doc, bool isCreated,
             Action<ISwDmDocument> createHandler, Action<ISwDmDocument> closeHandler,
             bool? isReadOnly)

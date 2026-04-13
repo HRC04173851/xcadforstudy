@@ -13,26 +13,31 @@ namespace Xarial.XCad.Geometry
 {
     /// <summary>
     /// Represents an edge element of the geometry
+    /// 表示几何体的边实体（Edge）
     /// </summary>
     public interface IXEdge : IXEntity, IXSegment
     {
         /// <summary>
         /// True if the direction of the edge conicides with the direction of its curve definition, False if the directions are opposite
+        /// 边方向与其曲线定义方向一致为 true，反向为 false
         /// </summary>
         bool Sense { get; }
 
         /// <summary>
         /// Start vertex
+        /// 起始顶点
         /// </summary>
         new IXVertex StartPoint { get; }
 
         /// <summary>
         /// End vertex
+        /// 终止顶点
         /// </summary>
         new IXVertex EndPoint { get; }
 
         /// <summary>
         /// Underlyining curve defining this edge
+        /// 定义该边的底层曲线
         /// </summary>
         IXCurve Definition { get; }
     }

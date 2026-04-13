@@ -14,12 +14,14 @@ namespace Xarial.XCad.Data
 {
     /// <summary>
     /// Represents the data storage
+    /// 表示数据存储对象
     /// </summary>
     /// <remarks>This is used as the 3rd party storage of the data in the models</remarks>
     public interface IStorage : IDisposable
     {
         /// <summary>
         /// Attempts to open the storage
+        /// 尝试打开子存储
         /// </summary>
         /// <param name="storageName">Name of the storage</param>
         /// <param name="createIfNotExist">Create new storage if does not exist</param>
@@ -28,6 +30,7 @@ namespace Xarial.XCad.Data
 
         /// <summary>
         /// Attemps to open stream from this storage
+        /// 尝试从当前存储打开流
         /// </summary>
         /// <param name="streamName">Name of the stream</param>
         /// <param name="createIfNotExist">Create new stream if not exist</param>

@@ -11,6 +11,7 @@ namespace Xarial.XCad.Geometry.Structures
 {
     /// <summary>
     /// Represents 4x4 transformation matrix
+    /// 表示 4x4 齐次变换矩阵（旋转、平移、缩放的统一表达）
     /// </summary>
     public class TransformMatrix
     {
@@ -25,12 +26,14 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Returns identity matrix
+        /// 返回单位矩阵
         /// </summary>
         public static TransformMatrix Identity
             => new TransformMatrix(m_Identity);
 
         /// <summary>
         /// Create rotation transformation around axis
+        /// 创建绕任意轴旋转的变换矩阵
         /// </summary>
         /// <param name="axis">Axis to generate rotation about</param>
         /// <param name="angle">Angle in radians</param>
@@ -76,6 +79,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Creates matrix from translation
+        /// 根据平移分量创建变换矩阵
         /// </summary>
         ///<param name="x">Translation in X direction</param>
         ///<param name="y">Translation in Y direction</param>
@@ -99,6 +103,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Composes the transformation matrix from input parameters
+        /// 由局部坐标轴与位置组合变换矩阵
         /// </summary>
         /// <param name="axisX">X axis</param>
         /// <param name="axisY">Y axis</param>
@@ -266,6 +271,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Returns the determinant of the matrix
+        /// 返回矩阵行列式
         /// </summary>
         public double Determinant
             => M11 * M22 * M33 * M44 - M11 * M22 * M34 * M43 + M11 * M23 * M34 * M42 - M11 * M23 * M32 * M44
@@ -305,6 +311,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Multiplies transformation matrix
+        /// 与另一变换矩阵相乘
         /// </summary>
         /// <param name="matrix">Matrix to multiply with</param>
         /// <returns>Resulting matrix</returns>
@@ -353,6 +360,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Inverses this matrix
+        /// 求当前矩阵的逆矩阵
         /// </summary>
         /// <returns>Inversed matrix</returns>
         public TransformMatrix Inverse() 
@@ -414,6 +422,7 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// Converts matrix to 1-dimensional array
+        /// 将矩阵转换为一维数组（16 项）
         /// </summary>
         /// <returns></returns>
         public double[] ToArray()

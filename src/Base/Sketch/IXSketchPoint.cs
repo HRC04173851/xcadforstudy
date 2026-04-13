@@ -14,6 +14,7 @@ namespace Xarial.XCad.Sketch
 {
     /// <summary>
     /// Represents the point in the <see cref="IXSketchBase"/>
+    /// 表示 <see cref="IXSketchBase"/> 中的草图点
     /// </summary>
     public interface IXSketchPoint : IXSketchEntity, IXPoint
     {

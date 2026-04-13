@@ -17,22 +17,26 @@ namespace Xarial.XCad.Documents.Structures
 {
     /// <summary>
     /// Defines the size of the drawing sheet paper
+    /// 定义工程图图纸纸张尺寸
     /// </summary>
     [DebuggerDisplay("{" + nameof(StandardPaperSize) + "}" + " ({" + nameof(Width) + "} x {" + nameof(Height) + "}")]
     public class PaperSize
     {
         /// <summary>
         /// Standard paper size or null if custom
+        /// 标准纸张尺寸；若为自定义则为 null
         /// </summary>
         public StandardPaperSize_e? StandardPaperSize { get; }
         
         /// <summary>
         /// Width of the paper
+        /// 纸张宽度
         /// </summary>
         public double Width { get; }
 
         /// <summary>
         /// Height of the paper
+        /// 纸张高度
         /// </summary>
         public double Height { get; }
 

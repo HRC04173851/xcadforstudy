@@ -12,6 +12,10 @@ using System.Text;
 
 namespace Xarial.XCad.SwDocumentManager
 {
+    /// <summary>
+    /// Maps SOLIDWORKS release years to the numeric major version used by Document Manager.
+    /// 把 SOLIDWORKS 发布年份映射到 Document Manager 使用的数值主版本号。
+    /// </summary>
     public enum SwDmVersion_e
     {
         Sw2000 = 1500,
@@ -42,11 +46,19 @@ namespace Xarial.XCad.SwDocumentManager
         Sw2025 = 18000
     }
 
+    /// <summary>
+    /// xCAD version abstraction for SOLIDWORKS Document Manager.
+    /// 面向 SOLIDWORKS Document Manager 的 xCAD 版本抽象。
+    /// </summary>
     public interface ISwDmVersion : IXVersion
     {
         SwDmVersion_e Major { get; }
     }
 
+    /// <summary>
+    /// Concrete version object used for comparison and display.
+    /// 用于版本比较与显示的具体版本对象。
+    /// </summary>
     internal class SwDmVersion : ISwDmVersion
     {
         public SwDmVersion_e Major { get; }
@@ -56,12 +68,20 @@ namespace Xarial.XCad.SwDocumentManager
 
         public Version Version { get; }
 
+        /// <summary>
+        /// Builds the strongly typed version object from a raw .NET version.
+        /// 根据原始 .NET `Version` 构建强类型的 SOLIDWORKS 版本对象。
+        /// </summary>
         internal SwDmVersion(Version version)
         {
             Version = version;
             Major = (SwDmVersion_e)version.Major;
         }
 
+        /// <summary>
+        /// Compares two SOLIDWORKS Document Manager versions.
+        /// 比较两个 SOLIDWORKS Document Manager 版本的先后关系。
+        /// </summary>
         public int CompareTo(IXVersion other)
         {
             if (other is ISwDmVersion)
@@ -99,6 +119,10 @@ namespace Xarial.XCad.SwDocumentManager
         public override string ToString() => DisplayName;
     }
 
+    /// <summary>
+    /// Helper extensions for version capability checks.
+    /// 用于能力判定的版本扩展方法，例如判断某个 API 是否在指定版本及以上可用。
+    /// </summary>
     public static class SwDmVersionExtension 
     {
         public static bool IsVersionNewerOrEqual(this ISwDmVersion vers, SwDmVersion_e version)

@@ -11,6 +11,10 @@ using System.Text;
 
 namespace Xarial.XCad.UI.PropertyPage.Enums
 {
+    /// <summary>
+    /// Standard bitmap button label/icon identifiers
+    /// 位图按钮标准标签/图标标识
+    /// </summary>
     public enum BitmapButtonLabelType_e
     {
         AlongZ = 1,

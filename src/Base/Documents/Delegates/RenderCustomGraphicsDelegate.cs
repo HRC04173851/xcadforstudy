@@ -13,8 +13,9 @@ namespace Xarial.XCad.Documents.Delegates
 {
     /// <summary>
     /// Delegate of <see cref="IXModelView.RenderCustomGraphics"/> event
+    /// <see cref="IXModelView.RenderCustomGraphics"/> 事件委托
     /// </summary>
-    /// <param name="sender">Model view which sends this event</param>
-    /// <param name="context">Custom graphics context</param>
+    /// <param name="sender">Model view which sends this event（触发事件的模型视图）</param>
+    /// <param name="context">Custom graphics context（自定义图形上下文）</param>
     public delegate bool RenderCustomGraphicsDelegate(IXModelView sender, IXCustomGraphicsContext context);
 }

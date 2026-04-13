@@ -13,10 +13,18 @@ using Xarial.XCad.Exceptions;
 
 namespace Xarial.XCad.SwDocumentManager.Exceptions
 {
+    /// <summary>
+    /// Raised when configuration metadata cannot be resolved or is internally inconsistent.
+    /// 当配置元数据无法解析，或配置数据本身不一致时抛出该异常。
+    /// </summary>
     public class InvalidConfigurationsException : Exception, IUserException
     {
         public SwDMConfigurationError Error { get; }
 
+        /// <summary>
+        /// Converts Document Manager configuration error codes to user-facing messages.
+        /// 将 Document Manager 的配置错误码转换为面向用户的描述信息。
+        /// </summary>
         private static string GetError(SwDMConfigurationError err) 
         {
             switch (err) 

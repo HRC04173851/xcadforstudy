@@ -13,11 +13,13 @@ namespace Xarial.XCad.UI.Commands.Structures
 {
     /// <summary>
     /// Represents the button which is created within the menu or toolbar
+    /// 表示在菜单或工具栏中创建的命令按钮规格
     /// </summary>
     public class CommandSpec : ButtonSpec
     {
         /// <summary>
         /// Workspaces where this command is enabled
+        /// 该命令可用的工作区范围
         /// </summary>
         public WorkspaceTypes_e SupportedWorkspace { get; set; }
 

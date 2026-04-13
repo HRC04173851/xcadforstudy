@@ -16,11 +16,13 @@ namespace Xarial.XCad.Annotations
 {
     /// <summary>
     /// Represents the section line annotation of <see cref="Documents.IXSectionDrawingView"/>
+    /// <see cref="Documents.IXSectionDrawingView"/> 的剖面线标注
     /// </summary>
     public interface IXSectionLine : IXAnnotation
     {
         /// <summary>
         /// Geometry of the line
+        /// 剖面线的几何定义
         /// </summary>
         Line Definition { get; set; }
     }

@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Additional options for bitmap control
+    /// 位图控件附加选项
     /// </summary>
     /// <remarks>Applied to property of type <see cref="Image"/></remarks>
     public class BitmapOptionsAttribute : Attribute, IAttribute

@@ -14,14 +14,26 @@ using Xarial.XCad.Utils.PageBuilder.Core;
 
 namespace Xarial.XCad.Utils.PageBuilder.PageElements
 {
+    /// <summary>
+    /// Base page element implementation.
+    /// <para>页面元素基类实现。</para>
+    /// </summary>
     public abstract class Page : Group, IPage
     {
         private IBindingManager m_Binding;
 
+        /// <summary>
+        /// Initializes page with framework-reserved id.
+        /// <para>使用框架保留标识符初始化页面。</para>
+        /// </summary>
         public Page() : base(-1, null, null)
         {
         }
 
+        /// <summary>
+        /// Gets lazy-initialized binding manager.
+        /// <para>获取延迟初始化的数据绑定管理器。</para>
+        /// </summary>
         public IBindingManager Binding
         {
             get
@@ -35,6 +47,10 @@ namespace Xarial.XCad.Utils.PageBuilder.PageElements
         }
     }
 
+    /// <summary>
+    /// Extension helpers for page behavior.
+    /// <para>页面行为的扩展辅助方法。</para>
+    /// </summary>
     public static class PageExtension 
     {
         private class OpenHelpLinkException : Exception, IUserException 
@@ -48,6 +64,10 @@ namespace Xarial.XCad.Utils.PageBuilder.PageElements
             }
         }
 
+        /// <summary>
+        /// Attempts to open help link and reports user-friendly message on failure.
+        /// <para>尝试打开帮助链接，失败时显示用户友好的提示消息。</para>
+        /// </summary>
         public static void TryOpenLink(this Page page, string link, IXApplication app)
         {
             try
@@ -93,6 +113,10 @@ namespace Xarial.XCad.Utils.PageBuilder.PageElements
             }
         }
 
+        /// <summary>
+        /// Determines whether input string is a non-file absolute URL.
+        /// <para>判断输入字符串是否为非文件类型的绝对 URL。</para>
+        /// </summary>
         private static bool IsUrl(string input)
         {
             if (Uri.TryCreate(input, UriKind.Absolute, out var uri))

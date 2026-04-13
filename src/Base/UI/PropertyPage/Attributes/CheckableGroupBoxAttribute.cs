@@ -14,6 +14,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
     /// Indicates that this group should have a check box
+    /// 指示该分组应带复选框
     /// </summary>
     public interface ICheckableGroupBoxAttribute : IAttribute
     {

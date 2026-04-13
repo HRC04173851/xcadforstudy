@@ -14,11 +14,13 @@ namespace Xarial.XCad.Geometry.Primitives
 {
     /// <summary>
     /// Specific planar sheet
+    /// 表示平面片体几何
     /// </summary>
     public interface IXPlanarSheet : IXPrimitive
     {
         /// <summary>
         /// Boundary of this sheet
+        /// 该片体的边界区域
         /// </summary>
         IXPlanarRegion Region { get; set; }
         

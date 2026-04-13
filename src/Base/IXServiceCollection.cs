@@ -12,42 +12,49 @@ namespace Xarial.XCad
 {
     /// <summary>
     /// Lifetime of the service
+    /// 服务的生命周期范围
     /// </summary>
-    public enum ServiceLifetimeScope_e 
+    public enum ServiceLifetimeScope_e
     {
         /// <summary>
         /// Keeps the same instance
+        /// 保持同一实例（单例）
         /// </summary>
         /// 
         Singleton,
         /// <summary>
         /// Creates new instance for every service access
+        /// 每次访问服务时创建新实例（短暂生命周期）
         /// </summary>
         Transient
     }
 
     /// <summary>
     /// Collection of services
+    /// 服务集合，用于注册和识别服务
     /// </summary>
     public interface IXServiceCollection
     {
         /// <summary>
         /// Adds new service or replaces existing one
+        /// 添加新服务或替换已存在的服务
         /// </summary>
-        /// <param name="svcType">Service type</param>
-        /// <param name="svcFactory">Service factory</param>
-        /// <param name="lifetime">Lifetime of the service</param>
-        /// <param name="replace">True to replace if service is registered, False if not</param>
+        /// <param name="svcType">Service type 服务类型</param>
+        /// <param name="svcFactory">Service factory 服务工厂</param>
+        /// <param name="lifetime">Lifetime of the service 服务生命周期</param>
+        /// <param name="replace">True to replace if service is registered, False if not 为 true 则如已注册则替换</param>
         void Add(Type svcType, Func<object> svcFactory, ServiceLifetimeScope_e lifetime = ServiceLifetimeScope_e.Singleton, bool replace = true);
 
         /// <summary>
         /// Creates service provider from this service
+        /// 从此服务集合创建服务提供程序
         /// </summary>
         /// <returns></returns>
         IServiceProvider CreateProvider();
 
         /// <summary>
         /// Creates a clone of these services
+        /// 创建当前服务集合的克隆
         /// </summary>
         /// <returns></returns>
         IXServiceCollection Clone();

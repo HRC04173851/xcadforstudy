@@ -13,6 +13,7 @@ namespace Xarial.XCad.UI.PopupWindow.Delegates
 {
     /// <summary>
     /// Delegate of <see cref="IXPopupWindow{TWindow}.Closed"/> event
+    /// <see cref="IXPopupWindow{TWindow}.Closed"/> 事件委托
     /// </summary>
     /// <typeparam name="TWindow">Specific type of the window</typeparam>
     /// <param name="sender">Window sender</param>

@@ -14,6 +14,10 @@ using Xarial.XCad.UI.PropertyPage.Structures;
 
 namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
+    /// <summary>
+    /// Base attribute for controls that bind to item sources
+    /// 绑定项数据源控件的基础特性
+    /// </summary>
     [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
     public abstract class ItemsSourceControlAttribute : Attribute, IDependentOnAttribute, IHasMetadataAttribute
     {

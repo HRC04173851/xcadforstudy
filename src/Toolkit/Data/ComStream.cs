@@ -13,6 +13,7 @@ namespace Xarial.XCad.Toolkit.Data
 {
     /// <summary>
     /// Represents the COM stream wrapper
+    /// <para>表示 COM 流（IStream）的 .NET Stream 包装器。</para>
     /// </summary>
     public class ComStream : Stream
     {
@@ -20,6 +21,10 @@ namespace Xarial.XCad.Toolkit.Data
 
         private bool m_IsWritable;
 
+        /// <summary>
+        /// Underlying COM stream instance.
+        /// <para>底层 COM 流实例。</para>
+        /// </summary>
         public IStream Stream { get; private set; }
 
         public override bool CanRead => true;
@@ -54,6 +59,10 @@ namespace Xarial.XCad.Toolkit.Data
             }
         }
 
+        /// <summary>
+        /// Initializes COM stream wrapper and loads stream instance.
+        /// <para>初始化 COM 流包装器并加载流实例。</para>
+        /// </summary>
         public ComStream(IStream comStream, bool writable, bool commit = true)
             : this(writable, commit)
         {
@@ -76,6 +85,10 @@ namespace Xarial.XCad.Toolkit.Data
             Stream = comStream;
         }
 
+        /// <summary>
+        /// Flushes stream to storage by committing COM stream.
+        /// <para>通过提交 COM 流将缓存写回存储。</para>
+        /// </summary>
         public override void Flush()
         {
             if (m_Commit)
@@ -86,6 +99,10 @@ namespace Xarial.XCad.Toolkit.Data
             }
         }
 
+        /// <summary>
+        /// Reads bytes from COM stream.
+        /// <para>从 COM 流中读取字节数据。</para>
+        /// </summary>
         public override int Read(byte[] buffer, int offset, int count)
         {
             int bytesRead = 0;
@@ -123,6 +140,10 @@ namespace Xarial.XCad.Toolkit.Data
             return bytesRead;
         }
 
+        /// <summary>
+        /// Seeks to position in COM stream.
+        /// <para>在 COM 流中移动读写位置。</para>
+        /// </summary>
         public override long Seek(long offset, SeekOrigin origin)
         {
             long curPosition = 0;
@@ -155,6 +176,10 @@ namespace Xarial.XCad.Toolkit.Data
             Stream.SetSize(value);
         }
 
+        /// <summary>
+        /// Writes bytes to COM stream.
+        /// <para>向 COM 流写入字节数据。</para>
+        /// </summary>
         public override void Write(byte[] buffer, int offset, int count)
         {
             if (offset != 0)

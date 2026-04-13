@@ -29,6 +29,7 @@ namespace Xarial.XCad.Utils.CustomFeature
 {
     /// <summary>
     /// Helper utility allowsing to parse and convert parameters of the custom feature to the class
+    /// <para>用于解析并转换自定义特征参数到参数类对象的辅助工具。</para>
     /// </summary>
     public class CustomFeatureParametersParser
     {
@@ -58,11 +59,13 @@ namespace Xarial.XCad.Utils.CustomFeature
 
         /// <summary>
         /// Name of the attribute which is holding version of dimensions
+        /// <para>用于保存尺寸版本号的属性名称。</para>
         /// </summary>
         public const string VERSION_DIMENSIONS_NAME = "__dimsVersion";
 
         /// <summary>
         /// Name of the attribute which is holding version of parameters
+        /// <para>用于保存参数版本号的属性名称。</para>
         /// </summary>
         public const string VERSION_PARAMETERS_NAME = "__paramsVersion";
 
@@ -75,6 +78,7 @@ namespace Xarial.XCad.Utils.CustomFeature
 
         /// <summary>
         /// Reads the parameters from the feature definition
+        /// <para>从特征定义中读取参数并构建参数对象。</para>
         /// </summary>
         public object BuildParameters(Type paramsType,
             ref Dictionary<string, object> featPrps,
@@ -174,6 +178,7 @@ namespace Xarial.XCad.Utils.CustomFeature
 
         /// <summary>
         /// Parses the custom feature data from the parameters structure
+        /// <para>从参数结构中解析自定义特征数据。</para>
         /// </summary>
         public void Parse(object parameters,
             out CustomFeatureAttribute[] atts, out IXSelObject[] selection,
@@ -254,6 +259,7 @@ namespace Xarial.XCad.Utils.CustomFeature
 
         /// <summary>
         /// Converts the parameters using the assigned converters
+        /// <para>使用已配置的版本转换器对参数进行版本转换。</para>
         /// </summary>
         public void ConvertParameters(Type paramsType, IXDocument doc, IXCustomFeature feat, ref Dictionary<string, object> parameters,
             ref CustomFeatureSelectionInfo[] selection, ref IXDimension[] dispDims, ref IXBody[] editBodies)
@@ -323,6 +329,7 @@ namespace Xarial.XCad.Utils.CustomFeature
 
         /// <summary>
         /// Traverses the definiton of the parameters class with custom handler for each parameter group
+        /// <para>遍历参数类定义，并对不同参数分组调用对应处理器。</para>
         /// </summary>
         //TODO: implement the support for the nested types
         public void TraverseParametersDefinition(object parameters,

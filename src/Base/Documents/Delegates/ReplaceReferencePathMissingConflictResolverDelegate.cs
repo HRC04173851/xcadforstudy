@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Documents/Delegates/ReplaceReferencePathMissingConflictResolverDelegate.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供引用路径缺失冲突解决器的委托定义，用于在无法解析目标引用路径时提供替换路径。
 //*********************************************************************
 
 using System;

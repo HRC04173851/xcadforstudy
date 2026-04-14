@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwSheetCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 图纸集合（Sheet Collection）的封装。
+// 图纸集合管理工程图文档中的所有图纸，提供图纸的创建、删除、遍历和激活，
+// 支持多图纸工程图的管理和切换操作。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

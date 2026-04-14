@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Base/IDependencyManager.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义依赖管理器接口 IDependencyManager。
+// 管理控件与元数据之间的动态依赖关系。
+// 支持依赖初始化和全局依赖状态更新。
 //*********************************************************************
 
 using System.Collections.Generic;

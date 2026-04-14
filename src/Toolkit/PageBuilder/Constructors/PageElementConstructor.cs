@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Constructors/PageElementConstructor.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现页面元素构造器的抽象基类 PageElementConstructor。
+// 提供页面元素（控件/分组）创建的基础框架。
+// 定义泛型约束和创建方法接口。
 //*********************************************************************
 
 using Xarial.XCad.UI.PropertyPage.Base;

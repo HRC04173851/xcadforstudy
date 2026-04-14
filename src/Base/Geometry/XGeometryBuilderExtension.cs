@@ -1,8 +1,24 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Geometry/XGeometryBuilderExtension.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件包含几何体构建器的扩展方法。
+// 扩展方法提供便捷的快捷方式来创建常用几何体。
+//
+// 提供的功能：
+// - CreateRegionFromSegments：由线段创建平面区域
+// - CreateSolidBox：创建实体长方体
+// - CreateSolidCylinder：创建实体圆柱体
+// - CreateSolidCone：创建实体圆锥体
+// - CreateSolidSphere：创建实体球体
+// - CreateSheetBox：创建片体长方体
+//
+// 这些扩展方法封装了底层构建器调用，提供更高层次的 API
 //*********************************************************************
 
 using System;

@@ -1,8 +1,30 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Features/SwFeature.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 特征（Feature）的抽象基类封装。
+// 特征是 SolidWorks 中构建模型的基本操作单元。
+//
+// 特征类型层次：
+// - SwFeature：所有特征的基础抽象类
+//   - SwSketchBase：草图特征（2D/3D 草图）
+//   - SwCutListItem：切割清单项
+//   - SwDumbBody：几何体（实体/曲面）
+//   - SwOrigin：坐标系原点
+//   - SwPlane：基准面
+//   - SwCoordinateSystem：坐标系
+//   - SwMacroFeature：宏特性（自定义特征）
+//
+// 特征编辑模式：
+// 使用 IEditor&lt;T&gt; 接口实现特征编辑的事务性操作：
+// 1. StartEdit - 开始编辑，锁定特征
+// 2. ModifyDefinition - 修改参数
+// 3. EndEdit - 结束编辑，提交或取消更改
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

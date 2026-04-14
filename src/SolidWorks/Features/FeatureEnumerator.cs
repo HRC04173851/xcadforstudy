@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Features/FeatureEnumerator.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供特征遍历器的核心实现，支持递归遍历特征及其子特征。
+// FeatureEnumerator 是遍历 SolidWorks 文档特征树的工具类，
+// 支持按名称查找、按类型过滤以及父子特征的层级遍历。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

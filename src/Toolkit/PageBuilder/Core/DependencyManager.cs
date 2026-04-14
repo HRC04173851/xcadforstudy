@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Core/DependencyManager.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现运行时依赖处理器 DependencyManager。
+// 继承自 IDependencyManager，管理绑定和元数据的依赖关系。
+// 支持依赖状态更新和变更事件通知。
 //*********************************************************************
 
 using System;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/UI/PropertyPage/Enums/NumberBoxUnitType_e.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义数值框的单位类型，包括长度、角度、密度、应力、力、时间等物理量单位
 //*********************************************************************
 
 namespace Xarial.XCad.UI.PropertyPage.Enums

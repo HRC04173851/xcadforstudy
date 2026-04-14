@@ -1,8 +1,30 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Geometry/IXWireGeometryBuilder.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义线框几何体构建器（Wire Geometry Builder）的接口。
+// Wire Builder 用于创建一维几何元素，如曲线、点等。
+//
+// 线框几何类型：
+// - IXLine：直线
+// - IXCircle：圆
+// - IXEllipse：椭圆
+// - IXSpline：样条曲线
+// - IXPoint：点
+//
+// 扩展方法：
+// - PreCreateLine：创建直线模板
+// - PreCreateCircle：创建圆模板
+// - PreCreateWireBody：创建线框体模板
+//
+// Merge 功能：
+// - 将多个曲线合并为单一曲线
+// - 用于简化曲线串或创建连续曲线
 //*********************************************************************
 
 using System;

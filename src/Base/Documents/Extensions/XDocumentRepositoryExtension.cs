@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Documents/Extensions/XDocumentRepositoryExtension.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供IXDocumentRepository接口的扩展方法，包括创建新文档、打开文档、注册文档处理器等功能
 //*********************************************************************
 
 using System.Linq;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Binders/PropertyInfoControlDescriptor.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现基于反射属性信息的控件描述符 PropertyInfoControlDescriptor。
+// 从 PropertyInfo 构建控件描述符，包含名称、显示名、描述和图标。
+// 用于页面构建器根据属性元数据创建对应的 UI 控件。
 //*********************************************************************
 
 using System;

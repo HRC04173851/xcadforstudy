@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmConfiguration.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 配置包装器基类及装配体/零件配置实现，处理 BOM 数量、属性预览和父子配置关系解析。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

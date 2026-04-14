@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/UI/PropertyPage/Services/ISelectionCustomFilter.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义选择过滤接口，允许在选择实体时执行自定义过滤逻辑
 //*********************************************************************
 
 using Xarial.XCad.Base.Enums;

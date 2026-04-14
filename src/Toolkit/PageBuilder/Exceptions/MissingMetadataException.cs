@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Exceptions/MissingMetadataException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 MissingMetadataException。
+// 当未能找到控件所需的元数据时抛出。
+// 用于标识元数据依赖配置缺失问题。
 //*********************************************************************
 
 using System;

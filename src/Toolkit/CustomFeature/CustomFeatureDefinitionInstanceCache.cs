@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/CustomFeature/CustomFeatureDefinitionInstanceCache.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现自定义特征定义服务实例缓存类 CustomFeatureDefinitionInstanceCache。
+// 用于管理自定义特征服务器的实例缓存，支持按类型注册和获取单例实例。
+// 避免重复创建相同的特征定义服务，提高资源利用效率。
 //*********************************************************************
 
 using System;

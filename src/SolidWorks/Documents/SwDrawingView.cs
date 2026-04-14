@@ -1,8 +1,26 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwDrawingView.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 工程图视图（Drawing View）的封装。
+// 工程图视图是工程图文档中的核心元素，用于展示零件或装配体的不同投影、剖面、详图等。
+//
+// 视图类型层次：
+// - ISwDrawingView：所有视图的基接口
+//   - ISwModelBasedDrawingView：基于模型的视图（标准三视图、投影视图等）
+//   - ISwProjectedDrawingView：投影视图
+//   - ISwAuxiliaryDrawingView：辅助视图
+//   - ISwSectionDrawingView：剖视图
+//   - ISwDetailDrawingView：详图视图
+//   - ISwFlatPatternDrawingView：展开图视图
+//   - ISwRelativeDrawingView：相对视图
+//
+// 每个视图都关联到特定的图纸（Sheet）和模型视图（ModelView）
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;
@@ -34,36 +52,74 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 工程图视图基接口。
+    /// <para>
+    /// 工程图视图是工程图中展示模型投影的基本元素。
+    /// 每个视图关联到特定图纸，并包含视图名称、可见性、比例等属性。
+    /// </para>
+    /// </summary>
     public interface ISwDrawingView : IXDrawingView, ISwSelObject
     {
+        /// <summary>
+        /// 获取底层 SolidWorks IView COM 对象。
+        /// </summary>
         IView DrawingView { get; }
     }
 
+    /// <summary>
+    /// 基于模型的工程图视图。
+    /// <para>中文：标准三视图、等轴测视图等直接由模型投影生成的视图。</para>
+    /// </summary>
     public interface ISwModelBasedDrawingView : ISwDrawingView, IXModelViewBasedDrawingView
     {
     }
 
+    /// <summary>
+    /// 投影视图接口。
+    /// <para>中文：从已有视图投影生成的视图，如侧视图、仰视图等。</para>
+    /// </summary>
     public interface ISwProjectedDrawingView : ISwDrawingView, IXProjectedDrawingView
     {
     }
 
+    /// <summary>
+    /// 辅助视图接口。
+    /// <para>中文：基于参考基准面投影的视图，通常与工程图中的斜线配合使用。</para>
+    /// </summary>
     public interface ISwAuxiliaryDrawingView : ISwDrawingView, IXAuxiliaryDrawingView
     {
     }
 
+    /// <summary>
+    /// 剖视图接口。
+    /// <para>中文：用剖切平面切割模型后展示内部结构的视图。</para>
+    /// </summary>
     public interface ISwSectionDrawingView : ISwDrawingView, IXSectionDrawingView
     {
     }
 
+    /// <summary>
+    /// 详图视图接口。
+    /// <para>中文：放大显示某个区域的视图，用于显示细小特征。</para>
+    /// </summary>
     public interface ISwDetailDrawingView : ISwDrawingView, IXDetailedDrawingView
     {
     }
 
+    /// <summary>
+    /// 展开图视图接口。
+    /// <para>中文：展示钣金零件展开状态的视图。</para>
+    /// </summary>
     public interface ISwFlatPatternDrawingView : ISwDrawingView, IXFlatPatternDrawingView
     {
     }
 
-    public interface ISwRelativeDrawingView : ISwDrawingView, IXRelativeDrawingView 
+    /// <summary>
+    /// 相对视图接口。
+    /// <para>中文：基于两个参考实体（面/边）定位的视图方向。</para>
+    /// </summary>
+    public interface ISwRelativeDrawingView : ISwDrawingView, IXRelativeDrawingView
     {
     }
 

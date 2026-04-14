@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Controls/PropertyManagerPageCustomControl.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 自定义控件包装类，用于托管WinForms或WPF自定义控件到属性管理器页面。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

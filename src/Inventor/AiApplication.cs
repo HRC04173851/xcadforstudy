@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Inventor/AiApplication.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义Autodesk Inventor应用程序接口IAiApplication和内部实现类AiApplication。
+// 封装Inventor应用程序实例，提供版本管理、服务集合和启动连接策略等功能。
 //*********************************************************************
 
 using Inventor;

@@ -1,8 +1,16 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/SwMemoryGeometryBuilder.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 内存几何体构造器（Memory Geometry Builder）。
+// 提供在内存中创建临时几何体的统一接口，支持线框、片体和实体几何体的构造。
+// 可序列化/反序列化几何体，用于几何体数据的传输和存储。
+// 是 xCAD 框架中几何体操作的核心组件。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

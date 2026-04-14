@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Data/SwDmCustomProperty.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 通过 Document Manager 访问的自定义属性抽象基类实现，统一处理读写、提交状态与类型转换逻辑。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

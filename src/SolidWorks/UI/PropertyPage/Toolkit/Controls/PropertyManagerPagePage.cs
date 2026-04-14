@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Controls/PropertyManagerPagePage.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 属性管理器页面包装类，代表整个SOLIDWORKS属性管理器页面及其控件树。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

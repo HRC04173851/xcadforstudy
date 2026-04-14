@@ -1,8 +1,16 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Curves/SwPolylineCurve.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 多段线曲线（Polyline Curve）的封装。
+// 多段线是由多条直线段连接而成的复合曲线，支持三种模式：
+// Strip（连续线段）、Lines（成对线段）、Loop（闭合多边形）。
+// 常用于绘制草图轮廓、定义扫掠路径等场景。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

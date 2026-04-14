@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Features/SwStructuralMember.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 实现焊接件结构成员（Structural Member）特征的封装，提供焊件组和段件的管理。
+// SwStructuralMember 用于访问焊接件中的结构型材，如角钢、槽钢等，
+// 支持按组（Group）和段（Piece）进行层级访问，并提供对齐和变换计算功能。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,30 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwDocument3D.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 3D文档（零件和装配体）的抽象基类。
+// 3D文档是 SOLIDWORKS 中用于创建三维模型的核心文档类型。
+//
+// 3D 文档类型：
+// - SwPart：零件文档，创建独立的零件几何体
+// - SwAssembly：装配体文档，组装多个零件
+//
+// 共享功能（SwDocument3D）：
+// 1. 配置管理（Configurations）- 支持多配置
+// 2. 模型视图（ModelViews）- 管理视图方向和显示
+// 3. 对象转换（ConvertObject）- 在文档上下文间转换选中的对象
+// 4. 评估功能（Evaluation）- 质量属性、边界框等计算
+//
+// 继承层次：
+// SwDocument（基类）
+//   └── SwDocument3D（3D文档抽象基类）
+//         ├── SwPart（零件文档）
+//         └── SwAssembly（装配体文档）
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

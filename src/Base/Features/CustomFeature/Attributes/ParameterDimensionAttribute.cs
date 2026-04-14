@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Attributes/ParameterDimensionAttribute.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 将属性标记为宏特征的尺寸参数，支持线性、角度、径向等尺寸类型。
+// 属性值与图形区尺寸双向同步，在OnRebuild回调和用户交互时均能更新。
 //*********************************************************************
 
 using System;

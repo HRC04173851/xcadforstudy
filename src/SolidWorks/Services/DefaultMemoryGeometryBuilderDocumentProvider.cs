@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Services/DefaultMemoryGeometryBuilderDocumentProvider.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供内存几何构建器的默认文档提供程序实现，通过查找活动或现有的零件文档来执行几何操作。
 //*********************************************************************
 
 using System;

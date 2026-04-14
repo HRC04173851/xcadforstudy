@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmDrawingView.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 工程图视图包装器，负责解析其引用的模型文档与配置，支持视图级图纸定位与比例访问。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

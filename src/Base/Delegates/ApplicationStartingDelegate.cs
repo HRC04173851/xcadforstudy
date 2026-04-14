@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Delegates/ApplicationStartingDelegate.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义了 IXApplication.Starting 事件的委托类型，用于在应用程序启动时触发回调。
 //*********************************************************************
 
 using System;

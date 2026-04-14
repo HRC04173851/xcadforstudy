@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Controls/PropertyManagerPageItemsSourceControl.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 数据源控件抽象基类，为组合框和列表框等控件提供数据项加载和管理功能。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

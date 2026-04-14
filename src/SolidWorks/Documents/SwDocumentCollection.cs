@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwDocumentCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 文档集合（Document Collection）的封装。
+// 文档集合管理当前 SolidWorks 应用程序中打开的所有文档，
+// 提供文档的遍历、查找、激活等功能，是应用程序级别的文档访问入口。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

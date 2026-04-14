@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/DrawingViewCreatedEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现工程图视图创建完成后的回调处理。
+// DrawingViewCreatedDelegate 事件在工程图视图创建之后触发，
+// 用于执行视图创建后的初始化或后续处理逻辑。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

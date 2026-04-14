@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Structures/CustomFeatureRebuildResult.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义宏特征OnRebuild回调的返回结果结构。
+// 支持返回几何体结果（多个实体）或状态结果（成功/失败及错误消息）。
 //*********************************************************************
 
 using Xarial.XCad.Geometry;

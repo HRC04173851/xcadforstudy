@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Sketch/SwSketchPoint.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供SolidWorks草图点的实现，封装ISketchPoint接口，支持点的创建、坐标管理和颜色、图层等属性设置。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

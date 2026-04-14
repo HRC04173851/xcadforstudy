@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Inventor/Utils/InventorApplicationStarter.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// Inventor应用程序启动器类。
+// 封装Inventor应用程序的启动逻辑，处理COM互操作和应用程序初始化。
 //*********************************************************************
 
 using Inventor;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Exceptions/FaultObjectNotSupportedException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 访问IFaultObject的所有属性和方法时抛出此异常，表示无法访问故障对象的方法和属性
 //*********************************************************************
 
 using System;

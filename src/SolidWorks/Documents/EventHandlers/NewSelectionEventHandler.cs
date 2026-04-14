@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/EventHandlers/NewSelectionEventHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现新选择事件的回调处理。
+// NewSelectionDelegate 事件在文档中新增选中对象时触发，
+// 用于响应用户的选择操作，支持多选场景下的增量选择处理。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

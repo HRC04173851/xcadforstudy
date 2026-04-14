@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Controls/PropertyManagerPageSelectionBoxControl.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 选择框控件包装类，管理SOLIDWORKS选择框的选择过滤、标记颜色和自定义筛选器。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

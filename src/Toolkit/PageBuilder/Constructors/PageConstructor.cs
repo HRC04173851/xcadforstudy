@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Constructors/PageConstructor.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现页面根对象构造器的抽象基类 PageConstructor。
+// 实现 IPageConstructor 接口，根据特性集合创建页面实例。
+// 是页面构建的入口点之一。
 //*********************************************************************
 
 using Xarial.XCad.Utils.PageBuilder.Base;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Exceptions/FutureVersionParametersException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 FutureVersionParametersException。
+// 当宏特征的参数版本属于加载项无法识别的较新版本时抛出。
+// 提示用户需要升级加载项版本以支持该特征参数。
 //*********************************************************************
 
 using System;

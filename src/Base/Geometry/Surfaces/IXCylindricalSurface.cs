@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Geometry/Surfaces/IXCylindricalSurface.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义圆柱曲面(Cylindrical Surface)接口，继承自IXSurface，提供轴线(Axis)和半径
+// (Radius)属性，用于表示精确的圆柱形几何曲面。
 //*********************************************************************
 
 using System;

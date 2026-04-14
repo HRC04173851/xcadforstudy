@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwDrawingViewsCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 工程图视图集合（Drawing Views Collection）的封装。
+// 工程图视图集合管理工程图文档中的所有视图，包括标准三视图、剖视图、
+// 详图视图、辅助视图等，提供视图的遍历、查找和操作功能。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

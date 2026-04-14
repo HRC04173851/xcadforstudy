@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwLayersCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 图层集合（Layers Collection）的封装。
+// 图层集合管理文档中定义的所有图层，提供图层的创建、删除、遍历和查询，
+// 是工程图文档中进行图层管理和对象分组组织的核心接口。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

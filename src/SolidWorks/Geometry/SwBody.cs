@@ -1,8 +1,30 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/SwBody.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 几何体（Body）的封装。
+// Body 是 SolidWorks 中代表实体或曲面几何对象的基本单元。
+//
+// Body 类型：
+// - SolidBody：实体几何体，有封闭的体积
+// - SheetBody：片体/曲面体，没有封闭体积
+// - HybridBody：混合体，包含实体和曲面
+//
+// Body 的来源：
+// 1. 参数化特征创建：拉伸、旋转、倒角、圆角等
+// 2. 曲面特征创建：放样、扫描、边界曲面等
+// 3. 布尔运算：合并、剪切、相交
+// 4. 导入几何：从 STEP/IGES 等格式导入
+//
+// Body 的生命周期：
+// - 普通 Body：从特征创建，存储在零件文档中
+// - 临时 Body（Temporary Body）：算法操作中创建，不属于文档
+// - 使用 GetObjectByPersistReference3 通过持久引用重新获取已删除的 Body
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

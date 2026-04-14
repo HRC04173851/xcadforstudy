@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Services/ModelViewControlProvider.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供模型视图控件的创建功能，支持通过COM控件和.NET控件两种方式在模型视图中嵌入自定义界面，实现文档交互扩展。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

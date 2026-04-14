@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Geometry/Surfaces/IXToroidalSurface.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义环面(Toroidal Surface)接口，继承自IXSurface，提供轴线(Axis)、主半径
+// (MajorRadius)和次半径(MinorRadius)属性，用于表示圆环形的几何曲面。
 //*********************************************************************
 
 using System;

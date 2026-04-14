@@ -1,8 +1,30 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Documents/IXAssembly.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义装配体（Assembly）的跨CAD平台接口。
+// 装配体是由多个零件和/或子装配体组成的集合，通过约束关系定位。
+//
+// 装配体核心概念：
+// 1. 组件（Component）：装配体中的零件或子装配体引用
+// 2. 约束（Mates）：定义组件间的几何关系（重合、平行、距离、角度等）
+// 3. 爆炸状态：组件可以展开显示或爆炸视图显示
+// 4. 配置管理：支持装配体的多配置
+//
+// 装配体类型层次：
+// - IXAssembly：基础装配体接口
+//   - IXPartAssembly：零件装配体
+//   - IX weldmentAssembly：焊接装配体
+//
+// 装配体事件：
+// - ComponentInserted：组件插入时
+// - ComponentDeleting：组件删除前
+// - ComponentDeleted：组件删除后
 //*********************************************************************
 
 using Xarial.XCad.Documents.Delegates;

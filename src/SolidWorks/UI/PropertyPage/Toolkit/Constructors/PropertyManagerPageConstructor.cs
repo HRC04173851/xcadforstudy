@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Constructors/PropertyManagerPageConstructor.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 属性管理器页面构造函数，负责创建属性管理器页面实例。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

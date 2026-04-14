@@ -1,8 +1,35 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/SwEdge.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 边（Edge）的封装。
+// Edge 是 SolidWorks 中代表几何体边界线的对象。
+//
+// Edge 的核心概念：
+// 1. 曲线定义（Definition）：每个 Edge 由一条曲线（ICurve）定义
+// 2. 顶点（Vertices）：Edge 有起始和终止顶点
+// 3. 方向（Sensitivity）：Edge 有方向性，影响曲线参数化
+// 4. 相邻面（Adjacent Faces）：Edge 是两个面之间的交界
+//
+// Edge 类型：
+// - 线性边（Linear Edge）：直线段
+// - 圆弧边（Circular Edge）：圆弧
+// - 样条边（Spline Edge）：Bezier/NURBS 曲线
+//
+// Edge 的获取方式：
+// - 从 Face 获取：face.Edges 枚举
+// - 从 Vertex 获取：vertex.GetEdges()
+// - 从 Body 获取：body.Edges 枚举
+//
+// Edge 操作：
+// - GetTwoAdjacentFaces2：获取共享该边的两个面
+// - GetCoEdges：获取共享该边的 CoEdge（面内的边引用）
+// - GetCurve：获取底层曲线
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

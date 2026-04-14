@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Annotations/SwTable.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 表示SolidWorks表格注解(ITableAnnotation)，如明细表和修订表。提供表格数据的
+// 读取功能，通过IDataReader接口以流式方式访问表格内容，支持列标题和单元格值读取。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

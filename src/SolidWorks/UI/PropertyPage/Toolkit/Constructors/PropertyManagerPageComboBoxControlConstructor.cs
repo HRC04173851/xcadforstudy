@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Constructors/PropertyManagerPageComboBoxControlConstructor.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 组合框控件构造函数，用于创建和管理枚举类型和普通类型的组合框控件。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

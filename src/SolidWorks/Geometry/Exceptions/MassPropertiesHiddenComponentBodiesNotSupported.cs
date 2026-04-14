@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Exceptions/MassPropertiesHiddenComponentBodiesNotSupported.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义隐藏组件 Body 的质量属性不支持时抛出的异常。
+// 在 SOLIDWORKS 2019 中，IMassProperty API 不支持指定包含或排除隐藏实体，
+// 当用户在装配体中设置 VisibleOnly 选项但存在隐藏 Body 时触发此异常。
 //*********************************************************************
 
 using System;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Geometry/SwDmBody.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// Document Manager 几何包装器中的基础实体体抽象基类，当 Document Manager 无法提供完整 B-Rep 拓扑时使用。
 //*********************************************************************
 
 using System;

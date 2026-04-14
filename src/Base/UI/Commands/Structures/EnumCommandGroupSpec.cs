@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/UI/Commands/Structures/EnumCommandGroupSpec.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 由枚举生成的命令组规格类及上下文菜单命令组规格类，继承自CommandGroupSpec和ContextMenuCommandGroupSpec，关联枚举类型与命令组。
 //*********************************************************************
 
 using System;

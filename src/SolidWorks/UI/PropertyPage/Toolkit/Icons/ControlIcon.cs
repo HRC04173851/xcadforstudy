@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Icons/ControlIcon.cs
+//*********************************************************************
 //xCAD
-//Copyright(C) 2024 Xarial Pty Limited
+//Copyright(C) 2024 Xiral Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 控件图标实现，用于属性管理器页面中控件的图标显示和管理。
 //*********************************************************************
 
 using System.Collections.Generic;

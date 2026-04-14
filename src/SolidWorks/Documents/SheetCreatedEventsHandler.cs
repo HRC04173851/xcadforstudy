@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SheetCreatedEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现工程图图纸创建完成后的回调处理。
+// SheetCreatedDelegate 事件在工程图图纸创建之后触发，
+// 用于执行图纸创建后的初始化工作，如设置图纸属性、添加默认视图等。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

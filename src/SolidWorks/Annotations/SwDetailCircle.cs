@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Annotations/SwDetailCircle.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 表示SolidWorks详图圆(IDetailCircle)，用于在工程图中创建详图视图的圆形边界。
+// 提供圆形的定义(半径、中心点)和选择功能，支持图层和注解属性。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

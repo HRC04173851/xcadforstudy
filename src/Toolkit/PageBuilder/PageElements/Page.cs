@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/PageElements/Page.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现页面基类 Page 和页面扩展 PageExtension。
+// 继承自 Group，实现 IPage 接口，是 PropertyManager 页面的根元素。
+// 提供绑定管理器的延迟初始化和帮助链接打开功能。
 //*********************************************************************
 
 using System;

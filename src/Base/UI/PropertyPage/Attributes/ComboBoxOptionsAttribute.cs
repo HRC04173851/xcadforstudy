@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/UI/PropertyPage/Attributes/ComboBoxOptionsAttribute.cs
+//*********************************************************************
 //xCAD
-//Copyright(C) 2024 Xarial Pty Limited
+//Copyright(C) 2024 Xrial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 为下拉列表框提供附加选项，指定下拉框的渲染样式风格。
 //*********************************************************************
 
 using System;

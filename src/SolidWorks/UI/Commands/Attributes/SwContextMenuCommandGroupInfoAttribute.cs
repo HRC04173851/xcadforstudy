@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// Commands/Attributes/SwContextMenuCommandGroupInfoAttribute.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// SOLIDWORKS特定的上下文命令菜单规范，用于定义上下文命令组信息。
 //*********************************************************************
 
 using SolidWorks.Interop.swconst;

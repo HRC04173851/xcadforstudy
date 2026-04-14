@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Sketch/SwSketchText.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供SolidWorks草图文字的实现，封装ISketchText接口，支持草图文字的创建和属性管理。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Sketch/SwSketchEllipse.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供SolidWorks草图椭圆的实现，封装ISketchEllipse接口，支持椭圆的几何属性和起终点管理。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

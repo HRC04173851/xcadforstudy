@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Annotations/SwNote.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 表示SolidWorks注解对象(INote)，提供文本内容的读取和修改功能。支持设置文本的
+// 位置、角度、对齐方式、颜色和字体等属性，封装了文本格式与SolidWorks API的转换。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

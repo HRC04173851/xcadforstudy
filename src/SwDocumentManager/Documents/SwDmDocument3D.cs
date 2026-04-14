@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmDocument3D.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 三维模型文档（零件与装配体）共用的基类实现，暴露配置集合并处理虚拟文档标题辅助逻辑。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

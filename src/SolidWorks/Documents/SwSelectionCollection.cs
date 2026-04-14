@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwSelectionCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 选择集合（Selection Collection）的封装。
+// 选择集合管理文档中当前选中的对象，提供选中的添加、移除、遍历等功能，
+// 是实现文档交互操作的核心机制，支持单选和多选模式。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Annotations/SwSectionLine.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 表示SolidWorks剖切线(IDrSection)，用于工程图中的剖视图定义。提供剖切线的
+// 几何定义(Line对象)和选择功能，支持图层属性的设置和管理。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Exceptions/OverdefinedConstructorException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 OverdefinedConstructorException。
+// 当同一个键类型重复注册构造器时抛出。
+// 用于防止构造器配置的重复覆盖。
 //*********************************************************************
 
 using System;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/TransformConverter.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供 TransformMatrix 与 IMathTransform 之间的转换工具，支持 SOLIDWORKS 数学变换格式与 xCAD 矩阵格式的相互转换。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmDrawingViewsCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 枚举某个图纸页上的全部工程图视图，将原始视图 COM 对象转换为 xCAD 工程图视图包装器。
 //*********************************************************************
 
 using System;

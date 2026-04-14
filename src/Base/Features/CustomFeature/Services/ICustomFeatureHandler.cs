@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Services/ICustomFeatureHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义每个宏特征实例处理器的接口，负责初始化和卸载时的资源管理。
+// 在宏特征创建或首次加载时调用Init，删除或模型关闭时调用Unload。
 //*********************************************************************
 
 using Xarial.XCad.Documents;

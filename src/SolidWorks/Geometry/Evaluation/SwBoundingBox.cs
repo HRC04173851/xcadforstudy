@@ -1,8 +1,23 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Evaluation/SwBoundingBox.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 边界框（Bounding Box）计算功能。
+// 边界框是包围几何体的最小轴对齐或定向长方体，用于：
+// 1. 碰撞检测（快速排除明显不相交的对象）
+// 2. 空间规划（计算包装、存放空间）
+// 3. 渲染优化（视锥体剔除）
+// 4. 质量属性估算
+//
+// 支持三种计算模式：
+// - BestFit（最佳拟合）：使用 OBB（定向边界框）
+// - Precise（精确模式）：通过 GetExtremePoint 逐点计算
+// - Approximate（近似模式）：使用 GetBodyBox 快速获取 AABB（轴对齐边界框）
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;
@@ -29,14 +44,40 @@ using Xarial.XCad.Toolkit.Exceptions;
 
 namespace Xarial.XCad.SolidWorks.Geometry.Evaluation
 {
+    /// <summary>
+    /// SolidWorks 边界框接口。
+    /// <para>中文：封装 SolidWorks 边界框计算功能，提供统一的几何边界访问。</para>
+    /// </summary>
     public interface ISwBoundingBox : IXBoundingBox
     {
     }
 
+    /// <summary>
+    /// 装配体边界框接口。
+    /// <para>中文：装配体边界框需要特殊处理级联组件的边界计算。</para>
+    /// </summary>
     public interface ISwAssemblyBoundingBox : ISwBoundingBox, IXAssemblyBoundingBox
     {
     }
 
+    /// <summary>
+    /// SolidWorks 边界框抽象基类。
+    /// <para>
+    /// 核心职责：
+    /// <list type="bullet">
+    /// <item><description>通过 ElementCreator 模式延迟计算边界框</description></item>
+    /// <item><description>支持 RelativeTo 属性指定参考坐标系</description></item>
+    /// <item><description>支持 Precise 属性切换精确/近似计算模式</description></item>
+    /// </list>
+    /// </para>
+    /// <para>
+    /// 计算模式说明：
+    /// <list type="bullet">
+    /// <item><description>Precise=false（默认）：使用 GetBodyBox API，速度快但结果为 AABB</description></item>
+    /// <item><description>Precise=true：使用 GetExtremePoint 逐点搜索，得到更精确的边界</description></item>
+    /// </list>
+    /// </para>
+    /// </summary>
     internal abstract class SwBoundingBox : ISwBoundingBox
     {
         internal class EditableBox3D

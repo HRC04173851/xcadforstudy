@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Sketch/SwSketchSegment.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供SolidWorks草图线段的抽象基类实现，封装ISketchSegment接口，支持线段的颜色、图层、几何定义和长度管理。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

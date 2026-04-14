@@ -1,8 +1,16 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/SwEntity.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 几何实体（Entity）的基本封装类。
+// 实体是拓扑元素（Face、Edge、Vertex）的基类，提供选择、最近点查找等功能。
+// 支持韧性（Resilience）特性，可在文档重新加载后保持有效引用。
+// 作为 Face、Edge、Vertex 等拓扑对象的共同基类。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

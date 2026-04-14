@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// Commands/Toolkit/Structures/CommandGroupHighResIcon.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 命令组高分辨率图标实现，支持多种尺寸的高分辨率图标规格。
 //*********************************************************************
 
 using System.Collections.Generic;

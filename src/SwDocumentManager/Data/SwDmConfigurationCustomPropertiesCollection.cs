@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Data/SwDmConfigurationCustomPropertiesCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 配置特定（Configuration-specific）的自定义属性仓库实现，包括配置级属性的增删改查操作。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

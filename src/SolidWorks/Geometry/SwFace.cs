@@ -1,8 +1,33 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/SwFace.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 面（Face）的封装。
+// Face 是 SolidWorks 中代表几何体表面的对象。
+//
+// Face 的核心概念：
+// 1. 曲面定义（Definition）：每个 Face 由一个曲面（IFace2/ISwSurface）定义
+// 2. UV 参数化：Face 在曲面上有确定的 UV 参数范围
+// 3. 拓扑元素：Face 包含 Edges（边界）和 Vertices（顶点）
+// 4. 方向（Sensitivity）：Face 有法线方向，影响光照和布尔运算
+//
+// Face 的获取方式：
+// - 从 Body 获取：body.Faces 枚举
+// - 从 Edge 获取：edge.GetTwoAdjacentFaces2()
+// - 从顶点获取：vertex.IGetEdges() 遍历关联边再获取面
+// - 从特征获取：feature.GetFaces()
+//
+// Face 操作：
+// - GetEdges：获取边界边
+// - GetVertices：获取顶点
+// - GetUVBounds：获取 UV 参数范围
+// - GetArea：获取面积
+// - GetCenter：获取重心
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

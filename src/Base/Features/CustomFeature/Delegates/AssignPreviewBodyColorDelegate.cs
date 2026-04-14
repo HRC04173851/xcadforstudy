@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Delegates/AssignPreviewBodyColorDelegate.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 为预览几何体分配自定义颜色的委托。
+// 在宏特征重建预览阶段可自定义预览体的显示颜色。
 //*********************************************************************
 
 using System;

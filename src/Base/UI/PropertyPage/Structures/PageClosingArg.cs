@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/UI/PropertyPage/Structures/PageClosingArg.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 属性页关闭事件的参数，包含取消标志和错误信息用于控制关闭行为
 //*********************************************************************
 
 namespace Xarial.XCad.UI.PropertyPage.Structures

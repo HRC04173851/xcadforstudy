@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Curves/SwEllipseCurve.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 椭圆曲线（Ellipse Curve）的封装。
+// 椭圆是一种二次曲线，由长轴、短轴和圆心定义。
+// 支持获取椭圆的几何参数（长轴、短轴、圆心），常用于放样、扫描等特征。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

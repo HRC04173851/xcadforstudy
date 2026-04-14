@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/SwDmApplicationFactory.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供用于创建 Document Manager 应用实例的工厂，屏蔽注册表、COM 和许可证连接的细节处理。
 //*********************************************************************
 
 using Microsoft.Win32;

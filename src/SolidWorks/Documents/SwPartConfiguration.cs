@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwPartConfiguration.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 零件配置（Part Configuration）的封装。
+// 零件配置用于定义零件模型的不同变体，支持在同一零件文档中管理多个设计状态，
+// 如不同的尺寸参数、压缩特征等，是零件设计变体管理的核心机制。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

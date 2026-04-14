@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Annotations/EventHandlers/SwDimensionChangeEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 处理SolidWorks尺寸值变更事件的事件处理器，通过订阅DimensionChangeNotify事件
+// 并在尺寸值发生变化时调用注册的委托回调。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

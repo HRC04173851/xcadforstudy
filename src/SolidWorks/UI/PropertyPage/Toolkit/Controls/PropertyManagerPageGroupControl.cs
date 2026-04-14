@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Controls/PropertyManagerPageGroupControl.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 组框控件包装类，管理SOLIDWORKS属性管理器页面中的组框控件。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

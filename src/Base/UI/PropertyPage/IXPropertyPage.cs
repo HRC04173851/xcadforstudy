@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/UI/PropertyPage/IXPropertyPage.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义泛型属性页接口，提供数据模型绑定、页面生命周期事件和关闭控制
 //*********************************************************************
 
 using Xarial.XCad.UI.PropertyPage.Delegates;

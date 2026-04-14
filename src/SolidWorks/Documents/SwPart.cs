@@ -1,8 +1,30 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwPart.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 零件文档（Part Document）的封装。
+// 零件文档是 SOLIDWORKS 中创建三维几何模型的基本文档类型。
+//
+// 零件文档核心功能：
+// 1. 实体/曲面体管理（Bodies）- 访问零件中的所有几何体
+// 2. 配置管理（Configurations）- 支持零件的多配置
+// 3. 草图管理 - 创建和编辑2D/3D草图
+// 4. 特征管理 - 通过 FeatureManager 访问所有特征
+//
+// 零件 vs 装配体 vs 工程图：
+// - Part（零件）：独立的零件模型，包含几何体和特征
+// - Assembly（装配体）：多个零件的装配，有组件层级
+// - Drawing（工程图）：零件/装配体的二维投影图纸
+//
+// 与 SwDocument3D 的关系：
+// SwPart 继承自 SwDocument3D，添加了零件特有的：
+// - Bodies 属性：管理零件的实体/曲面体集合
+// - Configurations：零件级别的配置集合
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Core/SpecialTypes.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义特殊伪类型类 SpecialTypes。
+// 用于解析通用页面元素构造器的特殊类型标记。
+// 包含 AnyType、ComplexType、EnumType 等类型标记。
 //*********************************************************************
 
 using System;

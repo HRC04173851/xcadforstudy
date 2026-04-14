@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Delegates/AlignDimensionDelegate.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 在OnRebuild回调中用于对齐宏特征尺寸标注的委托。
+// 支持线性、角度、径向等不同类型尺寸的位置和方向对齐。
 //*********************************************************************
 
 using Xarial.XCad.Annotations;

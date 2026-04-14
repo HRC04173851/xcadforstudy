@@ -1,8 +1,29 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Evaluation/SwLegacyMassProperty.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 质量属性（Mass Property）的传统计算方式。
+// 质量属性包括：质量、体积、表面积、密度、质心、惯性矩等。
+//
+// 质量属性计算模式：
+// 1. SwLegacyMassProperty（传统模式）：使用 IMassProperty2 COM API
+//    - 优点：兼容旧版本 SolidWorks
+//    - 缺点：需要设置参考配置和材料
+// 2. SwMassProperty（现代模式）：直接计算，不依赖配置
+//
+// 计算前提条件：
+// - 零件必须有材料分配
+// - 需要设置参考配置（对于多配置零件）
+// - 组件需要完全解析（非轻量级）
+//
+// 使用注意：
+// - 调用任何属性前会自动调用 SetScope 指定计算范围
+// - 如果超出范围会抛出异常（通过 ThrowIfScopeException 检查）
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

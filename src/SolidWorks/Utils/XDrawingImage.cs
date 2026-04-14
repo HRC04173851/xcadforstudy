@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/XDrawingImage.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 使用 System.Drawing.Image 实现 IXImage 接口，将图像数据转换为 PNG 格式的字节数组存储。
 //*********************************************************************
 
 using System;

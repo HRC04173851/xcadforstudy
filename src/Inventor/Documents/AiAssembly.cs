@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Inventor/Documents/AiAssembly.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// Inventor装配文档接口和实现类，实现IAiAssembly接口。
+// 封装Autodesk Inventor装配文档，提供零部件列表、组件枚举和装配结构访问等功能。
 //*********************************************************************
 
 using Inventor;

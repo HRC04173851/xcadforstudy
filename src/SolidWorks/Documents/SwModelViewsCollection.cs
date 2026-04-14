@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwModelViewsCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 模型视图集合（Model Views Collection）的封装。
+// 模型视图集合管理文档中的所有视图方向，包括标准视图（正视、俯视、等轴测等）
+// 和命名视图，提供视图的遍历、激活和切换等功能。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

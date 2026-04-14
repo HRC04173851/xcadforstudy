@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Constructors/SelectionBoxConstructorHelper.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现选择框构造器的辅助方法类 SelectionBoxConstructorHelper。
+// 提供根据选择上下文类型获取元素类型和默认位图标签的方法。
+// 用于标准化选择框的默认行为配置。
 //*********************************************************************
 
 using System;

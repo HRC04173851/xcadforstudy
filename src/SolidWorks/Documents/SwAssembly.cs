@@ -1,8 +1,29 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwAssembly.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 装配体文档（Assembly Document）的封装。
+// 装配体文档是 SOLIDWORKS 中用于组装多个零件或子装配体的文档类型。
+//
+// 装配体核心概念：
+// 1. 组件（Component）：装配体中的零件或子装配体引用
+// 2. 约束关系（Mate）：定义组件间的配合关系（重合、平行、距离等）
+// 3. 爆炸视图（Exploded View）：展示组件间关系的展开视图
+// 4. 轻量级模式（Lightweight）：延迟加载子组件以提高性能
+//
+// 装配体事件：
+// - ComponentInserted：新组件插入时触发
+// - ComponentDeleting：组件删除前触发
+// - ComponentDeleted：组件删除后触发
+//
+// 与零件的区别：
+// - 零件：独立的模型文件
+// - 装配体：引用零件文件的容器，有组件树结构
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

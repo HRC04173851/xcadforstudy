@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Evaluation/SwTessellation.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 曲面细分（Tessellation/网格化）功能。
+// 网格化将精确的 NURBS 曲面转换为三角面片表示，用于可视化、导出和快速渲染。
+// 支持精确模式和近似模式，可控制是否只包含可见部分。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/EventHandlers/CutListRebuildEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现切割清单重建事件的回调处理。
+// CutListRebuildDelegate 事件在零件的焊接切割清单（Weldment Cut List）重建时触发，
+// 用于响应切割清单的变更，保持切割清单项的同步和一致性。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

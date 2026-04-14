@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/SwMemoryWireGeometryBuilder.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 内存线框几何体构造器（Memory Wire Geometry Builder）。
+// 专门用于在内存中创建线框几何体，支持创建点、线、弧、样条等曲线对象。
+// 提供曲线合并功能（Merge），可连接多条曲线为单一连续曲线。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

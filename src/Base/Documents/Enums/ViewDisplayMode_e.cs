@@ -1,4 +1,16 @@
-﻿using System;
+﻿// -*- coding: utf-8 -*-
+// src/Base/Documents/Enums/ViewDisplayMode_e.cs
+//*********************************************************************
+//xCAD
+//Copyright(C) 2024 Xarial Pty Limited
+//Product URL: https://www.xcad.net
+//License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 表示工程图视图和模型视图的显示模式，包括线框、隐藏线可见、隐藏线消除和着色模式。
+//*********************************************************************
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

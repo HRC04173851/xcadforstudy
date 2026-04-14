@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Services/IPropertyPageHandlerProvider.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义属性页处理器提供程序接口，用于创建属性管理器页的处理器，支持自定义属性页的创建和COM可见性配置。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

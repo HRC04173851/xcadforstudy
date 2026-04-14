@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/FeatureCreatedEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现特征创建完成后的回调处理。
+// FeatureCreatedDelegate 事件在零件文档中的特征（Feature）创建之后触发，
+// 可用于执行特征创建后的后续操作，如更新参数、记录日志等。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,4 +1,7 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Features/CustomFeature/SwMacroFeature.cs
+
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
@@ -42,19 +45,61 @@ using System.Globalization;
 
 namespace Xarial.XCad.SolidWorks.Features.CustomFeature
 {
+    /// <summary>
+    /// SolidWorks 宏特性（Macro Feature）的接口。
+    /// <para>扩展了基础特性接口，添加了配置信息访问能力。</para>
+    /// </summary>
     public interface ISwMacroFeature : ISwFeature, IXCustomFeature
     {
+        /// <summary>
+        /// 获取宏特性关联的配置对象
+        /// </summary>
         new ISwConfiguration Configuration { get; }
     }
 
+    /// <summary>
+    /// SolidWorks 宏特性实现类。
+    /// <para>
+    /// 宏特性是 SolidWorks 中一种特殊的功能类型，允许第三方通过 API 扩展标准功能。
+    /// 本类负责：
+    /// <list type="bullet">
+    /// <item><description>将宏特性注册到 SolidWorks 插件系统</description></item>
+    /// <item><description>处理宏特性的参数解析和验证</description></item>
+    /// <item><description>协调特性数据的读取、缓存和重建</description></item>
+    /// </list>
+    /// </para>
+    /// </summary>
+    /// <remarks>
+    /// 使用场景：
+    /// <list type="bullet">
+    /// <item><description>扩展 SolidWorks 标准特性（如放样、旋转）</description></item>
+    /// <item><description>实现需要访问几何数据的第三方功能</description></item>
+    /// </list>
+    /// </remarks>
     internal class SwMacroFeature : SwFeature, ISwMacroFeature
     {
         IXConfiguration IXCustomFeature.Configuration => Configuration;
 
+        /// <summary>
+        /// 宏特性数据对象
+        /// <para>提供对宏特性参数和定义的访问</para>
+        /// </summary>
         private IMacroFeatureData m_FeatData;
 
+        /// <summary>
+        /// 宏特性定义类型
+        /// <para>缓存从 ProgID 获取的类型信息</para>
+        /// </summary>
         private Type m_DefinitionType;
 
+        /// <summary>
+        /// 获取或设置宏特性定义类型
+        /// </summary>
+        /// <value>宏特性定义类的类型</value>
+        /// <remarks>
+        /// 如果特性已提交（IsCommitted），则从 ProgID 动态获取类型。
+        /// 未提交时可以设置，提交后设置将抛出异常。
+        /// </remarks>
         public Type DefinitionType
         {
             get
@@ -67,6 +112,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
 
                         if (!string.IsNullOrEmpty(progId))
                         {
+                            // 从 ProgID 获取 COM 类型
                             m_DefinitionType = Type.GetTypeFromProgID(progId);
                         }
                     }
@@ -87,10 +133,25 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
             }
         }
 
+        /// <summary>
+        /// 获取宏特性数据接口
+        /// <para>延迟初始化，仅在首次访问时从特性获取数据</para>
+        /// </summary>
         public IMacroFeatureData FeatureData => m_FeatData ?? (m_FeatData = Feature.GetDefinition() as IMacroFeatureData);
 
+        /// <summary>
+        /// 特性管理器引用
+        /// <para>用于创建新特性和操作现有特性</para>
+        /// </summary>
         private readonly IFeatureManager m_FeatMgr;
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="feat">SolidWorks 特性对象</param>
+        /// <param name="doc">所属文档</param>
+        /// <param name="app">应用程序</param>
+        /// <param name="created">是否由用户创建（而非加载现有）</param>
         internal SwMacroFeature(IFeature feat, SwDocument doc, SwApplication app, bool created)
             : base(feat, doc, app, created)
         {
@@ -98,15 +159,32 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
         }
 
         //TODO: check constant context disconnection exception
+
+        /// <summary>
+        /// 获取宏特性关联的配置对象
+        /// </summary>
+        /// <remarks>
+        /// SolidWorks 宏特性可以在不同配置中拥有不同的参数值。
+        /// 此属性返回当前编辑上下文的配置。
+        /// </remarks>
         public ISwConfiguration Configuration
             => OwnerDocument.CreateObjectFromDispatch<SwConfiguration>(FeatureData.CurrentConfiguration);
 
+        /// <summary>
+        /// 获取目标变换矩阵
+        /// <para>表示宏特性在装配体上下文中的位置变换</para>
+        /// </summary>
+        /// <remarks>
+        /// 在装配体中编辑部件的宏特性时，TargetTransformation 返回相对于部件的变换。
+        /// 这对于正确处理嵌套部件中的几何体定位至关重要。
+        /// </remarks>
         public TransformMatrix TargetTransformation
         {
             get
             {
                 if (IsCommitted)
                 {
+                    // 已提交的特性：从特性数据获取编辑目标变换
                     var featTransform = FeatureData.GetEditTargetTransform();
 
                     if (featTransform != null)
@@ -120,11 +198,12 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
                 }
                 else
                 {
+                    // 未提交的特性：在装配体中获取正在编辑的部件的变换
                     if (OwnerDocument is IXAssembly)
                     {
                         var editComp = ((IXAssembly)OwnerDocument).EditingComponent;
 
-                        if (editComp != null) 
+                        if (editComp != null)
                         {
                             return editComp.Transformation;
                         }
@@ -138,11 +217,34 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
         protected override IFeature InsertFeature(CancellationToken cancellationToken)
             => InsertComFeatureBase(null, null, null, null, null, null, null);
 
+        /// <summary>
+        /// 插入宏特性的核心方法
+        /// </summary>
+        /// <param name="paramNames">参数名称数组</param>
+        /// <param name="paramTypes">参数类型数组</param>
+        /// <param name="paramValues">参数值数组</param>
+        /// <param name="dimTypes">尺寸类型数组</param>
+        /// <param name="dimValues">尺寸值数组</param>
+        /// <param name="selection">选中的实体数组</param>
+        /// <param name="editBodies">编辑体数组</param>
+        /// <returns>创建的特性对象</returns>
+        /// <remarks>
+        /// 此方法是创建宏特性的核心实现，负责：
+        /// <list type="number">
+        /// <item><description>验证定义类型是否有效</description></item>
+        /// <item><description>提取特性选项和提供者信息</description></item>
+        /// <item><description>获取特性基名称和 ProgID</description></item>
+        /// <item><description>获取图标路径</description></item>
+        /// <item><description>创建选择集并插入宏特性</description></item>
+        /// </list>
+        /// </remarks>
         protected IFeature InsertComFeatureBase(string[] paramNames, int[] paramTypes, string[] paramValues,
             int[] dimTypes, double[] dimValues, object[] selection, object[] editBodies)
         {
+            // 验证定义类型是否派生自 SwMacroFeatureDefinition
             ValidateDefinitionType();
 
+            // 从类型属性中提取特性选项
             var options = CustomFeatureOptions_e.Default;
             var provider = "";
 
@@ -156,8 +258,10 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
                 provider = a.Message;
             });
 
+            // 获取特性基名称
             var baseName = MacroFeatureInfo.GetBaseName(DefinitionType);
 
+            // 获取 ProgID
             var progId = MacroFeatureInfo.GetProgId(DefinitionType);
 
             if (string.IsNullOrEmpty(progId))
@@ -165,6 +269,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
                 throw new NullReferenceException("Prog id for macro feature cannot be extracted");
             }
 
+            // 获取图标路径（根据版本可能包含高分辨率图标）
             var icons = MacroFeatureIconInfo.GetIcons(DefinitionType,
                 CompatibilityUtils.SupportsHighResIcons(SwMacroFeatureDefinition.Application.Sw, CompatibilityUtils.HighResIconsScope_e.MacroFeature));
 
@@ -175,6 +280,7 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
                     selSet.AddRange(selection);
                 }
 
+                // 调用 SolidWorks API 创建宏特性
                 var feat = (IFeature)m_FeatMgr.InsertMacroFeature3(baseName,
                     progId, null, paramNames, paramTypes,
                     paramValues, dimTypes, dimValues, editBodies, icons, (int)options);
@@ -183,6 +289,11 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
             }
         }
 
+        /// <summary>
+        /// 验证定义类型
+        /// <para>确保定义的类型派生自 SwMacroFeatureDefinition</para>
+        /// </summary>
+        /// <exception cref="MacroFeatureDefinitionTypeMismatch">当类型不匹配时抛出</exception>
         protected virtual void ValidateDefinitionType()
         {
             if (!typeof(SwMacroFeatureDefinition).IsAssignableFrom(DefinitionType))
@@ -197,26 +308,69 @@ namespace Xarial.XCad.SolidWorks.Features.CustomFeature
     {
     }
 
+    /// <summary>
+    /// 宏特性编辑器
+    /// <para>负责管理宏特性的编辑状态和选择访问</para>
+    /// </summary>
     internal class SwMacroFeatureEditor : SwFeatureEditor<IMacroFeatureData>
     {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="feat">要编辑的特性</param>
+        /// <param name="featData">宏特性数据</param>
         public SwMacroFeatureEditor(SwFeature feat, IMacroFeatureData featData) : base(feat, featData)
         {
         }
 
+        /// <summary>
+        /// 取消编辑时释放选择访问
+        /// </summary>
         protected override void CancelEdit(IMacroFeatureData featData) => featData.ReleaseSelectionAccess();
 
+        /// <summary>
+        /// 开始编辑时获取选择访问权限
+        /// </summary>
         protected override bool StartEdit(IMacroFeatureData featData, ISwDocument doc, ISwComponent comp)
             => featData.AccessSelections(doc?.Model, comp?.Component);
     }
 
+    /// <summary>
+    /// 带泛型参数的宏特性类
+    /// <para>提供强类型的参数访问和操作能力</para>
+    /// </summary>
+    /// <typeparam name="TParams">参数类型</typeparam>
     internal class SwMacroFeature<TParams> : SwMacroFeature, ISwMacroFeature<TParams>
         where TParams : class
     {
+        /// <summary>
+        /// 参数解析器
+        /// <para>用于在参数类型和 SolidWorks 内部格式之间转换</para>
+        /// </summary>
         private readonly CustomFeatureParametersParser m_ParamsParser;
+
+        /// <summary>
+        /// 参数缓存
+        /// <para>避免重复解析，提高频繁访问参数的效率</para>
+        /// </summary>
         private TParams m_ParametersCache;
 
-        internal static SwMacroFeature CreateSpecificInstance(IFeature feat, SwDocument doc, SwApplication app, Type paramType) 
+        /// <summary>
+        /// 创建特定类型的实例
+        /// <para>使用反射创建泛型类型的实例</para>
+        /// </summary>
+        /// <param name="feat">SolidWorks 特性</param>
+        /// <param name="doc">文档</param>
+        /// <param name="app">应用程序</param>
+        /// <param name="paramType">参数类型</param>
+        /// <returns>创建的特性实例</returns>
+        /// <remarks>
+        /// 此方法使用反射动态创建带有正确泛型参数的 SwMacroFeature 实例。
+        /// 这是必要的，因为 COM 回调只能传递非泛型的 SwMacroFeature 类型。
+        /// </remarks>
+        internal static SwMacroFeature CreateSpecificInstance(IFeature feat, SwDocument doc, SwApplication app, Type paramType)
         {
+            // 创建正确泛型类型的 Type
             var macroFeatType = typeof(SwMacroFeature<>).MakeGenericType(paramType);
 
 #if DEBUG

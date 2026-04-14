@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Exceptions/DocumentsQueueDispatchException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 DocumentsQueueDispatchException。
+// 当文档队列中的部分文档未能成功分派处理时抛出。
+// 包含分派过程中收集的所有异常信息列表。
 //*********************************************************************
 
 using System;

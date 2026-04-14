@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Sketch/SwSketchEntity.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供SolidWorks草图实体的抽象基类实现，封装ISketchEntity接口，支持颜色、图层、所属草图和块的管理。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

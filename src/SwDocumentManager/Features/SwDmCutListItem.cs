@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Features/SwDmCutListItem.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 包装焊件或钣金中的切割清单项目，提供 BOM 状态、清单类型判断及占位实体体数量展开功能。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

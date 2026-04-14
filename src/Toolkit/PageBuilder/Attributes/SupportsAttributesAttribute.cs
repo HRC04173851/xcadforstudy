@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Attributes/SupportsAttributesAttribute.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现支持特性类型声明属性 SupportsAttributesAttribute。
+// 声明页面构建器构造器或控件所支持的特性类型集合。
+// 用于约束控件构造器可处理的特性类型，实现特性驱动的构造器选择。
 //*********************************************************************
 
 using System;

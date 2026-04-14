@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Exceptions/CommitedElementReadOnlyParameterException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 当IXTransaction参数在提交后尝试修改时抛出此异常，用于防止已提交元素的只读参数被修改
 //*********************************************************************
 
 using System;

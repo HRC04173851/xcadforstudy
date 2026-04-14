@@ -1,8 +1,31 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/PageBuilderBase.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件是 PropertyPage（属性页）构建器的基础框架。
+// PropertyPage 是 SolidWorks 等 CAD 软件中用于用户交互的对话框控件。
+//
+// 页面构建器架构：
+// 1. PageBuilderBase - 核心构建器，管理页面创建和数据绑定
+// 2. IContextProvider - 上下文提供者，管理系统数据上下文
+// 3. IDataBinder - 数据绑定器，将 UI 控件与数据模型绑定
+// 4. IPageConstructor - 页面构造器，创建页面 UI 元素
+//
+// 数据绑定机制：
+// - BindingManager 管理系统中的所有数据绑定
+// - DependencyManager 管理控件间的依赖关系（如启用/禁用联动）
+// - 支持 INotifyPropertyChanged 实现属性变化自动通知
+//
+// 使用流程：
+// 1. 创建 PageBuilder 实例，指定页面/分组/控件类型
+// 2. 注册控件构造器和元数据
+// 3. 调用 Build 创建页面
+// 4. 通过 DataBinder 将控件绑定到数据模型
 //*********************************************************************
 
 using System;

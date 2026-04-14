@@ -1,8 +1,28 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Sketch/IXSketchEntity.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义草图实体（Sketch Entity）的跨CAD平台基接口。
+// Sketch Entity 是草图中的所有几何元素的基础类型。
+//
+// Sketch Entity 类型层次：
+// - IXSketchEntity：草图实体基接口
+//   - IXSketchSegment：草图线段（直线、圆弧等）
+//   - IXSketchPoint：草图点
+//   - IXSketchBlockDefinition：块定义
+//   - IXSketchBlockInstance：块实例
+//   - IXSketchPicture：草图图片
+//   - IXSketchText：草图文字
+//
+// Sketch Entity 特性：
+// - 属于某个草图（OwnerSketch）
+// - 可以是某个块的成员（OwnerBlock）
+// - 支持颜色和图层属性
 //*********************************************************************
 
 using Xarial.XCad.Base;

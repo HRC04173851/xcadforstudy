@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwAnnotationCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 注解集合的封装。
+// 注解（Annotation）包括尺寸（Dimension）、符号（Symbol）、注解文本（Note）、
+// 公差（Tolerance）等二维标注元素。本集合类提供对文档中所有注解的统一访问和管理。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

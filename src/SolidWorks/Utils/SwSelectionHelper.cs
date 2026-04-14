@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/SwSelectionHelper.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供 SOLIDWORKS 选择类型映射辅助方法，建立 xCAD 类型与 SOLIDWORKS 选择类型（swSelectType_e）的对应关系。
 //*********************************************************************
 
 using SolidWorks.Interop.swconst;

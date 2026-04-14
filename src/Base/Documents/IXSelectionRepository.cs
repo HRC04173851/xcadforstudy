@@ -1,8 +1,31 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Documents/IXSelectionRepository.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义选择仓储（Selection Repository）的接口。
+// Selection Repository 管理 CAD 文档中的选择操作和选择集。
+//
+// Selection Repository 核心功能：
+// 1. 选择管理：Add、Remove、Clear 等操作
+// 2. 选择事件：NewSelection、ClearSelection 事件通知
+// 3. 选择标注：PreCreateCallout 创建选择气泡
+// 4. 批量选择：ReplaceRange 替换整个选择集
+//
+// 选择对象类型：
+// - IXSelObject：所有可选择对象的基接口
+// - IXEntity：拓扑实体（Face、Edge、Vertex）
+// - IXFeature：特征对象
+// - IXComponent：装配体组件
+//
+// 选择过滤器：
+// - 按类型过滤（Feature、Body、Component 等）
+// - 按可见性过滤
+// - 按状态过滤
 //*********************************************************************
 
 using System;

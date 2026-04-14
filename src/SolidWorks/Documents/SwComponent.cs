@@ -1,8 +1,20 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwComponent.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 装配体组件（Component）的封装。
+// 组件是装配体中的基本单元，可以是零件引用或子装配体引用。
+//
+// 核心概念：
+// - 组件代表装配体中对另一个文档（零件或装配体）的引用
+// - 组件包含变换矩阵（位置和方向）
+// - 组件可以是可视的、压缩的、隐藏的或轻量级的
+// - 组件路径可能是未解析的（显示为引用路径而非实际文件）
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;
@@ -42,20 +54,66 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 装配体组件接口。
+    /// <para>
+    /// 组件是装配体中的基本构建单元，代表对零件或子装配体文档的引用。
+    /// 职责边界：
+    /// <list type="bullet">
+    /// <item><description>提供组件的变换矩阵（位置、旋转）</description></item>
+    /// <item><description>管理组件的可见性、压缩状态</description></item>
+    /// <item><description>访问组件的子组件集合（如果是装配体组件）</description></item>
+    /// <item><description>提供对引用文档（零件/装配体）的访问</description></item>
+    /// </list>
+    /// 不负责：引用文档的加载/卸载（由文档管理框架负责）
+    /// </para>
+    /// </summary>
     public interface ISwComponent : IXComponent, ISwSelObject
     {
+        /// <summary>
+        /// 获取子组件集合。
+        /// <para>中文：如果此组件是装配体，返回其包含的所有直接子组件。</para>
+        /// </summary>
         new ISwComponentCollection Children { get; }
+
+        /// <summary>
+        /// 获取或设置引用的文档。
+        /// <para>中文：返回此组件指向的零件或装配体文档。</para>
+        /// </summary>
         new ISwDocument3D ReferencedDocument { get; set; }
+
+        /// <summary>
+        /// 转换选中的对象到特定类型。
+        /// </summary>
         new TSelObject ConvertObject<TSelObject>(TSelObject obj)
             where TSelObject : ISwSelObject;
+
+        /// <summary>
+        /// 获取底层 SolidWorks IComponent2 COM 对象。
+        /// </summary>
         IComponent2 Component { get; }
+
+        /// <summary>
+        /// 获取组件的特性管理器。
+        /// </summary>
         new ISwFeatureManager Features { get; }
+
+        /// <summary>
+        /// 获取组件的尺寸集合。
+        /// </summary>
         new ISwDimensionsCollection Dimensions { get; }
 
         /// <summary>
-        /// Returns the cached path of the component as stored in SOLIDWORKS
+        /// 获取 SolidWorks 缓存的组件路径。
+        /// <para>
+        /// 重要说明：此路径是存储在装配体文件中的原始路径，可能与实际文件不符：
+        /// <list type="bullet">
+        /// <item><description>组件未解析时（引用文件不存在或被移动）</description></item>
+        /// <item><description>文档以只读或仅查看模式打开时</description></item>
+        /// </list>
+        /// 如需获取解析后的实际文件路径，请使用 <see cref="IXComponent.Path"/>。
+        /// </para>
         /// </summary>
-        /// <remarks>This path might not correspond to actual file if component is not resolved or document is opened in view only mode. <see cref="IXComponent.Path"/> will return the resolved path</remarks>
         string CachedPath { get; }
     }
 

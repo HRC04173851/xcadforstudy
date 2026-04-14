@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Core/RawDependencyGroup.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现原始依赖分组类 RawDependencyGroup。
+// 继承自 IRawDependencyGroup，存储绑定依赖与元数据依赖的注册信息。
+// 提供绑定标签、依赖处理器和元数据依赖的注册方法。
 //*********************************************************************
 
 using System;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Exceptions/ElementAlreadyCommittedException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 ElementAlreadyCommittedException。
+// 当元素已被提交执行后再次尝试提交时抛出此异常。
+// 用于防止重复提交同一个元素。
 //*********************************************************************
 
 using System;

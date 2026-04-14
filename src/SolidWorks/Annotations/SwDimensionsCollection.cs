@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Annotations/SwDimensionsCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 尺寸集合的抽象基类和具体实现，支持从特征管理器或特定特征中枚举和查询尺寸。
+// 提供按名称查找尺寸的功能，支持FeatureName@DimensionName格式的命名规则。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

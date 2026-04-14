@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Services/TaskPaneControlProvider.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供任务窗格控件的创建功能，支持通过COM控件和.NET控件两种方式在任务窗格中嵌入自定义界面，实现工具栏扩展功能。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

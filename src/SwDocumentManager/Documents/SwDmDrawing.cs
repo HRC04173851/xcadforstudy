@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmDrawing.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 工程图文档包装器，通过 xCAD 暴露图纸页集合，支持延迟枚举图纸页功能。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

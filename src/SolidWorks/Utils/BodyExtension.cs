@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/BodyExtension.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 为 IBody2 对象提供扩展方法，支持创建实体的副本，根据版本选择 Copy 或 Copy2 方法。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/ComponentDeletedEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现组件删除完成后的回调处理。
+// 当装配体中的组件被删除后，ComponentDeletedDelegate 事件触发，
+// 用于执行组件删除后的清理工作，例如更新组件映射、记录日志等。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

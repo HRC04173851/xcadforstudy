@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Constructors/PropertyManagerPageBitmapControlConstructor.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 位图控件构造函数，用于在属性管理器页面中创建和管理位图显示控件。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

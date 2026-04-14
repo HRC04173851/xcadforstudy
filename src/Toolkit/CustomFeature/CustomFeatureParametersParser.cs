@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/CustomFeature/CustomFeatureParametersParser.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现自定义特征参数解析器 CustomFeatureParametersParser。
+// 用于解析并转换自定义特征参数到类对象，支持参数版本管理和转换。
+// 处理选择、尺寸、编辑体和普通数据等多种参数类型的映射。
 //*********************************************************************
 
 using System;

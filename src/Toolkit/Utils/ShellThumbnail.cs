@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Utils/ShellThumbnail.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 Shell 缩略图类 ShellThumbnail。
+// 根据文件路径创建 Shell 缩略图，使用 Windows API 获取图像句柄。
+// 实现 IDisposable 用于释放位图资源。
 //*********************************************************************
 
 using System;

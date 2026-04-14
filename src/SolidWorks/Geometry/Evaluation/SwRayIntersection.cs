@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Evaluation/SwRayIntersection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 射线求交（Ray Intersection）计算功能。
+// 射线求交用于检测射线与几何体之间的交点，返回交点位置、法线方向、
+// 交点所属的 Body 和 Face 等信息。常用于选择、碰撞检测和可视化等操作。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

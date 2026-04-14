@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Inventor/Utils/AiDocumentPointerEqualityComparer.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// Inventor文档指针相等比较器，实现IEqualityComparer接口。
+// 用于比较两个Inventor COM文档对象是否引用同一个底层文档。
 //*********************************************************************
 
 using Inventor;

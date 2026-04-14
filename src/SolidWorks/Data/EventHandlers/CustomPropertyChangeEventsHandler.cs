@@ -1,4 +1,17 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Data/EventHandlers/CustomPropertyChangeEventsHandler.cs
+//*********************************************************************
+//xCAD
+//Copyright(C) 2024 Xarial Pty Limited
+//Product URL: https://www.xcad.net
+//License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 处理SolidWorks文档中自定义属性值变更的事件监听器，支持Part、Assembly、Drawing文档。
+// 2017版本使用特殊的事件辅助类来处理属性修改通知。
+//*********************************************************************
+
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net

@@ -1,8 +1,16 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/SwBodyCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks Body 集合（Body Collection）的封装。
+// 提供文档中所有几何体的枚举和查询功能。
+// 支持按类型（实体、片体、线框）过滤筛选，
+// 是访问和管理文档几何体对象的主要入口。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

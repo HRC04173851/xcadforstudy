@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// Features/SwCoordinateSystem.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 坐标系特征包装类，实现IXCoordinateSystem接口，提供坐标系统功能的访问
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

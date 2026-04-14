@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmSheetCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 枚举并解析工程图文档中的全部图纸页，提供图纸页的查询、激活状态和自定义枚举器实现。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

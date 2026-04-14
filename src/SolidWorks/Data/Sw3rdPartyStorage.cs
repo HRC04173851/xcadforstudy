@@ -1,4 +1,17 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Data/Sw3rdPartyStorage.cs
+//*********************************************************************
+//xCAD
+//Copyright(C) 2024 Xarial Pty Limited
+//Product URL: https://www.xcad.net
+//License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 实现SolidWorks文档的第三方存储（Storage）封装，提供对ISwDocument扩展存储的读写访问。
+// 该类是COM存储的包装器，用于访问SolidWorks文档中的自定义存储区域。
+//*********************************************************************
+
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net

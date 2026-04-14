@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/LegacyComponentMassProperty.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供组件质量属性信息的辅助类，支持延迟加载，用于获取特定组件模型的 IMassProperty。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

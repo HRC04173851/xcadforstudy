@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmConfigurationCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 零件与装配体共用的配置仓库逻辑实现，提供配置的查询、遍历和按名称解析功能。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

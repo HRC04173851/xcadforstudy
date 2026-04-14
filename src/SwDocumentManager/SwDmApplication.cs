@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/SwDmApplication.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// Document Manager 应用程序包装器，实现延迟连接、生命周期管理以及文档仓库的统一持有逻辑。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

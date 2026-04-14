@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/OrderedComponentsCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 按照特征树顺序遍历组件集合的辅助类，使用延迟加载模式优化性能，处理配置特定的组件。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Curves/SwPoint.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 数学点（Math Point）的封装。
+// 点是最基本的空间位置表示，用于定义曲线的端点、顶点位置等。
+// 提供了 SwPoint 和 SwMathPoint 两个类，支持坐标的获取和设置操作。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,29 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/UI/Commands/SwCommandManager.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 命令管理器（CommandManager）。
+// 命令管理器负责创建和管理插件的自定义命令、工具栏和 Ribbon 标签页。
+//
+// 命令架构：
+// 1. CommandSpec - 命令规范（图标、提示、回调等）
+// 2. SwCommandGroup - 命令组（将相关命令组织在一起）
+// 3. SwCommandManager - 命令管理器（管理所有命令组）
+//
+// SOLIDWORKS 命令机制：
+// - SOLIDWORKS 通过 ICommandManager COM 接口管理命令
+// - 每个插件可以创建多个命令组，每个组包含多个命令
+// - 命令可以添加到工具栏、菜单或 Ribbon 标签页
+//
+// 特殊处理：
+// - 使用 TabCommandInfo 跟踪哪些命令已添加到标签页
+// - 支持动态添加工具条命令（无需重建整个命令组）
+// - 自动处理命令 ID 分配，避免与 SOLIDWORKS 原生命令冲突
 //*********************************************************************
 
 using Microsoft.Win32;
@@ -37,10 +58,15 @@ using System.Reflection;
 
 namespace Xarial.XCad.SolidWorks.UI.Commands
 {
+    /// <summary>
+    /// SolidWorks 命令管理器接口。
+    /// <para>中文：封装 SolidWorks 命令管理功能，提供命令组的创建和生命周期管理。</para>
+    /// </summary>
     public interface ISwCommandManager : IXCommandManager, IDisposable
     {
         /// <summary>
-        /// Pointer to command group which holding the add-in commands
+        /// 获取底层 SolidWorks ICommandManager COM 对象。
+        /// <para>中文：这是与 SolidWorks 命令系统交互的核心接口。</para>
         /// </summary>
         ICommandManager CmdMgr { get; }
     }

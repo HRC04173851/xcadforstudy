@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Constructors/PropertyManagerPageOptionBoxConstructor.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 选项框控件构造函数，用于创建和管理一组选项按钮控件。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

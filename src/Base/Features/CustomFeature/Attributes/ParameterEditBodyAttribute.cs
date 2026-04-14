@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Attributes/ParameterEditBodyAttribute.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 将属性标记为宏特征的编辑体（Edit Body），用于替换或修改现有几何体。
+// 编辑体由OnRebuild返回的CustomFeatureRebuildResult替换，支持多个体。
 //*********************************************************************
 
 using System;

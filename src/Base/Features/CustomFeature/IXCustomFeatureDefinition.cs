@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/IXCustomFeatureDefinition.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义自定义特征业务逻辑的核心接口。
+// 包含编辑回调（OnEditDefinition）、重建回调（OnRebuild）和状态更新回调（OnUpdateState）。
+// 支持带参数模型和页面编辑器的扩展版本。
 //*********************************************************************
 
 using Xarial.XCad.Annotations;

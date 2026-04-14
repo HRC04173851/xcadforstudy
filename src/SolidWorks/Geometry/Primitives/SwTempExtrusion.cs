@@ -1,8 +1,16 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Primitives/SwTempExtrusion.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 临时拉伸基元（Temp Extrusion）的创建功能。
+// 拉伸是将二维轮廓沿指定方向延伸创建三维实体的操作。
+// 支持实体拉伸（SwTempSolidExtrusion）和曲面拉伸（SwTempSurfaceExtrusion）两种模式。
+// 可指定拉伸深度、方向向量和轮廓，是建模中最常用的基元之一。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

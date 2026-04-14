@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+// -*- coding: utf-8 -*-
+// src/Base/UI/PropertyPage/Delegates/CreateDynamicControlsDelegate.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 属性页动态控件创建委托，用于在属性页中动态创建控件描述符
 //*********************************************************************
 
 using System;

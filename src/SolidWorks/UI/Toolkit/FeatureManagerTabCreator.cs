@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// Toolkit/FeatureManagerTabCreator.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 特征管理器选项卡创建器，用于创建和管理SOLIDWORKS特征管理器中的自定义选项卡。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

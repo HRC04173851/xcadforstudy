@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/PictureDispUtils.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供 IPictureDisp 到 Xarial.XCad.UI.IXImage 的转换功能，将 COM 图片对象转换为 xCAD 图像格式。
 //*********************************************************************
 
 using System;

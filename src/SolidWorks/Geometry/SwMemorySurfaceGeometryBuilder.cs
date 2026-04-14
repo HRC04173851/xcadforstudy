@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/SwMemorySurfaceGeometryBuilder.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 内存曲面几何体构造器（Memory Surface Geometry Builder）。
+// 专门用于在内存中创建曲面几何体，支持平面片体、缝合曲面等操作。
+// 提供与实体几何体构造器相似的接口，用于创建片体类型几何对象。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

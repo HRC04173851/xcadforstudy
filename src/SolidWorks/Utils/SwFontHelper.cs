@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/SwFontHelper.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供 SOLIDWORKS 字体与 xCAD 字体格式之间的转换功能，支持从 ITextFormat 读取和填充字体属性。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

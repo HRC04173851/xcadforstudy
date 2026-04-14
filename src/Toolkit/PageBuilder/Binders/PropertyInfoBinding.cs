@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Binders/PropertyInfoBinding.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现基于反射属性描述符的数据绑定 PropertyInfoBinding<TDataModel>。
+// 继承自 Binding 基类，实现控件与数据模型的双向绑定。
+// 处理属性值的变化通知和上下文解析。
 //*********************************************************************
 
 using System;

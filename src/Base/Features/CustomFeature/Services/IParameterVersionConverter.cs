@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Services/IParameterVersionConverter.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义宏特征参数跨版本向后兼容的转换机制接口。
+// 配合ParametersVersionAttribute使用，通过版本转换器处理参数升级。
 //*********************************************************************
 
 using System;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Reflection/EnumerableExtension.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件为可枚举序列提供辅助扩展方法。
+// 实现 ValueOrEmpty 方法，当源序列为 null 时返回空序列。
+// 用于安全的枚举序列处理，避免 null 引用异常。
 //*********************************************************************
 
 using System.Collections.Generic;

@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwConfigurationCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 配置集合（Configuration Collection）的封装。
+// 配置集合管理文档中的所有配置，包括默认配置和用户创建的配置，
+// 提供配置的创建、删除、遍历和查询等功能。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

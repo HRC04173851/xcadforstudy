@@ -1,4 +1,17 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Data/EventHandlers/StreamWriteAvailableEventsHandler.cs
+//*********************************************************************
+//xCAD
+//Copyright(C) 2024 Xarial Pty Limited
+//Product URL: https://www.xcad.net
+//License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 处理写入第三方数据流就绪的事件，当文档保存到存储流时触发回调。
+// 支持Part、Assembly、Drawing三种文档类型的保存通知。
+//*********************************************************************
+
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net

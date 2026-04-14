@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Binders/ControlDescriptorWrapper.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现控件描述符包装器 ControlDescriptorWrapper。
+// 转换动态控件上下文，使其在运行时对应到属性值对象。
+// 委托基础描述符的操作，并处理上下文属性路径解析。
 //*********************************************************************
 
 using System;

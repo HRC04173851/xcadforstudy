@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/EventHandlers/ConfigurationActivatedEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现配置激活事件的回调处理。
+// ConfigurationActivatedDelegate 事件在3D文档（零件或装配体）的
+// 配置被激活或切换时触发，用于响应配置变更并执行相应操作。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

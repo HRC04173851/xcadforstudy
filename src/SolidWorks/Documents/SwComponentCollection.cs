@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwComponentCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 组件集合（Component Collection）的封装。
+// 组件集合用于管理装配体中的所有组件（包括零件和子装配体引用），
+// 提供组件的遍历、查找、添加、删除等操作，是装配体文档的核心数据结构。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

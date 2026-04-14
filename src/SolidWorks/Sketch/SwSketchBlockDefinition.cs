@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Sketch/SwSketchBlockDefinition.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供SolidWorks草图块定义的实现，封装ISketchBlockDefinition接口，支持获取块实例、实体和插入点等属性。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

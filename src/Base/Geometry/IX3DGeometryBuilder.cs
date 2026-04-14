@@ -1,8 +1,33 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Geometry/IX3DGeometryBuilder.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义三维几何体构建器（3D Geometry Builder）的接口。
+// 3D Builder 是所有实体/曲面几何构建器的基接口。
+//
+// 构建器类型：
+// - IXExtrusion：拉伸构建器
+// - IXSweep：扫描构建器
+// - IXLoft：放样构建器
+// - IXRevolve：旋转构建器
+// - IXKnit：缝合构建器
+//
+// 扩展方法：
+// - PreCreateExtrusion：创建拉伸模板
+// - PreCreateSweep：创建扫描模板
+// - PreCreateLoft：创建放样模板
+// - PreCreateRevolve：创建旋转模板
+// - PreCreateKnit：创建缝合模板
+//
+// 使用流程：
+// 1. 通过 PreCreate* 方法创建几何模板
+// 2. 设置模板参数（轮廓、方向、距离等）
+// 3. 调用 Commit 提交创建实际几何体
 //*********************************************************************
 
 using Xarial.XCad.Base;

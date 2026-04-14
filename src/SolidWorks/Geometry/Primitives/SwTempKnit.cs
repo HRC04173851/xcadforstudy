@@ -1,8 +1,16 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Primitives/SwTempKnit.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 临时缝合基元（Temp Knit）的创建功能。
+// 缝合是将多个曲面片体合并为单一实体的操作。
+// 支持曲面缝合（SwTempSurfaceKnit）和实体缝合（SwTempSolidKnit）。
+// 用于从多个曲面片体构造实体，或修复不完整的曲面边界。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

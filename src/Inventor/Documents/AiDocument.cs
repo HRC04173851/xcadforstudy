@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Inventor/Documents/AiDocument.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// Inventor文档基类，实现IAiDocument接口。
+// 提供Autodesk Inventor文档的通用功能，包括文档类型识别、激活、关闭等操作。
 //*********************************************************************
 
 using Inventor;

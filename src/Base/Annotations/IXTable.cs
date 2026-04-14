@@ -1,8 +1,25 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Annotations/IXTable.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义表格标注（Table）的跨CAD平台接口。
+// Table 是工程图中用于显示结构化数据的标注类型。
+//
+// Table 类型：
+// - BOM（Bill of Materials）：物料清单表
+// - Hole Chart：孔图表
+// - Weldment Cut List：焊接切割清单
+// - General Table：通用表格
+//
+// Table 功能：
+// - CreateReader：创建数据读取器
+// - Read：扩展方法，直接读取为 DataTable
+// - 可以导出为 Excel 等格式
 //*********************************************************************
 
 using System;

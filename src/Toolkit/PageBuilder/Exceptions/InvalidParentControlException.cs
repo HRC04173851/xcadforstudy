@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Exceptions/InvalidParentControlException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 InvalidParentControlException。
+// 当控件被放置在不支持的父控件类型下时抛出。
+// 用于约束页面构建器的控件层级结构。
 //*********************************************************************
 
 using System;

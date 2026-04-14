@@ -1,8 +1,16 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Surfaces/SwCylindricalSurface.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 圆柱曲面（Cylindrical Surface）的封装。
+// 圆柱曲面是由直线沿平行轴线移动形成的曲面。
+// 提供轴线和半径的获取，是最常见的曲面类型之一。
+// 支持最近点计算、曲面求交等操作。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

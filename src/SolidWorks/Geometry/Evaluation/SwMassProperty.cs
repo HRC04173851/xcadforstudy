@@ -1,8 +1,29 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Evaluation/SwMassProperty.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 质量属性（Mass Property）的现代计算方式。
+// 相比 SwLegacyMassProperty，本实现不依赖 IMassProperty2 API，
+// 而是通过直接计算的方式获取质量属性。
+//
+// 与 SwLegacyMassProperty 的区别：
+// - 不需要设置参考配置
+// - 不需要提前设置材料属性
+// - 直接从几何体计算，不依赖 SolidWorks 的材料/配置系统
+// - 更轻量级，适合批量计算场景
+//
+// 支持的质量属性：
+// - CenterOfGravity：质心位置
+// - SurfaceArea：总表面积
+// - Volume：体积
+// - Mass：质量（基于密度）
+// - PrincipalAxesOfInertia：主惯性轴
+// - MomentsOfInertia：惯性矩
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

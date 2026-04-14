@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Base/IPageElementConstructor.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义页面元素构造器接口 IPageElementConstructor。
+// 负责在分组容器中创建页面元素（控件）。
+// 创建控件实例并更新已使用的标识符范围。
 //*********************************************************************
 
 using Xarial.XCad.UI.PropertyPage.Base;

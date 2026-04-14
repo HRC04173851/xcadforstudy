@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Exceptions/SwDmSdkNotInstalledException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 当必需的 SOLIDWORKS Document Manager SDK 未安装或未正确注册时抛出的异常。
 //*********************************************************************
 
 using System;

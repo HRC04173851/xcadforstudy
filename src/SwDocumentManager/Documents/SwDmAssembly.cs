@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmAssembly.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 装配体文档包装器，通过 xCAD 暴露装配体的配置、组件树等离线数据，支持虚拟装配体。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

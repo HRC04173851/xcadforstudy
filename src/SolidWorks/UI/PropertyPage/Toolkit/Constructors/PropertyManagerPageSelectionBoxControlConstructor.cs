@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Toolkit/Constructors/PropertyManagerPageSelectionBoxControlConstructor.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 选择框控件构造函数，用于在属性管理器页面中创建和管理选择框控件，支持选择过滤和自定义筛选器。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

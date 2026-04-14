@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/EventHandlers/SheetActivatedEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现图纸激活事件的回调处理。
+// SheetActivatedDelegate 事件在工程图中的图纸被激活或切换时触发，
+// 用于响应图纸切换操作，更新图纸相关的上下文和视图状态。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

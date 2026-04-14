@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/SwMemorySolidGeometryBuilder.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 内存实体几何体构造器（Memory Solid Geometry Builder）。
+// 专门用于在内存中创建实体几何体，支持拉伸、旋转、扫描、缝合等基元操作。
+// 通过 PreCreate 方法预创建几何体，Commit 方法提交生成最终几何对象。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

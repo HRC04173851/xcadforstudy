@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Services/XObjectEqualityComparer.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 IXObject 的泛型相等性比较器 XObjectEqualityComparer。
+// 比较两个 xCAD 对象的语义相等性，支持在字典和集合中使用。
+// 用于 xCAD 对象的标识和查找操作。
 //*********************************************************************
 
 using System.Collections.Generic;

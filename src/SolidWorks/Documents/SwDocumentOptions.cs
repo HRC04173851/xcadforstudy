@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwDocumentOptions.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 文档选项（Document Options）的封装。
+// 文档选项用于控制文档级别的显示和操作行为，包括实体可见性、
+// 隐藏项目显示、装饰螺纹显示等用户界面相关的配置选项。
 //*********************************************************************
 
 using SolidWorks.Interop.swconst;

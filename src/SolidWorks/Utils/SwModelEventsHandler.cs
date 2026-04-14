@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/SwModelEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供 SOLIDWORKS 模型事件的抽象处理基类，根据文档类型（零件、装配体、工程图）分发不同事件。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

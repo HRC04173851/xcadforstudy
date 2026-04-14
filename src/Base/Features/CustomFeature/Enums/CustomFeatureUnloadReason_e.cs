@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Enums/CustomFeatureUnloadReason_e.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义宏特征处理器卸载原因枚举。
+// 当模型关闭或宏特征被删除时触发，用于清理资源或保存状态。
 //*********************************************************************
 
 namespace Xarial.XCad.Features.CustomFeature.Enums

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/SwPointerComparer.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 通过 ISldWorks.IsSame 方法比较 COM 对象指针相等性的通用比较器，处理断开连接的指针。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
-//xCAD
-//Copyright(C) 2024 Xarial Pty Limited
-//Product URL: https://www.xcad.net
-//License: https://xcad.xarial.com/license/
+﻿// -*- coding: utf-8 -*-
+// src/Base/Geometry/Structures/Rect2D.cs
+//*********************************************************************
+// xCAD
+// Copyright (C) 2024 Xarial Pty Limited
+// Product URL: https://www.xcad.net
+// License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 表示二维矩形区域，包含宽高、中心点、局部坐标轴，并提供角点获取、矩形合并与相交判断等扩展方法。
 //*********************************************************************
 
 using System;

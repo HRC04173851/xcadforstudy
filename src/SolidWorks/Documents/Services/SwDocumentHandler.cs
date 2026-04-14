@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/Services/SwDocumentHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 文档处理器（Document Handler）的抽象基类封装。
+// 文档处理器负责文档创建、打开、关闭等生命周期管理操作，
+// 提供文档初始化的统一接口和错误处理机制，是文档服务层的核心组件。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

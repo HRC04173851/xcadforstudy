@@ -1,8 +1,27 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Geometry/IXGeometryBuilder.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义几何体构建器（Geometry Builder）的接口。
+// Geometry Builder 提供通过 API 程序化创建几何体的功能。
+//
+// 构建器类型：
+// 1. WireBuilder - 线框几何构建器（曲线、点等）
+// 2. SheetBuilder - 曲面几何构建器（曲面、填充等）
+// 3. SolidBuilder - 实体几何构建器（拉伸、旋转、布尔等）
+//
+// 几何体构建方式：
+// - 程序化创建：通过 API 调用直接创建几何体
+// - 内存几何体：通过 IXMemoryGeometryBuilder 创建临时几何体
+//
+// 预创建模式（PreCreate）：
+// 某些几何体支持预创建模式，先创建模板对象，
+// 设置参数后再提交（Commit）实际创建
 //*********************************************************************
 
 using System;

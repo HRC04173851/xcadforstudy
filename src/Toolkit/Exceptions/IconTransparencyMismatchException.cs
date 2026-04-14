@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Exceptions/IconTransparencyMismatchException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 IconTransparencyMismatchException。
+// 当图标组中部分图标的透明键与组内其它图标不一致时抛出。
+// 确保图标组在渲染时使用统一的透明处理方式。
 //*********************************************************************
 
 using System;

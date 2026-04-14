@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// Toolkit/PropertyPageControlCreator.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 属性页面控件创建器，用于将WinForms或WPF自定义控件托管到属性管理器页面。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

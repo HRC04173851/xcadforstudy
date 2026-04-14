@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwDocument.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件是 SolidWorks 文档的基类实现，封装了 SolidWorks 文档操作的常见逻辑。
+// 负责文档的创建、打开、关闭、保存、事件管理等核心功能。
+// 所有特定文档类型（零件、装配体、工程图）都继承自此类。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;
@@ -48,8 +55,31 @@ using Xarial.XCad.UI;
 
 namespace Xarial.XCad.SolidWorks.Documents
 {
+    /// <summary>
+    /// SolidWorks 文档的统一接口。
+    /// <para>
+    /// 职责边界：
+    /// <list type="bullet">
+    /// <item><description>提供对底层 SolidWorks IModelDoc2 COM 对象的访问</description></item>
+    /// <item><description>管理文档生命周期（创建、打开、关闭、保存）</description></item>
+    /// <item><description>提供特性、选择集、尺寸、属性等子系统的统一访问</description></item>
+    /// </list>
+    /// 不负责：文档的 UI 呈现、多文档管理（由 SwDocumentCollection 负责）
+    /// </para>
+    /// <para>
+    /// 使用场景：
+    /// <list type="bullet">
+    /// <item><description>打开或创建 SolidWorks 文档后的统一操作入口</description></item>
+    /// <item><description>跨文档类型（如零件、装配体、工程图）的通用操作</description></item>
+    /// </list>
+    /// </para>
+    /// </summary>
     public interface ISwDocument : ISwObject, IXDocument, IDisposable
     {
+        /// <summary>
+        /// 获取底层 SolidWorks IModelDoc2 COM 对象。
+        /// <para>中文：这是与 SolidWorks 交互的核心接口，几乎所有文档操作都通过此对象完成。</para>
+        /// </summary>
         IModelDoc2 Model { get; }
         new ISwFeatureManager Features { get; }
         new ISwSelectionCollection Selections { get; }
@@ -69,27 +99,58 @@ namespace Xarial.XCad.SolidWorks.Documents
             where TObj : ISwObject;
     }
 
+    /// <summary>
+    /// SolidWorks 文档的抽象基类。
+    /// <para>
+    /// 核心职责：
+    /// <list type="bullet">
+    /// <item><description>实现 ISwDocument 接口，提供文档的创建、打开、关闭、保存等基础操作</description></item>
+    /// <item><description>通过 ElementCreator 模式管理文档生命周期，支持延迟创建和缓存</description></item>
+    /// <item><description>处理 3D Interconnect 禁用逻辑，确保外部导入的 CAD 文件能正常操作</description></item>
+    /// </list>
+    /// </para>
+    /// <para>
+    /// 事件管理：
+    /// <list type="bullet">
+    /// <item><description>Destroy 事件：文档销毁/关闭时触发</description></item>
+    /// <item><description>Rebuild 事件：文档重建后触发</description></item>
+    /// <item><description>Save 事件：文档保存前后触发</description></item>
+    /// </list>
+    /// </para>
+    /// </summary>
     [DebuggerDisplay("{" + nameof(Title) + "}")]
     internal abstract class SwDocument : SwObject, ISwDocument
     {
+        /// <summary>
+        /// 3D Interconnect 禁用助手。
+        /// <para>
+        /// 为什么需要此类：SolidWorks 2020+ 支持 3D Interconnect 功能，
+        /// 会自动将外部 CAD 格式（如 STEP、IGES）转换为 SolidWorks 格式。
+        /// 这可能导致文件路径解析和某些操作出现问题。
+        /// 本类在打开非 SolidWorks 原生格式文件时临时禁用 3D Interconnect，
+        /// 打开完成后再恢复原设置。
+        /// </para>
+        /// </summary>
         private class Interconnect3DDisabler : IDisposable
         {
             private readonly ISldWorks m_App;
             private readonly bool? m_Is3DInterconnectEnabled;
 
-            internal Interconnect3DDisabler(ISldWorks app) 
+            internal Interconnect3DDisabler(ISldWorks app)
             {
                 m_App = app;
 
-                if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2020)) 
+                // 仅在 SolidWorks 2020+ 版本检查 3D Interconnect 状态
+                if (m_App.IsVersionNewerOrEqual(SwVersion_e.Sw2020))
                 {
                     var enable3DInterconnect = m_App.GetUserPreferenceToggle(
                         (int)swUserPreferenceToggle_e.swMultiCAD_Enable3DInterconnect);
 
-                    if (enable3DInterconnect) 
+                    if (enable3DInterconnect)
                     {
                         m_Is3DInterconnectEnabled = enable3DInterconnect;
 
+                        // 临时禁用 3D Interconnect
                         m_App.SetUserPreferenceToggle(
                             (int)swUserPreferenceToggle_e.swMultiCAD_Enable3DInterconnect, false);
                     }
@@ -98,7 +159,8 @@ namespace Xarial.XCad.SolidWorks.Documents
 
             public void Dispose()
             {
-                if (m_Is3DInterconnectEnabled.HasValue) 
+                // 恢复 3D Interconnect 原始状态
+                if (m_Is3DInterconnectEnabled.HasValue)
                 {
                     m_App.SetUserPreferenceToggle(
                             (int)swUserPreferenceToggle_e.swMultiCAD_Enable3DInterconnect, m_Is3DInterconnectEnabled.Value);
@@ -106,21 +168,36 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
 
+        /// <summary>
+        /// SolidWorks 原生文件扩展名到文档类型的映射表。
+        /// <para>
+        /// 为什么需要这个映射：SolidWorks 支持多种文件扩展名，
+        /// 包括 .sldprt（零件）、.sldasm（装配体）、.slddrw（工程图）等。
+        /// 此映射用于根据文件扩展名快速确定文档类型。
+        /// </para>
+        /// <para>
+        /// 使用 StringComparer.CurrentCultureIgnoreCase 实现大小写不敏感的匹配，
+        /// 因为某些情况下手写扩展名可能大小写不一致。
+        /// </para>
+        /// </summary>
         protected static Dictionary<string, swDocumentTypes_e> m_NativeFileExts { get; }
         private bool? m_IsClosed;
 
-        static SwDocument() 
+        static SwDocument()
         {
             m_NativeFileExts = new Dictionary<string, swDocumentTypes_e>(StringComparer.CurrentCultureIgnoreCase)
             {
-                { ".sldprt", swDocumentTypes_e.swDocPART },
-                { ".sldasm", swDocumentTypes_e.swDocASSEMBLY },
-                { ".slddrw", swDocumentTypes_e.swDocDRAWING },
-                { ".sldlfp", swDocumentTypes_e.swDocPART },
-                { ".sldblk", swDocumentTypes_e.swDocPART },
-                { ".prtdot", swDocumentTypes_e.swDocPART },
-                { ".asmdot", swDocumentTypes_e.swDocASSEMBLY },
-                { ".drwdot", swDocumentTypes_e.swDocDRAWING }
+                // SolidWorks 原生格式
+                { ".sldprt", swDocumentTypes_e.swDocPART },      // 零件文件
+                { ".sldasm", swDocumentTypes_e.swDocASSEMBLY },  // 装配体文件
+                { ".slddrw", swDocumentTypes_e.swDocDRAWING },   // 工程图文件
+                // 轻量化格式
+                { ".sldlfp", swDocumentTypes_e.swDocPART },      // 轻量级零件
+                { ".sldblk", swDocumentTypes_e.swDocPART },      // 块文件
+                // 模板格式（从模板创建新文档时使用）
+                { ".prtdot", swDocumentTypes_e.swDocPART },      // 零件模板
+                { ".asmdot", swDocumentTypes_e.swDocASSEMBLY },  // 装配体模板
+                { ".drwdot", swDocumentTypes_e.swDocDRAWING }     // 工程图模板
             };
         }
 
@@ -225,8 +302,26 @@ namespace Xarial.XCad.SolidWorks.Documents
         private readonly DocumentRebuildEventsHandler m_DocumentRebuildEventHandler;
         private readonly DocumentSavingEventHandler m_DocumentSavingEventHandler;
         
+        /// <summary>
+        /// 获取底层 SolidWorks 文档 COM 对象。
+        /// <para>中文：通过 ElementCreator 模式获取已创建/打开的文档对象。</para>
+        /// </summary>
         public IModelDoc2 Model => m_Creator.Element;
 
+        /// <summary>
+        /// 文档的完整文件路径。
+        /// <para>
+        /// 返回值说明：
+        /// <list type="bullet">
+        /// <item><description>已提交的文档：尝试调用 Model.GetPathName()，如果 COM 对象已失效则返回缓存路径</description></item>
+        /// <item><description>未提交的文档：返回创建时缓存的属性值</description></item>
+        /// </list>
+        /// </para>
+        /// <para>
+        /// 重要：已提交的文档的路径只能在创建时设置，不支持后续修改。
+        /// 这是因为 SolidWorks 不允许在文档打开后更改其文件路径。
+        /// </para>
+        /// </summary>
         public string Path
         {
             get
@@ -237,8 +332,9 @@ namespace Xarial.XCad.SolidWorks.Documents
                     {
                         return Model.GetPathName();
                     }
-                    catch 
+                    catch
                     {
+                        // COM 对象可能已失效（如文件被外部删除），返回缓存路径
                         return m_CachedFilePath;
                     }
                 }
@@ -251,6 +347,7 @@ namespace Xarial.XCad.SolidWorks.Documents
             {
                 if (IsCommitted)
                 {
+                    // 已提交的文档不能更改路径，这是 SolidWorks 的限制
                     throw new NotSupportedException("Path can only be changed for the not commited document");
                 }
                 else
@@ -462,7 +559,12 @@ namespace Xarial.XCad.SolidWorks.Documents
         private readonly Lazy<ISwModelViewsCollection> m_ModelViewsLazy;
 
         /// <summary>
-        /// This is a fallback file path in case the COM pointer to this document is broken (e.g. file is closed or SW is closed)
+        /// 缓存的文件路径。
+        /// <para>
+        /// 为什么需要缓存：某些情况下 COM 指针可能失效（如文件被外部程序关闭），
+        /// 此时无法通过 Model.GetPathName() 获取路径。
+        /// 缓存路径用于在这些情况下仍能识别文档。
+        /// </para>
         /// </summary>
         private string m_CachedFilePath;
 
@@ -879,15 +981,37 @@ namespace Xarial.XCad.SolidWorks.Documents
             }
         }
         
+        /// <summary>
+        /// 打开现有文档。
+        /// <para>
+        /// 打开逻辑分为两个分支：
+        /// <list type="bullet">
+        /// <item><description>原生格式（.sldprt/.sldasm/.slddrw）：使用 OpenDoc6 API，支持多种打开选项</description></item>
+        /// <item><description>外部格式（STEP/IGES等）：使用 LoadFile4 API，自动禁用 3D Interconnect</description></item>
+        /// </list>
+        /// </para>
+        /// <para>
+        /// 打开选项处理：
+        /// <list type="bullet">
+        /// <item><description>ReadOnly：只读模式打开</description></item>
+        /// <item><description>ViewOnly：仅查看模式（不能编辑）</description></item>
+        /// <item><description>Silent：静默模式（不显示UI）</description></item>
+        /// <item><description>Rapid：快速模式（工程图打开到详图模式，装配体打开到轻量级）</description></item>
+        /// <item><description>Lightweight：强制加载轻量级组件</description></item>
+        /// </list>
+        /// </para>
+        /// </summary>
         private IModelDoc2 OpenDocument()
         {
             IModelDoc2 model;
             int errorCode = -1;
 
+            // 根据文件扩展名判断是否为 SolidWorks 原生格式
             if (m_NativeFileExts.TryGetValue(System.IO.Path.GetExtension(Path), out swDocumentTypes_e docType))
             {
                 swOpenDocOptions_e opts = 0;
 
+                // 处理各种文档状态标志，构建打开选项
                 if (State.HasFlag(DocumentState_e.ReadOnly))
                 {
                     opts |= swOpenDocOptions_e.swOpenDocOptions_ReadOnly;
@@ -903,6 +1027,7 @@ namespace Xarial.XCad.SolidWorks.Documents
                     opts |= swOpenDocOptions_e.swOpenDocOptions_Silent;
                 }
 
+                // Rapid 模式：工程图打开到详图模式（2020+），装配体打开到视图模式
                 if (State.HasFlag(DocumentState_e.Rapid))
                 {
                     if (docType == swDocumentTypes_e.swDocDRAWING)
@@ -916,6 +1041,7 @@ namespace Xarial.XCad.SolidWorks.Documents
                     {
                         opts |= swOpenDocOptions_e.swOpenDocOptions_ViewOnly;
 
+                        // 2021 SP4.1+ 支持 LDR 编辑模式
                         if (OwnerApplication.IsVersionNewerOrEqual(SwVersion_e.Sw2021, 4, 1))
                         {
                             opts |= swOpenDocOptions_e.swOpenDocOptions_LDR_EditAssembly;
@@ -923,10 +1049,11 @@ namespace Xarial.XCad.SolidWorks.Documents
                     }
                     else if (docType == swDocumentTypes_e.swDocPART)
                     {
-                        //There is no rapid option for SOLIDWORKS part document
+                        // 零件文档不支持 Rapid 选项
                     }
                 }
 
+                // Lightweight 模式：仅对工程图和装配体有效
                 if (State.HasFlag(DocumentState_e.Lightweight))
                 {
                     if (docType == swDocumentTypes_e.swDocDRAWING
@@ -936,38 +1063,44 @@ namespace Xarial.XCad.SolidWorks.Documents
                     }
                     else if (docType == swDocumentTypes_e.swDocPART)
                     {
-                        //There is no rapid option for SOLIDWORKS part document
+                        // 零件文档不支持 Lightweight 选项
                     }
                 }
-                else 
+                else
                 {
+                    // 非轻量级模式：工程图和装配体显式覆盖默认加载行为
                     if (docType == swDocumentTypes_e.swDocDRAWING || docType == swDocumentTypes_e.swDocASSEMBLY)
                     {
                         opts |= swOpenDocOptions_e.swOpenDocOptions_OverrideDefaultLoadLightweight;
                     }
                     else if (docType == swDocumentTypes_e.swDocPART)
                     {
-                        //There is no rapid option for SOLIDWORKS part document
+                        // 零件文档不支持 Lightweight 选项
                     }
                 }
 
+                // 验证文件类型兼容性
                 if (!IsDocumentTypeCompatible(docType))
                 {
                     throw new DocumentPathIncompatibleException(this);
                 }
 
                 int warns = -1;
+                // 使用 OpenDoc6 打开原生格式，支持更详细的选项和错误返回
                 model = OwnerApplication.Sw.OpenDoc6(Path, (int)docType, (int)opts, "", ref errorCode, ref warns);
             }
             else
             {
+                // 非原生格式（外部 CAD 格式如 STEP、IGES 等）
+                // 使用 LoadFile4 API 加载，此时需要禁用 3D Interconnect
                 using (new Interconnect3DDisabler(OwnerApplication.Sw))
                 {
                     model = OwnerApplication.Sw.LoadFile4(Path, "", null, ref errorCode);
                 }
 
-                if (model != null) 
+                if (model != null)
                 {
+                    // 验证加载后的文档类型与预期兼容
                     if (!IsDocumentTypeCompatible((swDocumentTypes_e)model.GetType()))
                     {
                         throw new DocumentPathIncompatibleException(this);
@@ -975,6 +1108,7 @@ namespace Xarial.XCad.SolidWorks.Documents
                 }
             }
 
+            // 处理打开失败的情况，将错误代码转换为友好的错误消息
             if (model == null)
             {
                 string error = "";
@@ -982,9 +1116,11 @@ namespace Xarial.XCad.SolidWorks.Documents
                 switch ((swFileLoadError_e)errorCode)
                 {
                     case swFileLoadError_e.swAddinInteruptError:
-                        error = "File opening was interrupted by the user";
+                        error = "文件打开被用户中断";
                         break;
                     case swFileLoadError_e.swApplicationBusy:
+                        error = "应用程序忙碌，请稍后重试";
+                        break;
                         error = "Application is busy";
                         break;
                     case swFileLoadError_e.swFileCriticalDataRepairError:

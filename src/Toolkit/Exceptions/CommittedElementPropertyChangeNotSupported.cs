@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Exceptions/CommittedElementPropertyChangeNotSupported.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 CommittedElementPropertyChangeNotSupported。
+// 当事务提交后尝试修改 IXTransaction 的属性时抛出此异常。
+// 用于防止对已提交元素的非法修改操作。
 //*********************************************************************
 
 using System;

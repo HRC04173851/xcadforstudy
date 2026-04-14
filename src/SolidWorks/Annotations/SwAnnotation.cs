@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Annotations/SwAnnotation.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// SolidWorks注解的基类，封装了IAnnotation接口，提供位置、图层、颜色、字体等
+// 通用属性的访问和修改功能，支持注解的创建和提交。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

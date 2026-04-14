@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Inventor/Documents/AiDocumentsCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// Inventor文档集合类，实现IAiDocumentsCollection接口。
+// 管理Autodesk Inventor应用程序中的文档集合，提供文档的枚举、添加和删除等功能。
 //*********************************************************************
 
 using Inventor;

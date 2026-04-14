@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Structures/CustomFeatureSelectionInfo.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 存储IXCustomFeature选择对象的信息结构。
+// 包含选择的几何对象及其对应的变换矩阵。
 //*********************************************************************
 
 using Xarial.XCad.Features.CustomFeature;

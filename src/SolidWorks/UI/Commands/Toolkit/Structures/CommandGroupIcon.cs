@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// Commands/Toolkit/Structures/CommandGroupIcon.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 命令组图标实现，用于管理命令组的图标和透明度键设置。
 //*********************************************************************
 
 using System.Collections.Generic;

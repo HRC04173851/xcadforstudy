@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Exceptions/ServiceNotRegisteredException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 ServiceNotRegisteredException。
+// 当请求的服务类型尚未在服务容器中注册时抛出。
+// 帮助开发者识别依赖注入配置中的遗漏项。
 //*********************************************************************
 
 using System;

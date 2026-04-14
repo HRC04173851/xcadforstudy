@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Data/SwDm3rdPartyStream.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 包装 SOLIDWORKS 文档中的第三方数据流（Stream），常用于顺序读写插件自定义数据。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

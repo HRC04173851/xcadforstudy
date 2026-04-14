@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/EventHandlers/DocumentSavingEventHandler.cs
+//*********************************************************************
 //xCAD
-//Copyright(C) 2024 Xarial Pty Limited
+//Copyright(C) 2024 Xrial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现文档保存前事件的回调处理。
+// DocumentSaveDelegate 事件在文档保存操作执行前触发，
+// 可用于执行保存前的验证、预处理或阻止保存操作。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

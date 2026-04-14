@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/XFeatureRepositoryExtension.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// IXFeatureRepository接口的扩展方法类。
+// 提供创建自定义特征、预创建草图、预创建哑实体等辅助功能。
 //*********************************************************************
 
 using Xarial.XCad.Base;

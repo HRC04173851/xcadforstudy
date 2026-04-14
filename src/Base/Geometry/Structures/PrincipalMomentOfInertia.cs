@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Geometry/Structures/PrincipalMomentOfInertia.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 表示主惯性矩，由三个标量值Px、Py、Pz组成，描述实体相对于主惯性轴的惯性大小。
 //*********************************************************************
 
 using Xarial.XCad.Geometry.Evaluation;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// SwApplicationFactory.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// SolidWorks应用程序工厂类，用于创建和连接SolidWorks应用程序实例
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

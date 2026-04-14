@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/Diagnostics/TraceLogger.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现基于 System.Diagnostics.Trace 的跟踪日志记录器 TraceLogger。
+// 将日志消息输出到跟踪窗口，支持按分类名称区分不同日志源。
+// 实现 IXLogger 接口，提供标准化的日志记录功能。
 //*********************************************************************
 
 using Xarial.XCad.Base;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/UI/Commands/Attributes/ContextMenuCommandGroupInfoAttribute.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 允许自定义通过IXCommandManager.AddContextMenu创建的上下文菜单命令组，指定附着对象类型
 //*********************************************************************
 
 using System;

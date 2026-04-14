@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Documents/Attributes/DocumentHandlerFilterAttribute.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 用于标记文档处理器（DocumentHandler）实现类的作用域范围，
+// 支持按文档类型（如零件、装配体、工程图）过滤处理器注册
 //*********************************************************************
 
 using System;

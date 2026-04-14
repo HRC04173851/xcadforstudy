@@ -1,8 +1,16 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Surfaces/SwToroidalSurface.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 环面（Toroidal Surface）的封装。
+// 环面是由圆绕轴线旋转形成的曲面，形如救生圈。
+// 由主半径（圆心到轴线距离）和次半径（圆本身半径）定义。
+// 用于创建环形、圆环状几何形状。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

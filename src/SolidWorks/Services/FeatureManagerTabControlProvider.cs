@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Services/FeatureManagerTabControlProvider.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供FeatureManager标签页控件的创建功能，支持通过COM控件和.NET控件两种方式在标签页中嵌入自定义界面。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

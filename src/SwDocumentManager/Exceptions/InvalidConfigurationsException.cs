@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Exceptions/InvalidConfigurationsException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 当配置元数据无法解析或配置数据本身不一致时抛出的异常，将配置错误码转换为用户友好的描述信息。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

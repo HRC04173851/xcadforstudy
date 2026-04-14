@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/ComponentDeletingEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现组件删除前的回调处理。
+// ComponentDeletingDelegate 事件在装配体组件被删除之前触发，
+// 可用于阻止删除操作或执行删除前的预处理逻辑。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

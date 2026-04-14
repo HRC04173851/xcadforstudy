@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// Commands/Toolkit/Enums/CommandItemEnableState_e.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 命令项启用状态枚举，定义工具栏按钮或菜单项在SOLIDWORKS中的可能状态。
 //*********************************************************************
 
 namespace Xarial.XCad.SolidWorks.UI.Commands.Toolkit.Enums

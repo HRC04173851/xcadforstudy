@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Features/SwSketchBase.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 实现草图特征（Sketch）的抽象基类，封装 SolidWorks 草图的通用功能。
+// SwSketchBase 是 2D 草图（SwSketch2D）和 3D 草图（SwSketch3D）的共同基类，
+// 提供草图编辑状态管理、实体访问和可见性控制等核心功能。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

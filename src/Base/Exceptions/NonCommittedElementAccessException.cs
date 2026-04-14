@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Exceptions/NonCommittedElementAccessException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 当元素未被提交（IXTransaction.IsCommitted为False）时尝试访问该元素抛出此异常
 //*********************************************************************
 
 using System;

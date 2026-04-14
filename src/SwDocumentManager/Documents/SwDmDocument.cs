@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmDocument.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 所有 Document Manager 文档的基类包装器，负责打开、保存、关闭及第三方存储流的管理。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

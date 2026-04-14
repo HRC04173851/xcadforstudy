@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Utils/CompatibilityUtils.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供 SOLIDWORKS 版本兼容性检查工具方法，包括判断是否支持高分辨率图标以及版本号比较功能。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

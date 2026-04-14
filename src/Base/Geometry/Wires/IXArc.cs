@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+// -*- coding: utf-8 -*-
+// src/Base/Geometry/Wires/IXArc.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义圆弧(IXArc)和整圆(IXCircle)线段的接口，继承自IXSegment接口
 //*********************************************************************
 
 using Xarial.XCad.Geometry.Structures;

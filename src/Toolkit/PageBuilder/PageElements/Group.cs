@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/PageElements/Group.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现分组控件包装器 Group<TVal> 和非泛型 Group 基类。
+// 继承自 Control<TVal> 并实现 IGroup 接口。
+// 用于 PropertyManager 页面中的分组容器控件。
 //*********************************************************************
 
 using Xarial.XCad.UI.PropertyPage.Base;

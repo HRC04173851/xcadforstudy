@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Geometry/Exceptions/PrincipalAxesOfInertiaOverridenException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义惯性主轴被覆盖时抛出的异常。
+// 在 SOLIDWORKS 2019 中，IMassProperty API 无法正确计算组件的惯性主轴，
+// 当用户尝试获取已被覆盖的惯性主轴时触发此异常。
 //*********************************************************************
 
 using System;

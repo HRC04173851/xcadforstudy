@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Data/SwDmDocumentCustomPropertiesCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 直接存储在文档级别上的自定义属性仓库实现，支持文件级属性的增删改查操作。
 //*********************************************************************
 
 using System;

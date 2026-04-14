@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Core/BindingManager.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现默认的数据绑定管理器 BindingManager。
+// 继承自 IBindingManager 接口，管理绑定集合和依赖管理器。
+// 提供加载绑定图和初始化依赖关系的方法。
 //*********************************************************************
 
 using System.Collections.Generic;

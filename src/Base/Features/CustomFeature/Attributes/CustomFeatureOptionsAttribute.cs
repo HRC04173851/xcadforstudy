@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/CustomFeature/Attributes/CustomFeatureOptionsAttribute.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 为自定义特征（Custom Feature）提供附加选项的特性类。
+// 用于指定宏特征的特殊行为，如是否支持阵列、拖拽等功能。
 //*********************************************************************
 
 using System;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/UI/PropertyPage/Services/IMetadataDependencyHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义基于元数据的依赖处理器接口，处理控件状态与元数据之间的动态关系
 //*********************************************************************
 
 using Xarial.XCad.UI.PropertyPage.Base;

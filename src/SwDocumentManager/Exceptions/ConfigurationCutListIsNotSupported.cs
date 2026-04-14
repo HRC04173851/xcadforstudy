@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Exceptions/ConfigurationCutListIsNotSupported.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 当 SOLIDWORKS 文件版本不支持按该方式提取切割清单时抛出的异常。
 //*********************************************************************
 
 using System;

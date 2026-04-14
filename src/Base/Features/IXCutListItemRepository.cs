@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Features/IXCutListItemRepository.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义切割清单项目集合的仓库接口，继承自IXRepository&lt;IXCutListItem&gt;。
+// 提供切割清单的访问和CutListRebuild事件支持。
 //*********************************************************************
 
 using System;

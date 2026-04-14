@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/UI/PropertyPage/Enums/BitmapLabelType_e.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义标准控件位图标签类型，用于选择边、面、顶点等几何元素的标识符号
 //*********************************************************************
 
 namespace Xarial.XCad.UI.PropertyPage.Enums

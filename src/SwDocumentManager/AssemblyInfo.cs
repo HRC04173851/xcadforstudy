@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/AssemblyInfo.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 定义程序集的 COM 元数据标识和可见性属性，用于程序集在 COM 环境中的身份配置。
 //*********************************************************************
 
 // Assembly GUID used only for COM identity of the generated assembly metadata.

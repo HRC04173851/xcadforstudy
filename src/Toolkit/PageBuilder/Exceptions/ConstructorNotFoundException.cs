@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Exceptions/ConstructorNotFoundException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现异常类 ConstructorNotFoundException。
+// 当未找到合适的页面元素构造器时抛出。
+// 帮助识别构造器注册配置问题。
 //*********************************************************************
 
 using System;

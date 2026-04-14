@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/EventHandlers/ClearSelectionEventHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现清除选中对象事件的回调处理。
+// ClearSelectionDelegate 事件在文档中的选中对象被清除时触发，
+// 可用于同步其他 UI 状态或执行清除选中后的后续处理逻辑。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

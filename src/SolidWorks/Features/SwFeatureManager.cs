@@ -1,8 +1,25 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Features/SwFeatureManager.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 特性管理器（FeatureManager）的封装。
+// 特性管理器是 SolidWorks 文档中管理所有特征的中央组件。
+//
+// 特性（Feature）概念：
+// - 特征是构建零件/装配体的基本操作，如拉伸、旋转、倒角、孔等
+// - FeatureManager 树形结构展示文档中所有特征及其层级关系
+// - 每个文档只有一个 FeatureManager，但可以有多个草图、基准面等
+//
+// 核心功能：
+// 1. 特征遍历 - 按名称或类型查找特征
+// 2. 特征创建 - 通过 API 创建新特征
+// 3. 事件通知 - 订阅特征创建/删除事件
+// 4. 草图管理 - 访问和管理草图特征
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;
@@ -30,12 +47,34 @@ using Xarial.XCad.Utils.Reflection;
 
 namespace Xarial.XCad.SolidWorks.Features
 {
+    /// <summary>
+    /// SolidWorks 特性管理器接口。
+    /// <para>中文：封装 SolidWorks FeatureManager 的功能，提供特征的统一访问接口。</para>
+    /// </summary>
     public interface ISwFeatureManager : IXFeatureRepository
     {
+        /// <summary>
+        /// 按名称获取特征。
+        /// </summary>
         new ISwFeature this[string name] { get; }
     }
 
     /// <inheritdoc/>
+    /// <summary>
+    /// SolidWorks 特性管理器抽象基类。
+    /// <para>
+    /// 职责：
+    /// <list type="bullet">
+    /// <item><description>管理文档中所有特征的访问和遍历</description></item>
+    /// <item><description>通过 EntityCache 缓存特征对象，提高重复访问性能</description></item>
+    /// <item><description>处理特征创建事件的订阅和分发</description></item>
+    /// </list>
+    /// </para>
+    /// <para>
+    /// 注意：通过 API 直接创建特征时，不会触发 FeatureCreated 事件。
+    /// 这是 SolidWorks API 的行为，本类不做特殊处理。
+    /// </para>
+    /// </summary>
     internal abstract class SwFeatureManager : ISwFeatureManager
     {
         //NOTE: this event is not raised when feature is added via API

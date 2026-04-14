@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Sketch/SwSketchRegion.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 提供SolidWorks草图区域的实现，封装ISketchRegion接口，支持区域的平面属性、外环和内环遍历以及sheet body转换。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

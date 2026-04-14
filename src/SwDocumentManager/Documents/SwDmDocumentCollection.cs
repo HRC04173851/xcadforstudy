@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmDocumentCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 跟踪 Document Manager 应用实例所拥有的全部文档包装器，支持按路径、文件名或标题解析文档。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

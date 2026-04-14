@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Data/SwDmCutListCustomPropertiesCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 焊件或钣金实体对应的切割清单自定义属性仓库实现，支持按配置范围约束的属性操作。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Documents/SwDmDocumentDependencies.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 通过 Document Manager 枚举文档的外部引用关系，支持虚拟文档解析与引用路径替换。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

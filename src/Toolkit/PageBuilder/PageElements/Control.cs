@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/PageElements/Control.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 PropertyManager 控件包装器的泛型基类 Control<TVal>。
+// 实现 IControl 接口，提供控件值的变化事件通知。
+// 支持控件标识符、标签、元数据和值类型的访问。
 //*********************************************************************
 
 using System;

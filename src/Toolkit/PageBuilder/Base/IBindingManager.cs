@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Toolkit/PageBuilder/Base/IBindingManager.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义绑定管理器接口 IBindingManager。
+// 管理页面控件的数据绑定集合和依赖关系图。
+// 提供加载绑定、依赖定义和元数据的方法。
 //*********************************************************************
 
 using System.Collections.Generic;

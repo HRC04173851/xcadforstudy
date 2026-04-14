@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Features/SwDmCutListItemCollection.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 零件配置对应的切割清单项目仓库实现，根据当前 SOLIDWORKS 版本选择合适的 API 枚举切割清单。
 //*********************************************************************
 
 using System;

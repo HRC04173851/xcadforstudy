@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/EventHandlers/DocumentRebuildEventsHandler.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现文档重建完成事件的回调处理。
+// DocumentEventDelegate（RegenPostNotify）事件在文档重建（再生）操作完成后触发，
+// 可用于执行重建后的验证、更新缓存或触发后续计算操作。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

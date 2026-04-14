@@ -1,8 +1,32 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Geometry/IXEntity.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件定义几何实体（Entity）的跨CAD平台基础接口。
+// Entity 是几何体（Body）中的拓扑元素，包括 Face、Edge、Vertex 等。
+//
+// 几何实体类型层次：
+// - IXEntity：基础接口
+//   - IXFace：面实体
+//   - IXEdge：边实体
+//   - IXVertex：顶点实体
+//   - IXLoop：环实体（面的边界）
+//   - IXSilhouetteEdge：轮廓边
+//
+// Entity 核心概念：
+// 1. 所属 Body：每个 Entity 属于一个 Body
+// 2. 组件上下文：在装配体中，Entity 可能属于特定组件
+// 3. 拓扑关系：Entity 之间通过 AdjacentEntities 关联
+// 4. 最近点计算：FindClosestPoint 用于点-实体距离计算
+//
+// Entity 与 Geometry 的区别：
+// - Entity：拓扑元素，有明确的相邻关系
+// - Geometry：几何元素，如曲线、曲面、点等
 //*********************************************************************
 
 using System.Collections.Generic;

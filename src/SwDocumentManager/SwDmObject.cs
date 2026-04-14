@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/SwDmObject.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 基于 Document Manager 调度对象的 xCAD 基础对象及工厂实现，负责将 COM 对象转换为强类型包装器。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

@@ -1,8 +1,14 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Inventor/Documents/AiDrawing.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// Inventor工程图文档接口和实现类，实现IAiDrawing接口。
+// 封装Autodesk Inventor工程图文档，提供图纸页、视图和尺寸标注等功能。
 //*********************************************************************
 
 using Inventor;

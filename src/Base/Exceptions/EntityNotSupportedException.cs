@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/Base/Exceptions/EntityNotSupportedException.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 当IXRepository.PreCreate{T}不支持指定实体类型时抛出此异常，表明存储库不支持该实体类型
 //*********************************************************************
 
 using System;

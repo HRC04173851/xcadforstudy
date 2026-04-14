@@ -1,8 +1,15 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SolidWorks/Documents/SwDocumentEvaluation.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 本文件实现 SolidWorks 文档评估（Document Evaluation）功能的封装。
+// 评估功能包括质量属性计算（质量、体积、面积）、边界框计算、
+// 干涉检查等模型分析和验证操作，为文档提供数据驱动的决策支持。
 //*********************************************************************
 
 using SolidWorks.Interop.sldworks;

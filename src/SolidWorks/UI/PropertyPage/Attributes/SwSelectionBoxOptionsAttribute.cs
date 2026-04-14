@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// PropertyPage/Attributes/SwSelectionBoxOptionsAttribute.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// SOLIDWORKS特定的选择框选项属性，用于配置选择框的实体过滤器。
 //*********************************************************************
 
 using SolidWorks.Interop.swconst;

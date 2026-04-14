@@ -1,8 +1,13 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// src/SwDocumentManager/Data/SwDm3rdPartyStorage.cs
+//*********************************************************************
 //xCAD
 //Copyright(C) 2024 Xarial Pty Limited
 //Product URL: https://www.xcad.net
 //License: https://xcad.xarial.com/license/
+//*********************************************************************
+// 说明：
+// 包装 SOLIDWORKS 文档中的第三方结构化存储（Storage），用于读写自定义二进制数据容器。
 //*********************************************************************
 
 using SolidWorks.Interop.swdocumentmgr;

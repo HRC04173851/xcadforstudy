@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/SelectionsTests.cs
+
+using NUnit.Framework;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -12,8 +15,15 @@ using Xarial.XCad.SolidWorks.Geometry;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// SelectionsTests 测试 SOLIDWORKS 选择功能。
+    /// 包括选区的遍历、新选区事件、清除选区事件、以及选区的添加/移除操作。
+    /// </summary>
     public class SelectionsTests : IntegrationTests
     {
+        /// <summary>
+        /// 测试遍历当前文档中的所有选区，验证选区对象的类型（面、边、草图等）。
+        /// </summary>
         [Test]
         public void IterateSelectionsTest()
         {

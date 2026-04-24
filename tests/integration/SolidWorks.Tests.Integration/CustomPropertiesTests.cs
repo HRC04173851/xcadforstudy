@@ -1,3 +1,6 @@
+// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/CustomPropertiesTests.cs
+
 using NUnit.Framework;
 using SolidWorks.Interop.swconst;
 using System;
@@ -14,8 +17,16 @@ using Xarial.XCad.SolidWorks.Enums;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// CustomPropertiesTests 测试 SOLIDWORKS 自定义属性功能。
+    /// 包括添加、读取、修改属性，配置特定的属性，以及焊接切割清单属性等。
+    /// </summary>
     public class CustomPropertiesTests : IntegrationTests
     {
+        /// <summary>
+        /// 测试添加新的文档级和配置级自定义属性。
+        /// 验证属性能够正确创建和持久化。
+        /// </summary>
         [Test]
         public void TestAddProperty()
         {

@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/TagsTest.cs
+
+using NUnit.Framework;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
@@ -12,8 +15,16 @@ using Xarial.XCad.Toolkit.Data;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// TagsTest 测试标签（Tags）功能，用于在 SOLIDWORKS 实体上存储和检索自定义键值数据。
+    /// 这些数据存储在全局注册表中，与 SOLIDWORKS 文档的生命周期独立。
+    /// </summary>
     public class TagsTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试在实体上存储多个标签（Put），并验证标签的存在性。
+        /// 同一实体的不同引用会共享相同的标签数据。
+        /// </summary>
         [Test]
         public void TagsPutTest() 
         {

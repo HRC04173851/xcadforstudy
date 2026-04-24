@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/DimensionsTest.cs
+
+using NUnit.Framework;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -12,8 +15,15 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// DimensionsTest 测试尺寸的遍历和值操作功能。
+    /// 包括文档级尺寸、特征级尺寸、配置特定尺寸、以及装配体中组件引用的尺寸等。
+    /// </summary>
     public class DimensionsTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试遍历文档中的所有尺寸，包括草图尺寸和特征尺寸。
+        /// </summary>
         [Test]
         public void IterateDocumentDimensionsTest() 
         {

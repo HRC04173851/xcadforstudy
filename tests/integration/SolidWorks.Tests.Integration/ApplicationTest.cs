@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/ApplicationTest.cs
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,8 +12,16 @@ using Xarial.XCad.SolidWorks;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// ApplicationTest 测试 SOLIDWORKS 应用程序级别的功能。
+    /// 包括材料数据库的访问和材料属性的读取等。
+    /// </summary>
     public class ApplicationTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试访问 SOLIDWORKS 材料数据库，验证材料属性的完整性。
+        /// 包括弹性模量、泊松比、剪切模量、热膨胀系数、密度、强度等物理属性。
+        /// </summary>
         [Test]
         public void MaterialDatabaseTest() 
         {

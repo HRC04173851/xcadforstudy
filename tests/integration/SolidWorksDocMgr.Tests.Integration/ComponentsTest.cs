@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorksDocMgr.Tests.Integration/ComponentsTest.cs
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,8 +19,16 @@ using Xarial.XCad.SwDocumentManager.Exceptions;
 
 namespace SolidWorksDocMgr.Tests.Integration
 {
+    /// <summary>
+    /// 组件相关集成测试，验证 SOLIDWORKS Document Manager 对装配体组件的访问能力。
+    /// 测试内容包括：根组件遍历、子组件迭代、组件状态、变换矩阵、虚拟组件等。
+    /// </summary>
     public class ComponentsTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试遍历装配体的根级组件。
+        /// 验证组件名称的正确性和完整性。
+        /// </summary>
         [Test]
         public void IterateRootComponentsTest()
         {
@@ -32,6 +42,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             CollectionAssert.AreEquivalent(new string[] { "Part1-1", "Part1-2", "SubAssem1-1", "SubAssem1-2", "SubAssem2-1", "Part1-3" }, compNames);
         }
 
+        /// <summary>
+        /// 测试遍历子组件（嵌套装配体中的组件）。
+        /// 验证 FullName 属性返回正确的完整路径格式。
+        /// </summary>
         [Test]
         public void IterateSubComponentsTest()
         {
@@ -47,6 +61,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             CollectionAssert.AreEquivalent(new string[] { "SubAssem1-1/Part2-1", "SubAssem1-1/SubSubAssem1-1" }, compNames);
         }
 
+        /// <summary>
+        /// 测试组件遍历的顺序是否与 SOLIDWORKS 中显示的顺序一致。
+        /// 组件顺序可能影响 BOM 和其他依赖顺序的输出。
+        /// </summary>
         [Test]
         public void IterateComponentsOrderTest()
         {
@@ -64,6 +82,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             CollectionAssert.AreEqual(new string[] { "SubAssem1-1/Part5-1", "SubAssem1-1/Part6-1", "SubAssem1-1/Part8-1", "SubAssem1-1/Part6-2" }, subCompNames);
         }
 
+        /// <summary>
+        /// 测试包含组件阵列（Component Pattern）的装配体中组件遍历。
+        /// 验证阵列中的所有实例都能被正确识别。
+        /// </summary>
         [Test]
         public void IterateComponentsPatternsTest()
         {
@@ -81,6 +103,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             CollectionAssert.AreEqual(new string[] { "SubAssem1-1/Part2-1", "SubAssem1-1/Part2-2", "SubAssem1-1/Part2-3", "SubAssem1-1/Part2-4" }, subCompNames);
         }
 
+        /// <summary>
+        /// 测试 SpeedPak 配置下的组件访问。
+        /// SpeedPak 是一种轻量化的装配体表示方式，访问其子组件会抛出异常。
+        /// </summary>
         [Test]
         public void IterateComponentsSpeedPakTest()
         {
@@ -97,6 +123,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             CollectionAssert.AreEquivalent(new string[] { "SubAssem1-2/Part1-1", "SubAssem1-1", "SubAssem1-2" }, flattenCompNames);
         }
 
+        /// <summary>
+        /// 测试获取组件引用的文档对象。
+        /// 验证组件可以访问其关联的 SOLIDWORKS 文档及文档状态。
+        /// </summary>
         [Test]
         public void GetDocumentTest()
         {
@@ -136,6 +166,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.IsTrue(doc2Contains);
         }
         
+        /// <summary>
+        /// 测试获取组件引用的配置对象。
+        /// 验证组件的 ReferencedConfiguration 属性返回正确的配置。
+        /// </summary>
         [Test]
         public void GetComponentRefConfigTest()
         {
@@ -157,6 +191,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }
         }
         
+        /// <summary>
+        /// 测试虚拟组件的识别和状态。
+        /// 虚拟组件（Embedded 状态）嵌入在父装配体中，不占用独立文件。
+        /// </summary>
         [Test]
         public void VirtualComponentsTest()
         {
@@ -189,6 +227,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.That(isVirtual.All(x => x == true));
         }
         
+        /// <summary>
+        /// 测试保存包含虚拟组件的装配体后，虚拟组件的自定义属性是否正确保存。
+        /// 通过直接操作依赖文档来验证虚拟组件的持久化能力。
+        /// </summary>
         [Test]
         public void SavingVirtualComponentsTest()
         {
@@ -257,6 +299,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }
         }
 
+        /// <summary>
+        /// 测试移动位置后的引用缓存装配体。
+        /// 验证当组件被移动到不同位置后，Document Manager 仍能正确解析路径。
+        /// </summary>
         [Test]
         public void MovedCachedRefsAssemblyTest()
         {
@@ -278,6 +324,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.That(paths.Any(d => string.Equals(d, Path.Combine(dir, "Parts\\Part1.SLDPRT"), StringComparison.CurrentCultureIgnoreCase)));
         }
 
+        /// <summary>
+        /// 测试引用缓存在外部文件夹的装配体。
+        /// 组件引用的文件可能位于装配体目录之外的文件夹中。
+        /// </summary>
         [Test]
         public void MovedCachedRefsAssemblyExtFolderTest()
         {
@@ -298,6 +348,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.That(paths.Any(d => string.Equals(d, Path.Combine(dir, "Parts\\Part1.SLDPRT"), StringComparison.CurrentCultureIgnoreCase)));
         }
 
+        /// <summary>
+        /// 测试组件计数功能。
+        /// Count 属性仅计算直接子组件，TotalCount 包含所有层级的组件。
+        /// </summary>
         [Test]
         public void ComponentCountTest()
         {
@@ -316,6 +370,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(17, totalCount);
         }
 
+        /// <summary>
+        /// 测试组件名称和完整名称的正确性。
+        /// Name 仅返回组件本身名称，FullName 包含完整路径。
+        /// </summary>
         [Test]
         public void ComponentNameTest()
         {
@@ -352,6 +410,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("Part1-1", n3);
         }
 
+        /// <summary>
+        /// 测试多配置下组件的行为差异。
+        /// 不同配置中同一组件可能有不同的引用配置或状态。
+        /// </summary>
         [Test]
         public void ComponentsMultiConfigsTest()
         {
@@ -486,6 +548,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(ComponentState_e.Hidden, s10_conf1);
         }
 
+        /// <summary>
+        /// 测试组件状态的识别。
+        /// 状态包括：Default、Suppressed、Envelope、ExcludedFromBom、Hidden、Embedded。
+        /// </summary>
         [Test]
         public void ComponentStateTest()
         {
@@ -516,6 +582,11 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(ComponentState_e.Embedded, s6);
         }
 
+        /// <summary>
+        /// 测试组件变换矩阵的读取。
+        /// 验证 4x4 变换矩阵的所有 16 个元素值是否正确。
+        /// 矩阵包含旋转（9个元素）和平移（3个元素）信息。
+        /// </summary>
         [Test]
         public void TransformTest()
         {
@@ -583,6 +654,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.That(m3.M44, Is.EqualTo(1).Within(0.00000000001).Percent);
         }
 
+        /// <summary>
+        /// 测试组件引用路径的解析。
+        /// 验证组件路径正确指向实际文件位置，包括已删除和未提交的引用。
+        /// </summary>
         [Test]
         public void PathsTest()
         {
@@ -658,6 +733,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(refs["Assem3-1/Assem2-1/Part4-1"], new Tuple<string, bool>(Path.Combine(tempSrcAssmPath, @"Parts\Part4.SLDPRT").ToLower(), false));
         }
 
+        /// <summary>
+        /// 测试引用已更改的组件。
+        /// 验证当组件指向不同文件时，Document Manager 能正确识别新路径。
+        /// </summary>
         [Test]
         public void ChangedReferencesTest()
         {
@@ -680,6 +759,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.That(string.Equals(refPath, GetFilePath(@"Assembly12\_Part1.sldprt"), StringComparison.CurrentCultureIgnoreCase));
         }
 
+        /// <summary>
+        /// 测试被抑制的组件在阵列中的状态。
+        /// 组件阵列中某些实例可能被抑制，需要验证状态标志。
+        /// </summary>
         [Test]
         public void SuppressedPatternsTest()
         {
@@ -717,6 +800,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }, suppStates);
         }
 
+        /// <summary>
+        /// 测试不同配置下组件数量可能不同的情况。
+        /// 配置特定的组件阵列可能导致不同配置包含不同数量的组件实例。
+        /// </summary>
         [Test]
         public void ConfigsDifferentCountTest()
         {
@@ -767,6 +854,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }, compNamesConf1);
         }
 
+        /// <summary>
+        /// 测试组件引用标识符的读取。
+        /// 引用标识符是 SOLIDWORKS 内部用于标识组件的唯一字符串。
+        /// </summary>
         [Test]
         public void ComponentReferenceTest()
         {

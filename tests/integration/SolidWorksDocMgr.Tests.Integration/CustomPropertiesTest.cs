@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorksDocMgr.Tests.Integration/CustomPropertiesTest.cs
+using NUnit.Framework;
 using SolidWorks.Interop.swdocumentmgr;
 using System;
 using System.Collections.Generic;
@@ -15,8 +17,16 @@ using Xarial.XCad.SwDocumentManager.Features;
 
 namespace SolidWorksDocMgr.Tests.Integration
 {
+    /// <summary>
+    /// 自定义属性集成测试，验证 SOLIDWORKS Document Manager 对文档和配置级别自定义属性的访问能力。
+    /// 测试内容包括：属性添加、读取、修改、删除，以及焊接件切割清单属性等。
+    /// </summary>
     public class CustomPropertiesTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试添加新的自定义属性。
+        /// 验证属性不存在时可被创建，添加后能正确读取值。同时测试配置级别属性。
+        /// </summary>
         [Test]
         public void TestAddProperty()
         {
@@ -49,6 +59,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("AddTestPrp1ValueConf", valConf);
         }
 
+        /// <summary>
+        /// 测试为卸载的配置添加自定义属性。
+        /// 卸载的配置（Unloaded Configuration）在文档打开时不加载，但属性仍可被写入。
+        /// </summary>
         [Test]
         public void TestAddUnloadConfProperty()
         {
@@ -76,6 +90,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("Val2", val2);
         }
 
+        /// <summary>
+        /// 测试读取卸载配置的自定义属性值。
+        /// 验证不同配置可能包含相同属性名的不同值。
+        /// </summary>
         [Test]
         public void TestGetUnloadConfProperty()
         {
@@ -94,6 +112,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("Conf1Val1", val2);
         }
 
+        /// <summary>
+        /// 测试修改卸载配置的自定义属性值。
+        /// 验证属性值的更新能正确持久化到配置中。
+        /// </summary>
         [Test]
         public void TestSetUnloadConfProperty()
         {
@@ -115,6 +137,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("_Conf1Val1_", val2);
         }
 
+        /// <summary>
+        /// 测试读取文档和配置级别的所有属性。
+        /// 配置可以有自己独立的属性集，与文档级别属性分开存储。
+        /// </summary>
         [Test]
         public void TestReadAllProperties()
         {
@@ -138,6 +164,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("Prop3ValConf", prpsConf["Prop3"]);
         }
 
+        /// <summary>
+        /// 测试通过不同方式获取属性：TryGet 方法和索引器。
+        /// 验证 TryGet 在属性不存在时返回 false，索引器抛出异常。
+        /// </summary>
         [Test]
         public void TestGetProperty()
         {
@@ -161,6 +191,11 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("Prop1ValConf", valConf);
         }
 
+        /// <summary>
+        /// 测试自定义属性的数据类型。
+        /// 属性可以是：Text（字符串）、Double（数值）、Integer（整数）、Bool（布尔）、Date（日期）。
+        /// SOLIDWORKS 将 Integer 和 Bool 都存储为 Double 类型返回。
+        /// </summary>
         [Test]
         public void GetCustomPropertiesTypesTest()
         {
@@ -202,6 +237,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.IsInstanceOf<DateTime>(val6);
         }
 
+        /// <summary>
+        /// 测试获取不存在的属性时的行为。
+        /// 验证 TryGet 返回 null 而非抛出异常，索引器则抛出 EntityNotFoundException。
+        /// </summary>
         [Test]
         public void TestGetMissingProperty()
         {
@@ -217,6 +256,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }
         }
 
+        /// <summary>
+        /// 测试属性值更改事件的触发。
+        /// 当属性值被修改并提交后，ValueChanged 事件应该被触发。
+        /// </summary>
         [Test]
         public void TestPropertyEvents()
         {
@@ -244,6 +287,11 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("B1", newConfVal);
         }
 
+        /// <summary>
+        /// 测试读取焊接件切割清单的自定义属性。
+        /// 切割清单属性由 SOLIDWORKS 自动生成，包含材料、数量等信息。
+        /// 配置特定的切割清单可能覆盖通用的属性值。
+        /// </summary>
         [Test]
         public void GetWeldmentCutListPropertiesTest()
         {
@@ -274,6 +322,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("Gen1Val", confDefPrps["Prp2"]);
         }
         
+        /// <summary>
+        /// 测试设置焊接件切割清单的自定义属性。
+        /// 配置特定的切割清单属性可能无法直接写入，验证异常处理。
+        /// </summary>
         [Test]
         public void SetWeldmentCutListPropertiesTest()
         {
@@ -300,6 +352,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("NewValueConf1", conf1Val);
         }
 
+        /// <summary>
+        /// 测试读取属性中的表达式和计算值。
+        /// 某些属性（如材料、体积）是 SOLIDWORKS 表达式，Expression 返回原始公式，Value 返回计算结果。
+        /// </summary>
         [Test]
         public void GetExpressionCustomPropertiesTest()
         {
@@ -344,6 +400,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("IJK", exp6);
         }
 
+        /// <summary>
+        /// 测试多配置文档中属性更新不及时的情况。
+        /// 当配置特定属性未更新时，可能返回旧值或默认值。
+        /// </summary>
         [Test]
         public void NotUpdatedConfPrpsCustomPropertiesTest()
         {

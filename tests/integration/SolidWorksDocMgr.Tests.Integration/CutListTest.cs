@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorksDocMgr.Tests.Integration/CutListTest.cs
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,16 @@ using Xarial.XCad.SwDocumentManager.Documents;
 
 namespace SolidWorksDocMgr.Tests.Integration
 {
+    /// <summary>
+    /// 切割清单（Cut List）集成测试，验证 SOLIDWORKS Document Manager 对零件和装配体切割清单的访问能力。
+    /// 切割清单主要用于焊接件和钣金件，包含材料数量、尺寸等信息。
+    /// </summary>
     public class CutListTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试钣金件的切割清单。
+        /// 钣金零件通常包含多个切割体（Body），每个切割体对应一个切割清单项。
+        /// </summary>
         [Test]
         public void SheetMetalCutListsTest()
         {
@@ -31,6 +41,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(1, cutListData["Sheet<2>"]);
         }
 
+        /// <summary>
+        /// 测试不同类型的切割清单。
+        /// 切割清单类型包括：Weldment（焊接件）、SheetMetal（钣金件）、SolidBody（实体）。
+        /// </summary>
         [Test]
         public void CutListsTypes()
         {
@@ -55,6 +69,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(CutListType_e.SolidBody, cutListData["Cut-List-Item3"]);
         }
 
+        /// <summary>
+        /// 测试焊接件的切割清单。
+        /// 焊接件切割清单可能包含多个体（Body），表示不同的焊件轮廓。
+        /// </summary>
         [Test]
         public void WeldmentCutListsTest()
         {
@@ -72,6 +90,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(3, cutListData[" C CHANNEL, 76.20 X 5<1>"]);
         }
 
+        /// <summary>
+        /// 测试过时（Outdated）切割清单的处理。
+        /// 当零件几何或特征更改后，切割清单可能需要重新计算。
+        /// </summary>
         [Test]
         public void OutdatedCutListsTest()
         {
@@ -93,6 +115,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(1, cutListData[" C CHANNEL, 76.20 X 5<3>"]);
         }
 
+        /// <summary>
+        /// 测试切割清单的 BOM 排除状态。
+        /// 某些切割清单项可以被设置为不包含在物料清单中。
+        /// </summary>
         [Test]
         public void ExcludeFromBomTest()
         {
@@ -109,6 +135,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(CutListStatus_e.ExcludeFromBom, cutListData["PIPE, SCH 40, 25.40 DIA.<1>"]);
         }
 
+        /// <summary>
+        /// 测试装配体中组件的切割清单访问。
+        /// 通过组件配置获取焊件零件的切割清单信息。
+        /// </summary>
         [Test]
         public void ComponentsCutListTest()
         {
@@ -131,6 +161,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(1, cutListData2["PIPE 21.30 X 2.3<1>"]);
         }
 
+        /// <summary>
+        /// 测试子焊接件（Sub-Weldment）的切割清单。
+        /// 子焊接件是嵌套在主焊接件中的独立焊接零件。
+        /// </summary>
         [Test]
         public void SubWeldmentsTest()
         {

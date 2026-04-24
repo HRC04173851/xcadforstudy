@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorksDocMgr.Tests.Integration/ConfigurationsTest.cs
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,16 @@ using Xarial.XCad.SwDocumentManager.Documents;
 
 namespace SolidWorksDocMgr.Tests.Integration
 {
+    /// <summary>
+    /// 配置相关集成测试，验证 SOLIDWORKS Document Manager 对文档配置的访问能力。
+    /// 测试内容包括：活动配置、配置遍历、按名称查找、删除配置、零件号、BOM 子件显示等。
+    /// </summary>
     public class ConfigurationsTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试获取活动配置的名称。
+        /// 验证当前激活的配置是否为预期的配置。
+        /// </summary>
         [Test]
         public void ActiveConfTest()
         {
@@ -27,6 +37,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("Conf3", name);
         }
 
+        /// <summary>
+        /// 测试遍历所有配置（包括嵌套子配置）。
+        /// 验证配置层级结构和名称顺序是否正确。
+        /// </summary>
         [Test]
         public void IterateConfsTest()
         {
@@ -43,6 +57,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }));
         }
 
+        /// <summary>
+        /// 测试通过不同方式获取配置：直接索引、TryGet 方法。
+        /// 验证索引器在配置不存在时抛出异常，而 TryGet 返回 false。
+        /// </summary>
         [Test]
         public void GetConfigByNameTest()
         {
@@ -79,6 +97,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.IsNotNull(e1);
         }
 
+        /// <summary>
+        /// 测试批量删除配置。
+        /// 验证删除后剩余配置的数量和活动配置名称是否正确。
+        /// </summary>
         [Test]
         public void DeleteConfsTest()
         {
@@ -101,6 +123,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("Conf3", name);
         }
 
+        /// <summary>
+        /// 测试零件号（Part Number）的读取。
+        /// 配置可以指定不同的零件号，Default 配置使用文档名称作为零件号。
+        /// </summary>
         [Test]
         public void PartNumberTest()
         {
@@ -124,6 +150,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("ABC", p4);
         }
 
+        /// <summary>
+        /// 测试 BOM 子件显示方式的读取。
+        /// Show/Hide/Promote 三种方式影响 BOM 中子件的显示方式。
+        /// </summary>
         [Test]
         public void BomChildrenDisplayTest()
         {
@@ -144,6 +174,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(BomChildrenSolving_e.Promote, s3);
         }
 
+        /// <summary>
+        /// 测试配置层级关系（父配置）。
+        /// 验证子配置能正确找到其父配置，根配置返回 null。
+        /// </summary>
         [Test]
         public void ParentConfTest()
         {
@@ -171,6 +205,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(null, c6);
         }
 
+        /// <summary>
+        /// 测试组件引用的配置及其父配置关系。
+        /// 组件引用的配置可能是装配体配置或零件配置，验证类型转换正确。
+        /// </summary>
         [Test]
         public void ParentConfComponentTest()
         {

@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/MacroTests.cs
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +11,15 @@ using Xarial.XCad.SolidWorks;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// MacroTests 测试 SOLIDWORKS VBA 宏和 VSTA 宏的运行功能。
+    /// 包括宏的运行入口点、自定义入口点选择、以及不同版本 SOLIDWORKS 的兼容性测试。
+    /// </summary>
     public class MacroTests : IntegrationTests
     {
+        /// <summary>
+        /// 测试运行 VBA 宏文件，并验证宏执行后自定义属性是否被正确修改。
+        /// </summary>
         [Test]
         public void RunVbaMacro() 
         {

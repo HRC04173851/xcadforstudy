@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/DrawingTest.cs
+
+using NUnit.Framework;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -17,8 +20,15 @@ using Xarial.XCad.SolidWorks.Geometry;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// DrawingTest 测试 SOLIDWORKS 工程图功能。
+    /// 包括工程图的创建、图纸/视图的遍历和操作、工程图视图的各种类型（模型视图、投影视图、截面视图、详图视图等）。
+    /// </summary>
     public class DrawingTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试创建新的空白工程图和带自定义纸张/比例的工程图。
+        /// </summary>
         [Test]
         public void NewDrawingTest() 
         {

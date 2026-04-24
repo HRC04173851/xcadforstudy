@@ -1,4 +1,7 @@
-﻿using Moq;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/DocumentsTest.cs
+
+using Moq;
 using NUnit.Framework;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
@@ -32,8 +35,16 @@ using Xarial.XCad.SolidWorks.Utils;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// DocumentsTest 测试 SOLIDWORKS 文档操作的核心功能。
+    /// 包括文档的打开、保存、生命周期事件、依赖项管理、第三方数据流/存储等。
+    /// </summary>
     public class DocumentsTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试文档对象的相等性判断。
+        /// 验证同一路径的预创建文档与已打开文档的相等性逻辑。
+        /// </summary>
         [Test]
         public void EqualsTest()
         {

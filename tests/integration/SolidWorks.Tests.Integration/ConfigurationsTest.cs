@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/ConfigurationsTest.cs
+
+using NUnit.Framework;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -17,8 +20,15 @@ using Xarial.XCad.SolidWorks.Geometry;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// ConfigurationsTest 测试 SOLIDWORKS 配置管理功能。
+    /// 包括配置的激活、创建、删除、遍历，以及配置特定的材料、颜色、BOM子件显示等属性。
+    /// </summary>
     public class ConfigurationsTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试获取激活配置的名称。
+        /// </summary>
         [Test]
         public void ActiveConfTest() 
         {

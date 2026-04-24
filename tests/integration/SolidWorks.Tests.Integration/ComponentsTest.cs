@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/ComponentsTest.cs
+
+using NUnit.Framework;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -22,8 +25,16 @@ using Xarial.XCad.SolidWorks.Documents.Exceptions;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// ComponentsTest 测试装配体中组件的遍历、状态管理、变换等核心功能。
+    /// 包括根组件、子组件、虚拟组件、组件模式、SpeedPak、组件状态（压缩、隐藏等）等测试场景。
+    /// </summary>
     public class ComponentsTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试遍历顶级装配体中的根组件。
+        /// 验证组件名称是否能正确获取。
+        /// </summary>
         [Test]
         public void IterateRootComponentsTest() 
         {

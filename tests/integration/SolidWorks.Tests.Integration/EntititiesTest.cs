@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/EntititiesTest.cs
+
+using NUnit.Framework;
 using SolidWorks.Interop.swconst;
 using System;
 using System.Collections.Generic;
@@ -10,8 +13,17 @@ using Xarial.XCad.SolidWorks.Geometry;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// EntititiesTest（注意：类名拼写有历史遗留问题）测试实体的弹性（Resilient）功能。
+    /// 当文档发生重建（Rebuild）时，普通实体引用会失效，而弹性实体引用能够保持有效。
+    /// </summary>
     public class EntititiesTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试弹性实体的生命周期。
+        /// 普通实体在文档重建后会失效（IsAlive=false），而弹性实体仍然保持有效。
+        /// 同时验证弹性实体创建前后的类型保持不变。
+        /// </summary>
         [Test]
         public void ResilientEntititiesTest()
         {

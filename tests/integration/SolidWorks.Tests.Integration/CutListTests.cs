@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/CutListTests.cs
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +13,16 @@ using Xarial.XCad.SolidWorks.Documents;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// CutListTests 测试钣金切割清单和焊接件切割清单功能。
+    /// 包括钣金类型、焊接件类型、实体类型切割清单的遍历、配置特定切割清单属性等。
+    /// </summary>
     public class CutListTests : IntegrationTests
     {
+        /// <summary>
+        /// 测试钣金零件的切割清单遍历。
+        /// 验证钣金特征（边缘法兰、折弯）能够正确映射到切割清单项目。
+        /// </summary>
         [Test]
         public void SheetMetalCutListsTest()
         {

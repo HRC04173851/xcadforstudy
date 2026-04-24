@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/SketchTest.cs
+
+using NUnit.Framework;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -18,8 +21,17 @@ using Xarial.XCad.SolidWorks.Sketch;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// SketchTest 测试草图实体功能。
+    /// 包括草图实体的遍历（直线、圆弧、椭圆、抛物线、样条线、文本、块等），
+    /// 草图块的父子关系、块的变换、以及草图所有者（OwnerSketch）属性等。
+    /// </summary>
     public class SketchTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试遍历草图中的所有实体类型。
+        /// 验证能够正确识别各种草图元素类型。
+        /// </summary>
         [Test]
         public void IterateSketchEntitiesTest() 
         {

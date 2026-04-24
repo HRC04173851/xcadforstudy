@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/EvaluationTest.cs
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +21,15 @@ using Xarial.XCad.Geometry.Evaluation;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// EvaluationTest 测试几何体评估功能。
+    /// 包括体积、重心、曲面分析、实体间的最小距离计算等。
+    /// </summary>
     public class EvaluationTest : IntegrationTests
     {
+        /// <summary>
+        /// 辅助类：用于比较双精度浮点数是否相等（容差 1E-10）。
+        /// </summary>
         public class DoubleComparer : IEqualityComparer<double>
         {
             public bool Equals(double x, double y)
@@ -28,6 +38,10 @@ namespace SolidWorks.Tests.Integration
             public int GetHashCode(double obj) => 0;
         }
 
+        /// <summary>
+        /// 测试获取实体的体积。
+        /// 验证内存几何构建器创建的实体体积计算是否正确。
+        /// </summary>
         [Test]
         public void BodyVolumeTest()
         {

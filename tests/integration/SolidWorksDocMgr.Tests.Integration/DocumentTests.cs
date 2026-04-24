@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorksDocMgr.Tests.Integration/DocumentTests.cs
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,8 +19,16 @@ using Xarial.XCad.SwDocumentManager.Documents;
 
 namespace SolidWorksDocMgr.Tests.Integration
 {
+    /// <summary>
+    /// 文档相关集成测试，验证 SOLIDWORKS Document Manager 对各类文档的操作能力。
+    /// 测试内容包括：文档打开关闭、版本检测、依赖关系、第三方数据存储、模板文档等。
+    /// </summary>
     public class DocumentTests : IntegrationTests
     {
+        /// <summary>
+        /// 测试文档版本检测功能。
+        /// 验证 Document Manager 能正确识别不同版本的 SOLIDWORKS 文档格式。
+        /// </summary>
         [Test]
         public void VersionTest()
         {
@@ -41,6 +51,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(SwDmVersion_e.Sw2019, v2.Major);
         }
 
+        /// <summary>
+        /// 测试文档集合的管理功能。
+        /// 验证打开和关闭文档时，Documents 集合的计数和活动文档状态正确更新。
+        /// </summary>
         [Test]
         public void DocumentsTest()
         {
@@ -77,6 +91,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.IsTrue(activeIsNull1);
         }
 
+        /// <summary>
+        /// 测试文档存活状态检测。
+        /// 文档关闭后 IsAlive 属性应返回 false，表示文档已不再可用。
+        /// </summary>
         [Test]
         public void IsAliveTest() 
         {
@@ -98,6 +116,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             //Assert.IsFalse(r3);
         }
 
+        /// <summary>
+        /// 测试文档直接依赖项的获取。
+        /// Dependencies 返回当前文档直接引用的文档集合。
+        /// </summary>
         [Test]
         public void DocumentDependenciesTest()
         {
@@ -117,6 +139,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }
         }
         
+        /// <summary>
+        /// 测试递归获取所有依赖项（包括嵌套层级的依赖）。
+        /// TryIterateAll 会遍历所有层级的子文档依赖，返回完整的依赖树。
+        /// </summary>
         [Test]
         public void DocumentAllDependenciesTest()
         {
@@ -138,6 +164,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }
         }
 
+        /// <summary>
+        /// 测试包含缺失和虚拟组件的文档依赖解析。
+        /// 虚拟组件和缺失组件的引用需要特殊处理，验证 IsAlive 和 IsCommitted 状态。
+        /// </summary>
         [Test]
         public void DocumentAllDependenciesMissingAndVirtualTest()
         {
@@ -184,6 +214,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }
         }
 
+        /// <summary>
+        /// 测试依赖项标题的提取。
+        /// 虚拟组件的标题格式为 "零件名^装配体名"，用于识别组件的唯一性。
+        /// </summary>
         [Test]
         public void DocumentAllDependenciesTitleTest()
         {
@@ -210,6 +244,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }, titles);
         }
 
+        /// <summary>
+        /// 测试 3D Interconnect 格式文档的依赖关系。
+        /// 某些 CAD 格式（如 .prt.sldprt）通过 3D Interconnect 转换，需要特殊处理。
+        /// </summary>
         [Test]
         public void DocumentDependencies3DInterconnect()
         {
@@ -226,6 +264,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.That(r1.ContainsKey("Part1.prt.sldprt"));
         }
 
+        /// <summary>
+        /// 测试依赖项的只读状态。
+        /// 只读模式打开文档时，其所有依赖项也应保持只读状态。
+        /// </summary>
         [Test]
         public void DocumentAllDependenciesReadOnlyState()
         {
@@ -277,6 +319,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }
         }
 
+        /// <summary>
+        /// 测试移动路径后依赖项的解析。
+        /// 当装配体被移动到新位置时，需要验证依赖路径能否正确重定位。
+        /// </summary>
         [Test]
         public void DocumentAllDependenciesMovedPath()
         {
@@ -352,6 +398,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Directory.Delete(destPath, true);
         }
 
+        /// <summary>
+        /// 测试缓存引用（未打开的依赖）的解析。
+        /// 对于移动位置的装配体，Document Manager 可以从缓存数据解析引用路径。
+        /// </summary>
         [Test]
         public void DocumentDependenciesCachedTest()
         {
@@ -369,6 +419,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }
         }
 
+        /// <summary>
+        /// 测试外部文件夹中缓存引用的解析。
+        /// 组件可能引用装配体目录之外的零件文件。
+        /// </summary>
         [Test]
         public void DocumentDependenciesCachedExtFolderTest()
         {
@@ -386,6 +440,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             }
         }
 
+        /// <summary>
+        /// 测试复制文件后的依赖关系解析。
+        /// 将装配体复制到新位置后，需要验证依赖路径能否正确更新。
+        /// </summary>
         [Test]
         public void DocumentDependenciesCopiedFilesTest()
         {
@@ -462,6 +520,11 @@ namespace SolidWorksDocMgr.Tests.Integration
             public int Number { get; set; }
         }
 
+        /// <summary>
+        /// 测试第三方数据流的读写功能。
+        /// Document Manager 支持在文档中存储自定义数据流，用于保存应用程序特定数据。
+        /// 使用 XML 序列化来存储结构化数据。
+        /// </summary>
         [Test]
         public void ThirdPartyStreamTest()
         {
@@ -514,6 +577,11 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(15, result.Number);
         }
 
+        /// <summary>
+        /// 测试第三方存储（Storage）的读写功能。
+        /// Storage 是 COM IStorage 接口的包装，支持嵌套存储和多个数据流。
+        /// 用于存储更复杂的数据结构，如二进制配置信息。
+        /// </summary>
         [Test]
         public void ThirdPartyStorageTest()
         {
@@ -600,6 +668,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(25, number);
         }
 
+        /// <summary>
+        /// 测试配置的零件数量。
+        /// 零件数量影响 BOM 中的用量计算。
+        /// </summary>
         [Test]
         public void QuantityTest()
         {
@@ -627,6 +699,11 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(1, q5);
         }
 
+        /// <summary>
+        /// 测试打开各类原生 SOLIDWORKS 文档。
+        /// 包括：装配体(.SLDASM)、零件(.SLDPRT)、工程图(.SLDDRW)、块(.SLDBLK)、库特征(.SLDLFP)、
+        /// 装配体模板(.ASMDOT)、工程图模板(.DRWDOT)、零件模板(.PRTDOT)。
+        /// </summary>
         [Test]
         public void OpenNativeTest() 
         {
@@ -706,6 +783,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.IsTrue(r8);
         }
 
+        /// <summary>
+        /// 测试通过通用 IXDocument 接口打开未知类型文档。
+        /// 使用 GetSpecific 方法将通用文档转换为具体类型（IXAssembly、IXPart、IXDrawing）。
+        /// </summary>
         [Test]
         public void OpenNativeUnknownTest()
         {

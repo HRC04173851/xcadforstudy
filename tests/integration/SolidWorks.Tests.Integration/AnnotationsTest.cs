@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/AnnotationsTest.cs
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,8 +16,15 @@ using Xarial.XCad.Toolkit.Utils;
 
 namespace SolidWorks.Tests.Integration
 {
-    public class AnnotationsTest : IntegrationTests 
+    /// <summary>
+    /// AnnotationsTest 测试 SOLIDWORKS 注释功能。
+    /// 包括注解（Note）的创建、文本格式设置（字体、颜色、大小、样式）等。
+    /// </summary>
+    public class AnnotationsTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试创建带格式的注解注释，包括字体样式、颜色、角度和位置。
+        /// </summary>
         [Test]
         public void CreateNoteTest() 
         {

@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/FeaturesTests.cs
+
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +14,17 @@ using Xarial.XCad.SolidWorks.Features;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// FeaturesTests 测试 SOLIDWORKS 特征的遍历和操作功能。
+    /// 包括特征的遍历、用户特征识别、特征过滤、以及结构构件（Structural Member）型录方向等功能。
+    /// </summary>
     public class FeaturesTests : IntegrationTests
     {
         //NOTE: SW 2024, 'Lights, Cameras and Themes' feature is renamed to 'Lights and Cameras' (index 11)
+        /// <summary>
+        /// 测试遍历零件文档中的所有特征。
+        /// 验证特征名称列表的完整性，包括系统特征和用户特征。
+        /// </summary>
         [Test]
         public void IterateFeaturesTest()
         {

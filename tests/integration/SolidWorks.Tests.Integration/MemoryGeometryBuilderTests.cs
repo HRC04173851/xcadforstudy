@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorks.Tests.Integration/MemoryGeometryBuilderTests.cs
+
+using NUnit.Framework;
 using SolidWorks.Interop.sldworks;
 using SolidWorks.Interop.swconst;
 using System;
@@ -21,8 +24,16 @@ using Xarial.XCad.SolidWorks.Geometry.Curves;
 
 namespace SolidWorks.Tests.Integration
 {
+    /// <summary>
+    /// MemoryGeometryBuilderTests 测试内存几何构建器功能。
+    /// 用于在内存中创建几何体（实体、线框、曲面），包括扫掠、旋转、拉伸、布尔运算等操作。
+    /// </summary>
     public class MemoryGeometryBuilderTests : IntegrationTests
     {
+        /// <summary>
+        /// 测试圆形沿路径扫掠创建实体的功能。
+        /// 验证扫掠体的面数和质量属性（质心位置和体积）。
+        /// </summary>
         [Test]
         public void CircleSweepTest()
         {

@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿// -*- coding: utf-8 -*-
+// tests/integration/SolidWorksDocMgr.Tests.Integration/DrawingTest.cs
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +13,16 @@ using Xarial.XCad.SwDocumentManager.Documents;
 
 namespace SolidWorksDocMgr.Tests.Integration
 {
+    /// <summary>
+    /// 工程图集成测试，验证 SOLIDWORKS Document Manager 对工程图文档的访问能力。
+    /// 测试内容包括：工作表遍历、属性读取、视图解析、引用文档等。
+    /// </summary>
     public class DrawingTest : IntegrationTests
     {
+        /// <summary>
+        /// 测试获取工程图的活动工作表。
+        /// 验证当前活动的工作表名称是否符合预期。
+        /// </summary>
         [Test]
         public void ActiveSheetTest()
         {
@@ -26,6 +36,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual("Sheet2", name);
         }
 
+        /// <summary>
+        /// 测试遍历工程图的所有工作表。
+        /// 验证工作表名称集合的完整性和准确性。
+        /// </summary>
         [Test]
         public void IterateSheetsTest()
         {
@@ -42,6 +56,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             });
         }
 
+        /// <summary>
+        /// 测试工作表的属性读取。
+        /// 包括：比例（分子/分母）、纸张尺寸（标准纸张或自定义尺寸）。
+        /// </summary>
         [Test]
         public void SheetPropertiesTest()
         {
@@ -88,6 +106,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.AreEqual(0.15, paperSize3.Height);
         }
 
+        /// <summary>
+        /// 测试通过不同方式获取工作表。
+        /// 索引器在不存在时抛出异常，TryGet 返回 false。
+        /// </summary>
         [Test]
         public void GetSheetByNameTest()
         {
@@ -124,6 +146,10 @@ namespace SolidWorksDocMgr.Tests.Integration
             Assert.IsNotNull(e1);
         }
 
+        /// <summary>
+        /// 测试遍历工作表中的工程图视图。
+        /// 验证每个工作表包含的视图数量和名称。
+        /// </summary>
         [Test]
         public void DrawingViewIterateTest()
         {
@@ -141,6 +167,11 @@ namespace SolidWorksDocMgr.Tests.Integration
             CollectionAssert.AreEquivalent(sheet2Views, new string[] { "Drawing View4", "Drawing View5" });
         }
 
+        /// <summary>
+        /// 测试工程图视图引用的文档和配置。
+        /// 视图可以引用零件或装配体文档，并指定特定配置。
+        /// 某些视图可能没有引用文档（空白视图或特殊视图）。
+        /// </summary>
         [Test]
         public void DrawingViewDocumentTest()
         {

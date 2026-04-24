@@ -167,13 +167,14 @@ The `AddRange` / `RemoveRange` methods throw `NotSupportedException` if the unde
 The primary entry point for creating application instances.
 
 ```csharp
-// From SwApplicationFactory.cs (static class)
+// From SwApplicationFactory.cs (class with static methods, not a static class)
 public class SwApplicationFactory
 {
     // Create application instance
     public static ISwApplication Create(
-        SwVersion_e version = SwVersion_e.Sw2022,
-        ApplicationState_e state = ApplicationState_e.Default);
+        SwVersion_e? vers = null,
+        ApplicationState_e state = ApplicationState_e.Default,
+        CancellationToken cancellationToken = default);
 
     // Constants for command-line arguments
     public static class CommandLineArguments
@@ -418,28 +419,30 @@ var edges = swFace.Edges; // wrapped again
 xCAD includes a lightweight DI container in the Toolkit layer:
 
 ```csharp
+// Actual IXServiceCollection interface (src/Base/IXServiceCollection.cs)
 public interface IXServiceCollection
 {
-    // Factory method signature:
-    // Add(Type svcType, Func<object> svcFactory,
-    //     ServiceLifetimeScope_e lifetime = ServiceLifetimeScope_e.Singleton,
-    //     bool replace = true)
+    // Core registration method
+    void Add(Type svcType, Func<object> svcFactory,
+        ServiceLifetimeScope_e lifetime = ServiceLifetimeScope_e.Singleton,
+        bool replace = true);
 
-    void AddSingleton<TService>() where TService : class;
-    void AddSingleton<TService, TImplementation>() where TImplementation : class, TService;
-    void AddTransient<TService>() where TService : class;
-    void AddTransient<TService, TImplementation>() where TImplementation : class, TService;
-    IXServiceProvider CreateProvider();
+    // Builds the service provider (standard .NET IServiceProvider)
+    IServiceProvider CreateProvider();
+
+    // Creates a copy of the service collection
+    IXServiceCollection Clone();
 }
 
-public interface IXServiceProvider
-{
-    TService GetService<TService>() where TService : class;
-    object GetService(Type serviceType);
-}
+// Extension methods via XServiceCollectionExtension (same file)
+// Register by implementation type
+svcColl.Add<TService, TImplementation>(ServiceLifetimeScope_e.Transient);
+
+// Register by factory
+svcColl.Add<TService>(() => new MyImpl(), ServiceLifetimeScope_e.Singleton);
 ```
 
-**Key difference from standard DI**: `ServiceCollection.Add()` uses a generic `Add(Type, Func<object>, lifetime)` signature — not the typical generic-constraint approach.
+> **Key design note**: `IXServiceCollection` does not use `AddSingleton<T>()` / `AddTransient<T>()` naming. The core method is `Add(Type, Func<object>, lifetime)`. Generic convenience wrappers are extension methods named `Add<TService, TImplementation>(lifetime)`. `CreateProvider()` returns the standard .NET `IServiceProvider`, not a custom type.
 
 ### 6.2 Service Registration (source)
 
@@ -449,8 +452,8 @@ var services = new ServiceCollection();
 // Add existing instance as singleton
 services.Add(typeof(IXApplication), _ => swApp, ServiceLifetimeScope_e.Singleton);
 
-// Add interface-only registration (transient)
-services.AddTransient<IMyService>();
+// Register by implementation type (transient)
+services.Add<IMyService, MyServiceImpl>(ServiceLifetimeScope_e.Transient);
 
 // Replace existing registration
 services.Add(typeof(ISettings), _ => newSettings, ServiceLifetimeScope_e.Singleton, replace: true);
@@ -481,7 +484,7 @@ public abstract class SwAddInEx : ISwAddInEx, ISwAddin, IXServiceConsumer, IDisp
     public event ExtensionConnectDelegate Connect;
     public event ExtensionDisconnectDelegate Disconnect;
     public event ConfigureServicesDelegate ConfigureServices;
-    public event ExtensionStartPostDelegate StartPost;
+    public event ExtensionStartupCompletedDelegate StartupCompleted;
 
     public IXServiceProvider ServiceProvider { get; }
 
@@ -584,7 +587,7 @@ public abstract class SwAddInEx : ISwAddInEx, ISwAddin, IXServiceConsumer, IDisp
     public event ExtensionConnectDelegate Connect;
     public event ExtensionDisconnectDelegate Disconnect;
     public event ConfigureServicesDelegate ConfigureServices;
-    public event ExtensionStartPostDelegate StartPost;
+    public event ExtensionStartupCompletedDelegate StartupCompleted;
 
     public new ISwApplication Application { get; }
     public new ISwCommandManager CommandManager { get; }
@@ -592,7 +595,7 @@ public abstract class SwAddInEx : ISwAddInEx, ISwAddin, IXServiceConsumer, IDisp
     // Lifecycle methods (override these)
     protected virtual void OnConnect() { }
     protected virtual void OnDisconnect() { }
-    protected virtual void OnStartPost() { }
+    protected virtual void OnStartupCompleted() { }
 
     // UI creation helpers
     public new ISwPropertyManagerPage<TData> CreatePage<TData>(...);

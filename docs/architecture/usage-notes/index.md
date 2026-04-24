@@ -300,22 +300,21 @@ foreach (var f in doc.Features)
 
 ### 4.3 Name-Based Access
 
-By-name access returns `null` if not found (no exception):
+**The string indexer throws `EntityNotFoundException` if not found** — it does not return null.
 
 ```csharp
-var feature = doc.Features["NonExistent"]; // returns null
-if (feature != null)
-{
-    // ...
-}
-```
+// ✗ Wrong: assumes null return, but actually throws EntityNotFoundException
+// var feature = doc.Features["NonExistent"];
 
-Safe access pattern:
-```csharp
+// ✓ Correct: use TryGet for safe access when element may not exist
 if (doc.Features.TryGet("FeatureName", out IXFeature feature))
 {
     feature.Name = "Updated";
 }
+
+// ✓ Also correct: use indexer when you expect the element to exist
+//   (let the exception propagate if it doesn't)
+var plane = doc.Features["Datum Plane1"]; // throws if not found
 ```
 
 ### 4.4 Modifying Collections
@@ -362,11 +361,11 @@ foreach (var f in toDelete)
 
 ### 5.1 Null Checks
 
-Always check for null when accessing objects that may not exist:
+The string indexer `doc.Features["name"]` throws `EntityNotFoundException` — it does not return null. Use `TryGet` when an element may not exist:
 
 ```csharp
-var feature = doc.Features["OptionalFeature"];
-if (feature != null)
+// ✓ Correct: use TryGet for conditional access
+if (doc.Features.TryGet("OptionalFeature", out IXFeature feature))
 {
     feature.Name = "Updated";
 }
@@ -393,7 +392,8 @@ Many methods accept optional parameters that may be null:
 var objects = tracker.FindTrackedObjects(doc);
 
 // Explicitly passing null for optional parameters
-var
+var objects2 = tracker.FindTrackedObjects(doc, searchBody: null);
+```
 
 ### 5.4 Return Values
 
@@ -708,7 +708,7 @@ Before shipping code that uses xCAD:
 - [ ] Never call `Marshal.ReleaseComObject` on xCAD-managed objects
 - [ ] All CAD operations run on main SOLIDWORKS thread
 - [ ] Always commit `PreCreate` templates via `Add` / `AddRange`
-- [ ] Handle null returns from `repository["name"]`
+- [ ] Use `TryGet` for safe name-based access; `repository["name"]` throws if not found
 - [ ] Check `DocumentState_e` before attempting modifications
 - [ ] Use Document Manager for read-only scenarios
 - [ ] Avoid modifying collections while iterating

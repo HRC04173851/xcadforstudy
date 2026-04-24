@@ -496,7 +496,7 @@ feat.Name = "NewName";
 ```csharp
 // 来源：src/Toolkit/ServiceCollection.cs
 services.Add(typeof(IXApplication), _ => swApp, ServiceLifetimeScope_e.Singleton);
-services.AddTransient<IMyService, MyServiceImpl>();
+services.Add<IMyService, MyServiceImpl>(ServiceLifetimeScope_e.Transient);
 var provider = services.CreateProvider();
 ```
 
@@ -628,7 +628,7 @@ public class MyPageData
 通过 DI 容器注册自定义服务：
 
 ```csharp
-services.AddSingleton<ICustomService, CustomServiceImpl>();
+services.Add<ICustomService, CustomServiceImpl>(ServiceLifetimeScope_e.Singleton);
 ```
 
 ---

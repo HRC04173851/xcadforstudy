@@ -725,7 +725,7 @@ public abstract class SwAddInEx : ISwAddInEx, ISwAddin, IXServiceConsumer, IDisp
     public event ExtensionConnectDelegate Connect;
     public event ExtensionDisconnectDelegate Disconnect;
     public event ConfigureServicesDelegate ConfigureServices;
-    public event ExtensionStartPostDelegate StartPost;
+    public event ExtensionStartupCompletedDelegate StartupCompleted;
 
     public new ISwApplication Application { get; }
     public new ISwCommandManager CommandManager { get; }

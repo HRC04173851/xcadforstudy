@@ -483,7 +483,7 @@ feat.Name = "NewName";
 ```csharp
 // From src/Toolkit/ServiceCollection.cs
 services.Add(typeof(IXApplication), _ => swApp, ServiceLifetimeScope_e.Singleton);
-services.AddTransient<IMyService, MyServiceImpl>();
+services.Add<IMyService, MyServiceImpl>(ServiceLifetimeScope_e.Transient);
 var provider = services.CreateProvider();
 ```
 

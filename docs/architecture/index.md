@@ -598,7 +598,7 @@ The Repository pattern provides a uniform interface for accessing collections of
 // Get by name (throws if not found)
 var plane = (IXPlane)doc.Features["Datum Plane1"];
 
-// Safe get by name (returns null if not found)
+// Safe get by name (returns false if not found, never throws)
 if (doc.Features.TryGet("Boss-Extrude1", out IXFeature feature))
 {
     // feature is valid
@@ -725,7 +725,7 @@ public abstract class SwAddInEx : ISwAddInEx, ISwAddin, IXServiceConsumer, IDisp
     public event ExtensionConnectDelegate Connect;
     public event ExtensionDisconnectDelegate Disconnect;
     public event ConfigureServicesDelegate ConfigureServices;
-    public event ExtensionStartPostDelegate StartPost;
+    public event ExtensionStartupCompletedDelegate StartupCompleted;
 
     public new ISwApplication Application { get; }
     public new ISwCommandManager CommandManager { get; }

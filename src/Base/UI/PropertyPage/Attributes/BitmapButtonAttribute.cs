@@ -19,6 +19,10 @@ using Xarial.XCad.UI.PropertyPage.Enums;
 
 namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
+    /// <summary>
+    /// Marker interface for bitmap button control constructor
+    /// 位图按钮控件构造器的标记接口
+    /// </summary>
     public interface IBitmapButtonConstructor
     {
     }
@@ -31,25 +35,33 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
     /// Checkable button will be rendered for the first case
     public class BitmapButtonAttribute : Attribute, ISpecificConstructorAttribute
     {
+        /// <summary>
+        /// Type of the constructor
+        /// 构造器类型
+        /// </summary>
         public Type ConstructorType { get; }
 
         /// <summary>
         /// Image assigned to this icon
+        /// 分配给此按钮的图标图像
         /// </summary>
         public IXImage Icon { get; }
 
         /// <summary>
         /// Width of the button
+        /// 按钮宽度（像素）
         /// </summary>
         public int Width { get; }
 
         /// <summary>
-        /// Hight of the button
+        /// Height of the button
+        /// 按钮高度（像素）
         /// </summary>
         public int Height { get; }
 
         /// <summary>
         /// Standard icon or null if use custom icon
+        /// 标准图标，若使用自定义图标则为 null
         /// </summary>
         public BitmapButtonLabelType_e? StandardIcon { get; }
 

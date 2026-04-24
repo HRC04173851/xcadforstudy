@@ -1,4 +1,7 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// tests/SolidWorks.Tests/CommandManagerTest.cs
+
+//*********************************************************************
 //xCAD
 //Copyright(C) 2020 Xarial Pty Limited
 //Product URL: https://www.xcad.net
@@ -21,16 +24,26 @@ using Xarial.XCad.UI.Commands.Attributes;
 
 namespace SolidWorks.Tests
 {
+    /// <summary>
+    /// 测试 CommandManager 命令管理器的命令组和上下文菜单创建功能。
+    /// 注：这些测试当前被注释掉（TODO: fix unit test），可能需要修复。
+    /// </summary>
     public class CommandManagerTest
     {
         #region Mocks
 
+        /// <summary>
+        /// CommandsMock_1：无自定义属性的命令枚举，用于测试默认行为。
+        /// </summary>
         public enum CommandsMock_1
         {
             Cmd1,
             Cmd2
         }
 
+        /// <summary>
+        /// CommandsMock_2：带自定义属性的命令枚举，包括 Title、Description、CommandItemInfo。
+        /// </summary>
         public enum CommandsMock_2
         {
             [Title("Command1")]
@@ -41,17 +54,25 @@ namespace SolidWorks.Tests
 
         #endregion
 
+        /// <summary>
+        /// 创建模拟命令组的辅助方法。
+        /// </summary>
+        /// <param name="rev">SOLIDWORKS 版本号</param>
+        /// <param name="grps">输出参数，存储创建的命令组和命令项</param>
+        /// <returns>模拟的 SwAddInEx 实例</returns>
         private SwAddInEx CreateMockCommandGroup(string rev, Dictionary<CommandGroup, List<object[]>> grps)
         {
             var type = "";
 
             var addInExMock = new Mock<SwAddInEx>();
 
+            // 创建 CommandGroup 的 Mock 对象
             var createCommandGroupMockObjectFunc = new Func<CommandGroup>(() =>
             {
                 var cmdGroupMock = new Mock<CommandGroup>().SetupAllProperties();
                 var cmds = new List<object[]>();
                 grps.Add(cmdGroupMock.Object, cmds);
+                // 模拟 AddCommandItem2 方法调用
                 cmdGroupMock.Setup(m => m.AddCommandItem2(
                     It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>(),
                     It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>(),
@@ -68,6 +89,7 @@ namespace SolidWorks.Tests
 
             var cmdMgrMock = new Mock<CommandManager>();
             var cmdGrpRes = (int)swCreateCommandGroupErrors.swCreateCommandGroup_Success;
+            // 模拟 CreateCommandGroup2 方法
             cmdMgrMock.Setup(m => m.CreateCommandGroup2(
                 It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(),
                 It.IsAny<string>(), It.IsAny<int>(), It.IsAny<bool>(), ref cmdGrpRes))
@@ -77,6 +99,7 @@ namespace SolidWorks.Tests
                     return createCommandGroupMockObjectFunc.Invoke();
                 });
 
+            // 模拟 AddContextMenu 方法
             cmdMgrMock.Setup(m => m.AddContextMenu(It.IsAny<int>(), It.IsAny<string>())).Returns(
                 () =>
                 {
@@ -97,6 +120,11 @@ namespace SolidWorks.Tests
             return addIn;
         }
 
+        /// <summary>
+        /// 测试用例目的：验证 AddCommandGroup 方法的基本功能（TODO: 被注释）。
+        /// 测试不同 SOLIDWORKS 版本（23, 24, 25）下的命令组创建行为差异。
+        /// 版本 23/24 使用 LargeIcon，版本 25 使用 IconList。
+        /// </summary>
         [Test]
         public void AddCommandGroupBaseTest()
         {
@@ -105,7 +133,7 @@ namespace SolidWorks.Tests
             //var cmds1 = new Dictionary<CommandGroup, List<object[]>>();
             //var addInMock1 = CreateMockCommandGroup("23.0.0", cmds1);
             //var grp1 = addInMock1.CommandManager.AddCommandGroup<CommandsMock_1>();
-            
+
             //var cmds2 = new Dictionary<CommandGroup, List<object[]>>();
             //var addInMock2 = CreateMockCommandGroup("24.0.0", cmds2);
             //var grp2 = addInMock2.CommandManager.AddCommandGroup<CommandsMock_1>();
@@ -145,6 +173,9 @@ namespace SolidWorks.Tests
             //Assert.AreEqual(2, cmds3[grp3][0][8]);
         }
 
+        /// <summary>
+        /// 测试用例目的：验证 AddContextMenu 方法的基本功能（TODO: 被注释）。
+        /// </summary>
         [Test]
         public void AddContextMenuBaseTest()
         {

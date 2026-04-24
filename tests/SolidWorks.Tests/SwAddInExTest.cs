@@ -1,4 +1,7 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// tests/SolidWorks.Tests/SwAddInExTest.cs
+
+//*********************************************************************
 //xCAD
 //Copyright(C) 2020 Xarial Pty Limited
 //Product URL: https://www.xcad.net
@@ -17,8 +20,19 @@ using Xarial.XCad.SolidWorks;
 
 namespace SolidWorks.Tests
 {
+    /// <summary>
+    /// 测试 SwAddInEx 插件的连接（Connect）和断开（Disconnect）功能。
+    /// SwAddInEx 是所有 SOLIDWORKS 插件的基类，负责生命周期管理。
+    /// </summary>
     public class SwAddInExTest
     {
+        /// <summary>
+        /// 测试用例目的：验证 ConnectToSW 方法的连接结果和 OnConnect 回调。
+        /// 测试场景：
+        /// - addInExMock1: OnConnect 成功，返回 true
+        /// - addInExMock2: OnConnect 抛出异常，返回 false
+        /// - addInExMock3: OnConnect 未设置回调（默认成功），返回 true
+        /// </summary>
         [Test]
         public void TestConnectToSW()
         {
@@ -50,6 +64,13 @@ namespace SolidWorks.Tests
             Assert.IsTrue(res3);
         }
 
+        /// <summary>
+        /// 测试用例目的：验证 DisconnectFromSW 方法的断开结果和 OnDisconnect 回调。
+        /// 测试场景：
+        /// - addInExMock1: OnDisconnect 成功，返回 true
+        /// - addInExMock2: OnDisconnect 抛出异常，返回 false
+        /// - addInExMock3: OnDisconnect 未设置回调（默认成功），返回 true
+        /// </summary>
         [Test]
         public void DisconnectFromSWTest()
         {
@@ -73,6 +94,7 @@ namespace SolidWorks.Tests
 
             var addInExMock3 = new Mock<SwAddInEx>() { CallBase = true };
 
+            // 先连接才能断开
             addInExMock1.Object.ConnectToSW(swMock.Object, 0);
             addInExMock2.Object.ConnectToSW(swMock.Object, 0);
             addInExMock3.Object.ConnectToSW(swMock.Object, 0);

@@ -51,6 +51,8 @@ namespace Xarial.XCad.SwDocumentManager.Data
             => new SwDmConfigurationCustomProperty(m_Conf, name, isCreated);
 
         protected override bool Exists(string name)
+            // 使用 StringComparer.CurrentCultureIgnoreCase 进行不区分大小写的比较
+            // == true 确保当 name 不存在于属性列表时返回 false（而不是 null），从而兼容 null-safe 调用
             => (m_Conf.Configuration.GetCustomPropertyNames() as string[])?
             .Contains(name, StringComparer.CurrentCultureIgnoreCase) == true;
     }

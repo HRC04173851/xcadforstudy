@@ -92,12 +92,14 @@ namespace Xarial.XCad.SwDocumentManager.Features
         /// <summary>
         /// Enumerates placeholder solid bodies based on the cut-list quantity.
         /// 根据切割清单数量枚举占位实体体，用于表达该清单项对应的实体数量。
+        /// 注意：这里返回的 SwDmSolidBody 仅作为占位符（placeholder），不包含真实的几何数据。
+        /// 调用方可通过 Quantity 属性获知实际实体数量，而无需真正遍历 Document Manager 的实体体集合。
         /// </summary>
-        public IEnumerable<IXSolidBody> Bodies 
+        public IEnumerable<IXSolidBody> Bodies
         {
-            get 
+            get
             {
-                for (int i = 0; i < CutListItem.Quantity; i++) 
+                for (int i = 0; i < CutListItem.Quantity; i++)
                 {
                     yield return new SwDmSolidBody(m_Part);
                 }

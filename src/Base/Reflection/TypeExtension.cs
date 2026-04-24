@@ -33,6 +33,7 @@ namespace Xarial.XCad.Reflection
         public static bool TryGetAttribute<TAtt>(this Type type, Action<TAtt> attProc)
             where TAtt : Attribute
         {
+            // 获取类型本身及其所有继承接口上的指定特性
             var atts = type.GetCustomAttributes(typeof(TAtt), true).
                 Union(type.GetInterfaces().
                 SelectMany(interfaceType => interfaceType.GetCustomAttributes(typeof(TAtt), true))).
@@ -40,6 +41,7 @@ namespace Xarial.XCad.Reflection
 
             if (atts != null && atts.Any())
             {
+                // 找到第一个匹配的特性并通过回调处理
                 var att = atts.First() as TAtt;
                 attProc?.Invoke(att);
                 return true;

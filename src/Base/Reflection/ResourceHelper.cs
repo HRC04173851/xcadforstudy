@@ -40,16 +40,19 @@ namespace Xarial.XCad.Reflection
         /// <remarks>Use nameof operator to get the resource name avoiding using the 'magic' strings</remarks>
         public static T GetResource<T>(Type resType, string resName)
         {
+            // 通过点分隔的路径（如 "Resources.Icon1"）从类型中获取资源值
             var val = GetValue(null, resType, resName.Split('.'));
 
-            if (typeof(IXImage) == typeof(T)) 
+            // 如果请求的类型是 IXImage，需要处理不同格式的资源（byte[]、string、Bitmap）并转换为统一格式
+            if (typeof(IXImage) == typeof(T))
             {
                 if (val is byte[])
                 {
                     val = ImageFromBytes(val as byte[]);
                 }
-                else if (val is string) 
+                else if (val is string)
                 {
+                    // 如果是字符串（可能是Base64编码），先写入内存流再转换
                     using (var memStr = new MemoryStream())
                     {
                         using (var streamWriter = new StreamWriter(memStr))
@@ -63,6 +66,7 @@ namespace Xarial.XCad.Reflection
                 }
                 else if (val is Bitmap)
                 {
+                    // 如果是Bitmap，转换为PNG格式的字节数组
                     using (var stream = new MemoryStream())
                     {
                         var img = (Bitmap)val;
@@ -73,7 +77,7 @@ namespace Xarial.XCad.Reflection
                     }
                 }
             }
-            
+
             return (T)val;
         }
 
@@ -82,8 +86,10 @@ namespace Xarial.XCad.Reflection
 
         private static object GetValue(object obj, Type type, string[] prpsPath)
         {
+            // 遍历属性路径（如 "Resources", "Icon1"），逐层获取属性值
             foreach (var prpName in prpsPath)
             {
+                // 查找属性，支持实例和静态属性（包括私有和公有）
                 var prp = type.GetProperty(prpName,
                     BindingFlags.NonPublic | BindingFlags.Public
                     | BindingFlags.Static | BindingFlags.Instance);
@@ -93,8 +99,10 @@ namespace Xarial.XCad.Reflection
                     throw new NullReferenceException($"Resource '{prpName}' is missing in '{type.Name}'");
                 }
 
+                // 获取属性值，对于静态属性 obj 为 null
                 obj = prp.GetValue(obj, null);
 
+                // 更新类型为当前值的类型，以便继续访问嵌套属性
                 if (obj != null)
                 {
                     type = obj.GetType();

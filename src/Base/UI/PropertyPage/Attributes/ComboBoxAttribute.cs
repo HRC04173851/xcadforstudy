@@ -22,6 +22,10 @@ using Xarial.XCad.UI.PropertyPage.Structures;
 
 namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
+    /// <summary>
+    /// Marker interface for custom combo box control constructor
+    /// 自定义下拉框控件构造器的标记接口
+    /// </summary>
     public interface ICustomItemsComboBoxControlConstructor
     {
     }

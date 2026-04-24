@@ -22,6 +22,10 @@ using Xarial.XCad.UI.PropertyPage.Structures;
 
 namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
+    /// <summary>
+    /// Marker interface for list box control constructor
+    /// 列表框控件构造器的标记接口
+    /// </summary>
     public interface IListBoxControlConstructor
     {
     }
@@ -32,6 +36,10 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
     /// </summary>
     public class ListBoxAttribute : ItemsSourceControlAttribute, ISpecificConstructorAttribute
     {
+        /// <summary>
+        /// Type of the constructor
+        /// 构造器类型
+        /// </summary>
         public Type ConstructorType => typeof(IListBoxControlConstructor);
 
         /// <summary>

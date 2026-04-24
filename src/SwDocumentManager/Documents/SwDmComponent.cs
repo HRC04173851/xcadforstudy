@@ -212,8 +212,11 @@ namespace Xarial.XCad.SwDocumentManager.Documents
 
                 if (Component.IsHidden())
                 {
-                    if (!state.HasFlag(ComponentState_e.Suppressed))//Document Manager reports suppressed as hidden as well
-                    // Document Manager 会把被压缩组件同时报告为隐藏状态，这里需要做语义修正。
+                    // Document Manager 会把被压缩（Suppressed）的组件同时也报告为隐藏状态（Hidden），
+                    // 这里需要做语义修正：如果组件已被标记为 Suppressed，则不再额外设置 Hidden 标志，
+                    // 以避免 State 标志位出现语义矛盾（一个组件同时是 Suppressed 和 Hidden 但实际含义不一致）。
+                    if (!state.HasFlag(ComponentState_e.Suppressed))
+                    // Document Manager reports suppressed as hidden as well
                     {
                         state |= ComponentState_e.Hidden;
                     }
@@ -298,6 +301,9 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         private ISwDmDocument3D m_CachedDocument;
         
         public IXComponentRepository Children => m_ChildrenLazy.Value;
+        // m_ChildrenLazy 的延迟加载逻辑：
+        // 仅当组件未被压缩（IsSuppressed 返回 false）且引用的文档是装配体时才创建子组件集合；
+        // 否则返回一个空集合（EmptyComponentCollection），避免对不存在子级的组件进行不必要的枚举。
 
         /// <summary>
         /// Resolves and opens the referenced part or assembly document, including support for virtual components.
@@ -407,6 +413,8 @@ namespace Xarial.XCad.SwDocumentManager.Documents
         }
 
         internal SwDmComponent Parent { get; set; }
+        // Parent 属性在 SwDmSubComponentCollection.CreateComponentInstance 中被设置，
+        // 用于构建组件树的父子层级关系，使每个子组件能回溯到其父组件。
 
         public ISwDmDocument3D ReferencedDocument 
         {

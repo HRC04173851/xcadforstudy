@@ -1,4 +1,7 @@
-﻿//*********************************************************************
+﻿// -*- coding: utf-8 -*-
+// tests/Toolkit.Tests/PageBuilderTests.cs
+
+//*********************************************************************
 //xCAD
 //Copyright(C) 2020 Xarial Pty Limited
 //Product URL: https://www.xcad.net
@@ -25,10 +28,17 @@ using Xarial.XCad.Utils.PageBuilder.PageElements;
 
 namespace Toolkit.Tests
 {
+    /// <summary>
+    /// 测试 PageBuilder 页面构建器的控件 ID 分配功能。
+    /// PageBuilder 根据数据模型的属性自动创建控件，并分配唯一 ID。
+    /// </summary>
     public class PageBuilderTests
     {
         #region Mocks
 
+        /// <summary>
+        /// ControlMock：控件的测试用实现。
+        /// </summary>
         public class ControlMock : Control<object>
         {
             public override bool Enabled { get; set; }
@@ -60,6 +70,9 @@ namespace Toolkit.Tests
             }
         }
 
+        /// <summary>
+        /// GroupMock：组的测试用实现。
+        /// </summary>
         public class GroupMock : Group
         {
             public GroupMock(int id, object tag) : base(id, tag, null)
@@ -74,6 +87,9 @@ namespace Toolkit.Tests
             }
         }
 
+        /// <summary>
+        /// PageMock：页面的测试用实现，包含控件列表。
+        /// </summary>
         public class PageMock : Page
         {
             public List<ControlMock> Controls { get; } = new List<ControlMock>();
@@ -86,6 +102,10 @@ namespace Toolkit.Tests
             }
         }
 
+        /// <summary>
+        /// ControlMockConstructor：控件构造器的测试用实现。
+        /// 支持自定义 ID 范围选择器。
+        /// </summary>
         [DefaultType(typeof(SpecialTypes.AnyType))]
         public class ControlMockConstructor : PageElementConstructor<ControlMock, GroupMock, PageMock>
         {
@@ -103,7 +123,7 @@ namespace Toolkit.Tests
                     numberOfUsedIds = m_IdRangeSelector.Invoke();
                 }
 
-                switch (parentGroup) 
+                switch (parentGroup)
                 {
                     case PageMock page:
                         var ctrl = new ControlMock(atts.Id, atts.Tag);
@@ -119,6 +139,9 @@ namespace Toolkit.Tests
             }
         }
 
+        /// <summary>
+        /// PageMockConstructor：页面构造器的测试用实现。
+        /// </summary>
         public class PageMockConstructor : PageConstructor<PageMock>
         {
             protected override PageMock Create(IAttributeSet atts)
@@ -127,17 +150,23 @@ namespace Toolkit.Tests
             }
         }
 
+        /// <summary>
+        /// PageBuilderMock：PageBuilder 的测试用实现，使用所有 Mock 对象。
+        /// </summary>
         public class PageBuilderMock : Xarial.XCad.Utils.PageBuilder.PageBuilderBase<PageMock, GroupMock, ControlMock>
         {
             public PageBuilderMock(Func<int> idRangeSelector = null)
                 : base(new Moq.Mock<IXApplication>().Object,
-                      new TypeDataBinder(new Mock<IXLogger>().Object), 
+                      new TypeDataBinder(new Mock<IXLogger>().Object),
                       new PageMockConstructor(),
                       new ControlMockConstructor(idRangeSelector))
             {
             }
         }
 
+        /// <summary>
+        /// DataModel1：包含 3 个属性的测试数据模型。
+        /// </summary>
         public class DataModel1
         {
             public string Prp1 { get; set; }
@@ -147,6 +176,10 @@ namespace Toolkit.Tests
 
         #endregion
 
+        /// <summary>
+        /// 测试用例目的：验证默认情况下控件 ID 从 0 开始连续分配。
+        /// DataModel1 有 3 个属性，应创建 3 个控件，ID 分别为 0, 1, 2。
+        /// </summary>
         [Test]
         public void CreatePageIdsTest()
         {
@@ -159,19 +192,24 @@ namespace Toolkit.Tests
             Assert.AreEqual(2, page.Controls[2].Id);
         }
 
+        /// <summary>
+        /// 测试用例目的：验证自定义 ID 范围选择器对 ID 分配的影响。
+        /// 测试场景：第 2 个控件（索引=1）使用不同的 ID 范围。
+        /// 预期结果：控件 ID 为 0, 1, 4（而非 0, 1, 2）
+        /// </summary>
         [Test]
         public void CreatePageIdsRangeTest()
         {
             int ctrlIndex = 0;
-            var builder = new PageBuilderMock(()=> 
+            var builder = new PageBuilderMock(() =>
             {
                 int idRange = 1;
 
                 if (ctrlIndex == 1)
                 {
-                    idRange = 3;
+                    idRange = 3; // 第 2 个控件跳过 2 个 ID
                 }
-                
+
                 ctrlIndex++;
                 return idRange;
             });
@@ -180,7 +218,7 @@ namespace Toolkit.Tests
             Assert.AreEqual(3, page.Controls.Count);
             Assert.AreEqual(0, page.Controls[0].Id);
             Assert.AreEqual(1, page.Controls[1].Id);
-            Assert.AreEqual(4, page.Controls[2].Id);
+            Assert.AreEqual(4, page.Controls[2].Id); // 第 3 个控件使用 ID=4（跳过了 2,3）
         }
     }
 }

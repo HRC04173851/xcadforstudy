@@ -46,11 +46,13 @@ namespace Xarial.XCad.Geometry.Structures
 
         /// <summary>
         /// X axis of the rectangle
+        /// 矩形局部坐标系的 X 轴方向向量
         /// </summary>
         public Vector AxisX { get; }
 
         /// <summary>
-        /// Y axis of the reactangle
+        /// Y axis of the rectangle
+        /// 矩形局部坐标系的 Y 轴方向向量
         /// </summary>
         public Vector AxisY { get; }
 
@@ -123,12 +125,15 @@ namespace Xarial.XCad.Geometry.Structures
 
             //NOTE: rectangle can have custom axis which can result in the top right point to be lover than bottom left
             //in order to consider this finding the min and max among all points
+            //注意：矩形可以具有自定义轴向，可能导致右上角点低于左下角点，因此需要从所有角点中寻找最小值和最大值
 
+            // 计算合并后矩形的边界坐标
             var minX = Min(thisLeftBottom.X, otherLeftBottom.X, thisRightTop.X, otherRightTop.X);
             var maxX = Max(thisLeftBottom.X, otherLeftBottom.X, thisRightTop.X, otherRightTop.X);
             var minY = Min(thisLeftBottom.Y, otherLeftBottom.Y, thisRightTop.Y, otherRightTop.Y);
             var maxY = Max(thisLeftBottom.Y, otherLeftBottom.Y, thisRightTop.Y, otherRightTop.Y);
-            
+
+            // 创建包含两个矩形的最小包围盒
             return new Rect2D(maxX - minX, maxY - minY, new Point((minX + maxX) / 2, (minY + maxY) / 2, 0));
         }
 
@@ -147,6 +152,8 @@ namespace Xarial.XCad.Geometry.Structures
             var otherBottomLeft = otherRect.GetLeftBottom();
             var otherTopRight = otherRect.GetRightTop();
 
+            // 检测两个矩形在X轴和Y轴方向上是否都有重叠
+            // 如果在两个轴向上都重叠，则矩形相交
             return thisBottomLeft.X <= otherTopRight.X
                 && thisTopRight.X >= otherBottomLeft.X
                 && thisBottomLeft.Y <= otherTopRight.Y

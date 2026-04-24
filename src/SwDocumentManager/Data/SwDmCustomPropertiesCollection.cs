@@ -46,6 +46,7 @@ namespace Xarial.XCad.SwDocumentManager.Data
         /// <summary>
         /// Pre-creates a transient property wrapper that can be configured before commit.
         /// 预创建一个临时属性包装器，便于在提交前先配置名称和值。
+        /// 典型用途：在调用 Commit 将属性写入 SOLIDWORKS 之前，先通过 SetName 设置属性名、SetValue 设置属性值。
         /// </summary>
         public T PreCreate<T>() where T : IXProperty => (T)CreatePropertyInstance("", false);
 

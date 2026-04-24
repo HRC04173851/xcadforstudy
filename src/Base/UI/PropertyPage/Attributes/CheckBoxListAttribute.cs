@@ -17,8 +17,8 @@ using Xarial.XCad.UI.PropertyPage.Base;
 namespace Xarial.XCad.UI.PropertyPage.Attributes
 {
     /// <summary>
-    /// Constructor of check box-lis
-    /// 复选框列表控件构造器标记接口
+    /// Marker interface for check box list control constructor
+    /// 复选框列表控件构造器的标记接口
     /// </summary>
     public interface ICheckBoxListConstructor
     {
@@ -33,6 +33,7 @@ namespace Xarial.XCad.UI.PropertyPage.Attributes
     {
         /// <summary>
         /// Type of the constructor
+        /// 构造器类型
         /// </summary>
         public Type ConstructorType { get; } = typeof(ICheckBoxListConstructor);
 

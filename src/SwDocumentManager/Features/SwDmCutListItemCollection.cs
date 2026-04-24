@@ -58,6 +58,8 @@ namespace Xarial.XCad.SwDocumentManager.Features
         public IXCutListItem this[string name] => RepositoryHelper.Get(this, name);
 
         public int Count => IterateCutLists().Count();
+        // 使用延迟枚举（yield return）统计实际切割清单数量，而非预先缓存总数。
+        // 优点：避免在不需要遍历所有项时调用耗时的 COM API；缺点：每次访问 Count 都会重新枚举。
 
         public void AddRange(IEnumerable<IXCutListItem> ents, CancellationToken cancellationToken)
             => throw new NotImplementedException();
